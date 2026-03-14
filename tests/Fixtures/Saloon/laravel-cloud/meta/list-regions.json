@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Sat, 14 Mar 2026 13:27:18 GMT",
+        "Content-Type": "application\/json",
+        "Content-Length": "637",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Sat, 14 Mar 2026 13:27:18 GMT",
+        "x-amzn-requestid": "e048e0f4-0a1c-4348-8be2-03dad98cc744",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "119",
+        "x-amz-apigw-id": "aNxIfFtnCYcEQng=",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "Root=1-69b56235-5338baeb1d15be182959fb8a;Parent=5018010ff3e3c192;Sampled=0;Lineage=1:bcabd73e:0",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 939e76e8b14055236dd91b376a6c10a6.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "IST50-P4",
+        "x-amz-cf-id": "tRpfJGkcYQipWLP0IUP0tZ_Gwm6bf1olv4DLTrK_DwtYjc0iVWi3lA==",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "__cf_bm=zG_VeMmf1qOCncOSauzCOS_hOqkdTZhfhr7zQBxaEYI-1773494837.429526-1.0.1.1-W5JNXxi.WZF_i7CxXy4E07tZmtHHxwGkzPt.Rulp1AfgA3mC3.ekhI9s5vWBCIzhklpmNdHtrD_C7whcZTEJTr99yBDIkK5bYC5PkaxyK4E36nczCA250ch3CsKRxAEz; HttpOnly; Secure; Path=\/; Domain=cloud.laravel.com; Expires=Sat, 14 Mar 2026 13:57:18 GMT",
+        "Server": "cloudflare",
+        "CF-RAY": "9dc39d6decebab93-TBS"
+    },
+    "data": "{\"data\":[{\"region\":\"us-east-2\",\"label\":\"US East (Ohio)\",\"flag\":\"us\"},{\"region\":\"us-east-1\",\"label\":\"US East (Virginia)\",\"flag\":\"us\"},{\"region\":\"eu-central-1\",\"label\":\"EU Central (Frankfurt)\",\"flag\":\"germany\"},{\"region\":\"eu-west-1\",\"label\":\"EU West (Ireland)\",\"flag\":\"ireland\"},{\"region\":\"eu-west-2\",\"label\":\"EU West (London)\",\"flag\":\"uk\"},{\"region\":\"ap-southeast-1\",\"label\":\"Asia Pacific (Singapore)\",\"flag\":\"singapore\"},{\"region\":\"ap-southeast-2\",\"label\":\"Asia Pacific (Sydney)\",\"flag\":\"australia\"},{\"region\":\"ca-central-1\",\"label\":\"Canada (Central)\",\"flag\":\"canada\"},{\"region\":\"me-central-1\",\"label\":\"Middle East (UAE)\",\"flag\":\"uae\"}]}",
+    "context": []
+}
