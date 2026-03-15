@@ -6,8 +6,8 @@ use App\Http\Integrations\LaravelCloud\LaravelCloudConnector;
 use App\Http\Integrations\LaravelCloud\Requests\Meta\ListRegionsRequest;
 use Illuminate\Support\Collection;
 use Saloon\Enums\Method;
-use Saloon\Http\Faking\MockResponse;
 use Saloon\Laravel\Facades\Saloon;
+use Tests\Fixtures\LaravelCloud\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $request = new ListRegionsRequest;
@@ -23,7 +23,7 @@ it('has the correct HTTP method', function () {
 
 it('lists regions and returns RegionData collection', function () {
     Saloon::fake([
-        ListRegionsRequest::class => MockResponse::fixture('laravel-cloud/meta/list-regions'),
+        ListRegionsRequest::class => new LaravelCloudFixture('meta/list-regions'),
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud.token'));
