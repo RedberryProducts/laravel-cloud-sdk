@@ -5,6 +5,8 @@ use App\Data\LaravelCloud\DatabaseClusters\NeonConfigData;
 use App\Enums\LaravelCloud\CloudRegion;
 use App\Enums\LaravelCloud\DatabaseType;
 
+use Spatie\LaravelData\Optional;
+
 it('can be constructed with all parameters', function () {
     $config = new NeonConfigData(
         cuMin: 0.25,
@@ -28,7 +30,7 @@ it('can be constructed with all parameters', function () {
     expect($data->clusterId)->toBe(42);
 });
 
-it('defaults clusterId to null', function () {
+it('defaults clusterId to Optional', function () {
     $config = new NeonConfigData(
         cuMin: 0.25,
         cuMax: 0.25,
@@ -43,5 +45,5 @@ it('defaults clusterId to null', function () {
         config: $config,
     );
 
-    expect($data->clusterId)->toBeNull();
+    expect($data->clusterId)->toBeInstanceOf(Optional::class);
 });
