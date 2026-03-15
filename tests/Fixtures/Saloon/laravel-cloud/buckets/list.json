@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Sun, 15 Mar 2026 09:50:43 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "860",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Sun, 15 Mar 2026 09:50:42 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "119",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 816b7f4e336674d9d7828ef4700482e8.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "FRA60-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":[{\"id\":\"fls-a14e19d6-8db3-47fe-96fb-343e55774021\",\"type\":\"filesystems\",\"attributes\":{\"name\":\"test-bucket\",\"type\":\"cloudflare_r2\",\"status\":\"available\",\"visibility\":\"private\",\"jurisdiction\":\"default\",\"endpoint\":\"REDACTED\",\"url\":null,\"allowed_origins\":null,\"created_at\":\"2026-03-15T09:48:50.000000Z\"}}],\"links\":{\"first\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/buckets?page=1\",\"last\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/buckets?page=1\"},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"page\":null,\"active\":false},{\"url\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/buckets?page=1\",\"label\":\"1\",\"page\":1,\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"page\":null,\"active\":false}],\"path\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/buckets\",\"per_page\":100,\"to\":1,\"total\":1}}",
+    "context": []
+}
