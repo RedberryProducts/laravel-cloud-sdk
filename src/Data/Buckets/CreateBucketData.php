@@ -5,8 +5,11 @@ namespace App\Data\LaravelCloud\Buckets;
 use App\Enums\LaravelCloud\BucketJurisdiction;
 use App\Enums\LaravelCloud\BucketVisibility;
 use App\Enums\LaravelCloud\KeyPermission;
+use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 
+#[MapOutputName(SnakeCaseMapper::class)]
 class CreateBucketData extends Data
 {
     /**
