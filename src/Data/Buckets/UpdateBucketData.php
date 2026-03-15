@@ -3,9 +3,12 @@
 namespace App\Data\LaravelCloud\Buckets;
 
 use App\Enums\LaravelCloud\BucketVisibility;
+use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 use Spatie\LaravelData\Optional;
 
+#[MapOutputName(SnakeCaseMapper::class)]
 class UpdateBucketData extends Data
 {
     /**
