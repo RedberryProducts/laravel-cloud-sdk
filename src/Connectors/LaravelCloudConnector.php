@@ -5,12 +5,15 @@ namespace App\Http\Integrations\LaravelCloud;
 use App\Http\Integrations\LaravelCloud\Auth\LaravelCloudTokenAuthenticator;
 use Saloon\Contracts\Authenticator;
 use Saloon\Http\Connector;
+use Saloon\Http\Senders\GuzzleSender;
 use Saloon\Traits\Plugins\AcceptsJson;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
 
 class LaravelCloudConnector extends Connector
 {
     use AcceptsJson, AlwaysThrowOnErrors;
+
+    protected string $defaultSender = GuzzleSender::class;
 
     public function __construct(private string $token) {}
 
@@ -21,7 +24,9 @@ class LaravelCloudConnector extends Connector
 
     protected function defaultHeaders(): array
     {
-        return [];
+        return [
+            'Content-Type' => 'application/json',
+        ];
     }
 
     protected function defaultConfig(): array
