@@ -38,6 +38,8 @@ class LaravelCloudFixture extends Fixture
             'access_key_id' => 'REDACTED',
             'access_key_secret' => 'REDACTED',
             'endpoint' => 'REDACTED',
+            'key' => 'REDACTED',
+            'secret' => 'REDACTED',
         ];
     }
 }
