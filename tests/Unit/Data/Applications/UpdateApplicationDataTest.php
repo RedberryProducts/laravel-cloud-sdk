@@ -1,7 +1,7 @@
 <?php
 
 use App\Data\LaravelCloud\Applications\UpdateApplicationData;
-use App\Enums\VcsProviderEnum;
+use App\Enums\LaravelCloud\SourceControlProvider;
 use Spatie\LaravelData\Optional;
 
 it('can be constructed with partial parameters', function () {
@@ -28,7 +28,7 @@ it('defaults all parameters to Optional', function () {
 
 it('serializes fields as snake_case', function () {
     $data = new UpdateApplicationData(
-        sourceControlProviderType: VcsProviderEnum::GITHUB,
+        sourceControlProviderType: SourceControlProvider::GITHUB,
         defaultEnvironmentId: 'env-123',
         slackChannel: '#deploys',
     );

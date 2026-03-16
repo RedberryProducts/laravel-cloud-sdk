@@ -2,7 +2,7 @@
 
 use App\Data\LaravelCloud\Applications\ApplicationData;
 use App\Data\LaravelCloud\Applications\UpdateApplicationData;
-use App\Enums\VcsProviderEnum;
+use App\Enums\LaravelCloud\SourceControlProvider;
 use App\Http\Integrations\LaravelCloud\LaravelCloudConnector;
 use App\Http\Integrations\LaravelCloud\Requests\Applications\ListApplicationsRequest;
 use App\Http\Integrations\LaravelCloud\Requests\Applications\UpdateApplicationRequest;
@@ -26,7 +26,7 @@ it('has the correct HTTP method', function () {
 
 it('sends correct body', function () {
     $data = new UpdateApplicationData(
-        sourceControlProviderType: VcsProviderEnum::GITHUB,
+        sourceControlProviderType: SourceControlProvider::GITHUB,
         name: 'updated-app',
     );
     $request = new UpdateApplicationRequest('app-123', $data);

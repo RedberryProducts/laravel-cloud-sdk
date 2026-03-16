@@ -3,7 +3,7 @@
 use App\Data\LaravelCloud\Applications\ApplicationData;
 use App\Data\LaravelCloud\Applications\CreateApplicationData;
 use App\Enums\LaravelCloud\CloudRegion;
-use App\Enums\VcsProviderEnum;
+use App\Enums\LaravelCloud\SourceControlProvider;
 use App\Http\Integrations\LaravelCloud\LaravelCloudConnector;
 use App\Http\Integrations\LaravelCloud\Requests\Applications\CreateApplicationRequest;
 use Saloon\Enums\Method;
@@ -15,7 +15,7 @@ it('resolves the endpoint correctly', function () {
         repository: 'RedberryProducts/redberry-automations',
         name: 'test-app',
         region: CloudRegion::US_EAST_1,
-        sourceControlProviderType: VcsProviderEnum::GITHUB,
+        sourceControlProviderType: SourceControlProvider::GITHUB,
     );
     $request = new CreateApplicationRequest($data);
 
@@ -27,7 +27,7 @@ it('has the correct HTTP method', function () {
         repository: 'RedberryProducts/redberry-automations',
         name: 'test-app',
         region: CloudRegion::US_EAST_1,
-        sourceControlProviderType: VcsProviderEnum::GITHUB,
+        sourceControlProviderType: SourceControlProvider::GITHUB,
     );
     $request = new CreateApplicationRequest($data);
 
@@ -39,7 +39,7 @@ it('sends correct body', function () {
         repository: 'RedberryProducts/redberry-automations',
         name: 'test-app',
         region: CloudRegion::US_EAST_1,
-        sourceControlProviderType: VcsProviderEnum::GITHUB,
+        sourceControlProviderType: SourceControlProvider::GITHUB,
     );
     $request = new CreateApplicationRequest($data);
     $body = $request->body()->all();
@@ -59,7 +59,7 @@ it('creates an application and returns ApplicationData', function () {
         repository: 'RedberryProducts/redberry-automations',
         name: 'test-app',
         region: CloudRegion::US_EAST_1,
-        sourceControlProviderType: VcsProviderEnum::GITHUB,
+        sourceControlProviderType: SourceControlProvider::GITHUB,
     );
 
     $connector = new LaravelCloudConnector(config('laravel-cloud.token'));
