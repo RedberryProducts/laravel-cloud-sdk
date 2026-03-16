@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Mon, 16 Mar 2026 06:00:19 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "363",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Mon, 16 Mar 2026 06:00:19 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "29",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "30",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 174262b85c119d8208d4718b655e0b6c.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "MRS52-P2",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"ws-a14fcb1a-18a7-411d-9d82-456d3aa2c273\",\"type\":\"websocketServers\",\"attributes\":{\"name\":\"test-ws-cluster\",\"type\":\"reverb\",\"region\":\"us-east-1\",\"status\":\"creating\",\"max_connections\":100,\"connection_distribution_strategy\":\"evenly\",\"hostname\":\"REDACTED\",\"created_at\":\"2026-03-16T06:00:19.000000Z\"}}}",
+    "context": []
+}
