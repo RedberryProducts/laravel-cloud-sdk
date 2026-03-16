@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Mon, 16 Mar 2026 14:30:42 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "354",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Mon, 16 Mar 2026 14:30:42 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "119",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 1b866e6eb5f6e3ef570f3588da8a7b3a.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "MRS52-P2",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"wsa-a15081a0-8fda-4ff7-bdc5-433f7c6b44d7\",\"type\":\"websocketApplications\",\"attributes\":{\"name\":\"test-ws-app\",\"app_id\":\"10002\",\"allowed_origins\":[],\"ping_interval\":60,\"activity_timeout\":30,\"max_message_size\":10000,\"max_connections\":50,\"key\":\"REDACTED\",\"secret\":\"REDACTED\",\"created_at\":\"2026-03-16T14:30:42.000000Z\"}}}",
+    "context": []
+}
