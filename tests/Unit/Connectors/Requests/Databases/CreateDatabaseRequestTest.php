@@ -39,7 +39,7 @@ it('sends correct body', function () {
     expect($body['name'])->toBe('test-db');
 });
 
-it('creates a database and returns DatabaseData', function () {
+it('creates a database and returns DatabaseData with all fields', function () {
     Saloon::fake([
         ListDatabaseClustersRequest::class => new LaravelCloudFixture('database-clusters/list'),
     ]);
@@ -58,5 +58,7 @@ it('creates a database and returns DatabaseData', function () {
 
     $dto = $response->dtoOrFail();
     expect($dto)->toBeInstanceOf(DatabaseData::class);
-    expect($dto->name)->toBeString();
+    expect($dto->id)->toBe('47343217');
+    expect($dto->name)->toBe('test-db');
+    expect($dto->createdAt)->not->toBeNull();
 });

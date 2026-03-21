@@ -31,16 +31,34 @@ it('implements HasBody', function () {
     expect($request)->toBeInstanceOf(HasBody::class);
 });
 
-it('sends correct body', function () {
-    $data = new CreateWebsocketApplicationData(name: 'test-app', pingInterval: 30);
+it('sends correct body with all optional fields', function () {
+    $data = new CreateWebsocketApplicationData(
+        name: 'test-app',
+        pingInterval: 30,
+        activityTimeout: 60,
+        allowedOrigins: ['https://example.com'],
+    );
     $request = new CreateWebsocketApplicationRequest('cluster-123', $data);
     $body = $request->body()->all();
 
     expect($body['name'])->toBe('test-app');
     expect($body['ping_interval'])->toBe(30);
+    expect($body['activity_timeout'])->toBe(60);
+    expect($body['allowed_origins'])->toBe(['https://example.com']);
 });
 
-it('creates a websocket application and returns WebsocketApplicationData', function () {
+it('excludes unset optional fields from body', function () {
+    $data = new CreateWebsocketApplicationData(name: 'test-app');
+    $request = new CreateWebsocketApplicationRequest('cluster-123', $data);
+    $body = $request->body()->all();
+
+    expect($body)->toHaveKey('name');
+    expect($body)->not->toHaveKey('ping_interval');
+    expect($body)->not->toHaveKey('activity_timeout');
+    expect($body)->not->toHaveKey('allowed_origins');
+});
+
+it('creates a websocket application and returns WebsocketApplicationData with all fields', function () {
     Saloon::fake([
         ListWebsocketClustersRequest::class => new LaravelCloudFixture('websocket-clusters/list'),
     ]);
@@ -59,6 +77,15 @@ it('creates a websocket application and returns WebsocketApplicationData', funct
 
     $dto = $response->dtoOrFail();
     expect($dto)->toBeInstanceOf(WebsocketApplicationData::class);
-    expect($dto->name)->toBeString();
-    expect($dto->appId)->toBeString();
+    expect($dto->id)->toBe('wsa-a15081a0-8fda-4ff7-bdc5-433f7c6b44d7');
+    expect($dto->name)->toBe('test-ws-app');
+    expect($dto->appId)->toBe('10002');
+    expect($dto->allowedOrigins)->toBe([]);
+    expect($dto->pingInterval)->toBe(60);
+    expect($dto->activityTimeout)->toBe(30);
+    expect($dto->maxMessageSize)->toBe(10000);
+    expect($dto->maxConnections)->toBe(50);
+    expect($dto->key)->toBeString();
+    expect($dto->secret)->toBeString();
+    expect($dto->createdAt)->not->toBeNull();
 });

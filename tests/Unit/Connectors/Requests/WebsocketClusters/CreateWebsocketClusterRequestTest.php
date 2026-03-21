@@ -3,8 +3,10 @@
 use App\Data\LaravelCloud\WebsocketClusters\CreateWebsocketClusterData;
 use App\Data\LaravelCloud\WebsocketClusters\WebsocketClusterData;
 use App\Enums\LaravelCloud\CloudRegion;
+use App\Enums\LaravelCloud\WebsocketConnectionDistributionStrategy;
 use App\Enums\LaravelCloud\WebsocketMaxConnections;
 use App\Enums\LaravelCloud\WebsocketServerType;
+use App\Enums\LaravelCloud\WebsocketStatus;
 use App\Http\Integrations\LaravelCloud\LaravelCloudConnector;
 use App\Http\Integrations\LaravelCloud\Requests\WebsocketClusters\CreateWebsocketClusterRequest;
 use Saloon\Enums\Method;
@@ -51,7 +53,7 @@ it('sends correct body', function () {
     expect($body['max_connections'])->toBe(100);
 });
 
-it('creates a websocket cluster and returns WebsocketClusterData', function () {
+it('creates a websocket cluster and returns WebsocketClusterData with all fields', function () {
     Saloon::fake([
         CreateWebsocketClusterRequest::class => new LaravelCloudFixture('websocket-clusters/create'),
     ]);
@@ -70,4 +72,13 @@ it('creates a websocket cluster and returns WebsocketClusterData', function () {
 
     $dto = $response->dtoOrFail();
     expect($dto)->toBeInstanceOf(WebsocketClusterData::class);
+    expect($dto->id)->toBe('ws-a14fcb1a-18a7-411d-9d82-456d3aa2c273');
+    expect($dto->name)->toBe('test-ws-cluster');
+    expect($dto->type)->toBe(WebsocketServerType::REVERB);
+    expect($dto->region)->toBe(CloudRegion::US_EAST_1);
+    expect($dto->status)->toBe(WebsocketStatus::CREATING);
+    expect($dto->maxConnections)->toBe(WebsocketMaxConnections::CONNECTIONS_100);
+    expect($dto->connectionDistributionStrategy)->toBe(WebsocketConnectionDistributionStrategy::EVENLY);
+    expect($dto->hostname)->toBeString();
+    expect($dto->createdAt)->not->toBeNull();
 });

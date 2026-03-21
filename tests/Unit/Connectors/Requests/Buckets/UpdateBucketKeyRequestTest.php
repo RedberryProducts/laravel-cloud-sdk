@@ -2,6 +2,7 @@
 
 use App\Data\LaravelCloud\Buckets\BucketKeyData;
 use App\Data\LaravelCloud\Buckets\UpdateBucketKeyData;
+use App\Enums\LaravelCloud\KeyPermission;
 use App\Http\Integrations\LaravelCloud\LaravelCloudConnector;
 use App\Http\Integrations\LaravelCloud\Requests\Buckets\ListBucketKeysRequest;
 use App\Http\Integrations\LaravelCloud\Requests\Buckets\ListBucketsRequest;
@@ -32,7 +33,7 @@ it('sends correct body', function () {
     expect($body['name'])->toBe('updated-key');
 });
 
-it('updates a bucket key and returns BucketKeyData', function () {
+it('updates a bucket key and returns BucketKeyData with all fields', function () {
     Saloon::fake([
         ListBucketsRequest::class => new LaravelCloudFixture('buckets/list'),
     ]);
@@ -57,4 +58,10 @@ it('updates a bucket key and returns BucketKeyData', function () {
 
     $dto = $response->dtoOrFail();
     expect($dto)->toBeInstanceOf(BucketKeyData::class);
+    expect($dto->id)->toBe('flsk-a14e19d9-bfec-488e-8ee5-79b029e9d974');
+    expect($dto->name)->toBe('updated-key');
+    expect($dto->permission)->toBe(KeyPermission::READ_WRITE);
+    expect($dto->accessKeyId)->toBeString();
+    expect($dto->accessKeySecret)->toBeString();
+    expect($dto->createdAt)->not->toBeNull();
 });

@@ -1,7 +1,9 @@
 <?php
 
 use App\Data\LaravelCloud\Applications\ApplicationData;
+use App\Data\LaravelCloud\Applications\ApplicationRepositoryData;
 use App\Data\LaravelCloud\Applications\UpdateApplicationData;
+use App\Enums\LaravelCloud\CloudRegion;
 use App\Enums\LaravelCloud\SourceControlProvider;
 use App\Http\Integrations\LaravelCloud\LaravelCloudConnector;
 use App\Http\Integrations\LaravelCloud\Requests\Applications\ListApplicationsRequest;
@@ -24,19 +26,40 @@ it('has the correct HTTP method', function () {
     expect($request->getMethod())->toBe(Method::PATCH);
 });
 
-it('sends correct body', function () {
+it('sends correct body with all optional fields', function () {
     $data = new UpdateApplicationData(
         sourceControlProviderType: SourceControlProvider::GITHUB,
         name: 'updated-app',
+        slug: 'updated-app-slug',
+        defaultEnvironmentId: 'env-123',
+        repository: 'RedberryProducts/redberry-automations',
+        slackChannel: '#deployments',
     );
     $request = new UpdateApplicationRequest('app-123', $data);
     $body = $request->body()->all();
 
     expect($body['source_control_provider_type'])->toBe('github');
     expect($body['name'])->toBe('updated-app');
+    expect($body['slug'])->toBe('updated-app-slug');
+    expect($body['default_environment_id'])->toBe('env-123');
+    expect($body['repository'])->toBe('RedberryProducts/redberry-automations');
+    expect($body['slack_channel'])->toBe('#deployments');
 });
 
-it('updates an application and returns ApplicationData', function () {
+it('excludes unset optional fields from body', function () {
+    $data = new UpdateApplicationData(name: 'updated-app');
+    $request = new UpdateApplicationRequest('app-123', $data);
+    $body = $request->body()->all();
+
+    expect($body)->toHaveKey('name');
+    expect($body)->not->toHaveKey('source_control_provider_type');
+    expect($body)->not->toHaveKey('slug');
+    expect($body)->not->toHaveKey('default_environment_id');
+    expect($body)->not->toHaveKey('repository');
+    expect($body)->not->toHaveKey('slack_channel');
+});
+
+it('updates an application and returns ApplicationData with all fields', function () {
     Saloon::fake([
         ListApplicationsRequest::class => new LaravelCloudFixture('applications/list'),
     ]);
@@ -55,4 +78,14 @@ it('updates an application and returns ApplicationData', function () {
 
     $dto = $response->dtoOrFail();
     expect($dto)->toBeInstanceOf(ApplicationData::class);
+    expect($dto->id)->toBe('app-a14fe54f-42b2-431c-9b3a-876900975139');
+    expect($dto->name)->toBe('updated-app');
+    expect($dto->slug)->toBe('test-app-2');
+    expect($dto->region)->toBe(CloudRegion::US_EAST_1);
+    expect($dto->slackChannel)->toBeNull();
+    expect($dto->avatarUrl)->toBeNull();
+    expect($dto->repository)->toBeInstanceOf(ApplicationRepositoryData::class);
+    expect($dto->repository->fullName)->toBe('RedberryProducts/redberry-automations');
+    expect($dto->repository->defaultBranch)->toBe('main');
+    expect($dto->createdAt)->not->toBeNull();
 });

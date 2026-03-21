@@ -42,7 +42,7 @@ it('sends correct body', function () {
     expect($body['permission'])->toBe('read_write');
 });
 
-it('creates a bucket key and returns BucketKeyData', function () {
+it('creates a bucket key and returns BucketKeyData with all fields', function () {
     Saloon::fake([
         ListBucketsRequest::class => new LaravelCloudFixture('buckets/list'),
     ]);
@@ -65,4 +65,10 @@ it('creates a bucket key and returns BucketKeyData', function () {
 
     $dto = $response->dtoOrFail();
     expect($dto)->toBeInstanceOf(BucketKeyData::class);
+    expect($dto->id)->toBe('flsk-a14e1a83-a4d4-49a4-bdd9-93ae07a6a9cd');
+    expect($dto->name)->toBe('new-key');
+    expect($dto->permission)->toBe(KeyPermission::READ_WRITE);
+    expect($dto->accessKeyId)->toBeString();
+    expect($dto->accessKeySecret)->toBeString();
+    expect($dto->createdAt)->not->toBeNull();
 });

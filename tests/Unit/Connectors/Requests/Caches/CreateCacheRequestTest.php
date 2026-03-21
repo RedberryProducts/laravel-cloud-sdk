@@ -1,8 +1,11 @@
 <?php
 
+use App\Data\LaravelCloud\Caches\CacheConnectionData;
 use App\Data\LaravelCloud\Caches\CacheData;
 use App\Data\LaravelCloud\Caches\CreateCacheData;
+use App\Enums\LaravelCloud\CacheProtocol;
 use App\Enums\LaravelCloud\CacheSize;
+use App\Enums\LaravelCloud\CacheStatus;
 use App\Enums\LaravelCloud\CacheType;
 use App\Enums\LaravelCloud\CloudRegion;
 use App\Http\Integrations\LaravelCloud\LaravelCloudConnector;
@@ -59,7 +62,7 @@ it('sends correct body', function () {
     expect($body['is_public'])->toBeFalse();
 });
 
-it('creates a cache and returns CacheData', function () {
+it('creates a cache and returns CacheData with all fields', function () {
     Saloon::fake([
         CreateCacheRequest::class => new LaravelCloudFixture('caches/create'),
     ]);
@@ -80,4 +83,19 @@ it('creates a cache and returns CacheData', function () {
 
     $dto = $response->dtoOrFail();
     expect($dto)->toBeInstanceOf(CacheData::class);
+    expect($dto->id)->toBe('cache-a14df9ab-a7a4-4ae1-8e86-c1d29574740d');
+    expect($dto->name)->toBe('test-cache-two');
+    expect($dto->type)->toBe(CacheType::LARAVEL_VALKEY);
+    expect($dto->status)->toBe(CacheStatus::CREATING);
+    expect($dto->region)->toBe(CloudRegion::US_EAST_1);
+    expect($dto->size)->toBe(CacheSize::VALKEY_PRO_250MB);
+    expect($dto->autoUpgradeEnabled)->toBeTrue();
+    expect($dto->isPublic)->toBeFalse();
+    expect($dto->connection)->toBeInstanceOf(CacheConnectionData::class);
+    expect($dto->connection->hostname)->toBeString();
+    expect($dto->connection->port)->toBeNull();
+    expect($dto->connection->protocol)->toBe(CacheProtocol::REDIS);
+    expect($dto->connection->username)->toBeString();
+    expect($dto->connection->password)->toBeString();
+    expect($dto->createdAt)->not->toBeNull();
 });
