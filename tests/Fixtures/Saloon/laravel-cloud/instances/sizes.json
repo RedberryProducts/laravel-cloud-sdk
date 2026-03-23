@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Mon, 23 Mar 2026 05:47:32 GMT",
+        "Content-Type": "application\/json",
+        "Content-Length": "3784",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Mon, 23 Mar 2026 05:47:32 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "119",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 711bd82753888b42cef3214dc6357958.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "IST50-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"general\":[{\"name\":\"flex.c-1vcpu-256mb\",\"label\":\"Flex\",\"description\":\"1 vCPU \\u00b7 256 MiB RAM\",\"cpu_type\":\"flex\",\"compute_class\":\"flex.c\",\"cpu_count\":1,\"memory_mib\":256},{\"name\":\"flex.g-1vcpu-512mb\",\"label\":\"Flex\",\"description\":\"1 vCPU \\u00b7 512 MiB RAM\",\"cpu_type\":\"flex\",\"compute_class\":\"flex.g\",\"cpu_count\":1,\"memory_mib\":512},{\"name\":\"flex.m-1vcpu-1gb\",\"label\":\"Flex\",\"description\":\"1 vCPU \\u00b7 1 GiB RAM\",\"cpu_type\":\"flex\",\"compute_class\":\"flex.m\",\"cpu_count\":1,\"memory_mib\":1024},{\"name\":\"flex.c-2vcpu-512mb\",\"label\":\"Flex\",\"description\":\"2 vCPU \\u00b7 512 MiB RAM\",\"cpu_type\":\"flex\",\"compute_class\":\"flex.c\",\"cpu_count\":2,\"memory_mib\":512},{\"name\":\"flex.g-2vcpu-1gb\",\"label\":\"Flex\",\"description\":\"2 vCPU \\u00b7 1 GiB RAM\",\"cpu_type\":\"flex\",\"compute_class\":\"flex.g\",\"cpu_count\":2,\"memory_mib\":1024},{\"name\":\"flex.m-2vcpu-2gb\",\"label\":\"Flex\",\"description\":\"2 vCPU \\u00b7 2 GiB RAM\",\"cpu_type\":\"flex\",\"compute_class\":\"flex.m\",\"cpu_count\":2,\"memory_mib\":2048},{\"name\":\"flex.c-4vcpu-1gb\",\"label\":\"Flex\",\"description\":\"4 vCPU \\u00b7 1 GiB RAM\",\"cpu_type\":\"flex\",\"compute_class\":\"flex.c\",\"cpu_count\":4,\"memory_mib\":1024},{\"name\":\"flex.g-4vcpu-2gb\",\"label\":\"Flex\",\"description\":\"4 vCPU \\u00b7 2 GiB RAM\",\"cpu_type\":\"flex\",\"compute_class\":\"flex.g\",\"cpu_count\":4,\"memory_mib\":2048},{\"name\":\"flex.m-4vcpu-4gb\",\"label\":\"Flex\",\"description\":\"4 vCPU \\u00b7 4 GiB RAM\",\"cpu_type\":\"flex\",\"compute_class\":\"flex.m\",\"cpu_count\":4,\"memory_mib\":4096},{\"name\":\"flex.c-8vcpu-2gb\",\"label\":\"Flex\",\"description\":\"8 vCPU \\u00b7 2 GiB RAM\",\"cpu_type\":\"flex\",\"compute_class\":\"flex.c\",\"cpu_count\":8,\"memory_mib\":2048},{\"name\":\"flex.g-8vcpu-4gb\",\"label\":\"Flex\",\"description\":\"8 vCPU \\u00b7 4 GiB RAM\",\"cpu_type\":\"flex\",\"compute_class\":\"flex.g\",\"cpu_count\":8,\"memory_mib\":4096},{\"name\":\"flex.m-8vcpu-8gb\",\"label\":\"Flex\",\"description\":\"8 vCPU \\u00b7 8 GiB RAM\",\"cpu_type\":\"flex\",\"compute_class\":\"flex.m\",\"cpu_count\":8,\"memory_mib\":8192},{\"name\":\"pro.c-1vcpu-1gb\",\"label\":\"Pro\",\"description\":\"1 vCPU \\u00b7 1 GiB RAM\",\"cpu_type\":\"pro\",\"compute_class\":\"pro.c\",\"cpu_count\":1,\"memory_mib\":1024},{\"name\":\"pro.g-1vcpu-2gb\",\"label\":\"Pro\",\"description\":\"1 vCPU \\u00b7 2 GiB RAM\",\"cpu_type\":\"pro\",\"compute_class\":\"pro.g\",\"cpu_count\":1,\"memory_mib\":2048},{\"name\":\"pro.m-1vcpu-4gb\",\"label\":\"Pro\",\"description\":\"1 vCPU \\u00b7 4 GiB RAM\",\"cpu_type\":\"pro\",\"compute_class\":\"pro.m\",\"cpu_count\":1,\"memory_mib\":4096},{\"name\":\"pro.c-2vcpu-2gb\",\"label\":\"Pro\",\"description\":\"2 vCPU \\u00b7 2 GiB RAM\",\"cpu_type\":\"pro\",\"compute_class\":\"pro.c\",\"cpu_count\":2,\"memory_mib\":2048},{\"name\":\"pro.g-2vcpu-4gb\",\"label\":\"Pro\",\"description\":\"2 vCPU \\u00b7 4 GiB RAM\",\"cpu_type\":\"pro\",\"compute_class\":\"pro.g\",\"cpu_count\":2,\"memory_mib\":4096},{\"name\":\"pro.m-2vcpu-8gb\",\"label\":\"Pro\",\"description\":\"2 vCPU \\u00b7 8 GiB RAM\",\"cpu_type\":\"pro\",\"compute_class\":\"pro.m\",\"cpu_count\":2,\"memory_mib\":8192},{\"name\":\"pro.c-4vcpu-4gb\",\"label\":\"Pro\",\"description\":\"4 vCPU \\u00b7 4 GiB RAM\",\"cpu_type\":\"pro\",\"compute_class\":\"pro.c\",\"cpu_count\":4,\"memory_mib\":4096},{\"name\":\"pro.g-4vcpu-8gb\",\"label\":\"Pro\",\"description\":\"4 vCPU \\u00b7 8 GiB RAM\",\"cpu_type\":\"pro\",\"compute_class\":\"pro.g\",\"cpu_count\":4,\"memory_mib\":8192},{\"name\":\"pro.m-4vcpu-16gb\",\"label\":\"Pro\",\"description\":\"4 vCPU \\u00b7 16 GiB RAM\",\"cpu_type\":\"pro\",\"compute_class\":\"pro.m\",\"cpu_count\":4,\"memory_mib\":16384},{\"name\":\"pro.c-8vcpu-8gb\",\"label\":\"Pro\",\"description\":\"8 vCPU \\u00b7 8 GiB RAM\",\"cpu_type\":\"pro\",\"compute_class\":\"pro.c\",\"cpu_count\":8,\"memory_mib\":8192},{\"name\":\"pro.g-8vcpu-16gb\",\"label\":\"Pro\",\"description\":\"8 vCPU \\u00b7 16 GiB RAM\",\"cpu_type\":\"pro\",\"compute_class\":\"pro.g\",\"cpu_count\":8,\"memory_mib\":16384},{\"name\":\"pro.m-8vcpu-32gb\",\"label\":\"Pro\",\"description\":\"8 vCPU \\u00b7 32 GiB RAM\",\"cpu_type\":\"pro\",\"compute_class\":\"pro.m\",\"cpu_count\":8,\"memory_mib\":32768}]}}",
+    "context": []
+}
