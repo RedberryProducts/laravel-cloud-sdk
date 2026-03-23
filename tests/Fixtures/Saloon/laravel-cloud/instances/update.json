@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Sun, 22 Mar 2026 10:11:12 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "362",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Sun, 22 Mar 2026 10:11:12 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "28",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "30",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 590a413e03cb1e0e7c82d6a579acf0a2.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "IST50-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba\",\"type\":\"instances\",\"attributes\":{\"name\":\"updated-worker\",\"type\":\"app\",\"size\":\"flex.m-2vcpu-2gb\",\"scaling_type\":\"custom\",\"min_replicas\":1,\"max_replicas\":5,\"uses_scheduler\":true,\"scaling_cpu_threshold_percentage\":null,\"scaling_memory_threshold_percentage\":null,\"created_at\":\"2026-03-16T07:13:37.000000Z\"}}}",
+    "context": []
+}
