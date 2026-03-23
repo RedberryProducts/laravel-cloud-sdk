@@ -8,8 +8,8 @@ class DnsRecordData extends Data
 {
     public function __construct(
         public string $type,
-        public string $name,
-        public string $value,
+        public ?string $name,
+        public ?string $value,
     ) {}
 
     public static function fromResponse(array $attributes): self

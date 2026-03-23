@@ -1,6 +1,5 @@
 <?php
 
-use App\Data\LaravelCloud\Instances\BackgroundProcessConfigData;
 use App\Data\LaravelCloud\Instances\BackgroundProcessData;
 use App\Data\LaravelCloud\Instances\CreateInstanceData;
 use App\Enums\LaravelCloud\DaemonType;
@@ -50,7 +49,7 @@ it('serializes optional fields when set and excludes unset ones', function () {
         name: 'test-worker',
         type: InstanceType::SERVICE,
         size: InstanceSize::FLEX_M_1VCPU_1GB,
-        scalingType: InstanceScalingType::AUTO,
+        scalingType: InstanceScalingType::CUSTOM,
         maxReplicas: 5,
         minReplicas: 1,
         usesScheduler: true,
@@ -75,9 +74,9 @@ it('serializes background_processes when set', function () {
         minReplicas: 1,
         backgroundProcesses: [
             new BackgroundProcessData(
-                id: 'bp-1',
-                type: DaemonType::WORKER,
-                processes: 2,
+                type: DaemonType::CUSTOM,
+                processes: 1,
+                command: 'php artisan queue:work',
             ),
         ],
     );
@@ -85,6 +84,7 @@ it('serializes background_processes when set', function () {
     $array = $data->toArray();
 
     expect($array['background_processes'])->toBeArray();
-    expect($array['background_processes'][0]['type'])->toBe('worker');
-    expect($array['background_processes'][0]['processes'])->toBe(2);
+    expect($array['background_processes'][0]['type'])->toBe('custom');
+    expect($array['background_processes'][0]['processes'])->toBe(1);
+    expect($array['background_processes'][0]['command'])->toBe('php artisan queue:work');
 });

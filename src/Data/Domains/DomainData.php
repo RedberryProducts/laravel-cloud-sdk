@@ -12,7 +12,7 @@ use Spatie\LaravelData\Data;
 class DomainData extends Data
 {
     /**
-     * @param  array<string, DnsRecordData|null>  $dnsRecords
+     * @param  array<string, DnsRecordData[]|null>  $dnsRecords
      */
     public function __construct(
         public string $id,
@@ -35,7 +35,18 @@ class DomainData extends Data
     {
         $dnsRecords = [];
         foreach ($attributes['dns_records'] ?? [] as $key => $record) {
-            $dnsRecords[$key] = $record ? DnsRecordData::fromResponse($record) : null;
+            if ($record === null) {
+                $dnsRecords[$key] = null;
+            } elseif (is_array($record) && (empty($record) || isset($record[0]))) {
+                // Array of records (e.g. ssl can have multiple TXT entries, or be empty)
+                $dnsRecords[$key] = array_map(
+                    fn (array $r) => DnsRecordData::fromResponse($r),
+                    $record
+                );
+            } else {
+                // Single record object
+                $dnsRecords[$key] = [DnsRecordData::fromResponse($record)];
+            }
         }
 
         return new self(
@@ -52,7 +63,7 @@ class DomainData extends Data
                 ? DomainCloudflareStrategy::from($attributes['cloudflare_strategy'])
                 : null,
             downtime: $attributes['downtime'] ?? null,
-            wildcardEnabled: $attributes['wildcard_enabled'],
+            wildcardEnabled: $attributes['wildcard_enabled'] ?? false,
             actionRequired: $attributes['action_required'] ?? null,
             dnsRecords: $dnsRecords,
             lastVerifiedAt: isset($attributes['last_verified_at'])

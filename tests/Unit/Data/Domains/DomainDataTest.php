@@ -63,7 +63,7 @@ it('builds with optional fields set', function () {
     expect($data->createdAt->toDateString())->toBe('2024-01-01');
 });
 
-it('parses dns_records into DnsRecordData keyed by record type', function () {
+it('parses dns_records into keyed arrays of DnsRecordData', function () {
     $data = DomainData::fromResponse([
         'name' => 'example.com',
         'type' => 'root',
@@ -72,19 +72,28 @@ it('parses dns_records into DnsRecordData keyed by record type', function () {
         'origin_status' => 'pending',
         'wildcard_enabled' => false,
         'dns_records' => [
-            'ssl' => ['type' => 'CNAME', 'name' => 'example.com', 'value' => 'ssl.cf.com'],
+            // ssl is an array of records
+            'ssl' => [
+                ['type' => 'TXT', 'name' => 'example.com', 'value' => 'verify-xyz'],
+            ],
             'pre_verification' => null,
+            // origin is a single record object
             'origin' => ['type' => 'A', 'name' => 'example.com', 'value' => '1.2.3.4'],
         ],
     ], 'domain-dns');
 
+    // ssl is an array of records
     expect($data->dnsRecords)->toHaveKey('ssl');
-    expect($data->dnsRecords['ssl'])->toBeInstanceOf(DnsRecordData::class);
-    expect($data->dnsRecords['ssl']->type)->toBe('CNAME');
-    expect($data->dnsRecords['ssl']->value)->toBe('ssl.cf.com');
+    expect($data->dnsRecords['ssl'])->toBeArray();
+    expect($data->dnsRecords['ssl'][0])->toBeInstanceOf(DnsRecordData::class);
+    expect($data->dnsRecords['ssl'][0]->type)->toBe('TXT');
+    expect($data->dnsRecords['ssl'][0]->value)->toBe('verify-xyz');
 
+    // null stays null
     expect($data->dnsRecords['pre_verification'])->toBeNull();
 
-    expect($data->dnsRecords['origin'])->toBeInstanceOf(DnsRecordData::class);
-    expect($data->dnsRecords['origin']->type)->toBe('A');
+    // single record gets wrapped in an array
+    expect($data->dnsRecords['origin'])->toBeArray();
+    expect($data->dnsRecords['origin'][0])->toBeInstanceOf(DnsRecordData::class);
+    expect($data->dnsRecords['origin'][0]->type)->toBe('A');
 });

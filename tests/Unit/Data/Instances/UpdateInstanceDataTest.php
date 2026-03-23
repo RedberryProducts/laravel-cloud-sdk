@@ -26,7 +26,7 @@ it('serializes set fields as snake_case and excludes unset optionals', function 
     $data = new UpdateInstanceData(
         name: 'updated-worker',
         size: InstanceSize::FLEX_M_2VCPU_2GB,
-        scalingType: InstanceScalingType::AUTO,
+        scalingType: InstanceScalingType::CUSTOM,
         maxReplicas: 10,
         minReplicas: 2,
         usesSleepMode: false,
@@ -42,7 +42,7 @@ it('serializes set fields as snake_case and excludes unset optionals', function 
 
     expect($array['name'])->toBe('updated-worker');
     expect($array['size'])->toBe('flex.m-2vcpu-2gb');
-    expect($array['scaling_type'])->toBe('auto');
+    expect($array['scaling_type'])->toBe('custom');
     expect($array['max_replicas'])->toBe(10);
     expect($array['min_replicas'])->toBe(2);
     expect($array['uses_sleep_mode'])->toBeFalse();

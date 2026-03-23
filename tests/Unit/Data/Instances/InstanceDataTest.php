@@ -42,7 +42,7 @@ it('builds with scaling thresholds', function () {
         'name' => 'my-app',
         'type' => 'app',
         'size' => 'flex.m-2vcpu-2gb',
-        'scaling_type' => 'auto',
+        'scaling_type' => 'custom',
         'min_replicas' => 2,
         'max_replicas' => 10,
         'uses_scheduler' => true,
@@ -50,7 +50,7 @@ it('builds with scaling thresholds', function () {
         'scaling_memory_threshold_percentage' => 80,
     ], 'instance-xyz');
 
-    expect($data->scalingType)->toBe(InstanceScalingType::AUTO);
+    expect($data->scalingType)->toBe(InstanceScalingType::CUSTOM);
     expect($data->scalingCpuThresholdPercentage)->toBe(75);
     expect($data->scalingMemoryThresholdPercentage)->toBe(80);
     expect($data->usesScheduler)->toBeTrue();
