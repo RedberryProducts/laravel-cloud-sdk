@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\Domains;
+namespace Redberry\LaravelCloudSdk\Requests\Domains;
 
-use App\Data\LaravelCloud\Domains\CreateDomainData;
-use App\Data\LaravelCloud\Domains\DomainData;
+use Redberry\LaravelCloudSdk\Data\Domains\CreateDomainData;
+use Redberry\LaravelCloudSdk\Data\Domains\DomainData;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

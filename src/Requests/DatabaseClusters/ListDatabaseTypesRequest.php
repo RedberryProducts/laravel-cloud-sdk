@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\DatabaseClusters;
+namespace Redberry\LaravelCloudSdk\Requests\DatabaseClusters;
 
-use App\Data\LaravelCloud\DatabaseClusters\DatabaseTypeData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseTypeData;
 use Illuminate\Support\Collection;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

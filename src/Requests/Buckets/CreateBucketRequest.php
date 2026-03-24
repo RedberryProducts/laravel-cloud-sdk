@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\Buckets;
+namespace Redberry\LaravelCloudSdk\Requests\Buckets;
 
-use App\Data\LaravelCloud\Buckets\BucketData;
-use App\Data\LaravelCloud\Buckets\CreateBucketData;
+use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
+use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketData;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

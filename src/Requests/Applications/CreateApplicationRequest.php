@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\Applications;
+namespace Redberry\LaravelCloudSdk\Requests\Applications;
 
-use App\Data\LaravelCloud\Applications\ApplicationData;
-use App\Data\LaravelCloud\Applications\CreateApplicationData;
+use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
+use Redberry\LaravelCloudSdk\Data\Applications\CreateApplicationData;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

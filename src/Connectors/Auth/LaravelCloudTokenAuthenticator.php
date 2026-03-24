@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Auth;
+namespace Redberry\LaravelCloudSdk\Connectors\Auth;
 
 use Saloon\Contracts\Authenticator;
 use Saloon\Http\PendingRequest;

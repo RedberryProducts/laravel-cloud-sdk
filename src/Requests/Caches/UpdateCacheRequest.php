@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\Caches;
+namespace Redberry\LaravelCloudSdk\Requests\Caches;
 
-use App\Data\LaravelCloud\Caches\CacheData;
-use App\Data\LaravelCloud\Caches\UpdateCacheData;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
+use Redberry\LaravelCloudSdk\Data\Caches\UpdateCacheData;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

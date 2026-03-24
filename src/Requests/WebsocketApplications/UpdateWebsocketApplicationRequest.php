@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\WebsocketApplications;
+namespace Redberry\LaravelCloudSdk\Requests\WebsocketApplications;
 
-use App\Data\LaravelCloud\WebsocketApplications\UpdateWebsocketApplicationData;
-use App\Data\LaravelCloud\WebsocketApplications\WebsocketApplicationData;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\UpdateWebsocketApplicationData;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

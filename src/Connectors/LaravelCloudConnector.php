@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud;
+namespace Redberry\LaravelCloudSdk\Connectors;
 
-use App\Http\Integrations\LaravelCloud\Auth\LaravelCloudTokenAuthenticator;
+use Redberry\LaravelCloudSdk\Connectors\Auth\LaravelCloudTokenAuthenticator;
 use Saloon\Contracts\Authenticator;
 use Saloon\Http\Connector;
 use Saloon\Http\Senders\GuzzleSender;

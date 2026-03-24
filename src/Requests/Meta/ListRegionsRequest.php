@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\Meta;
+namespace Redberry\LaravelCloudSdk\Requests\Meta;
 
-use App\Data\LaravelCloud\Meta\RegionData;
+use Redberry\LaravelCloudSdk\Data\Meta\RegionData;
 use Illuminate\Support\Collection;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

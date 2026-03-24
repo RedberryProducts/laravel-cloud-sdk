@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\Environments;
+namespace Redberry\LaravelCloudSdk\Requests\Environments;
 
-use App\Data\LaravelCloud\Environments\EnvironmentData;
-use App\Data\LaravelCloud\Environments\UpdateEnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\UpdateEnvironmentData;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

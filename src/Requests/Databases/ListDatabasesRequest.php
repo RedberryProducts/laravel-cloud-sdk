@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\Databases;
+namespace Redberry\LaravelCloudSdk\Requests\Databases;
 
-use App\Data\LaravelCloud\Databases\DatabaseData;
+use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Illuminate\Support\Collection;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

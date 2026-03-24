@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\DatabaseClusters;
+namespace Redberry\LaravelCloudSdk\Requests\DatabaseClusters;
 
-use App\Data\LaravelCloud\DatabaseClusters\DatabaseClusterData;
-use App\Data\LaravelCloud\DatabaseClusters\UpdateDatabaseClusterData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

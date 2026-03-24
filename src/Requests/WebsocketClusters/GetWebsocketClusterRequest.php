@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\WebsocketClusters;
+namespace Redberry\LaravelCloudSdk\Requests\WebsocketClusters;
 
-use App\Data\LaravelCloud\WebsocketClusters\WebsocketClusterData;
+use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;

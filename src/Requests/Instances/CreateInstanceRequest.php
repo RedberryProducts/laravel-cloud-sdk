@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\Instances;
+namespace Redberry\LaravelCloudSdk\Requests\Instances;
 
-use App\Data\LaravelCloud\Instances\CreateInstanceData;
-use App\Data\LaravelCloud\Instances\InstanceData;
+use Redberry\LaravelCloudSdk\Data\Instances\CreateInstanceData;
+use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Integrations\LaravelCloud\Requests\Instances;
+namespace Redberry\LaravelCloudSdk\Requests\Instances;
 
-use App\Data\LaravelCloud\Instances\InstanceSizeData;
+use Redberry\LaravelCloudSdk\Data\Instances\InstanceSizeData;
 use Illuminate\Support\Collection;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
