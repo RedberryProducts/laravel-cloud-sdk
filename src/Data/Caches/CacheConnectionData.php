@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data\LaravelCloud\Caches;
+namespace Redberry\LaravelCloudSdk\Data\Caches;
 
-use App\Enums\LaravelCloud\CacheProtocol;
+use Redberry\LaravelCloudSdk\Enums\CacheProtocol;
 use Spatie\LaravelData\Data;
 
 class CacheConnectionData extends Data

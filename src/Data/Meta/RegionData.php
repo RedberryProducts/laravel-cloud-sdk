@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data\LaravelCloud\Meta;
+namespace Redberry\LaravelCloudSdk\Data\Meta;
 
-use App\Enums\LaravelCloud\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Spatie\LaravelData\Data;
 
 class RegionData extends Data

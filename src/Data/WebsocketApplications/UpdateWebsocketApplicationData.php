@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Data\LaravelCloud\WebsocketApplications;
+namespace Redberry\LaravelCloudSdk\Data\WebsocketApplications;
 
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;

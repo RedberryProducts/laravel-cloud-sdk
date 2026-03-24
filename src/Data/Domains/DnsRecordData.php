@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Data\LaravelCloud\Domains;
+namespace Redberry\LaravelCloudSdk\Data\Domains;
 
 use Spatie\LaravelData\Data;
 

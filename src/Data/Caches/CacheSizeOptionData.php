@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Data\LaravelCloud\Caches;
+namespace Redberry\LaravelCloudSdk\Data\Caches;
 
 use Spatie\LaravelData\Data;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Data\LaravelCloud\Buckets;
+namespace Redberry\LaravelCloudSdk\Data\Buckets;
 
-use App\Enums\LaravelCloud\BucketJurisdiction;
-use App\Enums\LaravelCloud\BucketVisibility;
-use App\Enums\LaravelCloud\KeyPermission;
+use Redberry\LaravelCloudSdk\Enums\BucketJurisdiction;
+use Redberry\LaravelCloudSdk\Enums\BucketVisibility;
+use Redberry\LaravelCloudSdk\Enums\KeyPermission;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;

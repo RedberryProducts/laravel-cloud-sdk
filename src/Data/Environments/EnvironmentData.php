@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Data\LaravelCloud\Environments;
+namespace Redberry\LaravelCloudSdk\Data\Environments;
 
-use App\Enums\LaravelCloud\EnvironmentStatus;
-use App\Enums\LaravelCloud\NodeVersion;
-use App\Enums\LaravelCloud\PhpVersion;
+use Redberry\LaravelCloudSdk\Enums\EnvironmentStatus;
+use Redberry\LaravelCloudSdk\Enums\NodeVersion;
+use Redberry\LaravelCloudSdk\Enums\PhpVersion;
 use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Data\LaravelCloud\Domains;
+namespace Redberry\LaravelCloudSdk\Data\Domains;
 
-use App\Enums\LaravelCloud\DomainCloudflareStrategy;
-use App\Enums\LaravelCloud\DomainRedirect;
-use App\Enums\LaravelCloud\DomainStatus;
-use App\Enums\LaravelCloud\DomainType;
+use Redberry\LaravelCloudSdk\Enums\DomainCloudflareStrategy;
+use Redberry\LaravelCloudSdk\Enums\DomainRedirect;
+use Redberry\LaravelCloudSdk\Enums\DomainStatus;
+use Redberry\LaravelCloudSdk\Enums\DomainType;
 use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 

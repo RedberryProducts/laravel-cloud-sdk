@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data\LaravelCloud\Buckets;
+namespace Redberry\LaravelCloudSdk\Data\Buckets;
 
-use App\Enums\LaravelCloud\KeyPermission;
+use Redberry\LaravelCloudSdk\Enums\KeyPermission;
 use Spatie\LaravelData\Data;
 
 class CreateBucketKeyData extends Data

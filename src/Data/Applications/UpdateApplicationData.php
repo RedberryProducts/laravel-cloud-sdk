@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data\LaravelCloud\Applications;
+namespace Redberry\LaravelCloudSdk\Data\Applications;
 
-use App\Enums\LaravelCloud\SourceControlProvider;
+use Redberry\LaravelCloudSdk\Enums\SourceControlProvider;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Data\LaravelCloud\DatabaseClusters;
+namespace Redberry\LaravelCloudSdk\Data\DatabaseClusters;
 
 use Spatie\LaravelData\Data;
 

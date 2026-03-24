@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data\LaravelCloud\DatabaseClusters;
+namespace Redberry\LaravelCloudSdk\Data\DatabaseClusters;
 
-use App\Enums\LaravelCloud\DeploymentOption;
+use Redberry\LaravelCloudSdk\Enums\DeploymentOption;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;

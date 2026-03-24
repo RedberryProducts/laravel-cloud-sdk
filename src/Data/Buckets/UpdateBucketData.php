@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data\LaravelCloud\Buckets;
+namespace Redberry\LaravelCloudSdk\Data\Buckets;
 
-use App\Enums\LaravelCloud\BucketVisibility;
+use Redberry\LaravelCloudSdk\Enums\BucketVisibility;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;

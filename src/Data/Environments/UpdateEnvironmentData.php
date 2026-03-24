@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Data\LaravelCloud\Environments;
+namespace Redberry\LaravelCloudSdk\Data\Environments;
 
-use App\Enums\LaravelCloud\CacheStrategy;
-use App\Enums\LaravelCloud\EnvironmentColor;
-use App\Enums\LaravelCloud\FirewallRateLimitLevel;
-use App\Enums\LaravelCloud\NodeVersion;
-use App\Enums\LaravelCloud\PhpVersion;
-use App\Enums\LaravelCloud\ResponseHeadersContentType;
-use App\Enums\LaravelCloud\ResponseHeadersFrame;
-use App\Enums\LaravelCloud\ResponseHeadersRobotsTag;
+use Redberry\LaravelCloudSdk\Enums\CacheStrategy;
+use Redberry\LaravelCloudSdk\Enums\EnvironmentColor;
+use Redberry\LaravelCloudSdk\Enums\FirewallRateLimitLevel;
+use Redberry\LaravelCloudSdk\Enums\NodeVersion;
+use Redberry\LaravelCloudSdk\Enums\PhpVersion;
+use Redberry\LaravelCloudSdk\Enums\ResponseHeadersContentType;
+use Redberry\LaravelCloudSdk\Enums\ResponseHeadersFrame;
+use Redberry\LaravelCloudSdk\Enums\ResponseHeadersRobotsTag;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;

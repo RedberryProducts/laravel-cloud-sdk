@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data\LaravelCloud\WebsocketClusters;
+namespace Redberry\LaravelCloudSdk\Data\WebsocketClusters;
 
-use App\Enums\LaravelCloud\WebsocketMaxConnections;
+use Redberry\LaravelCloudSdk\Enums\WebsocketMaxConnections;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;

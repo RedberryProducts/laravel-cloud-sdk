@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data\LaravelCloud\Domains;
+namespace Redberry\LaravelCloudSdk\Data\Domains;
 
-use App\Enums\LaravelCloud\DomainVerificationMethod;
+use Redberry\LaravelCloudSdk\Enums\DomainVerificationMethod;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;

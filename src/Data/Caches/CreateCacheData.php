@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Data\LaravelCloud\Caches;
+namespace Redberry\LaravelCloudSdk\Data\Caches;
 
-use App\Enums\LaravelCloud\CacheSize;
-use App\Enums\LaravelCloud\CacheType;
-use App\Enums\LaravelCloud\CloudRegion;
-use App\Enums\LaravelCloud\EvictionPolicy;
+use Redberry\LaravelCloudSdk\Enums\CacheSize;
+use Redberry\LaravelCloudSdk\Enums\CacheType;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\EvictionPolicy;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;

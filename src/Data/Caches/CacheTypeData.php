@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data\LaravelCloud\Caches;
+namespace Redberry\LaravelCloudSdk\Data\Caches;
 
-use App\Enums\LaravelCloud\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Spatie\LaravelData\Data;
 
 class CacheTypeData extends Data

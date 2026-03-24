@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data\LaravelCloud\Applications;
+namespace Redberry\LaravelCloudSdk\Data\Applications;
 
-use App\Enums\LaravelCloud\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 

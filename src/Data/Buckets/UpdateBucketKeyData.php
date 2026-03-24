@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Data\LaravelCloud\Buckets;
+namespace Redberry\LaravelCloudSdk\Data\Buckets;
 
 use Spatie\LaravelData\Data;
 

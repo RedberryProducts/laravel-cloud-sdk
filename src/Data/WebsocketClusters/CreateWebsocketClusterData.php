@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Data\LaravelCloud\WebsocketClusters;
+namespace Redberry\LaravelCloudSdk\Data\WebsocketClusters;
 
-use App\Enums\LaravelCloud\CloudRegion;
-use App\Enums\LaravelCloud\WebsocketMaxConnections;
-use App\Enums\LaravelCloud\WebsocketServerType;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\WebsocketMaxConnections;
+use Redberry\LaravelCloudSdk\Enums\WebsocketServerType;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;

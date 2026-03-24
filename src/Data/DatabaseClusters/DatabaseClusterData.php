@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Data\LaravelCloud\DatabaseClusters;
+namespace Redberry\LaravelCloudSdk\Data\DatabaseClusters;
 
-use App\Enums\LaravelCloud\CloudRegion;
-use App\Enums\LaravelCloud\DatabaseStatus;
-use App\Enums\LaravelCloud\DatabaseType;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\DatabaseStatus;
+use Redberry\LaravelCloudSdk\Enums\DatabaseType;
 use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Data\LaravelCloud\DatabaseClusters;
+namespace Redberry\LaravelCloudSdk\Data\DatabaseClusters;
 
-use App\Enums\LaravelCloud\DatabaseDriver;
-use App\Enums\LaravelCloud\DatabaseProtocol;
+use Redberry\LaravelCloudSdk\Enums\DatabaseDriver;
+use Redberry\LaravelCloudSdk\Enums\DatabaseProtocol;
 use Spatie\LaravelData\Data;
 
 class DatabaseConnectionData extends Data

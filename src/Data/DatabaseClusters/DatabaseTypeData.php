@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data\LaravelCloud\DatabaseClusters;
+namespace Redberry\LaravelCloudSdk\Data\DatabaseClusters;
 
-use App\Enums\LaravelCloud\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Spatie\LaravelData\Data;
 
 class DatabaseTypeData extends Data

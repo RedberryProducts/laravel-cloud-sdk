@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Data\LaravelCloud\Caches;
+namespace Redberry\LaravelCloudSdk\Data\Caches;
 
-use App\Enums\LaravelCloud\CacheSize;
-use App\Enums\LaravelCloud\CacheStatus;
-use App\Enums\LaravelCloud\CacheType;
-use App\Enums\LaravelCloud\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\CacheSize;
+use Redberry\LaravelCloudSdk\Enums\CacheStatus;
+use Redberry\LaravelCloudSdk\Enums\CacheType;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 

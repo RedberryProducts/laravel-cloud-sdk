@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Data\LaravelCloud\WebsocketClusters;
+namespace Redberry\LaravelCloudSdk\Data\WebsocketClusters;
 
-use App\Enums\LaravelCloud\CloudRegion;
-use App\Enums\LaravelCloud\WebsocketConnectionDistributionStrategy;
-use App\Enums\LaravelCloud\WebsocketMaxConnections;
-use App\Enums\LaravelCloud\WebsocketServerType;
-use App\Enums\LaravelCloud\WebsocketStatus;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\WebsocketConnectionDistributionStrategy;
+use Redberry\LaravelCloudSdk\Enums\WebsocketMaxConnections;
+use Redberry\LaravelCloudSdk\Enums\WebsocketServerType;
+use Redberry\LaravelCloudSdk\Enums\WebsocketStatus;
 use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 

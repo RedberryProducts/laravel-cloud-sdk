@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Data\LaravelCloud\Databases;
+namespace Redberry\LaravelCloudSdk\Data\Databases;
 
 use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;

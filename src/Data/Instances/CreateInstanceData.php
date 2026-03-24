@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Data\LaravelCloud\Instances;
+namespace Redberry\LaravelCloudSdk\Data\Instances;
 
-use App\Enums\LaravelCloud\InstanceScalingType;
-use App\Enums\LaravelCloud\InstanceSize;
-use App\Enums\LaravelCloud\InstanceType;
+use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
+use Redberry\LaravelCloudSdk\Enums\InstanceSize;
+use Redberry\LaravelCloudSdk\Enums\InstanceType;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;

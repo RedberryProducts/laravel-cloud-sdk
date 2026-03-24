@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Data\LaravelCloud\Instances;
+namespace Redberry\LaravelCloudSdk\Data\Instances;
 
-use App\Enums\LaravelCloud\InstanceScalingType;
-use App\Enums\LaravelCloud\InstanceSize;
-use App\Enums\LaravelCloud\InstanceType;
+use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
+use Redberry\LaravelCloudSdk\Enums\InstanceSize;
+use Redberry\LaravelCloudSdk\Enums\InstanceType;
 use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 
