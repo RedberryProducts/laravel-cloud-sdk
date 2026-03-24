@@ -1,21 +1,21 @@
 {
     "statusCode": 201,
     "headers": {
-        "Date": "Mon, 23 Mar 2026 05:54:06 GMT",
+        "Date": "Tue, 24 Mar 2026 05:30:47 GMT",
         "Content-Type": "application\/vnd.api+json",
-        "Content-Length": "1194",
+        "Content-Length": "1204",
         "Connection": "keep-alive",
-        "x-amzn-remapped-date": "Mon, 23 Mar 2026 05:54:06 GMT",
+        "x-amzn-remapped-date": "Tue, 24 Mar 2026 05:30:47 GMT",
         "x-amzn-requestid": "REDACTED",
         "access-control-allow-origin": "*",
         "strict-transport-security": "max-age=31536000",
-        "x-ratelimit-remaining": "118",
+        "x-ratelimit-remaining": "119",
         "x-amz-apigw-id": "REDACTED",
         "Cache-Control": "no-cache, private",
         "x-ratelimit-limit": "120",
         "x-amzn-trace-id": "REDACTED",
         "x-cache": "Miss from cloudfront",
-        "via": "1.1 522dccc795b2ad22c43c28acc134505e.cloudfront.net (CloudFront)",
+        "via": "1.1 253ace3f40a8345a02e1b29ba5ed964c.cloudfront.net (CloudFront)",
         "x-amz-cf-pop": "IST50-P4",
         "x-amz-cf-id": "REDACTED",
         "cf-cache-status": "DYNAMIC",
@@ -23,6 +23,6 @@
         "Server": "cloudflare",
         "CF-RAY": "REDACTED"
     },
-    "data": "{\"data\":{\"id\":\"domain-a15dddc1-b356-49eb-b6b2-da935f99ef2c\",\"type\":\"domains\",\"attributes\":{\"name\":\"automation-test.redberry.ge\",\"type\":\"root\",\"hostname_status\":\"pending\",\"ssl_status\":\"pending\",\"origin_status\":\"pending\",\"redirect\":\"root_to_www\",\"cloudflare_strategy\":\"none\",\"downtime\":false,\"wildcard_enabled\":false,\"dns_records\":{\"ssl\":[],\"pre_verification\":{\"type\":\"TXT\",\"name\":\"_cf-custom-hostname.automation-test.redberry.ge\",\"value\":\"a75b8552-f077-405c-8cf4-06b897e9a06c\"},\"origin\":{\"type\":\"A\",\"name\":\"automation-test.redberry.ge\",\"value\":\"103.133.1.1\"},\"origin_cname\":null,\"dcv\":null},\"wildcard\":null,\"www\":{\"hostname_status\":\"pending\",\"ssl_status\":\"pending\",\"origin_status\":\"pending\",\"dns_records\":{\"ssl\":[],\"pre_verification\":{\"type\":\"TXT\",\"name\":\"_cf-custom-hostname.www.automation-test.redberry.ge\",\"value\":\"8b235c21-c7f1-47a2-8fe8-9b4d01cfd6fd\"},\"origin\":{\"type\":\"A\",\"name\":\"www.automation-test.redberry.ge\",\"value\":\"103.133.1.1\"},\"origin_cname\":null,\"dcv\":null}},\"action_required\":\"add_txt_records\",\"last_verified_at\":null,\"created_at\":\"2026-03-23T05:54:04.000000Z\"},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/domains\\\/domain-a15dddc1-b356-49eb-b6b2-da935f99ef2c\"}}}}",
+    "data": "{\"data\":{\"id\":\"domain-a15fd862-048a-4f66-aed4-545eec5707e5\",\"type\":\"domains\",\"attributes\":{\"name\":\"REDACTED\",\"type\":\"root\",\"hostname_status\":\"pending\",\"ssl_status\":\"pending\",\"origin_status\":\"pending\",\"redirect\":\"root_to_www\",\"cloudflare_strategy\":\"none\",\"downtime\":false,\"wildcard_enabled\":false,\"dns_records\":{\"ssl\":[],\"pre_verification\":{\"type\":\"TXT\",\"name\":\"REDACTED\",\"value\":\"REDACTED\"},\"origin\":{\"type\":\"A\",\"name\":\"REDACTED\",\"value\":\"REDACTED\"},\"origin_cname\":null,\"dcv\":null},\"wildcard\":null,\"www\":{\"hostname_status\":\"pending\",\"ssl_status\":\"pending\",\"origin_status\":\"pending\",\"dns_records\":{\"ssl\":[],\"pre_verification\":{\"type\":\"TXT\",\"name\":\"REDACTED\",\"value\":\"REDACTED\"},\"origin\":{\"type\":\"A\",\"name\":\"REDACTED\",\"value\":\"REDACTED\"},\"origin_cname\":null,\"dcv\":null}},\"action_required\":\"add_txt_records\",\"last_verified_at\":null,\"created_at\":\"2026-03-24T05:30:42.000000Z\"},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/domains\\\/domain-a15fd862-048a-4f66-aed4-545eec5707e5\"}}}}",
     "context": []
 }

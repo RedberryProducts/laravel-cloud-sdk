@@ -40,7 +40,7 @@ it('verifies a domain and returns DomainData', function () {
         ListDomainsRequest::class => new LaravelCloudFixture('domains/list'),
     ]);
 
-    $firstDomain = $connector->send(new ListDomainsRequest($firstEnvironment->id))->dtoOrFail()->first();
+    $firstDomain = $connector->send(new ListDomainsRequest($firstEnvironment->id))->dtoOrFail()->last();
 
     Saloon::fake([
         VerifyDomainRequest::class => new LaravelCloudFixture('domains/verify'),

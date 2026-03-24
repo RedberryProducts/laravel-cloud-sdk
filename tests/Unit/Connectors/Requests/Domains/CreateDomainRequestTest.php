@@ -101,7 +101,7 @@ it('creates a domain and returns DomainData', function () {
     ]);
 
     $data = new CreateDomainData(
-        name: 'automation-test.redberry.ge',
+        name: 'laravel-cloud-sdk.redberry.ge',
         wwwRedirect: DomainRedirect::ROOT_TO_WWW,
         verificationMethod: DomainVerificationMethod::PRE_VERIFICATION,
         cloudflareStrategy: DomainCloudflareStrategy::NONE,

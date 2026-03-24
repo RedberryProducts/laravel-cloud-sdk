@@ -62,10 +62,80 @@ class LaravelCloudFixture extends Fixture
 
         $body = $this->redactEnvironmentVariableValues($body);
         $body = $this->redactWebsocketApplicationKeys($body);
+        $body = $this->redactDomainData($body);
 
         $recordedResponse->data = json_encode($body, JSON_THROW_ON_ERROR);
 
         return $recordedResponse;
+    }
+
+    private function redactDomainData(array $data): array
+    {
+        foreach ($data as $key => &$value) {
+            if (! is_array($value)) {
+                continue;
+            }
+
+            if (($value['type'] ?? null) === 'domains' && isset($value['attributes'])) {
+                $value['attributes']['name'] = 'REDACTED';
+                $value['attributes'] = $this->redactDomainAttributes($value['attributes']);
+            } else {
+                $value = $this->redactDomainData($value);
+            }
+        }
+
+        return $data;
+    }
+
+    private function redactDomainAttributes(array $attributes): array
+    {
+        if (isset($attributes['dns_records'])) {
+            $attributes['dns_records'] = $this->redactDnsRecords($attributes['dns_records']);
+        }
+
+        foreach (['www', 'wildcard'] as $sub) {
+            if (isset($attributes[$sub]['dns_records'])) {
+                $attributes[$sub]['dns_records'] = $this->redactDnsRecords($attributes[$sub]['dns_records']);
+            }
+        }
+
+        return $attributes;
+    }
+
+    private function redactDnsRecords(array $dnsRecords): array
+    {
+        foreach ($dnsRecords as &$record) {
+            if ($record === null || ! is_array($record)) {
+                continue;
+            }
+
+            if (isset($record[0]) || empty($record)) {
+                // Indexed array of record objects (e.g. ssl)
+                foreach ($record as &$entry) {
+                    if (is_array($entry)) {
+                        $entry = $this->redactDnsRecordFields($entry);
+                    }
+                }
+            } else {
+                // Single record object (e.g. origin, pre_verification)
+                $record = $this->redactDnsRecordFields($record);
+            }
+        }
+
+        return $dnsRecords;
+    }
+
+    private function redactDnsRecordFields(array $record): array
+    {
+        if (! empty($record['name'])) {
+            $record['name'] = 'REDACTED';
+        }
+
+        if (! empty($record['value'])) {
+            $record['value'] = 'REDACTED';
+        }
+
+        return $record;
     }
 
     private function redactWebsocketApplicationKeys(array $data): array
