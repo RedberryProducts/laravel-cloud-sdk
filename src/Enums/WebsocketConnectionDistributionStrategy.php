@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums\LaravelCloud;
+namespace Redberry\LaravelCloudSdk\Enums;
 
 enum WebsocketConnectionDistributionStrategy: string
 {
