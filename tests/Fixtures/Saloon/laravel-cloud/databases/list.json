@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Mon, 16 Mar 2026 11:52:57 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "908",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Mon, 16 Mar 2026 11:52:56 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "118",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 e3964230e2f6e90d463d5500cb5c136c.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "MRS52-P2",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":[{\"id\":\"47336204\",\"type\":\"databaseSchemas\",\"attributes\":{\"name\":\"main\",\"created_at\":\"2026-03-15T06:50:15.000000Z\"}},{\"id\":\"47343217\",\"type\":\"databaseSchemas\",\"attributes\":{\"name\":\"test-db\",\"created_at\":\"2026-03-16T11:52:46.000000Z\"}}],\"links\":{\"first\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/databases\\\/clusters\\\/red-paper-65989343\\\/databases?page=1\",\"last\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/databases\\\/clusters\\\/red-paper-65989343\\\/databases?page=1\"},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"page\":null,\"active\":false},{\"url\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/databases\\\/clusters\\\/red-paper-65989343\\\/databases?page=1\",\"label\":\"1\",\"page\":1,\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"page\":null,\"active\":false}],\"path\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/databases\\\/clusters\\\/red-paper-65989343\\\/databases\",\"per_page\":100,\"to\":2,\"total\":2}}",
+    "context": []
+}

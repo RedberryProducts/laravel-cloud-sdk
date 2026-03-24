@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Fri, 20 Mar 2026 17:57:30 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "1209",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Fri, 20 Mar 2026 17:57:30 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "30",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "30",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 78280b924a7a9f0f018abcebd8ad82d0.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "FRA60-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"env-a158d785-0e99-4337-ab52-5e2153848d63\",\"type\":\"environments\",\"attributes\":{\"name\":\"staging\",\"slug\":\"staging-4\",\"status\":\"running\",\"created_from_automation\":false,\"vanity_domain\":\"updated-app-staging-hgo3vh.laravel.cloud\",\"php_major_version\":\"8.4\",\"build_command\":\"composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader\\n\\nnpm ci --audit false\\nnpm run build\",\"node_version\":\"24\",\"deploy_command\":\"# php artisan migrate --force\",\"uses_octane\":false,\"uses_hibernation\":false,\"uses_push_to_deploy\":true,\"uses_deploy_hook\":false,\"environment_variables\":[{\"key\":\"APP_KEY\",\"value\":\"REDACTED\"}],\"network_settings\":{\"cache\":{\"strategy\":\"default\"},\"response_headers\":{\"frame\":\"deny\",\"content_type\":\"nosniff\",\"robots_tag\":\"index, follow\",\"hsts\":{\"max_age\":null,\"include_subdomains\":false,\"preload\":false}},\"firewall\":{\"bot_categories\":[],\"rate_limit\":{\"level\":null,\"per_minute\":null,\"4xx\":false,\"429\":false},\"under_attack_mode_started_at\":null},\"content_converter\":false},\"created_at\":\"2026-03-20T17:57:30.000000Z\"},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/environments\\\/env-a158d785-0e99-4337-ab52-5e2153848d63\"}}}}",
+    "context": []
+}

@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Sun, 15 Mar 2026 06:50:20 GMT",
+        "Content-Type": "application\/json",
+        "Content-Length": "637",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Sun, 15 Mar 2026 06:50:20 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "109",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 21369bf2bfeb79adaa5bef1cb96f8540.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "FRA60-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":[{\"region\":\"us-east-2\",\"label\":\"US East (Ohio)\",\"flag\":\"us\"},{\"region\":\"us-east-1\",\"label\":\"US East (Virginia)\",\"flag\":\"us\"},{\"region\":\"eu-central-1\",\"label\":\"EU Central (Frankfurt)\",\"flag\":\"germany\"},{\"region\":\"eu-west-1\",\"label\":\"EU West (Ireland)\",\"flag\":\"ireland\"},{\"region\":\"eu-west-2\",\"label\":\"EU West (London)\",\"flag\":\"uk\"},{\"region\":\"ap-southeast-1\",\"label\":\"Asia Pacific (Singapore)\",\"flag\":\"singapore\"},{\"region\":\"ap-southeast-2\",\"label\":\"Asia Pacific (Sydney)\",\"flag\":\"australia\"},{\"region\":\"ca-central-1\",\"label\":\"Canada (Central)\",\"flag\":\"canada\"},{\"region\":\"me-central-1\",\"label\":\"Middle East (UAE)\",\"flag\":\"uae\"}]}",
+    "context": []
+}

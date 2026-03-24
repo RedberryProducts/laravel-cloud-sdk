@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Tue, 24 Mar 2026 07:18:52 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "1071",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Tue, 24 Mar 2026 07:18:52 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "118",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 24fc4e03b1de2a14f79be2422e46a318.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "FRA60-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"domain-a15fd862-048a-4f66-aed4-545eec5707e5\",\"type\":\"domains\",\"attributes\":{\"name\":\"REDACTED\",\"type\":\"root\",\"hostname_status\":\"pending\",\"ssl_status\":\"pending\",\"origin_status\":\"pending\",\"redirect\":\"root_to_www\",\"cloudflare_strategy\":\"none\",\"downtime\":false,\"wildcard_enabled\":false,\"dns_records\":{\"ssl\":[{\"type\":\"TXT\",\"name\":null,\"value\":null}],\"pre_verification\":null,\"origin\":{\"type\":\"A\",\"name\":\"REDACTED\",\"value\":\"REDACTED\"},\"origin_cname\":null,\"dcv\":null},\"wildcard\":null,\"www\":{\"hostname_status\":\"pending\",\"ssl_status\":\"pending\",\"origin_status\":\"pending\",\"dns_records\":{\"ssl\":[{\"type\":\"TXT\",\"name\":null,\"value\":null}],\"pre_verification\":null,\"origin\":{\"type\":\"A\",\"name\":\"REDACTED\",\"value\":\"REDACTED\"},\"origin_cname\":null,\"dcv\":null}},\"action_required\":\"add_dns_records\",\"last_verified_at\":\"2026-03-24T07:18:50.000000Z\",\"created_at\":\"2026-03-24T05:30:42.000000Z\"},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/domains\\\/domain-a15fd862-048a-4f66-aed4-545eec5707e5\"}}}}",
+    "context": []
+}

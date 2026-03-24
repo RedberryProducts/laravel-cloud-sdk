@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Sun, 15 Mar 2026 09:50:44 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "365",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Sun, 15 Mar 2026 09:50:43 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "117",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 12e62b05f63a1a2118cca20014b15012.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "FRA60-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"fls-a14e19d6-8db3-47fe-96fb-343e55774021\",\"type\":\"filesystems\",\"attributes\":{\"name\":\"test-bucket\",\"type\":\"cloudflare_r2\",\"status\":\"available\",\"visibility\":\"private\",\"jurisdiction\":\"default\",\"endpoint\":\"REDACTED\",\"url\":null,\"allowed_origins\":null,\"created_at\":\"2026-03-15T09:48:50.000000Z\"}}}",
+    "context": []
+}

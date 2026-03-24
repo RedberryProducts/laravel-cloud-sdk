@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Mon, 16 Mar 2026 11:52:46 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "126",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Mon, 16 Mar 2026 11:52:46 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "119",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 11db54d41dc7b64f760df4a169363db2.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "MRS52-P2",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"47343217\",\"type\":\"databaseSchemas\",\"attributes\":{\"name\":\"test-db\",\"created_at\":\"2026-03-16T11:52:46.000000Z\"}}}",
+    "context": []
+}

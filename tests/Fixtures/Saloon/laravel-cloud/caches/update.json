@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Sun, 15 Mar 2026 08:17:32 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "493",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Sun, 15 Mar 2026 08:17:32 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "118",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 253ace3f40a8345a02e1b29ba5ed964c.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "IST50-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"cache-a14df861-12f8-413c-93b2-3c2b92e590c3\",\"type\":\"caches\",\"attributes\":{\"name\":\"updated-cache\",\"type\":\"laravel_valkey\",\"status\":\"updating\",\"region\":\"us-east-1\",\"size\":\"valkey-pro.250mb\",\"auto_upgrade_enabled\":true,\"is_public\":false,\"created_at\":\"2026-03-15T08:15:16.000000Z\",\"connection\":{\"hostname\":\"REDACTED\",\"port\":6379,\"protocol\":\"redis\",\"username\":\"REDACTED\",\"password\":\"REDACTED\"}}}}",
+    "context": []
+}

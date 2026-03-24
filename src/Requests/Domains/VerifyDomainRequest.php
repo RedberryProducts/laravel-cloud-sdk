@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Http\Integrations\LaravelCloud\Requests\Domains;
+
+use App\Data\LaravelCloud\Domains\DomainData;
+use Saloon\Enums\Method;
+use Saloon\Http\Request;
+use Saloon\Http\Response;
+
+class VerifyDomainRequest extends Request
+{
+    protected Method $method = Method::POST;
+
+    public function __construct(private string $domainId) {}
+
+    public function resolveEndpoint(): string
+    {
+        return "/domains/{$this->domainId}/verify";
+    }
+
+    public function createDtoFromResponse(Response $response): DomainData
+    {
+        $data = $response->json('data');
+
+        return DomainData::fromResponse($data['attributes'], $data['id']);
+    }
+}
