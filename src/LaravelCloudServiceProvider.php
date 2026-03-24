@@ -13,4 +13,11 @@ class LaravelCloudServiceProvider extends PackageServiceProvider
             ->name('laravel-cloud-sdk')
             ->hasConfigFile();
     }
+
+    public function packageRegistered(): void
+    {
+        $this->app->bind(LaravelCloud::class, function () {
+            return new LaravelCloud(config('laravel-cloud-sdk.token'));
+        });
+    }
 }
