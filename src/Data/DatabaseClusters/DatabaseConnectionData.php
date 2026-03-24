@@ -11,8 +11,8 @@ class DatabaseConnectionData extends Data
     public function __construct(
         public string $hostname,
         public int $port,
-        public DatabaseProtocol $protocol,
-        public DatabaseDriver $driver,
+        public string|DatabaseProtocol $protocol,
+        public string|DatabaseDriver $driver,
         public string $username,
         public string $password,
     ) {}
@@ -22,8 +22,8 @@ class DatabaseConnectionData extends Data
         return new self(
             hostname: $attributes['hostname'],
             port: $attributes['port'],
-            protocol: DatabaseProtocol::from($attributes['protocol']),
-            driver: DatabaseDriver::from($attributes['driver']),
+            protocol: DatabaseProtocol::tryFrom($attributes['protocol']) ?? $attributes['protocol'],
+            driver: DatabaseDriver::tryFrom($attributes['driver']) ?? $attributes['driver'],
             username: $attributes['username'],
             password: $attributes['password'],
         );

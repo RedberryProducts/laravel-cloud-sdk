@@ -17,12 +17,12 @@ class DomainData extends Data
     public function __construct(
         public string $id,
         public string $name,
-        public DomainType $type,
-        public DomainStatus $hostnameStatus,
-        public DomainStatus $sslStatus,
-        public DomainStatus $originStatus,
-        public ?DomainRedirect $redirect,
-        public ?DomainCloudflareStrategy $cloudflareStrategy,
+        public string|DomainType $type,
+        public string|DomainStatus $hostnameStatus,
+        public string|DomainStatus $sslStatus,
+        public string|DomainStatus $originStatus,
+        public string|DomainRedirect|null $redirect,
+        public string|DomainCloudflareStrategy|null $cloudflareStrategy,
         public ?bool $downtime,
         public bool $wildcardEnabled,
         public ?string $actionRequired,
@@ -52,15 +52,15 @@ class DomainData extends Data
         return new self(
             id: $id,
             name: $attributes['name'],
-            type: DomainType::from($attributes['type']),
-            hostnameStatus: DomainStatus::from($attributes['hostname_status']),
-            sslStatus: DomainStatus::from($attributes['ssl_status']),
-            originStatus: DomainStatus::from($attributes['origin_status']),
+            type: DomainType::tryFrom($attributes['type']) ?? $attributes['type'],
+            hostnameStatus: DomainStatus::tryFrom($attributes['hostname_status']) ?? $attributes['hostname_status'],
+            sslStatus: DomainStatus::tryFrom($attributes['ssl_status']) ?? $attributes['ssl_status'],
+            originStatus: DomainStatus::tryFrom($attributes['origin_status']) ?? $attributes['origin_status'],
             redirect: isset($attributes['redirect'])
-                ? DomainRedirect::from($attributes['redirect'])
+                ? (DomainRedirect::tryFrom($attributes['redirect']) ?? $attributes['redirect'])
                 : null,
             cloudflareStrategy: isset($attributes['cloudflare_strategy'])
-                ? DomainCloudflareStrategy::from($attributes['cloudflare_strategy'])
+                ? (DomainCloudflareStrategy::tryFrom($attributes['cloudflare_strategy']) ?? $attributes['cloudflare_strategy'])
                 : null,
             downtime: $attributes['downtime'] ?? null,
             wildcardEnabled: $attributes['wildcard_enabled'] ?? false,

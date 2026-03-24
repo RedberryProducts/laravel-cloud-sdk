@@ -12,7 +12,7 @@ use Spatie\LaravelData\Optional;
 class BackgroundProcessData extends Data
 {
     public function __construct(
-        public DaemonType $type,
+        public string|DaemonType $type,
         public int $processes,
         public string|null|Optional $command = new Optional,
         public BackgroundProcessConfigData|null|Optional $config = new Optional,
@@ -22,7 +22,7 @@ class BackgroundProcessData extends Data
     public static function fromResponse(array $attributes, string $id): self
     {
         return new self(
-            type: DaemonType::from($attributes['type']),
+            type: DaemonType::tryFrom($attributes['type']) ?? $attributes['type'],
             processes: $attributes['processes'],
             command: $attributes['command'] ?? null,
             config: isset($attributes['config'])

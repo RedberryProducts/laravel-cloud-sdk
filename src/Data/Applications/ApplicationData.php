@@ -12,7 +12,7 @@ class ApplicationData extends Data
         public string $id,
         public string $name,
         public string $slug,
-        public CloudRegion $region,
+        public string|CloudRegion $region,
         public ?string $slackChannel,
         public ?string $avatarUrl,
         public ?ApplicationRepositoryData $repository,
@@ -25,7 +25,7 @@ class ApplicationData extends Data
             id: $id,
             name: $attributes['name'],
             slug: $attributes['slug'],
-            region: CloudRegion::from($attributes['region']),
+            region: CloudRegion::tryFrom($attributes['region']) ?? $attributes['region'],
             slackChannel: $attributes['slack_channel'],
             avatarUrl: $attributes['avatar_url'],
             repository: isset($attributes['repository'])

@@ -10,7 +10,7 @@ class CacheConnectionData extends Data
     public function __construct(
         public ?string $hostname,
         public ?int $port,
-        public CacheProtocol $protocol,
+        public string|CacheProtocol $protocol,
         public ?string $username,
         public ?string $password,
     ) {}
@@ -20,7 +20,7 @@ class CacheConnectionData extends Data
         return new self(
             hostname: $attributes['hostname'],
             port: $attributes['port'],
-            protocol: CacheProtocol::from($attributes['protocol']),
+            protocol: CacheProtocol::tryFrom($attributes['protocol']) ?? $attributes['protocol'],
             username: $attributes['username'],
             password: $attributes['password'],
         );

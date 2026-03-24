@@ -8,7 +8,7 @@ use Spatie\LaravelData\Data;
 class RegionData extends Data
 {
     public function __construct(
-        public CloudRegion $region,
+        public string|CloudRegion $region,
         public string $label,
         public string $flag,
     ) {}
@@ -16,7 +16,7 @@ class RegionData extends Data
     public static function fromResponse(array $attributes): self
     {
         return new self(
-            region: CloudRegion::from($attributes['region']),
+            region: CloudRegion::tryFrom($attributes['region']) ?? $attributes['region'],
             label: $attributes['label'],
             flag: $attributes['flag'],
         );

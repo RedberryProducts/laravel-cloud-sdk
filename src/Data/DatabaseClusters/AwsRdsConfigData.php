@@ -16,7 +16,7 @@ class AwsRdsConfigData extends Data
         public bool $isPublic,
         public bool $usesPitr,
         public int $retentionDays,
-        public DeploymentOption $deploymentOption,
+        public string|DeploymentOption $deploymentOption,
         public ?string $maintenanceWindow,
         public ?int $readReplicas,
     ) {}
@@ -29,7 +29,7 @@ class AwsRdsConfigData extends Data
             isPublic: $attributes['is_public'],
             usesPitr: $attributes['uses_pitr'],
             retentionDays: $attributes['retention_days'],
-            deploymentOption: DeploymentOption::from($attributes['deployment_option']),
+            deploymentOption: DeploymentOption::tryFrom($attributes['deployment_option']) ?? $attributes['deployment_option'],
             maintenanceWindow: $attributes['maintenance_window'] ?? null,
             readReplicas: $attributes['read_replicas'] ?? null,
         );

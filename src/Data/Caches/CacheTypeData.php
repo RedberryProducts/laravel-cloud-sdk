@@ -8,7 +8,7 @@ use Spatie\LaravelData\Data;
 class CacheTypeData extends Data
 {
     /**
-     * @param  array<int, CloudRegion>  $regions
+     * @param  array<int, string|CloudRegion>  $regions
      * @param  array<int, CacheSizeOptionData>  $sizes
      */
     public function __construct(
@@ -25,7 +25,7 @@ class CacheTypeData extends Data
             type: $attributes['type'],
             label: $attributes['label'],
             regions: array_map(
-                fn (string $region) => CloudRegion::from($region),
+                fn (string $region) => CloudRegion::tryFrom($region) ?? $region,
                 $attributes['regions'],
             ),
             sizes: array_map(

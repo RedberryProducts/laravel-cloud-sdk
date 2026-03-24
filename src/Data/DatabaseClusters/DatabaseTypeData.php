@@ -8,7 +8,7 @@ use Spatie\LaravelData\Data;
 class DatabaseTypeData extends Data
 {
     /**
-     * @param  array<int, CloudRegion>  $regions
+     * @param  array<int, string|CloudRegion>  $regions
      * @param  array<int, DatabaseTypeConfigSchemaData>  $configSchema
      */
     public function __construct(
@@ -24,7 +24,7 @@ class DatabaseTypeData extends Data
             type: $attributes['type'],
             label: $attributes['label'],
             regions: array_map(
-                fn (string $region) => CloudRegion::from($region),
+                fn (string $region) => CloudRegion::tryFrom($region) ?? $region,
                 $attributes['regions'],
             ),
             configSchema: array_map(
