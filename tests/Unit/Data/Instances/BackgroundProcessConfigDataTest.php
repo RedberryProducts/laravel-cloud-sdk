@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\Instances\BackgroundProcessConfigData;
+use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessConfigData;
 use Spatie\LaravelData\Optional;
 
 it('defaults all fields to Optional', function () {

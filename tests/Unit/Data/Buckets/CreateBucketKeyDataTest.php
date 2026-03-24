@@ -1,7 +1,7 @@
 <?php
 
-use App\Data\LaravelCloud\Buckets\CreateBucketKeyData;
-use App\Enums\LaravelCloud\KeyPermission;
+use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketKeyData;
+use Redberry\LaravelCloudSdk\Enums\KeyPermission;
 
 it('can be constructed with all parameters', function () {
     $data = new CreateBucketKeyData(

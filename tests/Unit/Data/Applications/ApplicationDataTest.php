@@ -1,8 +1,8 @@
 <?php
 
-use App\Data\LaravelCloud\Applications\ApplicationData;
-use App\Data\LaravelCloud\Applications\ApplicationRepositoryData;
-use App\Enums\LaravelCloud\CloudRegion;
+use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
+use Redberry\LaravelCloudSdk\Data\Applications\ApplicationRepositoryData;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Carbon\CarbonImmutable;
 
 it('can be created from API response data', function () {

@@ -1,8 +1,8 @@
 <?php
 
-use App\Data\LaravelCloud\DatabaseClusters\DatabaseTypeConfigSchemaData;
-use App\Data\LaravelCloud\DatabaseClusters\DatabaseTypeData;
-use App\Enums\LaravelCloud\CloudRegion;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseTypeConfigSchemaData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseTypeData;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 
 it('can be created from API response data', function () {
     $responseData = [

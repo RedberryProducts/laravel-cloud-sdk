@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\WebsocketApplications\CreateWebsocketApplicationData;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\CreateWebsocketApplicationData;
 use Spatie\LaravelData\Optional;
 
 it('can be constructed with only the required name', function () {

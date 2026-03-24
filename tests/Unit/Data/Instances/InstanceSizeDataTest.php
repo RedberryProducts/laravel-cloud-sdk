@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\Instances\InstanceSizeData;
+use Redberry\LaravelCloudSdk\Data\Instances\InstanceSizeData;
 
 it('builds from response attributes', function () {
     $data = InstanceSizeData::fromResponse([

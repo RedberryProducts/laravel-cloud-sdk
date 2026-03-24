@@ -1,8 +1,8 @@
 <?php
 
-use App\Data\LaravelCloud\Instances\UpdateInstanceData;
-use App\Enums\LaravelCloud\InstanceScalingType;
-use App\Enums\LaravelCloud\InstanceSize;
+use Redberry\LaravelCloudSdk\Data\Instances\UpdateInstanceData;
+use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
+use Redberry\LaravelCloudSdk\Enums\InstanceSize;
 use Spatie\LaravelData\Optional;
 
 it('defaults all parameters to Optional', function () {

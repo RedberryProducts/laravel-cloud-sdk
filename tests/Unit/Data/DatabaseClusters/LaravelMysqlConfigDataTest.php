@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\DatabaseClusters\LaravelMysqlConfigData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\LaravelMysqlConfigData;
 
 it('can be constructed with all parameters', function () {
     $data = new LaravelMysqlConfigData(

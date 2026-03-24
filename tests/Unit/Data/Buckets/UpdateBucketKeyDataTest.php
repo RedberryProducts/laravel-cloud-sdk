@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\Buckets\UpdateBucketKeyData;
+use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketKeyData;
 
 it('requires a name', function () {
     $data = new UpdateBucketKeyData(name: 'my-key');

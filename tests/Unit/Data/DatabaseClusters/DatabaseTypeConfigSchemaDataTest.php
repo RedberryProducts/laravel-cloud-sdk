@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\DatabaseClusters\DatabaseTypeConfigSchemaData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseTypeConfigSchemaData;
 
 it('can be created from API response data with all fields', function () {
     $responseData = [

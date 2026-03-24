@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\Environments\CreateEnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Spatie\LaravelData\Optional;
 
 it('can be constructed with required parameters', function () {

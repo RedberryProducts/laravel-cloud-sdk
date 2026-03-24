@@ -1,11 +1,11 @@
 <?php
 
-use App\Data\LaravelCloud\Environments\EnvironmentData;
-use App\Data\LaravelCloud\Environments\EnvironmentVariableData;
-use App\Data\LaravelCloud\Environments\NetworkSettingsData;
-use App\Enums\LaravelCloud\EnvironmentStatus;
-use App\Enums\LaravelCloud\NodeVersion;
-use App\Enums\LaravelCloud\PhpVersion;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentVariableData;
+use Redberry\LaravelCloudSdk\Data\Environments\NetworkSettingsData;
+use Redberry\LaravelCloudSdk\Enums\EnvironmentStatus;
+use Redberry\LaravelCloudSdk\Enums\NodeVersion;
+use Redberry\LaravelCloudSdk\Enums\PhpVersion;
 use Carbon\CarbonImmutable;
 
 $baseAttributes = [

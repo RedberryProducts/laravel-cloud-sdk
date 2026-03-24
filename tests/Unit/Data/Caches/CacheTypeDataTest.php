@@ -1,8 +1,8 @@
 <?php
 
-use App\Data\LaravelCloud\Caches\CacheSizeOptionData;
-use App\Data\LaravelCloud\Caches\CacheTypeData;
-use App\Enums\LaravelCloud\CloudRegion;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheSizeOptionData;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheTypeData;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 
 it('can be created from API response data', function () {
     $responseData = [

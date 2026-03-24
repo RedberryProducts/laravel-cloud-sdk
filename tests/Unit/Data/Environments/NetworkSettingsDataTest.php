@@ -1,7 +1,7 @@
 <?php
 
-use App\Data\LaravelCloud\Environments\HstsData;
-use App\Data\LaravelCloud\Environments\NetworkSettingsData;
+use Redberry\LaravelCloudSdk\Data\Environments\HstsData;
+use Redberry\LaravelCloudSdk\Data\Environments\NetworkSettingsData;
 
 $baseAttributes = [
     'cache' => ['strategy' => 'default'],

@@ -1,9 +1,9 @@
 <?php
 
-use App\Data\LaravelCloud\DatabaseClusters\CreateDatabaseClusterData;
-use App\Data\LaravelCloud\DatabaseClusters\NeonConfigData;
-use App\Enums\LaravelCloud\CloudRegion;
-use App\Enums\LaravelCloud\DatabaseType;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\DatabaseType;
 
 use Spatie\LaravelData\Optional;
 

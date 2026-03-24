@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\WebsocketApplications\UpdateWebsocketApplicationData;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\UpdateWebsocketApplicationData;
 use Spatie\LaravelData\Optional;
 
 it('defaults all parameters to Optional', function () {

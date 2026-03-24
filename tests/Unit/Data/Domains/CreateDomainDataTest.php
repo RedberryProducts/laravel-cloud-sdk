@@ -1,9 +1,9 @@
 <?php
 
-use App\Data\LaravelCloud\Domains\CreateDomainData;
-use App\Enums\LaravelCloud\DomainCloudflareStrategy;
-use App\Enums\LaravelCloud\DomainRedirect;
-use App\Enums\LaravelCloud\DomainVerificationMethod;
+use Redberry\LaravelCloudSdk\Data\Domains\CreateDomainData;
+use Redberry\LaravelCloudSdk\Enums\DomainCloudflareStrategy;
+use Redberry\LaravelCloudSdk\Enums\DomainRedirect;
+use Redberry\LaravelCloudSdk\Enums\DomainVerificationMethod;
 use Spatie\LaravelData\Optional;
 
 it('requires name, wwwRedirect, and verificationMethod', function () {

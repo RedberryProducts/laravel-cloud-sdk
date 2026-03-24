@@ -1,7 +1,7 @@
 <?php
 
-use App\Data\LaravelCloud\Domains\UpdateDomainData;
-use App\Enums\LaravelCloud\DomainVerificationMethod;
+use Redberry\LaravelCloudSdk\Data\Domains\UpdateDomainData;
+use Redberry\LaravelCloudSdk\Enums\DomainVerificationMethod;
 
 it('requires verificationMethod', function () {
     $data = new UpdateDomainData(verificationMethod: DomainVerificationMethod::REAL_TIME);

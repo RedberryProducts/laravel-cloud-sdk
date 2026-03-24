@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\Domains\DnsRecordData;
+use Redberry\LaravelCloudSdk\Data\Domains\DnsRecordData;
 
 it('builds from response attributes', function () {
     $data = DnsRecordData::fromResponse([

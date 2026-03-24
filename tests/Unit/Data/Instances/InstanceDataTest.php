@@ -1,11 +1,11 @@
 <?php
 
-use App\Data\LaravelCloud\Instances\BackgroundProcessData;
-use App\Data\LaravelCloud\Instances\InstanceData;
-use App\Enums\LaravelCloud\DaemonType;
-use App\Enums\LaravelCloud\InstanceScalingType;
-use App\Enums\LaravelCloud\InstanceSize;
-use App\Enums\LaravelCloud\InstanceType;
+use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
+use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
+use Redberry\LaravelCloudSdk\Enums\DaemonType;
+use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
+use Redberry\LaravelCloudSdk\Enums\InstanceSize;
+use Redberry\LaravelCloudSdk\Enums\InstanceType;
 use Carbon\CarbonImmutable;
 
 it('builds from response attributes', function () {

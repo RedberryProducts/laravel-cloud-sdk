@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\DatabaseClusters\NeonConfigData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
 
 it('can be constructed with all parameters', function () {
     $data = new NeonConfigData(

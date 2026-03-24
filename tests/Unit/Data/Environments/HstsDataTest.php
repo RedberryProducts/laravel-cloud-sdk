@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\Environments\HstsData;
+use Redberry\LaravelCloudSdk\Data\Environments\HstsData;
 
 it('can be created from API response data', function () {
     $data = HstsData::fromResponse([

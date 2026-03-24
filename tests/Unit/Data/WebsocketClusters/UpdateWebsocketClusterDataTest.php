@@ -1,7 +1,7 @@
 <?php
 
-use App\Data\LaravelCloud\WebsocketClusters\UpdateWebsocketClusterData;
-use App\Enums\LaravelCloud\WebsocketMaxConnections;
+use Redberry\LaravelCloudSdk\Data\WebsocketClusters\UpdateWebsocketClusterData;
+use Redberry\LaravelCloudSdk\Enums\WebsocketMaxConnections;
 use Spatie\LaravelData\Optional;
 
 it('can be constructed with partial parameters', function () {

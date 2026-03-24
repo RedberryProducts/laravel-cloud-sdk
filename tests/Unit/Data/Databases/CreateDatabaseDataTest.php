@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\Databases\CreateDatabaseData;
+use Redberry\LaravelCloudSdk\Data\Databases\CreateDatabaseData;
 
 it('can be constructed with a name', function () {
     $data = new CreateDatabaseData(name: 'my-database');

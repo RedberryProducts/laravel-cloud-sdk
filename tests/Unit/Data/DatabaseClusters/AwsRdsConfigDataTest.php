@@ -1,7 +1,7 @@
 <?php
 
-use App\Data\LaravelCloud\DatabaseClusters\AwsRdsConfigData;
-use App\Enums\LaravelCloud\DeploymentOption;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\AwsRdsConfigData;
+use Redberry\LaravelCloudSdk\Enums\DeploymentOption;
 
 it('can be constructed with all parameters', function () {
     $data = new AwsRdsConfigData(

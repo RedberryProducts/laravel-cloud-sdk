@@ -1,7 +1,7 @@
 <?php
 
-use App\Data\LaravelCloud\DatabaseClusters\NeonConfigData;
-use App\Data\LaravelCloud\DatabaseClusters\UpdateDatabaseClusterData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 
 it('can be constructed with config', function () {
     $config = new NeonConfigData(

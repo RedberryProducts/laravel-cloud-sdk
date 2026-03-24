@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Integrations\LaravelCloud\Auth\LaravelCloudTokenAuthenticator;
-use App\Http\Integrations\LaravelCloud\LaravelCloudConnector;
-use App\Http\Integrations\LaravelCloud\Requests\Meta\ListRegionsRequest;
+use Redberry\LaravelCloudSdk\Connectors\Auth\LaravelCloudTokenAuthenticator;
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
+use Redberry\LaravelCloudSdk\Requests\Meta\ListRegionsRequest;
 use Saloon\Http\Faking\MockResponse;
 use Saloon\Laravel\Facades\Saloon;
 

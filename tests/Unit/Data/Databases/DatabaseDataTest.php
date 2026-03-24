@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\Databases\DatabaseData;
+use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Carbon\CarbonImmutable;
 
 it('can be created from API response data', function () {

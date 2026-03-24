@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\Environments\FilesystemKeyData;
+use Redberry\LaravelCloudSdk\Data\Environments\FilesystemKeyData;
 
 it('can be constructed with required fields', function () {
     $data = new FilesystemKeyData(id: 'key-123', disk: 'media', isDefaultDisk: true);

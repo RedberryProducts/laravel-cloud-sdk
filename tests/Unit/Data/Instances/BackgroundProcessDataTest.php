@@ -1,8 +1,8 @@
 <?php
 
-use App\Data\LaravelCloud\Instances\BackgroundProcessConfigData;
-use App\Data\LaravelCloud\Instances\BackgroundProcessData;
-use App\Enums\LaravelCloud\DaemonType;
+use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessConfigData;
+use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
+use Redberry\LaravelCloudSdk\Enums\DaemonType;
 
 it('builds from response attributes without config', function () {
     $data = BackgroundProcessData::fromResponse([

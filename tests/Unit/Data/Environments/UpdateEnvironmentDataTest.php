@@ -1,16 +1,16 @@
 <?php
 
-use App\Data\LaravelCloud\Environments\FilesystemKeyData;
-use App\Data\LaravelCloud\Environments\HstsData;
-use App\Data\LaravelCloud\Environments\UpdateEnvironmentData;
-use App\Enums\LaravelCloud\CacheStrategy;
-use App\Enums\LaravelCloud\EnvironmentColor;
-use App\Enums\LaravelCloud\FirewallRateLimitLevel;
-use App\Enums\LaravelCloud\NodeVersion;
-use App\Enums\LaravelCloud\PhpVersion;
-use App\Enums\LaravelCloud\ResponseHeadersContentType;
-use App\Enums\LaravelCloud\ResponseHeadersFrame;
-use App\Enums\LaravelCloud\ResponseHeadersRobotsTag;
+use Redberry\LaravelCloudSdk\Data\Environments\FilesystemKeyData;
+use Redberry\LaravelCloudSdk\Data\Environments\HstsData;
+use Redberry\LaravelCloudSdk\Data\Environments\UpdateEnvironmentData;
+use Redberry\LaravelCloudSdk\Enums\CacheStrategy;
+use Redberry\LaravelCloudSdk\Enums\EnvironmentColor;
+use Redberry\LaravelCloudSdk\Enums\FirewallRateLimitLevel;
+use Redberry\LaravelCloudSdk\Enums\NodeVersion;
+use Redberry\LaravelCloudSdk\Enums\PhpVersion;
+use Redberry\LaravelCloudSdk\Enums\ResponseHeadersContentType;
+use Redberry\LaravelCloudSdk\Enums\ResponseHeadersFrame;
+use Redberry\LaravelCloudSdk\Enums\ResponseHeadersRobotsTag;
 use Spatie\LaravelData\Optional;
 
 it('defaults all parameters to Optional', function () {

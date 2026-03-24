@@ -1,7 +1,7 @@
 <?php
 
-use App\Data\LaravelCloud\Buckets\BucketKeyData;
-use App\Enums\LaravelCloud\KeyPermission;
+use Redberry\LaravelCloudSdk\Data\Buckets\BucketKeyData;
+use Redberry\LaravelCloudSdk\Enums\KeyPermission;
 use Carbon\CarbonImmutable;
 
 it('can be created from API response data', function () {

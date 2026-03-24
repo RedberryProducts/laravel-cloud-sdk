@@ -1,8 +1,8 @@
 <?php
 
-use App\Data\LaravelCloud\Applications\CreateApplicationData;
-use App\Enums\LaravelCloud\CloudRegion;
-use App\Enums\LaravelCloud\SourceControlProvider;
+use Redberry\LaravelCloudSdk\Data\Applications\CreateApplicationData;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\SourceControlProvider;
 use Spatie\LaravelData\Optional;
 
 it('can be constructed with required parameters', function () {

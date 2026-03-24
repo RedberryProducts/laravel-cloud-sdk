@@ -1,8 +1,8 @@
 <?php
 
-use App\Data\LaravelCloud\Caches\UpdateCacheData;
-use App\Enums\LaravelCloud\CacheSize;
-use App\Enums\LaravelCloud\EvictionPolicy;
+use Redberry\LaravelCloudSdk\Data\Caches\UpdateCacheData;
+use Redberry\LaravelCloudSdk\Enums\CacheSize;
+use Redberry\LaravelCloudSdk\Enums\EvictionPolicy;
 use Spatie\LaravelData\Optional;
 
 it('can be constructed with partial parameters', function () {

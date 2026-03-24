@@ -1,9 +1,9 @@
 <?php
 
-use App\Data\LaravelCloud\Buckets\CreateBucketData;
-use App\Enums\LaravelCloud\BucketJurisdiction;
-use App\Enums\LaravelCloud\BucketVisibility;
-use App\Enums\LaravelCloud\KeyPermission;
+use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketData;
+use Redberry\LaravelCloudSdk\Enums\BucketJurisdiction;
+use Redberry\LaravelCloudSdk\Enums\BucketVisibility;
+use Redberry\LaravelCloudSdk\Enums\KeyPermission;
 
 it('can be constructed with required parameters', function () {
     $data = new CreateBucketData(

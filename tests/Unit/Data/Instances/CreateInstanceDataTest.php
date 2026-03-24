@@ -1,11 +1,11 @@
 <?php
 
-use App\Data\LaravelCloud\Instances\BackgroundProcessData;
-use App\Data\LaravelCloud\Instances\CreateInstanceData;
-use App\Enums\LaravelCloud\DaemonType;
-use App\Enums\LaravelCloud\InstanceScalingType;
-use App\Enums\LaravelCloud\InstanceSize;
-use App\Enums\LaravelCloud\InstanceType;
+use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
+use Redberry\LaravelCloudSdk\Data\Instances\CreateInstanceData;
+use Redberry\LaravelCloudSdk\Enums\DaemonType;
+use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
+use Redberry\LaravelCloudSdk\Enums\InstanceSize;
+use Redberry\LaravelCloudSdk\Enums\InstanceType;
 use Spatie\LaravelData\Optional;
 
 it('requires name, type, size, scalingType, maxReplicas, minReplicas', function () {

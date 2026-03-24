@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\Applications\ApplicationRepositoryData;
+use Redberry\LaravelCloudSdk\Data\Applications\ApplicationRepositoryData;
 
 it('can be created from API response data', function () {
     $data = ApplicationRepositoryData::fromResponse([

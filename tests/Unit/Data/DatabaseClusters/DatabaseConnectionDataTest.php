@@ -1,8 +1,8 @@
 <?php
 
-use App\Data\LaravelCloud\DatabaseClusters\DatabaseConnectionData;
-use App\Enums\LaravelCloud\DatabaseDriver;
-use App\Enums\LaravelCloud\DatabaseProtocol;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseConnectionData;
+use Redberry\LaravelCloudSdk\Enums\DatabaseDriver;
+use Redberry\LaravelCloudSdk\Enums\DatabaseProtocol;
 
 it('can be constructed with all parameters', function () {
     $data = new DatabaseConnectionData(

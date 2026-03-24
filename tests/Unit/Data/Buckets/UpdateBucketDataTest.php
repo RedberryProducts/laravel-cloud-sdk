@@ -1,7 +1,7 @@
 <?php
 
-use App\Data\LaravelCloud\Buckets\UpdateBucketData;
-use App\Enums\LaravelCloud\BucketVisibility;
+use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketData;
+use Redberry\LaravelCloudSdk\Enums\BucketVisibility;
 use Spatie\LaravelData\Optional;
 
 it('can be constructed with partial parameters', function () {

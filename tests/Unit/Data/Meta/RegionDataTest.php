@@ -1,7 +1,7 @@
 <?php
 
-use App\Data\LaravelCloud\Meta\RegionData;
-use App\Enums\LaravelCloud\CloudRegion;
+use Redberry\LaravelCloudSdk\Data\Meta\RegionData;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 
 it('can be constructed with all parameters', function () {
     $data = new RegionData(

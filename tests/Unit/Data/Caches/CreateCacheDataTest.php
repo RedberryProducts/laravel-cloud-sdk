@@ -1,10 +1,10 @@
 <?php
 
-use App\Data\LaravelCloud\Caches\CreateCacheData;
-use App\Enums\LaravelCloud\CacheSize;
-use App\Enums\LaravelCloud\CacheType;
-use App\Enums\LaravelCloud\CloudRegion;
-use App\Enums\LaravelCloud\EvictionPolicy;
+use Redberry\LaravelCloudSdk\Data\Caches\CreateCacheData;
+use Redberry\LaravelCloudSdk\Enums\CacheSize;
+use Redberry\LaravelCloudSdk\Enums\CacheType;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\EvictionPolicy;
 
 it('can be constructed with required parameters', function () {
     $data = new CreateCacheData(

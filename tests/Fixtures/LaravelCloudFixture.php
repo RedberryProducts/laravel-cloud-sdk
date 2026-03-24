@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Fixtures\LaravelCloud;
+namespace Redberry\LaravelCloudSdk\Tests\Fixtures;
 
 use Saloon\Data\RecordedResponse;
 use Saloon\Http\Faking\Fixture;

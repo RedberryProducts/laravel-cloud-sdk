@@ -1,6 +1,6 @@
 <?php
 
-use App\Data\LaravelCloud\Caches\CacheSizeOptionData;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheSizeOptionData;
 
 it('can be constructed with all parameters', function () {
     $data = new CacheSizeOptionData(

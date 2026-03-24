@@ -1,9 +1,9 @@
 <?php
 
-use App\Data\LaravelCloud\WebsocketClusters\CreateWebsocketClusterData;
-use App\Enums\LaravelCloud\CloudRegion;
-use App\Enums\LaravelCloud\WebsocketMaxConnections;
-use App\Enums\LaravelCloud\WebsocketServerType;
+use Redberry\LaravelCloudSdk\Data\WebsocketClusters\CreateWebsocketClusterData;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\WebsocketMaxConnections;
+use Redberry\LaravelCloudSdk\Enums\WebsocketServerType;
 
 it('can be constructed with required parameters', function () {
     $data = new CreateWebsocketClusterData(

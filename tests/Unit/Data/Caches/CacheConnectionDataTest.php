@@ -1,7 +1,7 @@
 <?php
 
-use App\Data\LaravelCloud\Caches\CacheConnectionData;
-use App\Enums\LaravelCloud\CacheProtocol;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheConnectionData;
+use Redberry\LaravelCloudSdk\Enums\CacheProtocol;
 
 it('can be constructed with all parameters', function () {
     $data = new CacheConnectionData(

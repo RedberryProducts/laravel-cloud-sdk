@@ -1,7 +1,7 @@
 <?php
 
-use App\Data\LaravelCloud\Applications\UpdateApplicationData;
-use App\Enums\LaravelCloud\SourceControlProvider;
+use Redberry\LaravelCloudSdk\Data\Applications\UpdateApplicationData;
+use Redberry\LaravelCloudSdk\Enums\SourceControlProvider;
 use Spatie\LaravelData\Optional;
 
 it('can be constructed with partial parameters', function () {
