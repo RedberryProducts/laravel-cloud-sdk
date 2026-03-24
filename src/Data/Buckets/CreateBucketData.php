@@ -17,10 +17,10 @@ class CreateBucketData extends Data
      */
     public function __construct(
         public string $name,
-        public BucketVisibility $visibility,
-        public BucketJurisdiction $jurisdiction,
+        public string|BucketVisibility $visibility,
+        public string|BucketJurisdiction $jurisdiction,
         public string $keyName,
-        public KeyPermission $keyPermission,
+        public string|KeyPermission $keyPermission,
         public ?array $allowedOrigins = null,
     ) {}
 }

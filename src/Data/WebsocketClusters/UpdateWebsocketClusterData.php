@@ -13,6 +13,6 @@ class UpdateWebsocketClusterData extends Data
 {
     public function __construct(
         public string|Optional $name = new Optional,
-        public WebsocketMaxConnections|Optional $maxConnections = new Optional,
+        public string|WebsocketMaxConnections|Optional $maxConnections = new Optional,
     ) {}
 }

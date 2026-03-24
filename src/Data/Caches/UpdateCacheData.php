@@ -14,9 +14,9 @@ class UpdateCacheData extends Data
 {
     public function __construct(
         public string|Optional $name = new Optional,
-        public CacheSize|Optional $size = new Optional,
+        public string|CacheSize|Optional $size = new Optional,
         public bool|Optional $autoUpgradeEnabled = new Optional,
         public bool|Optional $isPublic = new Optional,
-        public EvictionPolicy|null|Optional $evictionPolicy = new Optional,
+        public string|EvictionPolicy|null|Optional $evictionPolicy = new Optional,
     ) {}
 }

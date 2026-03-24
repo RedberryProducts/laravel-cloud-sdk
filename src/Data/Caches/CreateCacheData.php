@@ -14,12 +14,12 @@ use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 class CreateCacheData extends Data
 {
     public function __construct(
-        public CacheType $type,
+        public string|CacheType $type,
         public string $name,
-        public CloudRegion $region,
-        public CacheSize $size,
+        public string|CloudRegion $region,
+        public string|CacheSize $size,
         public bool $autoUpgradeEnabled,
         public bool $isPublic,
-        public ?EvictionPolicy $evictionPolicy = null,
+        public string|EvictionPolicy|null $evictionPolicy = null,
     ) {}
 }

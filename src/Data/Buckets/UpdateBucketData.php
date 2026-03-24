@@ -16,7 +16,7 @@ class UpdateBucketData extends Data
      */
     public function __construct(
         public string|Optional $name = new Optional,
-        public BucketVisibility|Optional $visibility = new Optional,
+        public string|BucketVisibility|Optional $visibility = new Optional,
         public array|null|Optional $allowedOrigins = new Optional,
     ) {}
 }

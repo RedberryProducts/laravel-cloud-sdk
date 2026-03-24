@@ -18,9 +18,9 @@ class CreateInstanceData extends Data
      */
     public function __construct(
         public string $name,
-        public InstanceType $type,
-        public InstanceSize $size,
-        public InstanceScalingType $scalingType,
+        public string|InstanceType $type,
+        public string|InstanceSize $size,
+        public string|InstanceScalingType $scalingType,
         public int $maxReplicas,
         public int $minReplicas,
         public bool|Optional $usesScheduler = new Optional,

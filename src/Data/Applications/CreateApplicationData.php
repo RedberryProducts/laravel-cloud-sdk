@@ -15,8 +15,8 @@ class CreateApplicationData extends Data
     public function __construct(
         public string $repository,
         public string $name,
-        public CloudRegion $region,
-        public SourceControlProvider $sourceControlProviderType,
+        public string|CloudRegion $region,
+        public string|SourceControlProvider $sourceControlProviderType,
         public string|null|Optional $clusterId = new Optional,
     ) {}
 }

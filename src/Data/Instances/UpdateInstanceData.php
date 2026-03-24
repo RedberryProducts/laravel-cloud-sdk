@@ -14,8 +14,8 @@ class UpdateInstanceData extends Data
 {
     public function __construct(
         public string|Optional $name = new Optional,
-        public InstanceSize|Optional $size = new Optional,
-        public InstanceScalingType|Optional $scalingType = new Optional,
+        public string|InstanceSize|Optional $size = new Optional,
+        public string|InstanceScalingType|Optional $scalingType = new Optional,
         public int|Optional $maxReplicas = new Optional,
         public int|Optional $minReplicas = new Optional,
         public bool|Optional $usesSleepMode = new Optional,

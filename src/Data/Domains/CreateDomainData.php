@@ -15,9 +15,9 @@ class CreateDomainData extends Data
 {
     public function __construct(
         public string $name,
-        public DomainRedirect $wwwRedirect,
-        public DomainVerificationMethod $verificationMethod,
-        public DomainCloudflareStrategy|Optional $cloudflareStrategy = new Optional,
+        public string|DomainRedirect $wwwRedirect,
+        public string|DomainVerificationMethod $verificationMethod,
+        public string|DomainCloudflareStrategy|Optional $cloudflareStrategy = new Optional,
         public bool|null|Optional $wildcardEnabled = new Optional,
         public bool|null|Optional $allowDowntime = new Optional,
     ) {}

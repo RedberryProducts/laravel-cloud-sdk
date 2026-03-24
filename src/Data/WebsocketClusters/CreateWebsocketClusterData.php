@@ -14,8 +14,8 @@ class CreateWebsocketClusterData extends Data
 {
     public function __construct(
         public string $name,
-        public WebsocketServerType $type,
-        public CloudRegion $region,
-        public WebsocketMaxConnections $maxConnections,
+        public string|WebsocketServerType $type,
+        public string|CloudRegion $region,
+        public string|WebsocketMaxConnections $maxConnections,
     ) {}
 }

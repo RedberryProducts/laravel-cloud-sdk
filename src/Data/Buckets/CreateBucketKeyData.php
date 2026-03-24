@@ -9,6 +9,6 @@ class CreateBucketKeyData extends Data
 {
     public function __construct(
         public string $name,
-        public KeyPermission $permission,
+        public string|KeyPermission $permission,
     ) {}
 }

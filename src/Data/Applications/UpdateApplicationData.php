@@ -12,7 +12,7 @@ use Spatie\LaravelData\Optional;
 class UpdateApplicationData extends Data
 {
     public function __construct(
-        public SourceControlProvider|Optional $sourceControlProviderType = new Optional,
+        public string|SourceControlProvider|Optional $sourceControlProviderType = new Optional,
         public string|Optional $name = new Optional,
         public string|Optional $slug = new Optional,
         public string|Optional $defaultEnvironmentId = new Optional,

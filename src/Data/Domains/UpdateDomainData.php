@@ -11,6 +11,6 @@ use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 class UpdateDomainData extends Data
 {
     public function __construct(
-        public DomainVerificationMethod $verificationMethod,
+        public string|DomainVerificationMethod $verificationMethod,
     ) {}
 }
