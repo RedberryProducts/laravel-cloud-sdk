@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "redberry/laravel-cloud-sdk",
+    "description": "A fluent PHP SDK for the Laravel Cloud API",
     "keywords": [
-        ":vendor_name",
+        "Redberry",
         "laravel",
-        ":package_slug"
+        "laravel-cloud-sdk"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/redberry/laravel-cloud-sdk",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Gaga Darsalia",
+            "email": "gaga@redberry.ge",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Redberry\\LaravelCloudSdk\\": "src/",
+            "Redberry\\LaravelCloudSdk\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "Redberry\\LaravelCloudSdk\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -63,10 +63,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Redberry\\LaravelCloudSdk\\LaravelCloudServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelCloud": "Redberry\\LaravelCloudSdk\\Facades\\LaravelCloud"
             }
         }
     },
