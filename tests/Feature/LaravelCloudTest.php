@@ -22,12 +22,6 @@ it('can be instantiated with a token', function () {
     expect($cloud)->toBeInstanceOf(LaravelCloud::class);
 });
 
-it('can be instantiated via forToken()', function () {
-    $cloud = LaravelCloud::forToken('my-token');
-
-    expect($cloud)->toBeInstanceOf(LaravelCloud::class);
-});
-
 // --- Container / Service Provider ---
 
 it('can be resolved from the container when a token is configured', function () {

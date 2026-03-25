@@ -38,8 +38,4 @@ class LaravelCloud
         $this->connector = new LaravelCloudConnector($token);
     }
 
-    public static function forToken(string $token): static
-    {
-        return new static($token);
-    }
 }

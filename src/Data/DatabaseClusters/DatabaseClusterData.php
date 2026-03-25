@@ -43,6 +43,7 @@ class DatabaseClusterData extends Data
             'neon_serverless_postgres_18', 'neon_serverless_postgres_17', 'neon_serverless_postgres_16' => NeonConfigData::fromResponse($config),
             'laravel_mysql_84', 'laravel_mysql_8' => LaravelMysqlConfigData::fromResponse($config),
             'aws_rds_mysql_8', 'aws_rds_postgres_18' => AwsRdsConfigData::fromResponse($config),
+            default => throw new \InvalidArgumentException("Unknown database cluster type: {$type}"),
         };
     }
 }
