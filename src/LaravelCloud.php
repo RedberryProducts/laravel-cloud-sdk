@@ -37,5 +37,4 @@ class LaravelCloud
     {
         $this->connector = new LaravelCloudConnector($token);
     }
-
 }
