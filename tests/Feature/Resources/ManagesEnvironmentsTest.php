@@ -1,0 +1,112 @@
+<?php
+
+use Illuminate\Support\Collection;
+use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\UpdateEnvironmentData;
+use Redberry\LaravelCloudSdk\Enums\PhpVersion;
+use Redberry\LaravelCloudSdk\LaravelCloud;
+use Redberry\LaravelCloudSdk\Requests\Environments\CreateEnvironmentRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\UpdateEnvironmentRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
+use Saloon\Laravel\Facades\Saloon;
+
+it('lists environments for an application', function () {
+    Saloon::fake([
+        ListEnvironmentsRequest::class => new LaravelCloudFixture('environments/list'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->environments('app-a14fe54f-42b2-431c-9b3a-876900975139');
+
+    Saloon::assertSent(ListEnvironmentsRequest::class);
+    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result->first())->toBeInstanceOf(EnvironmentData::class);
+});
+
+it('retrieves a single environment by id', function () {
+    Saloon::fake([
+        GetEnvironmentRequest::class => new LaravelCloudFixture('environments/get'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->environment('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
+
+    Saloon::assertSent(GetEnvironmentRequest::class);
+    expect($result)->toBeInstanceOf(EnvironmentData::class);
+    expect($result->id)->toBe('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
+    expect($result->name)->toBe('updated-env');
+});
+
+it('creates an environment with named params', function () {
+    Saloon::fake([
+        CreateEnvironmentRequest::class => new LaravelCloudFixture('environments/create'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->createEnvironment(
+        applicationId: 'app-a14fe54f-42b2-431c-9b3a-876900975139',
+        branch: 'main',
+        name: 'production',
+    );
+
+    Saloon::assertSent(CreateEnvironmentRequest::class);
+    expect($result)->toBeInstanceOf(EnvironmentData::class);
+});
+
+it('creates an environment via createEnvironmentWith()', function () {
+    Saloon::fake([
+        CreateEnvironmentRequest::class => new LaravelCloudFixture('environments/create'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->createEnvironmentWith(
+        'app-a14fe54f-42b2-431c-9b3a-876900975139',
+        new CreateEnvironmentData(branch: 'main', name: 'production'),
+    );
+
+    Saloon::assertSent(CreateEnvironmentRequest::class);
+    expect($result)->toBeInstanceOf(EnvironmentData::class);
+});
+
+it('updates an environment with named params', function () {
+    Saloon::fake([
+        UpdateEnvironmentRequest::class => new LaravelCloudFixture('environments/update'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->updateEnvironment(
+        'env-a14fe550-4e39-4ff2-8016-a20e4d32a996',
+        name: 'updated-env',
+        phpVersion: PhpVersion::V8_4,
+    );
+
+    Saloon::assertSent(UpdateEnvironmentRequest::class);
+    expect($result)->toBeInstanceOf(EnvironmentData::class);
+    expect($result->name)->toBe('updated-env');
+});
+
+it('updates an environment with a string php version', function () {
+    Saloon::fake([
+        UpdateEnvironmentRequest::class => new LaravelCloudFixture('environments/update'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->updateEnvironment(
+        'env-a14fe550-4e39-4ff2-8016-a20e4d32a996',
+        phpVersion: '8.4',
+    );
+
+    Saloon::assertSent(UpdateEnvironmentRequest::class);
+    expect($result)->toBeInstanceOf(EnvironmentData::class);
+});
+
+it('updates an environment via updateEnvironmentWith()', function () {
+    Saloon::fake([
+        UpdateEnvironmentRequest::class => new LaravelCloudFixture('environments/update'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->updateEnvironmentWith(
+        'env-a14fe550-4e39-4ff2-8016-a20e4d32a996',
+        new UpdateEnvironmentData(name: 'updated-env'),
+    );
+
+    Saloon::assertSent(UpdateEnvironmentRequest::class);
+    expect($result)->toBeInstanceOf(EnvironmentData::class);
+});

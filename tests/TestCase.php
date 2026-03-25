@@ -5,6 +5,7 @@ namespace Redberry\LaravelCloudSdk\Tests;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Redberry\LaravelCloudSdk\LaravelCloudServiceProvider;
 use Saloon\Laravel\SaloonServiceProvider;
+use Spatie\LaravelData\LaravelDataServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -12,6 +13,7 @@ class TestCase extends Orchestra
     {
         return [
             SaloonServiceProvider::class,
+            LaravelDataServiceProvider::class,
             LaravelCloudServiceProvider::class,
         ];
     }
