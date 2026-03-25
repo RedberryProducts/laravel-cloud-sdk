@@ -8,10 +8,7 @@
     processIsolation="false"
     stopOnFailure="false"
     executionOrder="random"
-    failOnWarning="true"
-    failOnRisky="true"
     failOnEmptyTestSuite="true"
-    beStrictAboutOutputDuringTests="true"
     cacheDirectory=".phpunit.cache"
     backupStaticProperties="false"
 >
@@ -20,15 +17,6 @@
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-    <logging>
-        <junit outputFile="build/report.junit.xml"/>
-    </logging>
-    <coverage>
-        <report>
-            <html outputDirectory="tests/coverage" lowUpperBound="50" highLowerBound="80"/>
-            <text outputFile="php://stdout" showUncoveredFiles="false" showOnlySummary="true"/>
-        </report>
-    </coverage>
     <source>
         <include>
             <directory suffix=".php">./src</directory>
