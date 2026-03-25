@@ -29,4 +29,4 @@ phpunit.xml
 phpstan.neon
 testbench.yaml
 /docs
-/coverage
+/tests/coverage
