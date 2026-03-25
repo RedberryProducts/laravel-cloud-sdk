@@ -1,13 +1,13 @@
 <?php
 
-use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\GetWebsocketApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\ListWebsocketApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\ListWebsocketClustersRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $request = new GetWebsocketApplicationRequest('app-123');

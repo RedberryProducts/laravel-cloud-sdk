@@ -1,12 +1,12 @@
 <?php
 
-use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
+use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
 use Redberry\LaravelCloudSdk\Requests\Buckets\GetBucketRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\ListBucketsRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $request = new GetBucketRequest('bucket-123');

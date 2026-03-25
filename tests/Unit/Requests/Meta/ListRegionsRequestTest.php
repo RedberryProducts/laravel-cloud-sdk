@@ -1,13 +1,13 @@
 <?php
 
+use Illuminate\Support\Collection;
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\Meta\RegionData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Requests\Meta\ListRegionsRequest;
-use Illuminate\Support\Collection;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $request = new ListRegionsRequest;

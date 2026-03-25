@@ -1,12 +1,12 @@
 <?php
 
-use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
 use Redberry\LaravelCloudSdk\Requests\Caches\GetCacheRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\ListCachesRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $request = new GetCacheRequest('cache-123');

@@ -1,16 +1,16 @@
 <?php
 
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
 use Redberry\LaravelCloudSdk\Data\Applications\ApplicationRepositoryData;
 use Redberry\LaravelCloudSdk\Data\Applications\UpdateApplicationData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\SourceControlProvider;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\UpdateApplicationRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $data = new UpdateApplicationData(name: 'updated-app');

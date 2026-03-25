@@ -1,5 +1,6 @@
 <?php
 
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentVariableData;
@@ -8,13 +9,12 @@ use Redberry\LaravelCloudSdk\Data\Environments\NetworkSettingsData;
 use Redberry\LaravelCloudSdk\Enums\EnvironmentStatus;
 use Redberry\LaravelCloudSdk\Enums\NodeVersion;
 use Redberry\LaravelCloudSdk\Enums\PhpVersion;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\CreateEnvironmentRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $data = new CreateEnvironmentData(branch: 'main', name: 'staging');

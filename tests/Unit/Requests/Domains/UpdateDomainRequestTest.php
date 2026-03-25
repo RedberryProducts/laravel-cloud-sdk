@@ -1,16 +1,16 @@
 <?php
 
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\Domains\DomainData;
 use Redberry\LaravelCloudSdk\Data\Domains\UpdateDomainData;
 use Redberry\LaravelCloudSdk\Enums\DomainVerificationMethod;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\Domains\ListDomainsRequest;
 use Redberry\LaravelCloudSdk\Requests\Domains\UpdateDomainRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $data = new UpdateDomainData(verificationMethod: DomainVerificationMethod::REAL_TIME);

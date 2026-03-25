@@ -1,11 +1,11 @@
 <?php
 
+use Carbon\CarbonImmutable;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
 use Redberry\LaravelCloudSdk\Enums\BucketJurisdiction;
 use Redberry\LaravelCloudSdk\Enums\BucketStatus;
 use Redberry\LaravelCloudSdk\Enums\BucketType;
 use Redberry\LaravelCloudSdk\Enums\BucketVisibility;
-use Carbon\CarbonImmutable;
 
 it('can be created from API response data', function () {
     $responseData = [

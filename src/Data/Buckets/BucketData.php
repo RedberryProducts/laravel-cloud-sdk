@@ -2,11 +2,11 @@
 
 namespace Redberry\LaravelCloudSdk\Data\Buckets;
 
+use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Enums\BucketJurisdiction;
 use Redberry\LaravelCloudSdk\Enums\BucketStatus;
 use Redberry\LaravelCloudSdk\Enums\BucketType;
-use Redberry\LaravelCloudSdk\Enums\BucketJurisdiction;
 use Redberry\LaravelCloudSdk\Enums\BucketVisibility;
-use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 
 class BucketData extends Data

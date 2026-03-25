@@ -12,8 +12,8 @@ use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\EvictionPolicy;
 use Redberry\LaravelCloudSdk\Requests\Caches\CreateCacheRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\GetCacheRequest;
-use Redberry\LaravelCloudSdk\Requests\Caches\ListCacheTypesRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\ListCachesRequest;
+use Redberry\LaravelCloudSdk\Requests\Caches\ListCacheTypesRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\UpdateCacheRequest;
 use Spatie\LaravelData\Optional;
 

@@ -1,12 +1,12 @@
 <?php
 
-use Redberry\LaravelCloudSdk\Data\Instances\InstanceSizeData;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
-use Redberry\LaravelCloudSdk\Requests\Instances\ListInstanceSizesRequest;
 use Illuminate\Support\Collection;
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
+use Redberry\LaravelCloudSdk\Data\Instances\InstanceSizeData;
+use Redberry\LaravelCloudSdk\Requests\Instances\ListInstanceSizesRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $request = new ListInstanceSizesRequest;

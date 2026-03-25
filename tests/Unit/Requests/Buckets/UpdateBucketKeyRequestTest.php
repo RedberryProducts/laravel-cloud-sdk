@@ -1,15 +1,15 @@
 <?php
 
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketKeyData;
 use Redberry\LaravelCloudSdk\Enums\KeyPermission;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Requests\Buckets\ListBucketKeysRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\ListBucketsRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\UpdateBucketKeyRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $data = new UpdateBucketKeyData(name: 'updated-key');

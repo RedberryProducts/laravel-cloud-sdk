@@ -1,12 +1,12 @@
 <?php
 
-use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
-use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\ListDatabaseClustersRequest;
 use Illuminate\Support\Collection;
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
+use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\ListDatabaseClustersRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $request = new ListDatabaseClustersRequest;

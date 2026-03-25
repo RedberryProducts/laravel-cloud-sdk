@@ -1,5 +1,6 @@
 <?php
 
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\UpdateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
@@ -7,12 +8,11 @@ use Redberry\LaravelCloudSdk\Enums\WebsocketConnectionDistributionStrategy;
 use Redberry\LaravelCloudSdk\Enums\WebsocketMaxConnections;
 use Redberry\LaravelCloudSdk\Enums\WebsocketServerType;
 use Redberry\LaravelCloudSdk\Enums\WebsocketStatus;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\ListWebsocketClustersRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\UpdateWebsocketClusterRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $data = new UpdateWebsocketClusterData(name: 'updated-cluster');

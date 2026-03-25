@@ -2,10 +2,10 @@
 
 namespace Redberry\LaravelCloudSdk\Data\Instances;
 
+use Carbon\CarbonImmutable;
 use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
 use Redberry\LaravelCloudSdk\Enums\InstanceSize;
 use Redberry\LaravelCloudSdk\Enums\InstanceType;
-use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 
 class InstanceData extends Data

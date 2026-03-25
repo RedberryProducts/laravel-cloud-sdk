@@ -2,8 +2,8 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\Buckets;
 
-use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
 use Illuminate\Support\Collection;
+use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;

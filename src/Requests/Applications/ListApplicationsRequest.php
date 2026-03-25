@@ -2,8 +2,8 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\Applications;
 
-use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
 use Illuminate\Support\Collection;
+use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;

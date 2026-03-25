@@ -2,11 +2,11 @@
 
 namespace Redberry\LaravelCloudSdk\Data\Caches;
 
+use Carbon\CarbonImmutable;
 use Redberry\LaravelCloudSdk\Enums\CacheSize;
 use Redberry\LaravelCloudSdk\Enums\CacheStatus;
 use Redberry\LaravelCloudSdk\Enums\CacheType;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
-use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 
 class CacheData extends Data

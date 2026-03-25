@@ -2,11 +2,11 @@
 
 namespace Redberry\LaravelCloudSdk\Data\Domains;
 
+use Carbon\CarbonImmutable;
 use Redberry\LaravelCloudSdk\Enums\DomainCloudflareStrategy;
 use Redberry\LaravelCloudSdk\Enums\DomainRedirect;
 use Redberry\LaravelCloudSdk\Enums\DomainStatus;
 use Redberry\LaravelCloudSdk\Enums\DomainType;
-use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 
 class DomainData extends Data

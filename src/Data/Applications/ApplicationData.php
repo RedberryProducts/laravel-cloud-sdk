@@ -2,8 +2,8 @@
 
 namespace Redberry\LaravelCloudSdk\Data\Applications;
 
-use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Spatie\LaravelData\Data;
 
 class ApplicationData extends Data

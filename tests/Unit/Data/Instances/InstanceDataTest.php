@@ -1,12 +1,12 @@
 <?php
 
+use Carbon\CarbonImmutable;
 use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
 use Redberry\LaravelCloudSdk\Enums\DaemonType;
 use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
 use Redberry\LaravelCloudSdk\Enums\InstanceSize;
 use Redberry\LaravelCloudSdk\Enums\InstanceType;
-use Carbon\CarbonImmutable;
 
 it('builds from response attributes', function () {
     $data = InstanceData::fromResponse([

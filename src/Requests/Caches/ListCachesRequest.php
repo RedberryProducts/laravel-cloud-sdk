@@ -2,8 +2,8 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\Caches;
 
-use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
 use Illuminate\Support\Collection;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;

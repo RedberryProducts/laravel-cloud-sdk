@@ -1,5 +1,6 @@
 <?php
 
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentVariableData;
 use Redberry\LaravelCloudSdk\Data\Environments\FilesystemKeyData;
@@ -15,13 +16,12 @@ use Redberry\LaravelCloudSdk\Enums\PhpVersion;
 use Redberry\LaravelCloudSdk\Enums\ResponseHeadersContentType;
 use Redberry\LaravelCloudSdk\Enums\ResponseHeadersFrame;
 use Redberry\LaravelCloudSdk\Enums\ResponseHeadersRobotsTag;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\UpdateEnvironmentRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $data = new UpdateEnvironmentData(name: 'updated-env');

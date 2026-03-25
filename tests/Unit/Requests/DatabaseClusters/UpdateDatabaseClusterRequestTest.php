@@ -1,5 +1,6 @@
 <?php
 
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseConnectionData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
@@ -9,12 +10,11 @@ use Redberry\LaravelCloudSdk\Enums\DatabaseDriver;
 use Redberry\LaravelCloudSdk\Enums\DatabaseProtocol;
 use Redberry\LaravelCloudSdk\Enums\DatabaseStatus;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\ListDatabaseClustersRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\UpdateDatabaseClusterRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $data = new UpdateDatabaseClusterData(

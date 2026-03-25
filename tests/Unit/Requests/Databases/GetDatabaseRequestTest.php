@@ -1,13 +1,13 @@
 <?php
 
-use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
+use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\ListDatabaseClustersRequest;
 use Redberry\LaravelCloudSdk\Requests\Databases\GetDatabaseRequest;
 use Redberry\LaravelCloudSdk\Requests\Databases\ListDatabasesRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $request = new GetDatabaseRequest('cluster-123', 'db-456');

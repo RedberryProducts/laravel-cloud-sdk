@@ -1,12 +1,12 @@
 <?php
 
-use Redberry\LaravelCloudSdk\Data\Caches\CacheTypeData;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
-use Redberry\LaravelCloudSdk\Requests\Caches\ListCacheTypesRequest;
 use Illuminate\Support\Collection;
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheTypeData;
+use Redberry\LaravelCloudSdk\Requests\Caches\ListCacheTypesRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $request = new ListCacheTypesRequest;

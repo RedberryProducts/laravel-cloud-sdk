@@ -2,8 +2,8 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\WebsocketApplications;
 
-use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 use Illuminate\Support\Collection;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;

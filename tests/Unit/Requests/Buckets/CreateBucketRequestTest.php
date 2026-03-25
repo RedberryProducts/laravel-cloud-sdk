@@ -1,5 +1,6 @@
 <?php
 
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
 use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketData;
 use Redberry\LaravelCloudSdk\Enums\BucketJurisdiction;
@@ -7,11 +8,10 @@ use Redberry\LaravelCloudSdk\Enums\BucketStatus;
 use Redberry\LaravelCloudSdk\Enums\BucketType;
 use Redberry\LaravelCloudSdk\Enums\BucketVisibility;
 use Redberry\LaravelCloudSdk\Enums\KeyPermission;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Requests\Buckets\CreateBucketRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $data = new CreateBucketData(

@@ -51,7 +51,7 @@ it('throws a RuntimeException when resolved from container without a configured 
     config(['laravel-cloud-sdk.token' => null]);
 
     app(LaravelCloud::class);
-})->throws(\RuntimeException::class, 'Laravel Cloud token is not configured');
+})->throws(RuntimeException::class, 'Laravel Cloud token is not configured');
 
 // --- Facade forToken ---
 

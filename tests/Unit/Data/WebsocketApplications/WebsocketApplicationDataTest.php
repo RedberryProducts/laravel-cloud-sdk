@@ -1,7 +1,7 @@
 <?php
 
-use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 
 it('can be created from API response data', function () {
     $data = WebsocketApplicationData::fromResponse([

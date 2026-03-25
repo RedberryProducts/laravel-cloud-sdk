@@ -2,8 +2,8 @@
 
 namespace Redberry\LaravelCloudSdk\Data\Buckets;
 
-use Redberry\LaravelCloudSdk\Enums\KeyPermission;
 use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Enums\KeyPermission;
 use Spatie\LaravelData\Data;
 
 class BucketKeyData extends Data

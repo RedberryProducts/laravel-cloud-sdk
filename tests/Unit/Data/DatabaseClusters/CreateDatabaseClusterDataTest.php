@@ -4,7 +4,6 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
-
 use Spatie\LaravelData\Optional;
 
 it('can be constructed with all parameters', function () {

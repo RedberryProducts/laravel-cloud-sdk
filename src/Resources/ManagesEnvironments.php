@@ -5,7 +5,6 @@ namespace Redberry\LaravelCloudSdk\Resources;
 use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
-use Redberry\LaravelCloudSdk\Data\Environments\FilesystemKeyData;
 use Redberry\LaravelCloudSdk\Data\Environments\HstsData;
 use Redberry\LaravelCloudSdk\Data\Environments\UpdateEnvironmentData;
 use Redberry\LaravelCloudSdk\Enums\CacheStrategy;

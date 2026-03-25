@@ -2,10 +2,10 @@
 
 namespace Redberry\LaravelCloudSdk\Data\Environments;
 
+use Carbon\CarbonImmutable;
 use Redberry\LaravelCloudSdk\Enums\EnvironmentStatus;
 use Redberry\LaravelCloudSdk\Enums\NodeVersion;
 use Redberry\LaravelCloudSdk\Enums\PhpVersion;
-use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 
 class EnvironmentData extends Data

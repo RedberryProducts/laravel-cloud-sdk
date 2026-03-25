@@ -2,8 +2,8 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\Environments;
 
-use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
 use Illuminate\Support\Collection;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;

@@ -1,5 +1,6 @@
 <?php
 
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheConnectionData;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
 use Redberry\LaravelCloudSdk\Data\Caches\CreateCacheData;
@@ -8,11 +9,10 @@ use Redberry\LaravelCloudSdk\Enums\CacheSize;
 use Redberry\LaravelCloudSdk\Enums\CacheStatus;
 use Redberry\LaravelCloudSdk\Enums\CacheType;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Requests\Caches\CreateCacheRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $data = new CreateCacheData(

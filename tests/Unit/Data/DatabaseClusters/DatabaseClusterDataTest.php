@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\CarbonImmutable;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\AwsRdsConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseConnectionData;
@@ -8,7 +9,6 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\DatabaseStatus;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
-use Carbon\CarbonImmutable;
 
 it('can be created from neon response data', function () {
     $responseData = [

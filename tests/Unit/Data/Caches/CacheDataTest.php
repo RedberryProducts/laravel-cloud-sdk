@@ -1,12 +1,12 @@
 <?php
 
-use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
+use Carbon\CarbonImmutable;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheConnectionData;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
+use Redberry\LaravelCloudSdk\Enums\CacheSize;
 use Redberry\LaravelCloudSdk\Enums\CacheStatus;
 use Redberry\LaravelCloudSdk\Enums\CacheType;
-use Redberry\LaravelCloudSdk\Enums\CacheSize;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
-use Carbon\CarbonImmutable;
 
 it('can be created from API response data', function () {
     $responseData = [

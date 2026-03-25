@@ -1,17 +1,17 @@
 <?php
 
+use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
 use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketData;
 use Redberry\LaravelCloudSdk\Enums\BucketJurisdiction;
 use Redberry\LaravelCloudSdk\Enums\BucketStatus;
 use Redberry\LaravelCloudSdk\Enums\BucketType;
 use Redberry\LaravelCloudSdk\Enums\BucketVisibility;
-use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Requests\Buckets\ListBucketsRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\UpdateBucketRequest;
+use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
-use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 
 it('resolves the endpoint correctly', function () {
     $data = new UpdateBucketData(name: 'updated-bucket');

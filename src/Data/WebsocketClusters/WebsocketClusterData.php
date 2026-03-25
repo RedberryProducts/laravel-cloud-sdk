@@ -2,12 +2,12 @@
 
 namespace Redberry\LaravelCloudSdk\Data\WebsocketClusters;
 
+use Carbon\CarbonImmutable;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\WebsocketConnectionDistributionStrategy;
 use Redberry\LaravelCloudSdk\Enums\WebsocketMaxConnections;
 use Redberry\LaravelCloudSdk\Enums\WebsocketServerType;
 use Redberry\LaravelCloudSdk\Enums\WebsocketStatus;
-use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 
 class WebsocketClusterData extends Data
