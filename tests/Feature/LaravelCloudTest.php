@@ -30,17 +30,37 @@ it('can be instantiated via forToken()', function () {
 
 // --- Container / Service Provider ---
 
-it('can be resolved from the container using the config token', function () {
+it('can be resolved from the container when a token is configured', function () {
+    config(['laravel-cloud-sdk.token' => 'test-token']);
+
     $cloud = app(LaravelCloud::class);
 
     expect($cloud)->toBeInstanceOf(LaravelCloud::class);
 });
 
 it('creates a new instance on each container resolution', function () {
+    config(['laravel-cloud-sdk.token' => 'test-token']);
+
     $first = app(LaravelCloud::class);
     $second = app(LaravelCloud::class);
 
     expect($first)->not->toBe($second);
+});
+
+it('throws a RuntimeException when resolved from container without a configured token', function () {
+    config(['laravel-cloud-sdk.token' => null]);
+
+    app(LaravelCloud::class);
+})->throws(\RuntimeException::class, 'Laravel Cloud token is not configured');
+
+// --- Facade forToken ---
+
+it('facade forToken() returns a new LaravelCloud instance without touching the container', function () {
+    config(['laravel-cloud-sdk.token' => null]);
+
+    $cloud = LaravelCloudFacade::forToken('dynamic-token');
+
+    expect($cloud)->toBeInstanceOf(LaravelCloud::class);
 });
 
 // --- Facade ---

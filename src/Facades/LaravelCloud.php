@@ -13,4 +13,9 @@ class LaravelCloud extends Facade
     {
         return \Redberry\LaravelCloudSdk\LaravelCloud::class;
     }
+
+    public static function forToken(string $token): \Redberry\LaravelCloudSdk\LaravelCloud
+    {
+        return new \Redberry\LaravelCloudSdk\LaravelCloud($token);
+    }
 }
