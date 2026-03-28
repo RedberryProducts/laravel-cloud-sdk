@@ -76,6 +76,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static ApplicationData createApplicationWith(CreateApplicationData $data)
  * @method static ApplicationData updateApplication(string $id, string|SourceControlProvider $sourceControlProviderType = null, string $name = null, string $slug = null, string $defaultEnvironmentId = null, string $repository = null, string|null $slackChannel = null)
  * @method static ApplicationData updateApplicationWith(string $id, UpdateApplicationData $data)
+ * @method static void deleteApplication(string $id)
  *
  * Environments
  * @method static Collection environments(string $applicationId)
@@ -84,6 +85,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static EnvironmentData createEnvironmentWith(string $applicationId, CreateEnvironmentData $data)
  * @method static EnvironmentData updateEnvironment(string $id, string $name = null, string $slug = null, string|EnvironmentColor $color = null, string $branch = null, string|PhpVersion $phpVersion = null, string|NodeVersion $nodeVersion = null, string|null $buildCommand = null, string|null $deployCommand = null, bool $usesPushToDeploy = null, bool $usesDeployHook = null, bool $usesOctane = null, bool $usesVanityDomain = null, int $timeout = null, int $sleepTimeout = null, int $shutdownTimeout = null, bool $usesPurgeEdgeCacheOnDeploy = null, string|null $nightwatchToken = null, string|CacheStrategy $cacheStrategy = null, string|ResponseHeadersFrame $responseHeadersFrame = null, string|ResponseHeadersContentType $responseHeadersContentType = null, string|ResponseHeadersRobotsTag $responseHeadersRobotsTag = null, HstsData|null $responseHeadersHsts = null, array|null $filesystemKeys = null, string|FirewallRateLimitLevel|null $firewallRateLimitLevel = null, bool $firewallUnderAttackMode = null, string|null $databaseSchemaId = null, string|null $cacheId = null, string|null $websocketApplicationId = null)
  * @method static EnvironmentData updateEnvironmentWith(string $id, UpdateEnvironmentData $data)
+ * @method static void deleteEnvironment(string $id)
  *
  * Instances
  * @method static Collection instances(string $environmentId)
@@ -93,14 +95,17 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static InstanceData updateInstance(string $id, string $name = null, string|InstanceSize $size = null, string|InstanceScalingType $scalingType = null, int $maxReplicas = null, int $minReplicas = null, bool $usesSleepMode = null, int $sleepTimeout = null, bool $usesScheduler = null, bool $usesOctane = null, bool $usesInertiaSsr = null, int|null $scalingCpuThresholdPercentage = null, int|null $scalingMemoryThresholdPercentage = null)
  * @method static InstanceData updateInstanceWith(string $id, UpdateInstanceData $data)
  * @method static Collection instanceSizes()
+ * @method static void deleteInstance(string $id)
  *
  * Domains
  * @method static Collection domains(string $environmentId)
+ * @method static DomainData domain(string $id)
  * @method static DomainData createDomain(string $environmentId, string $name, string|DomainRedirect $wwwRedirect, string|DomainVerificationMethod $verificationMethod, string|DomainCloudflareStrategy $cloudflareStrategy = null, bool|null $wildcardEnabled = null, bool|null $allowDowntime = null)
  * @method static DomainData createDomainWith(string $environmentId, CreateDomainData $data)
  * @method static DomainData updateDomain(string $id, string|DomainVerificationMethod $verificationMethod)
  * @method static DomainData updateDomainWith(string $id, UpdateDomainData $data)
  * @method static DomainData verifyDomain(string $id)
+ * @method static void deleteDomain(string $id)
  *
  * Database Clusters
  * @method static Collection databaseClusters()
@@ -110,6 +115,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static DatabaseClusterData updateDatabaseCluster(string $id, NeonConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config)
  * @method static DatabaseClusterData updateDatabaseClusterWith(string $id, UpdateDatabaseClusterData $data)
  * @method static Collection databaseTypes()
+ * @method static void deleteDatabaseCluster(string $id)
  *
  * Databases
  * @method static Collection databases(string $clusterId)
@@ -125,6 +131,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static CacheData updateCache(string $id, string $name = null, string|CacheSize $size = null, bool $autoUpgradeEnabled = null, bool $isPublic = null, string|EvictionPolicy|null $evictionPolicy = null)
  * @method static CacheData updateCacheWith(string $id, UpdateCacheData $data)
  * @method static Collection cacheTypes()
+ * @method static void deleteCache(string $id)
  *
  * Object Storage Buckets
  * @method static Collection buckets()
@@ -149,6 +156,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static WebsocketClusterData createWebsocketClusterWith(CreateWebsocketClusterData $data)
  * @method static WebsocketClusterData updateWebsocketCluster(string $id, string $name = null, string|WebsocketMaxConnections $maxConnections = null)
  * @method static WebsocketClusterData updateWebsocketClusterWith(string $id, UpdateWebsocketClusterData $data)
+ * @method static void deleteWebsocketCluster(string $id)
  *
  * Websocket Applications
  * @method static Collection websocketApplications(string $clusterId)
@@ -157,6 +165,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static WebsocketApplicationData createWebsocketApplicationWith(string $clusterId, CreateWebsocketApplicationData $data)
  * @method static WebsocketApplicationData updateWebsocketApplication(string $id, string $name = null, int $pingInterval = null, int $activityTimeout = null, array|null $allowedOrigins = null)
  * @method static WebsocketApplicationData updateWebsocketApplicationWith(string $id, UpdateWebsocketApplicationData $data)
+ * @method static void deleteWebsocketApplication(string $id)
  *
  * Regions
  * @method static Collection regions()
