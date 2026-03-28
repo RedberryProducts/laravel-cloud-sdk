@@ -12,6 +12,7 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\CreateDatabaseClusterRequest;
+use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\DeleteDatabaseClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\GetDatabaseClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\ListDatabaseClustersRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\ListDatabaseTypesRequest;
@@ -71,5 +72,10 @@ trait ManagesDatabaseClusters
     public function databaseTypes(): Collection
     {
         return $this->connector->send(new ListDatabaseTypesRequest)->dtoOrFail();
+    }
+
+    public function deleteDatabaseCluster(string $id): void
+    {
+        $this->connector->send(new DeleteDatabaseClusterRequest($id))->throw();
     }
 }

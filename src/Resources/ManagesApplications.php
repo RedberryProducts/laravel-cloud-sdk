@@ -9,6 +9,7 @@ use Redberry\LaravelCloudSdk\Data\Applications\UpdateApplicationData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\SourceControlProvider;
 use Redberry\LaravelCloudSdk\Requests\Applications\CreateApplicationRequest;
+use Redberry\LaravelCloudSdk\Requests\Applications\DeleteApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\GetApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\UpdateApplicationRequest;
@@ -72,5 +73,10 @@ trait ManagesApplications
     public function updateApplicationWith(string $id, UpdateApplicationData $data): ApplicationData
     {
         return $this->connector->send(new UpdateApplicationRequest($id, $data))->dtoOrFail();
+    }
+
+    public function deleteApplication(string $id): void
+    {
+        $this->connector->send(new DeleteApplicationRequest($id))->throw();
     }
 }

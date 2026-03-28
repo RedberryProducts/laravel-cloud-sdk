@@ -11,6 +11,7 @@ use Redberry\LaravelCloudSdk\Enums\CacheType;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\EvictionPolicy;
 use Redberry\LaravelCloudSdk\Requests\Caches\CreateCacheRequest;
+use Redberry\LaravelCloudSdk\Requests\Caches\DeleteCacheRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\GetCacheRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\ListCachesRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\ListCacheTypesRequest;
@@ -82,5 +83,10 @@ trait ManagesCaches
     public function cacheTypes(): Collection
     {
         return $this->connector->send(new ListCacheTypesRequest)->dtoOrFail();
+    }
+
+    public function deleteCache(string $id): void
+    {
+        $this->connector->send(new DeleteCacheRequest($id))->throw();
     }
 }

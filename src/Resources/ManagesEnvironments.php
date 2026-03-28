@@ -16,6 +16,7 @@ use Redberry\LaravelCloudSdk\Enums\ResponseHeadersContentType;
 use Redberry\LaravelCloudSdk\Enums\ResponseHeadersFrame;
 use Redberry\LaravelCloudSdk\Enums\ResponseHeadersRobotsTag;
 use Redberry\LaravelCloudSdk\Requests\Environments\CreateEnvironmentRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\UpdateEnvironmentRequest;
@@ -120,5 +121,10 @@ trait ManagesEnvironments
     public function updateEnvironmentWith(string $id, UpdateEnvironmentData $data): EnvironmentData
     {
         return $this->connector->send(new UpdateEnvironmentRequest($id, $data))->dtoOrFail();
+    }
+
+    public function deleteEnvironment(string $id): void
+    {
+        $this->connector->send(new DeleteEnvironmentRequest($id))->throw();
     }
 }

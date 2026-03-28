@@ -10,6 +10,7 @@ use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
 use Redberry\LaravelCloudSdk\Enums\InstanceSize;
 use Redberry\LaravelCloudSdk\Enums\InstanceType;
 use Redberry\LaravelCloudSdk\Requests\Instances\CreateInstanceRequest;
+use Redberry\LaravelCloudSdk\Requests\Instances\DeleteInstanceRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\GetInstanceRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\ListInstanceSizesRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\ListInstancesRequest;
@@ -102,5 +103,10 @@ trait ManagesInstances
     public function instanceSizes(): Collection
     {
         return $this->connector->send(new ListInstanceSizesRequest)->dtoOrFail();
+    }
+
+    public function deleteInstance(string $id): void
+    {
+        $this->connector->send(new DeleteInstanceRequest($id))->throw();
     }
 }

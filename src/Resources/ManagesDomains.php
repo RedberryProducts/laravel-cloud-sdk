@@ -10,6 +10,7 @@ use Redberry\LaravelCloudSdk\Enums\DomainCloudflareStrategy;
 use Redberry\LaravelCloudSdk\Enums\DomainRedirect;
 use Redberry\LaravelCloudSdk\Enums\DomainVerificationMethod;
 use Redberry\LaravelCloudSdk\Requests\Domains\CreateDomainRequest;
+use Redberry\LaravelCloudSdk\Requests\Domains\DeleteDomainRequest;
 use Redberry\LaravelCloudSdk\Requests\Domains\ListDomainsRequest;
 use Redberry\LaravelCloudSdk\Requests\Domains\UpdateDomainRequest;
 use Redberry\LaravelCloudSdk\Requests\Domains\VerifyDomainRequest;
@@ -66,5 +67,10 @@ trait ManagesDomains
     public function verifyDomain(string $id): DomainData
     {
         return $this->connector->send(new VerifyDomainRequest($id))->dtoOrFail();
+    }
+
+    public function deleteDomain(string $id): void
+    {
+        $this->connector->send(new DeleteDomainRequest($id))->throw();
     }
 }
