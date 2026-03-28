@@ -24,6 +24,7 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\Databases\CreateDatabaseData;
 use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
+use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
 use Redberry\LaravelCloudSdk\Data\Domains\CreateDomainData;
 use Redberry\LaravelCloudSdk\Data\Domains\DomainData;
 use Redberry\LaravelCloudSdk\Data\Domains\UpdateDomainData;
@@ -173,6 +174,11 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static WebsocketApplicationData updateWebsocketApplication(string $id, string $name = null, int $pingInterval = null, int $activityTimeout = null, array|null $allowedOrigins = null)
  * @method static WebsocketApplicationData updateWebsocketApplicationWith(string $id, UpdateWebsocketApplicationData $data)
  * @method static void deleteWebsocketApplication(string $id)
+ *
+ * Deployments
+ * @method static Collection deployments(string $environmentId)
+ * @method static DeploymentData deployment(string $id)
+ * @method static DeploymentData deploy(string $environmentId)
  *
  * Regions
  * @method static Collection regions()

@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Sat, 28 Mar 2026 17:00:55 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "788",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Sat, 28 Mar 2026 17:00:54 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "118",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 6ffb2d60efb7e965f3f9079a1ac5ea8c.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "IST50-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"depl-a168da57-c492-49de-82e9-bfe247f829e9\",\"type\":\"deployments\",\"attributes\":{\"status\":\"deployment.succeeded\",\"branch_name\":\"main\",\"commit_hash\":\"REDACTED\",\"commit_message\":\"REDACTED\",\"commit_author\":null,\"failure_reason\":null,\"php_major_version\":\"8.4\",\"build_command\":\"composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader\\n\\nnpm ci --audit false\\nnpm run build\",\"node_version\":\"24\",\"uses_octane\":false,\"uses_hibernation\":false,\"started_at\":\"2026-03-28T16:58:38.000000Z\",\"finished_at\":\"2026-03-28T16:59:39.000000Z\"},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/deployments\\\/depl-a168da57-c492-49de-82e9-bfe247f829e9\"}}}}",
+    "context": []
+}

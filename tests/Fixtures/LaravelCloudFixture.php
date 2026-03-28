@@ -63,6 +63,7 @@ class LaravelCloudFixture extends Fixture
         $body = $this->redactEnvironmentVariableValues($body);
         $body = $this->redactWebsocketApplicationKeys($body);
         $body = $this->redactDomainData($body);
+        $body = $this->redactDeploymentData($body);
 
         $recordedResponse->data = json_encode($body, JSON_THROW_ON_ERROR);
 
@@ -147,6 +148,27 @@ class LaravelCloudFixture extends Fixture
                 } else {
                     $value = $this->redactWebsocketApplicationKeys($value);
                 }
+            }
+        }
+
+        return $data;
+    }
+
+    private function redactDeploymentData(array $data): array
+    {
+        foreach ($data as $key => &$value) {
+            if (! is_array($value)) {
+                continue;
+            }
+
+            if (($value['type'] ?? null) === 'deployments' && isset($value['attributes'])) {
+                foreach (['commit_hash', 'commit_message', 'commit_author'] as $field) {
+                    if (! empty($value['attributes'][$field])) {
+                        $value['attributes'][$field] = 'REDACTED';
+                    }
+                }
+            } else {
+                $value = $this->redactDeploymentData($value);
             }
         }
 
