@@ -31,3 +31,4 @@ testbench.yaml
 /docs
 /tests/coverage
 /.claude
+.env

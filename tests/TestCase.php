@@ -20,6 +20,6 @@ class TestCase extends Orchestra
 
     protected function defineEnvironment($app): void
     {
-        config()->set('laravel-cloud-sdk.token', 'test-token');
+        config()->set('laravel-cloud-sdk.token', env('LARAVEL_CLOUD_TOKEN', 'test-token'));
     }
 }
