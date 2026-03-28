@@ -11,6 +11,7 @@ use Redberry\LaravelCloudSdk\Enums\DomainRedirect;
 use Redberry\LaravelCloudSdk\Enums\DomainVerificationMethod;
 use Redberry\LaravelCloudSdk\Requests\Domains\CreateDomainRequest;
 use Redberry\LaravelCloudSdk\Requests\Domains\DeleteDomainRequest;
+use Redberry\LaravelCloudSdk\Requests\Domains\GetDomainRequest;
 use Redberry\LaravelCloudSdk\Requests\Domains\ListDomainsRequest;
 use Redberry\LaravelCloudSdk\Requests\Domains\UpdateDomainRequest;
 use Redberry\LaravelCloudSdk\Requests\Domains\VerifyDomainRequest;
@@ -24,6 +25,11 @@ trait ManagesDomains
     public function domains(string $environmentId): Collection
     {
         return $this->connector->send(new ListDomainsRequest($environmentId))->dtoOrFail();
+    }
+
+    public function domain(string $id): DomainData
+    {
+        return $this->connector->send(new GetDomainRequest($id))->dtoOrFail();
     }
 
     public function createDomain(
