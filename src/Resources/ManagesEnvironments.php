@@ -4,11 +4,14 @@ namespace Redberry\LaravelCloudSdk\Resources;
 
 use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\HstsData;
+use Redberry\LaravelCloudSdk\Data\Environments\SetEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\UpdateEnvironmentData;
 use Redberry\LaravelCloudSdk\Enums\CacheStrategy;
 use Redberry\LaravelCloudSdk\Enums\EnvironmentColor;
+use Redberry\LaravelCloudSdk\Enums\EnvironmentVariableMethod;
 use Redberry\LaravelCloudSdk\Enums\FirewallRateLimitLevel;
 use Redberry\LaravelCloudSdk\Enums\NodeVersion;
 use Redberry\LaravelCloudSdk\Enums\PhpVersion;
@@ -17,8 +20,10 @@ use Redberry\LaravelCloudSdk\Enums\ResponseHeadersFrame;
 use Redberry\LaravelCloudSdk\Enums\ResponseHeadersRobotsTag;
 use Redberry\LaravelCloudSdk\Requests\Environments\CreateEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentVariablesRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\SetEnvironmentVariablesRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\UpdateEnvironmentRequest;
 use Spatie\LaravelData\Optional;
 
@@ -126,5 +131,33 @@ trait ManagesEnvironments
     public function deleteEnvironment(string $id): void
     {
         $this->connector->send(new DeleteEnvironmentRequest($id))->throw();
+    }
+
+    public function setEnvironmentVariables(
+        string $environmentId,
+        string|EnvironmentVariableMethod $method,
+        array $variables,
+    ): EnvironmentData {
+        return $this->setEnvironmentVariablesWith($environmentId, new SetEnvironmentVariablesData(
+            method: $method,
+            variables: $variables,
+        ));
+    }
+
+    public function setEnvironmentVariablesWith(string $environmentId, SetEnvironmentVariablesData $data): EnvironmentData
+    {
+        return $this->connector->send(new SetEnvironmentVariablesRequest($environmentId, $data))->dtoOrFail();
+    }
+
+    public function deleteEnvironmentVariables(string $environmentId, array $keys): EnvironmentData
+    {
+        return $this->deleteEnvironmentVariablesWith($environmentId, new DeleteEnvironmentVariablesData(
+            keys: $keys,
+        ));
+    }
+
+    public function deleteEnvironmentVariablesWith(string $environmentId, DeleteEnvironmentVariablesData $data): EnvironmentData
+    {
+        return $this->connector->send(new DeleteEnvironmentVariablesRequest($environmentId, $data))->dtoOrFail();
     }
 }
