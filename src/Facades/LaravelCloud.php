@@ -16,6 +16,8 @@ use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
 use Redberry\LaravelCloudSdk\Data\Caches\CreateCacheData;
 use Redberry\LaravelCloudSdk\Data\Caches\UpdateCacheData;
+use Redberry\LaravelCloudSdk\Data\Commands\CommandData;
+use Redberry\LaravelCloudSdk\Data\Commands\RunCommandData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\AwsRdsConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
@@ -174,6 +176,12 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static WebsocketApplicationData updateWebsocketApplication(string $id, string $name = null, int $pingInterval = null, int $activityTimeout = null, array|null $allowedOrigins = null)
  * @method static WebsocketApplicationData updateWebsocketApplicationWith(string $id, UpdateWebsocketApplicationData $data)
  * @method static void deleteWebsocketApplication(string $id)
+ *
+ * Commands
+ * @method static Collection commands(string $environmentId)
+ * @method static CommandData command(string $id)
+ * @method static CommandData runCommand(string $environmentId, string $command)
+ * @method static CommandData runCommandWith(string $environmentId, RunCommandData $data)
  *
  * Deployments
  * @method static Collection deployments(string $environmentId)

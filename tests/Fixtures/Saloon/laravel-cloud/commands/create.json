@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Sun, 29 Mar 2026 07:48:30 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "394",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Sun, 29 Mar 2026 07:48:30 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "118",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 7efdfc8e9ebc26758933b0151e22707e.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "FRA60-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"comm-a16a1894-afde-43d0-a86c-67fd53ceba6b\",\"type\":\"commands\",\"attributes\":{\"command\":\"php artisan cache:clear\",\"output\":null,\"status\":\"pending\",\"exit_code\":null,\"failure_reason\":null,\"started_at\":null,\"finished_at\":null,\"created_at\":\"2026-03-29T07:48:30.000000Z\"},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/commands\\\/comm-a16a1894-afde-43d0-a86c-67fd53ceba6b\"}}}}",
+    "context": []
+}

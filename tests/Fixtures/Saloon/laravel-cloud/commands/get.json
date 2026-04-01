@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Sun, 29 Mar 2026 07:49:20 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "1256",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Sun, 29 Mar 2026 07:49:20 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "117",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 d81b69368e6f8be2907e338480e58682.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "FRA60-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"comm-a16a1894-afde-43d0-a86c-67fd53ceba6b\",\"type\":\"commands\",\"attributes\":{\"command\":\"php artisan cache:clear\",\"output\":\"\\nIn Connection.php line 825:\\n                                                                               \\n  Database file at path [\\\/var\\\/www\\\/html\\\/database\\\/database.sqlite] does not exi  \\n  st. Ensure this is an absolute path to the database. (Connection: sqlite, S  \\n  QL: delete from \\\"cache\\\")                                                     \\n                                                                               \\n\\nIn SQLiteConnector.php line 37:\\n                                                                               \\n  Database file at path [\\\/var\\\/www\\\/html\\\/database\\\/database.sqlite] does not exi  \\n  st. Ensure this is an absolute path to the database.                         \\n                                                                               \\n\\n\",\"status\":\"command.success\",\"exit_code\":1,\"failure_reason\":null,\"started_at\":\"2026-03-29T07:48:30.000000Z\",\"finished_at\":\"2026-03-29T07:48:31.000000Z\",\"created_at\":\"2026-03-29T07:48:30.000000Z\"},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/commands\\\/comm-a16a1894-afde-43d0-a86c-67fd53ceba6b\"}}}}",
+    "context": []
+}

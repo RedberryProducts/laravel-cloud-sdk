@@ -7,6 +7,7 @@ use Redberry\LaravelCloudSdk\Resources\ManagesApplications;
 use Redberry\LaravelCloudSdk\Resources\ManagesBucketKeys;
 use Redberry\LaravelCloudSdk\Resources\ManagesBuckets;
 use Redberry\LaravelCloudSdk\Resources\ManagesCaches;
+use Redberry\LaravelCloudSdk\Resources\ManagesCommands;
 use Redberry\LaravelCloudSdk\Resources\ManagesDatabaseClusters;
 use Redberry\LaravelCloudSdk\Resources\ManagesDatabases;
 use Redberry\LaravelCloudSdk\Resources\ManagesDeployments;
@@ -23,6 +24,7 @@ class LaravelCloud
     use ManagesBucketKeys;
     use ManagesBuckets;
     use ManagesCaches;
+    use ManagesCommands;
     use ManagesDatabaseClusters;
     use ManagesDatabases;
     use ManagesDeployments;
