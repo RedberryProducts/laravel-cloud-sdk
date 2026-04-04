@@ -2,7 +2,9 @@
 
 namespace Redberry\LaravelCloudSdk\Exceptions;
 
-class RateLimitException extends CloudException
+use Saloon\Exceptions\Request\Statuses\TooManyRequestsException;
+
+class RateLimitException extends TooManyRequestsException
 {
     public function retryAfter(): ?int
     {

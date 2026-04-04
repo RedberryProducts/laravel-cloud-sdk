@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Collection;
-use Redberry\LaravelCloudSdk\Exceptions\AuthenticationException;
-use Redberry\LaravelCloudSdk\Exceptions\NotFoundException;
+use Redberry\LaravelCloudSdk\Exceptions\HtmlResponseException;
 use Redberry\LaravelCloudSdk\Exceptions\RateLimitException;
 use Redberry\LaravelCloudSdk\Exceptions\ValidationException;
 use Redberry\LaravelCloudSdk\Facades\LaravelCloud as LaravelCloudFacade;
@@ -11,6 +10,8 @@ use Redberry\LaravelCloudSdk\Requests\Applications\CreateApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\GetApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
+use Saloon\Exceptions\Request\Statuses\UnauthorizedException;
+use Saloon\Exceptions\Request\Statuses\NotFoundException;
 use Saloon\Http\Faking\MockResponse;
 use Saloon\Laravel\Facades\Saloon;
 
@@ -71,13 +72,13 @@ it('facade proxies method calls to a LaravelCloud instance', function () {
 
 // --- Exception mapping ---
 
-it('throws AuthenticationException on 401', function () {
+it('throws UnauthorizedException on 401', function () {
     Saloon::fake([
         ListApplicationsRequest::class => MockResponse::make([], 401),
     ]);
 
     (new LaravelCloud('bad-token'))->applications();
-})->throws(AuthenticationException::class);
+})->throws(UnauthorizedException::class);
 
 it('throws NotFoundException on 404', function () {
     Saloon::fake([
@@ -106,6 +107,14 @@ it('throws ValidationException on 422 and exposes errors()', function () {
         expect($e->errors())->toHaveKey('name');
     }
 });
+
+it('throws HtmlResponseException when API returns an HTML response', function () {
+    Saloon::fake([
+        ListApplicationsRequest::class => MockResponse::make('<!DOCTYPE html><html></html>', 200, ['Content-Type' => 'text/html; charset=utf-8']),
+    ]);
+
+    (new LaravelCloud('token'))->applications();
+})->throws(HtmlResponseException::class);
 
 it('throws RateLimitException on 429 and exposes retryAfter()', function () {
     Saloon::fake([

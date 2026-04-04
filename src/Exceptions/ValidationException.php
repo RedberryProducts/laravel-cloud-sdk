@@ -2,7 +2,9 @@
 
 namespace Redberry\LaravelCloudSdk\Exceptions;
 
-class ValidationException extends CloudException
+use Saloon\Exceptions\Request\Statuses\UnprocessableEntityException;
+
+class ValidationException extends UnprocessableEntityException
 {
     public function errors(): array
     {
