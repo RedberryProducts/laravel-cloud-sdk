@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
-use Redberry\LaravelCloudSdk\Data\Commands\CommandData;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\Commands\ListCommandsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
