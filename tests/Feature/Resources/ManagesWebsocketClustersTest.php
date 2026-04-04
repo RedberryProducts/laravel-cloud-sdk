@@ -9,6 +9,7 @@ use Redberry\LaravelCloudSdk\Enums\WebsocketMaxConnections;
 use Redberry\LaravelCloudSdk\Enums\WebsocketServerType;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\CreateWebsocketClusterRequest;
+use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\DeleteWebsocketClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\GetWebsocketClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\ListWebsocketClustersRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\UpdateWebsocketClusterRequest;
@@ -116,4 +117,14 @@ it('updates a websocket cluster via updateWebsocketClusterWith()', function () {
 
     Saloon::assertSent(UpdateWebsocketClusterRequest::class);
     expect($result)->toBeInstanceOf(WebsocketClusterData::class);
+});
+
+it('deletes a websocket cluster', function () {
+    Saloon::fake([
+        DeleteWebsocketClusterRequest::class => new LaravelCloudFixture('websocket-clusters/delete'),
+    ]);
+
+    (new LaravelCloud('token'))->deleteWebsocketCluster('ws-a14fcb1a-18a7-411d-9d82-456d3aa2c273');
+
+    Saloon::assertSent(DeleteWebsocketClusterRequest::class);
 });
