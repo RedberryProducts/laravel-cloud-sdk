@@ -2,6 +2,8 @@
 
 namespace Redberry\LaravelCloudSdk\Data\Instances;
 
+use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Enums\DaemonStrategyType;
 use Redberry\LaravelCloudSdk\Enums\DaemonType;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
@@ -16,6 +18,9 @@ class BackgroundProcessData extends Data
         public int $processes,
         public string|null|Optional $command = new Optional,
         public BackgroundProcessConfigData|null|Optional $config = new Optional,
+        public string|DaemonStrategyType|Optional $strategyType = new Optional,
+        public int|null|Optional $strategyThreshold = new Optional,
+        public CarbonImmutable|null|Optional $createdAt = new Optional,
         public string|Optional $id = new Optional,
     ) {}
 
@@ -27,6 +32,13 @@ class BackgroundProcessData extends Data
             command: $attributes['command'] ?? null,
             config: isset($attributes['config'])
                 ? BackgroundProcessConfigData::fromResponse($attributes['config'])
+                : null,
+            strategyType: isset($attributes['strategy_type'])
+                ? (DaemonStrategyType::tryFrom($attributes['strategy_type']) ?? $attributes['strategy_type'])
+                : new Optional,
+            strategyThreshold: $attributes['strategy_threshold'] ?? new Optional,
+            createdAt: isset($attributes['created_at'])
+                ? CarbonImmutable::parse($attributes['created_at'])
                 : null,
             id: $id,
         );

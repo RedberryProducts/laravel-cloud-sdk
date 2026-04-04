@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Sat, 04 Apr 2026 11:24:42 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "274",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Sat, 04 Apr 2026 11:24:42 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "119",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 0c371064bf157d89e4b3520c0b29474c.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "FRA60-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"process-a17677cf-3020-4197-aae6-d14099336ed7\",\"type\":\"background_processes\",\"attributes\":{\"type\":\"custom\",\"processes\":1,\"command\":\"php artisan my:command\",\"config\":[],\"strategy_type\":null,\"strategy_threshold\":null,\"created_at\":\"2026-04-04T11:24:42.000000Z\"}}}",
+    "context": []
+}

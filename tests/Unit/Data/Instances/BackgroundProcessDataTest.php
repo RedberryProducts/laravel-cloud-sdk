@@ -1,8 +1,11 @@
 <?php
 
+use Carbon\CarbonImmutable;
 use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessConfigData;
 use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
+use Redberry\LaravelCloudSdk\Enums\DaemonStrategyType;
 use Redberry\LaravelCloudSdk\Enums\DaemonType;
+use Spatie\LaravelData\Optional;
 
 it('builds from response attributes without config', function () {
     $data = BackgroundProcessData::fromResponse([
@@ -82,4 +85,29 @@ it('excludes unset optional fields', function () {
     expect($array)->not->toHaveKey('command');
     expect($array)->not->toHaveKey('config');
     expect($array)->not->toHaveKey('id');
+});
+
+it('builds strategy_type and created_at from response', function () {
+    $data = BackgroundProcessData::fromResponse([
+        'type' => 'worker',
+        'processes' => 1,
+        'strategy_type' => 'queue_size',
+        'strategy_threshold' => 10,
+        'created_at' => '2026-04-04T11:24:42.000000Z',
+    ], 'bp-999');
+
+    expect($data->strategyType)->toBe(DaemonStrategyType::QUEUE_SIZE);
+    expect($data->strategyThreshold)->toBe(10);
+    expect($data->createdAt)->toBeInstanceOf(CarbonImmutable::class);
+});
+
+it('defaults strategy fields to Optional when absent from response', function () {
+    $data = BackgroundProcessData::fromResponse([
+        'type' => 'worker',
+        'processes' => 1,
+    ], 'bp-000');
+
+    expect($data->strategyType)->toBeInstanceOf(Optional::class);
+    expect($data->strategyThreshold)->toBeInstanceOf(Optional::class);
+    expect($data->createdAt)->toBeNull();
 });

@@ -4,6 +4,7 @@ namespace Redberry\LaravelCloudSdk;
 
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Resources\ManagesApplications;
+use Redberry\LaravelCloudSdk\Resources\ManagesBackgroundProcesses;
 use Redberry\LaravelCloudSdk\Resources\ManagesBucketKeys;
 use Redberry\LaravelCloudSdk\Resources\ManagesBuckets;
 use Redberry\LaravelCloudSdk\Resources\ManagesCaches;
@@ -21,6 +22,7 @@ use Redberry\LaravelCloudSdk\Resources\ManagesWebsocketClusters;
 class LaravelCloud
 {
     use ManagesApplications;
+    use ManagesBackgroundProcesses;
     use ManagesBucketKeys;
     use ManagesBuckets;
     use ManagesCaches;

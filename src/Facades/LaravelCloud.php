@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Facade;
 use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
 use Redberry\LaravelCloudSdk\Data\Applications\CreateApplicationData;
 use Redberry\LaravelCloudSdk\Data\Applications\UpdateApplicationData;
+use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\CreateBackgroundProcessData;
+use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\UpdateBackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketData;
@@ -36,6 +38,8 @@ use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\HstsData;
 use Redberry\LaravelCloudSdk\Data\Environments\SetEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\UpdateEnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessConfigData;
+use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\Instances\CreateInstanceData;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
 use Redberry\LaravelCloudSdk\Data\Instances\UpdateInstanceData;
@@ -51,6 +55,7 @@ use Redberry\LaravelCloudSdk\Enums\CacheSize;
 use Redberry\LaravelCloudSdk\Enums\CacheStrategy;
 use Redberry\LaravelCloudSdk\Enums\CacheType;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\DaemonType;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
 use Redberry\LaravelCloudSdk\Enums\DomainCloudflareStrategy;
 use Redberry\LaravelCloudSdk\Enums\DomainRedirect;
@@ -106,6 +111,15 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static InstanceData updateInstanceWith(string $id, UpdateInstanceData $data)
  * @method static Collection instanceSizes()
  * @method static void deleteInstance(string $id)
+ *
+ * Background Processes
+ * @method static Collection backgroundProcesses(string $instanceId)
+ * @method static BackgroundProcessData backgroundProcess(string $id)
+ * @method static BackgroundProcessData createBackgroundProcess(string $instanceId, string|DaemonType $type, int $processes, string|null $command = null, BackgroundProcessConfigData|null $config = null)
+ * @method static BackgroundProcessData createBackgroundProcessWith(string $instanceId, CreateBackgroundProcessData $data)
+ * @method static BackgroundProcessData updateBackgroundProcess(string $id, string|DaemonType $type = null, int $processes = null, string|null $command = null, BackgroundProcessConfigData|null $config = null)
+ * @method static BackgroundProcessData updateBackgroundProcessWith(string $id, UpdateBackgroundProcessData $data)
+ * @method static void deleteBackgroundProcess(string $id)
  *
  * Domains
  * @method static Collection domains(string $environmentId)
