@@ -10,8 +10,8 @@ use Redberry\LaravelCloudSdk\Requests\Applications\CreateApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\GetApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
-use Saloon\Exceptions\Request\Statuses\UnauthorizedException;
 use Saloon\Exceptions\Request\Statuses\NotFoundException;
+use Saloon\Exceptions\Request\Statuses\UnauthorizedException;
 use Saloon\Http\Faking\MockResponse;
 use Saloon\Laravel\Facades\Saloon;
 
