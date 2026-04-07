@@ -15,6 +15,7 @@ use Redberry\LaravelCloudSdk\Resources\ManagesDeployments;
 use Redberry\LaravelCloudSdk\Resources\ManagesDomains;
 use Redberry\LaravelCloudSdk\Resources\ManagesEnvironments;
 use Redberry\LaravelCloudSdk\Resources\ManagesInstances;
+use Redberry\LaravelCloudSdk\Resources\ManagesIpAddresses;
 use Redberry\LaravelCloudSdk\Resources\ManagesRegions;
 use Redberry\LaravelCloudSdk\Resources\ManagesWebsocketApplications;
 use Redberry\LaravelCloudSdk\Resources\ManagesWebsocketClusters;
@@ -33,6 +34,7 @@ class LaravelCloud
     use ManagesDomains;
     use ManagesEnvironments;
     use ManagesInstances;
+    use ManagesIpAddresses;
     use ManagesRegions;
     use ManagesWebsocketApplications;
     use ManagesWebsocketClusters;

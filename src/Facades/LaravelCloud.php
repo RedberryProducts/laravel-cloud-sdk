@@ -32,6 +32,7 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\Databases\CreateDatabaseData;
 use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
+use Redberry\LaravelCloudSdk\Data\Meta\IpAddressData;
 use Redberry\LaravelCloudSdk\Data\Domains\CreateDomainData;
 use Redberry\LaravelCloudSdk\Data\Domains\DomainData;
 use Redberry\LaravelCloudSdk\Data\Domains\UpdateDomainData;
@@ -214,6 +215,9 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  *
  * Regions
  * @method static Collection regions()
+ *
+ * IP Addresses
+ * @method static Collection<string, IpAddressData> ipAddresses(string|CloudRegion|null $region = null)
  *
  * @see LaravelCloudClient
  */
