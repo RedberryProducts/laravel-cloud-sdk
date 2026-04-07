@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
 use Redberry\LaravelCloudSdk\Requests\Buckets\ListBucketsRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
 it('resolves the endpoint correctly', function () {
     $request = new ListBucketsRequest;
@@ -18,6 +18,12 @@ it('has the correct HTTP method', function () {
     $request = new ListBucketsRequest;
 
     expect($request->getMethod())->toBe(Method::GET);
+});
+
+it('implements Paginatable', function () {
+    $request = new ListBucketsRequest;
+
+    expect($request)->toBeInstanceOf(Paginatable::class);
 });
 
 it('lists buckets and returns BucketData collection', function () {
@@ -33,6 +39,6 @@ it('lists buckets and returns BucketData collection', function () {
     expect($response->getPsrRequest()->getUri()->getPath())->toBe('/api/buckets');
 
     $dto = $response->dtoOrFail();
-    expect($dto)->toBeInstanceOf(Collection::class);
-    expect($dto->first())->toBeInstanceOf(BucketData::class);
+    expect($dto)->toBeArray();
+    expect($dto[0])->toBeInstanceOf(BucketData::class);
 });

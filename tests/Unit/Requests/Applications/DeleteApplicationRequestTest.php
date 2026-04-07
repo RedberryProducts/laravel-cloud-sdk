@@ -26,7 +26,7 @@ it('sends the delete request successfully', function () {
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()->first();
+    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()[0];
 
     $response = $connector->send(new DeleteApplicationRequest($firstApplication->id));
 

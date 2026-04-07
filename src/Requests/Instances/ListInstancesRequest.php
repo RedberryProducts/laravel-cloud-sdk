@@ -2,13 +2,13 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\Instances;
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
-class ListInstancesRequest extends Request
+class ListInstancesRequest extends Request implements Paginatable
 {
     protected Method $method = Method::GET;
 
@@ -19,9 +19,14 @@ class ListInstancesRequest extends Request
         return "/environments/{$this->environmentId}/instances";
     }
 
-    public function createDtoFromResponse(Response $response): Collection
+    /**
+     * @return InstanceData[]
+     */
+    public function createDtoFromResponse(Response $response): array
     {
-        return collect($response->json('data'))
-            ->map(fn (array $item) => InstanceData::fromResponse($item['attributes'], $item['id']));
+        return array_map(
+            fn (array $item) => InstanceData::fromResponse($item['attributes'], $item['id']),
+            $response->json('data')
+        );
     }
 }

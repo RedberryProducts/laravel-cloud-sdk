@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\Domains\DomainData;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
@@ -9,6 +8,7 @@ use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
 it('resolves the endpoint correctly', function () {
     $request = new ListDomainsRequest('env-123');
@@ -22,19 +22,25 @@ it('has the correct HTTP method', function () {
     expect($request->getMethod())->toBe(Method::GET);
 });
 
+it('implements Paginatable', function () {
+    $request = new ListDomainsRequest('env-123');
+
+    expect($request)->toBeInstanceOf(Paginatable::class);
+});
+
 it('lists domains and returns DomainData collection', function () {
     Saloon::fake([
         ListApplicationsRequest::class => new LaravelCloudFixture('applications/list'),
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()->first();
+    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         ListEnvironmentsRequest::class => new LaravelCloudFixture('environments/list'),
     ]);
 
-    $firstEnvironment = $connector->send(new ListEnvironmentsRequest($firstApplication->id))->dtoOrFail()->first();
+    $firstEnvironment = $connector->send(new ListEnvironmentsRequest($firstApplication->id))->dtoOrFail()[0];
 
     Saloon::fake([
         ListDomainsRequest::class => new LaravelCloudFixture('domains/list'),
@@ -45,6 +51,6 @@ it('lists domains and returns DomainData collection', function () {
     Saloon::assertSent(ListDomainsRequest::class);
 
     $dto = $response->dtoOrFail();
-    expect($dto)->toBeInstanceOf(Collection::class);
-    expect($dto->first())->toBeInstanceOf(DomainData::class);
+    expect($dto)->toBeArray();
+    expect($dto[0])->toBeInstanceOf(DomainData::class);
 });

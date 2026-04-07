@@ -2,13 +2,13 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\Caches;
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
-class ListCachesRequest extends Request
+class ListCachesRequest extends Request implements Paginatable
 {
     protected Method $method = Method::GET;
 
@@ -18,11 +18,13 @@ class ListCachesRequest extends Request
     }
 
     /**
-     * @return Collection<int, CacheData>
+     * @return CacheData[]
      */
-    public function createDtoFromResponse(Response $response): Collection
+    public function createDtoFromResponse(Response $response): array
     {
-        return collect($response->json('data'))
-            ->map(fn (array $item) => CacheData::fromResponse($item['attributes'], $item['id']));
+        return array_map(
+            fn (array $item) => CacheData::fromResponse($item['attributes'], $item['id']),
+            $response->json('data')
+        );
     }
 }

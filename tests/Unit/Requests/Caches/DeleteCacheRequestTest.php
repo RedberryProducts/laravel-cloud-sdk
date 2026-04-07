@@ -26,7 +26,7 @@ it('sends the delete request successfully', function () {
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstCache = $connector->send(new ListCachesRequest)->dtoOrFail()->first();
+    $firstCache = $connector->send(new ListCachesRequest)->dtoOrFail()[0];
 
     $response = $connector->send(new DeleteCacheRequest($firstCache->id));
 

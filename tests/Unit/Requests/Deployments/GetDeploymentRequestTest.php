@@ -31,9 +31,9 @@ it('gets a deployment and returns DeploymentData', function () {
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()->first();
-    $firstEnvironment = $connector->send(new ListEnvironmentsRequest($firstApplication->id))->dtoOrFail()->first();
-    $firstDeployment = $connector->send(new ListDeploymentsRequest($firstEnvironment->id))->dtoOrFail()->first();
+    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()[0];
+    $firstEnvironment = $connector->send(new ListEnvironmentsRequest($firstApplication->id))->dtoOrFail()[0];
+    $firstDeployment = $connector->send(new ListDeploymentsRequest($firstEnvironment->id))->dtoOrFail()[0];
     $response = $connector->send(new GetDeploymentRequest($firstDeployment->id));
 
     Saloon::assertSent(GetDeploymentRequest::class);

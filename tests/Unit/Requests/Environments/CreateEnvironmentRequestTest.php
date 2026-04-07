@@ -61,7 +61,7 @@ it('creates an environment and returns EnvironmentData with all fields', functio
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()->first();
+    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         CreateEnvironmentRequest::class => new LaravelCloudFixture('environments/create'),

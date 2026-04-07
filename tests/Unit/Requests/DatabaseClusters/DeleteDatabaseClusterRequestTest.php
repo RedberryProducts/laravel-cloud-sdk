@@ -26,7 +26,7 @@ it('sends the delete request successfully', function () {
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstCluster = $connector->send(new ListDatabaseClustersRequest)->dtoOrFail()->first();
+    $firstCluster = $connector->send(new ListDatabaseClustersRequest)->dtoOrFail()[0];
 
     $response = $connector->send(new DeleteDatabaseClusterRequest($firstCluster->id));
 

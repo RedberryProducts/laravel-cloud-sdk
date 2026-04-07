@@ -26,7 +26,7 @@ it('gets an application and returns ApplicationData', function () {
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()->first();
+    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         GetApplicationRequest::class => new LaravelCloudFixture('applications/get'),

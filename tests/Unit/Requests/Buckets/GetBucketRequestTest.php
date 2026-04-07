@@ -27,7 +27,7 @@ it('gets a bucket and returns BucketData', function () {
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $listResponse = $connector->send(new ListBucketsRequest);
-    $firstBucket = $listResponse->dtoOrFail()->first();
+    $firstBucket = $listResponse->dtoOrFail()[0];
 
     Saloon::fake([
         GetBucketRequest::class => new LaravelCloudFixture('buckets/get'),

@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
 use Redberry\LaravelCloudSdk\Data\Applications\CreateApplicationData;
 use Redberry\LaravelCloudSdk\Data\Applications\UpdateApplicationData;
@@ -22,9 +22,9 @@ it('lists applications', function () {
 
     $result = (new LaravelCloud('token'))->applications();
 
-    Saloon::assertSent(ListApplicationsRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(ApplicationData::class);
+    Saloon::assertSent(ListApplicationsRequest::class);
 });
 
 it('retrieves a single application by id', function () {

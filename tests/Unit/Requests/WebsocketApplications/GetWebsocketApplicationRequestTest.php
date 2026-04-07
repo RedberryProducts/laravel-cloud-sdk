@@ -27,13 +27,13 @@ it('gets a websocket application and returns WebsocketApplicationData', function
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()->first();
+    $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         ListWebsocketApplicationsRequest::class => new LaravelCloudFixture('websocket-applications/list'),
     ]);
 
-    $firstApp = $connector->send(new ListWebsocketApplicationsRequest($firstCluster->id))->dtoOrFail()->first();
+    $firstApp = $connector->send(new ListWebsocketApplicationsRequest($firstCluster->id))->dtoOrFail()[0];
 
     Saloon::fake([
         GetWebsocketApplicationRequest::class => new LaravelCloudFixture('websocket-applications/get'),

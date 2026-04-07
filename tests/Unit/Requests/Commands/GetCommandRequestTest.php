@@ -32,8 +32,8 @@ it('gets a command and returns CommandData', function () {
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()->first();
-    $firstEnvironment = $connector->send(new ListEnvironmentsRequest($firstApplication->id))->dtoOrFail()->first();
+    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()[0];
+    $firstEnvironment = $connector->send(new ListEnvironmentsRequest($firstApplication->id))->dtoOrFail()[0];
 
     $createdCommand = $connector->send(new RunCommandRequest($firstEnvironment->id, new RunCommandData(command: 'php artisan cache:clear')))->dtoOrFail();
     $response = $connector->send(new GetCommandRequest($createdCommand->id));

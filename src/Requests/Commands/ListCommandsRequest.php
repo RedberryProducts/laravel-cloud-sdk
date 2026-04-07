@@ -2,13 +2,13 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\Commands;
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Data\Commands\CommandData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
-class ListCommandsRequest extends Request
+class ListCommandsRequest extends Request implements Paginatable
 {
     protected Method $method = Method::GET;
 
@@ -20,11 +20,13 @@ class ListCommandsRequest extends Request
     }
 
     /**
-     * @return Collection<int, CommandData>
+     * @return CommandData[]
      */
-    public function createDtoFromResponse(Response $response): Collection
+    public function createDtoFromResponse(Response $response): array
     {
-        return collect($response->json('data'))
-            ->map(fn (array $item) => CommandData::fromResponse($item['attributes'], $item['id']));
+        return array_map(
+            fn (array $item) => CommandData::fromResponse($item['attributes'], $item['id']),
+            $response->json('data')
+        );
     }
 }

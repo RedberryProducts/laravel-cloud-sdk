@@ -57,7 +57,7 @@ it('updates a database cluster and returns DatabaseClusterData with all fields',
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $listResponse = $connector->send(new ListDatabaseClustersRequest);
-    $firstCluster = $listResponse->dtoOrFail()->first();
+    $firstCluster = $listResponse->dtoOrFail()[0];
 
     Saloon::fake([
         UpdateDatabaseClusterRequest::class => new LaravelCloudFixture('database-clusters/update'),

@@ -26,7 +26,7 @@ it('gets a websocket cluster and returns WebsocketClusterData', function () {
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()->first();
+    $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         GetWebsocketClusterRequest::class => new LaravelCloudFixture('websocket-clusters/get'),

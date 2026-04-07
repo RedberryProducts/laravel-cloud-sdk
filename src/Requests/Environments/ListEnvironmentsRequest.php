@@ -2,13 +2,13 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\Environments;
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
-class ListEnvironmentsRequest extends Request
+class ListEnvironmentsRequest extends Request implements Paginatable
 {
     protected Method $method = Method::GET;
 
@@ -20,11 +20,13 @@ class ListEnvironmentsRequest extends Request
     }
 
     /**
-     * @return Collection<int, EnvironmentData>
+     * @return EnvironmentData[]
      */
-    public function createDtoFromResponse(Response $response): Collection
+    public function createDtoFromResponse(Response $response): array
     {
-        return collect($response->json('data'))
-            ->map(fn (array $item) => EnvironmentData::fromResponse($item['attributes'], $item['id']));
+        return array_map(
+            fn (array $item) => EnvironmentData::fromResponse($item['attributes'], $item['id']),
+            $response->json('data')
+        );
     }
 }

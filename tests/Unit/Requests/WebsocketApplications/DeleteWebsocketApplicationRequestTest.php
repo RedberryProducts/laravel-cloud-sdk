@@ -28,8 +28,8 @@ it('sends the delete request successfully', function () {
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()->first();
-    $firstApp = $connector->send(new ListWebsocketApplicationsRequest($firstCluster->id))->dtoOrFail()->first();
+    $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()[0];
+    $firstApp = $connector->send(new ListWebsocketApplicationsRequest($firstCluster->id))->dtoOrFail()[0];
 
     $response = $connector->send(new DeleteWebsocketApplicationRequest($firstApp->id));
 

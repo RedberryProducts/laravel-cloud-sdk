@@ -48,7 +48,7 @@ it('retrieves a database snapshot and returns DatabaseSnapshotData', function ()
         ),
     )))->dtoOrFail();
 
-    $firstSnapshot = $connector->send(new ListDatabaseSnapshotsRequest($mysqlCluster->id))->dtoOrFail()->first();
+    $firstSnapshot = $connector->send(new ListDatabaseSnapshotsRequest($mysqlCluster->id))->dtoOrFail()[0];
 
     $dto = $connector->send(new GetDatabaseSnapshotRequest($firstSnapshot->id))->dtoOrFail();
 

@@ -45,7 +45,7 @@ it('creates a database and returns DatabaseData with all fields', function () {
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstCluster = $connector->send(new ListDatabaseClustersRequest)->dtoOrFail()->first();
+    $firstCluster = $connector->send(new ListDatabaseClustersRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         CreateDatabaseRequest::class => new LaravelCloudFixture('databases/create'),

@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Resources;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
 use Redberry\LaravelCloudSdk\Data\Applications\CreateApplicationData;
 use Redberry\LaravelCloudSdk\Data\Applications\UpdateApplicationData;
@@ -18,11 +18,11 @@ use Spatie\LaravelData\Optional;
 trait ManagesApplications
 {
     /**
-     * @return Collection<int, ApplicationData>
+     * @return LazyCollection<int, ApplicationData>
      */
-    public function applications(): Collection
+    public function applications(): LazyCollection
     {
-        return $this->connector->send(new ListApplicationsRequest)->dtoOrFail();
+        return $this->connector->paginate(new ListApplicationsRequest)->collect();
     }
 
     public function application(string $id): ApplicationData

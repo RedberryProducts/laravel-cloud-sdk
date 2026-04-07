@@ -27,7 +27,7 @@ it('gets a database cluster and returns DatabaseClusterData', function () {
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $listResponse = $connector->send(new ListDatabaseClustersRequest);
-    $firstCluster = $listResponse->dtoOrFail()->first();
+    $firstCluster = $listResponse->dtoOrFail()[0];
 
     Saloon::fake([
         GetDatabaseClusterRequest::class => new LaravelCloudFixture('database-clusters/get'),

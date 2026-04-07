@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Instances\CreateInstanceData;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceSizeData;
@@ -25,9 +26,9 @@ it('lists instances for an environment', function () {
 
     $result = (new LaravelCloud('token'))->instances('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
 
-    Saloon::assertSent(ListInstancesRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(InstanceData::class);
+    Saloon::assertSent(ListInstancesRequest::class);
 });
 
 it('retrieves a single instance by id', function () {

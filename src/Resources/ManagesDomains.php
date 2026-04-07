@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Resources;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Domains\CreateDomainData;
 use Redberry\LaravelCloudSdk\Data\Domains\DomainData;
 use Redberry\LaravelCloudSdk\Data\Domains\UpdateDomainData;
@@ -20,11 +20,11 @@ use Spatie\LaravelData\Optional;
 trait ManagesDomains
 {
     /**
-     * @return Collection<int, DomainData>
+     * @return LazyCollection<int, DomainData>
      */
-    public function domains(string $environmentId): Collection
+    public function domains(string $environmentId): LazyCollection
     {
-        return $this->connector->send(new ListDomainsRequest($environmentId))->dtoOrFail();
+        return $this->connector->paginate(new ListDomainsRequest($environmentId))->collect();
     }
 
     public function domain(string $id): DomainData

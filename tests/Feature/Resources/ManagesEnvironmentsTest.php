@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
@@ -27,9 +27,9 @@ it('lists environments for an application', function () {
 
     $result = (new LaravelCloud('token'))->environments('app-a14fe54f-42b2-431c-9b3a-876900975139');
 
-    Saloon::assertSent(ListEnvironmentsRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(EnvironmentData::class);
+    Saloon::assertSent(ListEnvironmentsRequest::class);
 });
 
 it('retrieves a single environment by id', function () {

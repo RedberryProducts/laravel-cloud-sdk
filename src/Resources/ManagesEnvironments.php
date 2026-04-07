@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Resources;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
@@ -30,11 +30,11 @@ use Spatie\LaravelData\Optional;
 trait ManagesEnvironments
 {
     /**
-     * @return Collection<int, EnvironmentData>
+     * @return LazyCollection<int, EnvironmentData>
      */
-    public function environments(string $applicationId): Collection
+    public function environments(string $applicationId): LazyCollection
     {
-        return $this->connector->send(new ListEnvironmentsRequest($applicationId))->dtoOrFail();
+        return $this->connector->paginate(new ListEnvironmentsRequest($applicationId))->collect();
     }
 
     public function environment(string $id): EnvironmentData

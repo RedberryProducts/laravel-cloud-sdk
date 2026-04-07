@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Resources;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\CreateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\UpdateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
@@ -19,11 +19,11 @@ use Spatie\LaravelData\Optional;
 trait ManagesWebsocketClusters
 {
     /**
-     * @return Collection<int, WebsocketClusterData>
+     * @return LazyCollection<int, WebsocketClusterData>
      */
-    public function websocketClusters(): Collection
+    public function websocketClusters(): LazyCollection
     {
-        return $this->connector->send(new ListWebsocketClustersRequest)->dtoOrFail();
+        return $this->connector->paginate(new ListWebsocketClustersRequest)->collect();
     }
 
     public function websocketCluster(string $id): WebsocketClusterData

@@ -2,13 +2,13 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\Buckets;
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketKeyData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
-class ListBucketKeysRequest extends Request
+class ListBucketKeysRequest extends Request implements Paginatable
 {
     protected Method $method = Method::GET;
 
@@ -20,11 +20,13 @@ class ListBucketKeysRequest extends Request
     }
 
     /**
-     * @return Collection<int, BucketKeyData>
+     * @return BucketKeyData[]
      */
-    public function createDtoFromResponse(Response $response): Collection
+    public function createDtoFromResponse(Response $response): array
     {
-        return collect($response->json('data'))
-            ->map(fn (array $item) => BucketKeyData::fromResponse($item['attributes'], $item['id']));
+        return array_map(
+            fn (array $item) => BucketKeyData::fromResponse($item['attributes'], $item['id']),
+            $response->json('data')
+        );
     }
 }

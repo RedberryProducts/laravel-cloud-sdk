@@ -67,7 +67,7 @@ it('updates a cache and returns CacheData with all fields', function () {
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $listResponse = $connector->send(new ListCachesRequest);
-    $firstCache = $listResponse->dtoOrFail()->first();
+    $firstCache = $listResponse->dtoOrFail()[0];
 
     Saloon::fake([
         UpdateCacheRequest::class => new LaravelCloudFixture('caches/update'),

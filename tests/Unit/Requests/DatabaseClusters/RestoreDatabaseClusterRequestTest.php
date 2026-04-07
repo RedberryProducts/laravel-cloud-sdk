@@ -56,7 +56,7 @@ it('restores a database cluster from a snapshot and returns DatabaseClusterData'
         ),
     )))->dtoOrFail();
 
-    $firstSnapshot = $connector->send(new ListDatabaseSnapshotsRequest($mysqlCluster->id))->dtoOrFail()->first();
+    $firstSnapshot = $connector->send(new ListDatabaseSnapshotsRequest($mysqlCluster->id))->dtoOrFail()[0];
 
     $dto = $connector->send(new RestoreDatabaseClusterRequest(
         $mysqlCluster->id,

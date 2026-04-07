@@ -47,7 +47,7 @@ it('sends the delete request successfully', function () {
         ),
     )))->dtoOrFail();
 
-    $firstSnapshot = $connector->send(new ListDatabaseSnapshotsRequest($mysqlCluster->id))->dtoOrFail()->first();
+    $firstSnapshot = $connector->send(new ListDatabaseSnapshotsRequest($mysqlCluster->id))->dtoOrFail()[0];
 
     $response = $connector->send(new DeleteDatabaseSnapshotRequest($firstSnapshot->id));
 

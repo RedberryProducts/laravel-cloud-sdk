@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Resources;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Instances\CreateInstanceData;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
 use Redberry\LaravelCloudSdk\Data\Instances\UpdateInstanceData;
@@ -20,11 +21,11 @@ use Spatie\LaravelData\Optional;
 trait ManagesInstances
 {
     /**
-     * @return Collection<int, InstanceData>
+     * @return LazyCollection<int, InstanceData>
      */
-    public function instances(string $environmentId): Collection
+    public function instances(string $environmentId): LazyCollection
     {
-        return $this->connector->send(new ListInstancesRequest($environmentId))->dtoOrFail();
+        return $this->connector->paginate(new ListInstancesRequest($environmentId))->collect();
     }
 
     public function instance(string $id): InstanceData

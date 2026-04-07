@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Resources;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
 use Redberry\LaravelCloudSdk\Requests\Deployments\CreateDeploymentRequest;
 use Redberry\LaravelCloudSdk\Requests\Deployments\GetDeploymentRequest;
@@ -11,11 +11,11 @@ use Redberry\LaravelCloudSdk\Requests\Deployments\ListDeploymentsRequest;
 trait ManagesDeployments
 {
     /**
-     * @return Collection<int, DeploymentData>
+     * @return LazyCollection<int, DeploymentData>
      */
-    public function deployments(string $environmentId): Collection
+    public function deployments(string $environmentId): LazyCollection
     {
-        return $this->connector->send(new ListDeploymentsRequest($environmentId))->dtoOrFail();
+        return $this->connector->paginate(new ListDeploymentsRequest($environmentId))->collect();
     }
 
     public function deployment(string $id): DeploymentData

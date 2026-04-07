@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseSnapshotData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
@@ -33,9 +34,9 @@ it('lists database clusters', function () {
 
     $result = (new LaravelCloud('token'))->databaseClusters();
 
-    Saloon::assertSent(ListDatabaseClustersRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(DatabaseClusterData::class);
+    Saloon::assertSent(ListDatabaseClustersRequest::class);
 });
 
 it('retrieves a single database cluster by id', function () {
@@ -197,9 +198,9 @@ it('lists database snapshots for a cluster', function () {
 
     $result = (new LaravelCloud('token'))->databaseSnapshots('db-cluster-123');
 
-    Saloon::assertSent(ListDatabaseSnapshotsRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(DatabaseSnapshotData::class);
+    Saloon::assertSent(ListDatabaseSnapshotsRequest::class);
 });
 
 it('retrieves a single database snapshot by id', function () {

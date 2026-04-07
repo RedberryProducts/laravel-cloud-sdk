@@ -88,13 +88,13 @@ it('creates a domain and returns DomainData', function () {
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()->first();
+    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         ListEnvironmentsRequest::class => new LaravelCloudFixture('environments/list'),
     ]);
 
-    $firstEnvironment = $connector->send(new ListEnvironmentsRequest($firstApplication->id))->dtoOrFail()->first();
+    $firstEnvironment = $connector->send(new ListEnvironmentsRequest($firstApplication->id))->dtoOrFail()[0];
 
     Saloon::fake([
         CreateDomainRequest::class => new LaravelCloudFixture('domains/create'),

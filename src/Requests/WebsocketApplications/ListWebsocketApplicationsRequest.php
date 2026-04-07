@@ -2,13 +2,13 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\WebsocketApplications;
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
-class ListWebsocketApplicationsRequest extends Request
+class ListWebsocketApplicationsRequest extends Request implements Paginatable
 {
     protected Method $method = Method::GET;
 
@@ -20,11 +20,13 @@ class ListWebsocketApplicationsRequest extends Request
     }
 
     /**
-     * @return Collection<int, WebsocketApplicationData>
+     * @return WebsocketApplicationData[]
      */
-    public function createDtoFromResponse(Response $response): Collection
+    public function createDtoFromResponse(Response $response): array
     {
-        return collect($response->json('data'))
-            ->map(fn (array $item) => WebsocketApplicationData::fromResponse($item['attributes'], $item['id']));
+        return array_map(
+            fn (array $item) => WebsocketApplicationData::fromResponse($item['attributes'], $item['id']),
+            $response->json('data')
+        );
     }
 }

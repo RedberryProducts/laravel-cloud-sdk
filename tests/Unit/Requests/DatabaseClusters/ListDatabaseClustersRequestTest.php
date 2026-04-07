@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\ListDatabaseClustersRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
 it('resolves the endpoint correctly', function () {
     $request = new ListDatabaseClustersRequest;
@@ -18,6 +18,12 @@ it('has the correct HTTP method', function () {
     $request = new ListDatabaseClustersRequest;
 
     expect($request->getMethod())->toBe(Method::GET);
+});
+
+it('implements Paginatable', function () {
+    $request = new ListDatabaseClustersRequest;
+
+    expect($request)->toBeInstanceOf(Paginatable::class);
 });
 
 it('lists database clusters and returns DatabaseClusterData collection', function () {
@@ -33,6 +39,6 @@ it('lists database clusters and returns DatabaseClusterData collection', functio
     expect($response->getPsrRequest()->getUri()->getPath())->toBe('/api/databases/clusters');
 
     $dto = $response->dtoOrFail();
-    expect($dto)->toBeInstanceOf(Collection::class);
-    expect($dto->first())->toBeInstanceOf(DatabaseClusterData::class);
+    expect($dto)->toBeArray();
+    expect($dto[0])->toBeInstanceOf(DatabaseClusterData::class);
 });

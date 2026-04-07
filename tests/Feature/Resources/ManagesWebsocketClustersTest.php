@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\CreateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\UpdateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
@@ -23,9 +23,9 @@ it('lists websocket clusters', function () {
 
     $result = (new LaravelCloud('token'))->websocketClusters();
 
-    Saloon::assertSent(ListWebsocketClustersRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(WebsocketClusterData::class);
+    Saloon::assertSent(ListWebsocketClustersRequest::class);
 });
 
 it('retrieves a single websocket cluster by id', function () {

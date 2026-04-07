@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Resources;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketKeyData;
@@ -15,11 +15,11 @@ use Redberry\LaravelCloudSdk\Requests\Buckets\UpdateBucketKeyRequest;
 trait ManagesBucketKeys
 {
     /**
-     * @return Collection<int, BucketKeyData>
+     * @return LazyCollection<int, BucketKeyData>
      */
-    public function bucketKeys(string $bucketId): Collection
+    public function bucketKeys(string $bucketId): LazyCollection
     {
-        return $this->connector->send(new ListBucketKeysRequest($bucketId))->dtoOrFail();
+        return $this->connector->paginate(new ListBucketKeysRequest($bucketId))->collect();
     }
 
     public function bucketKey(string $keyId): BucketKeyData

@@ -27,13 +27,13 @@ it('gets a database and returns DatabaseData', function () {
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstCluster = $connector->send(new ListDatabaseClustersRequest)->dtoOrFail()->first();
+    $firstCluster = $connector->send(new ListDatabaseClustersRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         ListDatabasesRequest::class => new LaravelCloudFixture('databases/list'),
     ]);
 
-    $firstDatabase = $connector->send(new ListDatabasesRequest($firstCluster->id))->dtoOrFail()->first();
+    $firstDatabase = $connector->send(new ListDatabasesRequest($firstCluster->id))->dtoOrFail()[0];
 
     Saloon::fake([
         GetDatabaseRequest::class => new LaravelCloudFixture('databases/get'),

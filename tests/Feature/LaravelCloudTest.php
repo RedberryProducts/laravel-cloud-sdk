@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Exceptions\HtmlResponseException;
 use Redberry\LaravelCloudSdk\Exceptions\RateLimitException;
 use Redberry\LaravelCloudSdk\Exceptions\ValidationException;
@@ -67,7 +67,7 @@ it('facade proxies method calls to a LaravelCloud instance', function () {
 
     $result = LaravelCloudFacade::applications();
 
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
 });
 
 // --- Exception mapping ---
@@ -77,7 +77,7 @@ it('throws UnauthorizedException on 401', function () {
         ListApplicationsRequest::class => MockResponse::make([], 401),
     ]);
 
-    (new LaravelCloud('bad-token'))->applications();
+    (new LaravelCloud('bad-token'))->applications()->first();
 })->throws(UnauthorizedException::class);
 
 it('throws NotFoundException on 404', function () {
@@ -113,7 +113,7 @@ it('throws HtmlResponseException when API returns an HTML response', function ()
         ListApplicationsRequest::class => MockResponse::make('<!DOCTYPE html><html></html>', 200, ['Content-Type' => 'text/html; charset=utf-8']),
     ]);
 
-    (new LaravelCloud('token'))->applications();
+    (new LaravelCloud('token'))->applications()->first();
 })->throws(HtmlResponseException::class);
 
 it('throws RateLimitException on 429 and exposes retryAfter()', function () {
@@ -122,7 +122,7 @@ it('throws RateLimitException on 429 and exposes retryAfter()', function () {
     ]);
 
     try {
-        (new LaravelCloud('token'))->applications();
+        (new LaravelCloud('token'))->applications()->first();
     } catch (RateLimitException $e) {
         expect($e->retryAfter())->toBe(60);
     }

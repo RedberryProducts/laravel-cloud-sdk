@@ -2,13 +2,13 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\DatabaseClusters;
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
-class ListDatabaseClustersRequest extends Request
+class ListDatabaseClustersRequest extends Request implements Paginatable
 {
     protected Method $method = Method::GET;
 
@@ -18,11 +18,13 @@ class ListDatabaseClustersRequest extends Request
     }
 
     /**
-     * @return Collection<int, DatabaseClusterData>
+     * @return DatabaseClusterData[]
      */
-    public function createDtoFromResponse(Response $response): Collection
+    public function createDtoFromResponse(Response $response): array
     {
-        return collect($response->json('data'))
-            ->map(fn (array $item) => DatabaseClusterData::fromResponse($item['attributes'], $item['id']));
+        return array_map(
+            fn (array $item) => DatabaseClusterData::fromResponse($item['attributes'], $item['id']),
+            $response->json('data')
+        );
     }
 }

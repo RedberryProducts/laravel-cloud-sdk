@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheTypeData;
 use Redberry\LaravelCloudSdk\Data\Caches\CreateCacheData;
@@ -25,9 +26,9 @@ it('lists caches', function () {
 
     $result = (new LaravelCloud('token'))->caches();
 
-    Saloon::assertSent(ListCachesRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(CacheData::class);
+    Saloon::assertSent(ListCachesRequest::class);
 });
 
 it('retrieves a single cache by id', function () {

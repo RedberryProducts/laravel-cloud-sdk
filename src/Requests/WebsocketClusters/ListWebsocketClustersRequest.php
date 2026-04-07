@@ -2,13 +2,13 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\WebsocketClusters;
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
-class ListWebsocketClustersRequest extends Request
+class ListWebsocketClustersRequest extends Request implements Paginatable
 {
     protected Method $method = Method::GET;
 
@@ -18,11 +18,13 @@ class ListWebsocketClustersRequest extends Request
     }
 
     /**
-     * @return Collection<int, WebsocketClusterData>
+     * @return WebsocketClusterData[]
      */
-    public function createDtoFromResponse(Response $response): Collection
+    public function createDtoFromResponse(Response $response): array
     {
-        return collect($response->json('data'))
-            ->map(fn (array $item) => WebsocketClusterData::fromResponse($item['attributes'], $item['id']));
+        return array_map(
+            fn (array $item) => WebsocketClusterData::fromResponse($item['attributes'], $item['id']),
+            $response->json('data')
+        );
     }
 }

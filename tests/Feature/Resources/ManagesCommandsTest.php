@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Commands\CommandData;
 use Redberry\LaravelCloudSdk\Data\Commands\RunCommandData;
 use Redberry\LaravelCloudSdk\LaravelCloud;
@@ -17,9 +17,9 @@ it('lists commands for an environment', function () {
 
     $result = (new LaravelCloud('token'))->commands('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
 
-    Saloon::assertSent(ListCommandsRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(CommandData::class);
+    Saloon::assertSent(ListCommandsRequest::class);
 });
 
 it('retrieves a single command by id', function () {

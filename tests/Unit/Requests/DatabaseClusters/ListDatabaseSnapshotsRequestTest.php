@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseSnapshotData;
@@ -13,6 +12,7 @@ use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\ListDatabaseSnapshotsRequ
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
 it('resolves the endpoint correctly', function () {
     $request = new ListDatabaseSnapshotsRequest('db-cluster-123');
@@ -24,6 +24,12 @@ it('has the correct HTTP method', function () {
     $request = new ListDatabaseSnapshotsRequest('db-cluster-123');
 
     expect($request->getMethod())->toBe(Method::GET);
+});
+
+it('implements Paginatable', function () {
+    $request = new ListDatabaseSnapshotsRequest('db-cluster-123');
+
+    expect($request)->toBeInstanceOf(Paginatable::class);
 });
 
 it('lists database snapshots and returns a collection', function () {
@@ -50,6 +56,6 @@ it('lists database snapshots and returns a collection', function () {
     $dto = $connector->send(new ListDatabaseSnapshotsRequest($mysqlCluster->id))->dtoOrFail();
 
     Saloon::assertSent(ListDatabaseSnapshotsRequest::class);
-    expect($dto)->toBeInstanceOf(Collection::class);
-    expect($dto->first())->toBeInstanceOf(DatabaseSnapshotData::class);
+    expect($dto)->toBeArray();
+    expect($dto[0])->toBeInstanceOf(DatabaseSnapshotData::class);
 });

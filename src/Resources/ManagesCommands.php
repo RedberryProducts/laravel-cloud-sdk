@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Resources;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Commands\CommandData;
 use Redberry\LaravelCloudSdk\Data\Commands\RunCommandData;
 use Redberry\LaravelCloudSdk\Requests\Commands\GetCommandRequest;
@@ -12,11 +12,11 @@ use Redberry\LaravelCloudSdk\Requests\Commands\RunCommandRequest;
 trait ManagesCommands
 {
     /**
-     * @return Collection<int, CommandData>
+     * @return LazyCollection<int, CommandData>
      */
-    public function commands(string $environmentId): Collection
+    public function commands(string $environmentId): LazyCollection
     {
-        return $this->connector->send(new ListCommandsRequest($environmentId))->dtoOrFail();
+        return $this->connector->paginate(new ListCommandsRequest($environmentId))->collect();
     }
 
     public function command(string $id): CommandData

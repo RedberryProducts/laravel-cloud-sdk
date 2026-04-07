@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
 use Redberry\LaravelCloudSdk\Requests\Caches\ListCachesRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
 it('resolves the endpoint correctly', function () {
     $request = new ListCachesRequest;
@@ -18,6 +18,12 @@ it('has the correct HTTP method', function () {
     $request = new ListCachesRequest;
 
     expect($request->getMethod())->toBe(Method::GET);
+});
+
+it('implements Paginatable', function () {
+    $request = new ListCachesRequest;
+
+    expect($request)->toBeInstanceOf(Paginatable::class);
 });
 
 it('lists caches and returns CacheData collection', function () {
@@ -33,6 +39,6 @@ it('lists caches and returns CacheData collection', function () {
     expect($response->getPsrRequest()->getUri()->getPath())->toBe('/api/caches');
 
     $dto = $response->dtoOrFail();
-    expect($dto)->toBeInstanceOf(Collection::class);
-    expect($dto->first())->toBeInstanceOf(CacheData::class);
+    expect($dto)->toBeArray();
+    expect($dto[0])->toBeInstanceOf(CacheData::class);
 });

@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketKeyData;
@@ -20,9 +20,9 @@ it('lists bucket keys for a bucket', function () {
 
     $result = (new LaravelCloud('token'))->bucketKeys('fls-a14e19d6-8db3-47fe-96fb-343e55774021');
 
-    Saloon::assertSent(ListBucketKeysRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(BucketKeyData::class);
+    Saloon::assertSent(ListBucketKeysRequest::class);
 });
 
 it('retrieves a single bucket key by id', function () {

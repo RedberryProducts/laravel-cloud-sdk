@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Resources;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
 use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketData;
 use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketData;
@@ -18,11 +18,11 @@ use Spatie\LaravelData\Optional;
 trait ManagesBuckets
 {
     /**
-     * @return Collection<int, BucketData>
+     * @return LazyCollection<int, BucketData>
      */
-    public function buckets(): Collection
+    public function buckets(): LazyCollection
     {
-        return $this->connector->send(new ListBucketsRequest)->dtoOrFail();
+        return $this->connector->paginate(new ListBucketsRequest)->collect();
     }
 
     public function bucket(string $id): BucketData

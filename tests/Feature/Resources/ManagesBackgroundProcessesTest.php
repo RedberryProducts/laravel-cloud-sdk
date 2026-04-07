@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\CreateBackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\UpdateBackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
@@ -21,9 +21,9 @@ it('lists background processes for an instance', function () {
 
     $result = (new LaravelCloud('token'))->backgroundProcesses('inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba');
 
-    Saloon::assertSent(ListBackgroundProcessesRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(BackgroundProcessData::class);
+    Saloon::assertSent(ListBackgroundProcessesRequest::class);
 });
 
 it('retrieves a single background process by id', function () {

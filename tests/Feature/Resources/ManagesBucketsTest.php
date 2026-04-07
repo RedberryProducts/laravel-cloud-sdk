@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
 use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketData;
 use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketData;
@@ -22,9 +22,9 @@ it('lists buckets', function () {
 
     $result = (new LaravelCloud('token'))->buckets();
 
-    Saloon::assertSent(ListBucketsRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(BucketData::class);
+    Saloon::assertSent(ListBucketsRequest::class);
 });
 
 it('retrieves a single bucket by id', function () {

@@ -64,7 +64,7 @@ it('creates a websocket application and returns WebsocketApplicationData with al
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()->first();
+    $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         CreateWebsocketApplicationRequest::class => new LaravelCloudFixture('websocket-applications/create'),

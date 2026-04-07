@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Resources;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\CreateBackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\UpdateBackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessConfigData;
@@ -18,11 +18,11 @@ use Spatie\LaravelData\Optional;
 trait ManagesBackgroundProcesses
 {
     /**
-     * @return Collection<int, BackgroundProcessData>
+     * @return LazyCollection<int, BackgroundProcessData>
      */
-    public function backgroundProcesses(string $instanceId): Collection
+    public function backgroundProcesses(string $instanceId): LazyCollection
     {
-        return $this->connector->send(new ListBackgroundProcessesRequest($instanceId))->dtoOrFail();
+        return $this->connector->paginate(new ListBackgroundProcessesRequest($instanceId))->collect();
     }
 
     public function backgroundProcess(string $id): BackgroundProcessData

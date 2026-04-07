@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Resources;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\AwsRdsConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseSnapshotData;
@@ -30,11 +31,11 @@ use Spatie\LaravelData\Optional;
 trait ManagesDatabaseClusters
 {
     /**
-     * @return Collection<int, DatabaseClusterData>
+     * @return LazyCollection<int, DatabaseClusterData>
      */
-    public function databaseClusters(): Collection
+    public function databaseClusters(): LazyCollection
     {
-        return $this->connector->send(new ListDatabaseClustersRequest)->dtoOrFail();
+        return $this->connector->paginate(new ListDatabaseClustersRequest)->collect();
     }
 
     public function databaseCluster(string $id): DatabaseClusterData
@@ -101,11 +102,11 @@ trait ManagesDatabaseClusters
     }
 
     /**
-     * @return Collection<int, DatabaseSnapshotData>
+     * @return LazyCollection<int, DatabaseSnapshotData>
      */
-    public function databaseSnapshots(string $databaseClusterId): Collection
+    public function databaseSnapshots(string $databaseClusterId): LazyCollection
     {
-        return $this->connector->send(new ListDatabaseSnapshotsRequest($databaseClusterId))->dtoOrFail();
+        return $this->connector->paginate(new ListDatabaseSnapshotsRequest($databaseClusterId))->collect();
     }
 
     public function databaseSnapshot(string $snapshotId): DatabaseSnapshotData

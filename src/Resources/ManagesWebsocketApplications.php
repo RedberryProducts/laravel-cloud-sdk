@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Resources;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\CreateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\UpdateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
@@ -16,11 +16,11 @@ use Spatie\LaravelData\Optional;
 trait ManagesWebsocketApplications
 {
     /**
-     * @return Collection<int, WebsocketApplicationData>
+     * @return LazyCollection<int, WebsocketApplicationData>
      */
-    public function websocketApplications(string $clusterId): Collection
+    public function websocketApplications(string $clusterId): LazyCollection
     {
-        return $this->connector->send(new ListWebsocketApplicationsRequest($clusterId))->dtoOrFail();
+        return $this->connector->paginate(new ListWebsocketApplicationsRequest($clusterId))->collect();
     }
 
     public function websocketApplication(string $id): WebsocketApplicationData

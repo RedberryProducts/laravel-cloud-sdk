@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Deployments\CreateDeploymentRequest;
@@ -16,9 +16,9 @@ it('lists deployments for an environment', function () {
 
     $result = (new LaravelCloud('token'))->deployments('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
 
-    Saloon::assertSent(ListDeploymentsRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(DeploymentData::class);
+    Saloon::assertSent(ListDeploymentsRequest::class);
 });
 
 it('retrieves a single deployment by id', function () {

@@ -55,7 +55,7 @@ it('updates a websocket cluster and returns WebsocketClusterData with all fields
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()->first();
+    $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         UpdateWebsocketClusterRequest::class => new LaravelCloudFixture('websocket-clusters/update'),

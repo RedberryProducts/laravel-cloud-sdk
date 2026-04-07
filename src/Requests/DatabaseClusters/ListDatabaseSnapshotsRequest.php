@@ -2,13 +2,13 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\DatabaseClusters;
 
-use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseSnapshotData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Contracts\Paginatable;
 
-class ListDatabaseSnapshotsRequest extends Request
+class ListDatabaseSnapshotsRequest extends Request implements Paginatable
 {
     protected Method $method = Method::GET;
 
@@ -20,11 +20,13 @@ class ListDatabaseSnapshotsRequest extends Request
     }
 
     /**
-     * @return Collection<int, DatabaseSnapshotData>
+     * @return DatabaseSnapshotData[]
      */
-    public function createDtoFromResponse(Response $response): Collection
+    public function createDtoFromResponse(Response $response): array
     {
-        return collect($response->json('data'))
-            ->map(fn (array $item) => DatabaseSnapshotData::fromResponse($item['attributes'], $item['id']));
+        return array_map(
+            fn (array $item) => DatabaseSnapshotData::fromResponse($item['attributes'], $item['id']),
+            $response->json('data')
+        );
     }
 }

@@ -65,7 +65,7 @@ it('updates an application and returns ApplicationData with all fields', functio
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()->first();
+    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         UpdateApplicationRequest::class => new LaravelCloudFixture('applications/update'),

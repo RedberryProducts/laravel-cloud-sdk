@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\CreateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\UpdateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
@@ -20,9 +20,9 @@ it('lists websocket applications for a cluster', function () {
 
     $result = (new LaravelCloud('token'))->websocketApplications('ws-a14fcb1a-18a7-411d-9d82-456d3aa2c273');
 
-    Saloon::assertSent(ListWebsocketApplicationsRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(WebsocketApplicationData::class);
+    Saloon::assertSent(ListWebsocketApplicationsRequest::class);
 });
 
 it('retrieves a single websocket application by id', function () {

@@ -33,10 +33,10 @@ it('retrieves a background process and returns BackgroundProcessData', function 
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()->first();
-    $firstEnvironment = $connector->send(new ListEnvironmentsRequest($firstApplication->id))->dtoOrFail()->first();
-    $firstInstance = $connector->send(new ListInstancesRequest($firstEnvironment->id))->dtoOrFail()->first();
-    $firstBackgroundProcess = $connector->send(new ListBackgroundProcessesRequest($firstInstance->id))->dtoOrFail()->first();
+    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()[0];
+    $firstEnvironment = $connector->send(new ListEnvironmentsRequest($firstApplication->id))->dtoOrFail()[0];
+    $firstInstance = $connector->send(new ListInstancesRequest($firstEnvironment->id))->dtoOrFail()[0];
+    $firstBackgroundProcess = $connector->send(new ListBackgroundProcessesRequest($firstInstance->id))->dtoOrFail()[0];
     $response = $connector->send(new GetBackgroundProcessRequest($firstBackgroundProcess->id));
 
     Saloon::assertSent(GetBackgroundProcessRequest::class);

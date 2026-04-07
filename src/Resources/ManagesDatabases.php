@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Resources;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Databases\CreateDatabaseData;
 use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Redberry\LaravelCloudSdk\Requests\Databases\CreateDatabaseRequest;
@@ -12,11 +12,11 @@ use Redberry\LaravelCloudSdk\Requests\Databases\ListDatabasesRequest;
 trait ManagesDatabases
 {
     /**
-     * @return Collection<int, DatabaseData>
+     * @return LazyCollection<int, DatabaseData>
      */
-    public function databases(string $clusterId): Collection
+    public function databases(string $clusterId): LazyCollection
     {
-        return $this->connector->send(new ListDatabasesRequest($clusterId))->dtoOrFail();
+        return $this->connector->paginate(new ListDatabasesRequest($clusterId))->collect();
     }
 
     public function database(string $clusterId, string $databaseId): DatabaseData

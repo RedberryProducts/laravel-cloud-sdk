@@ -39,13 +39,13 @@ it('updates a bucket key and returns BucketKeyData with all fields', function ()
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstBucket = $connector->send(new ListBucketsRequest)->dtoOrFail()->first();
+    $firstBucket = $connector->send(new ListBucketsRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         ListBucketKeysRequest::class => new LaravelCloudFixture('bucket-keys/list'),
     ]);
 
-    $firstKey = $connector->send(new ListBucketKeysRequest($firstBucket->id))->dtoOrFail()->first();
+    $firstKey = $connector->send(new ListBucketKeysRequest($firstBucket->id))->dtoOrFail()[0];
 
     Saloon::fake([
         UpdateBucketKeyRequest::class => new LaravelCloudFixture('bucket-keys/update'),

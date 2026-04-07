@@ -26,7 +26,7 @@ it('gets a cache and returns CacheData', function () {
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstCache = $connector->send(new ListCachesRequest)->dtoOrFail()->first();
+    $firstCache = $connector->send(new ListCachesRequest)->dtoOrFail()[0];
 
     Saloon::fake([
         GetCacheRequest::class => new LaravelCloudFixture('caches/get'),

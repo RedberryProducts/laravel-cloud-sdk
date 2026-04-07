@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Resources;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
 use Redberry\LaravelCloudSdk\Data\Caches\CreateCacheData;
 use Redberry\LaravelCloudSdk\Data\Caches\UpdateCacheData;
@@ -21,11 +22,11 @@ use Spatie\LaravelData\Optional;
 trait ManagesCaches
 {
     /**
-     * @return Collection<int, CacheData>
+     * @return LazyCollection<int, CacheData>
      */
-    public function caches(): Collection
+    public function caches(): LazyCollection
     {
-        return $this->connector->send(new ListCachesRequest)->dtoOrFail();
+        return $this->connector->paginate(new ListCachesRequest)->collect();
     }
 
     public function cache(string $id): CacheData

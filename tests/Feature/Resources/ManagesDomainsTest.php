@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Domains\CreateDomainData;
 use Redberry\LaravelCloudSdk\Data\Domains\DomainData;
 use Redberry\LaravelCloudSdk\Data\Domains\UpdateDomainData;
@@ -23,9 +23,9 @@ it('lists domains for an environment', function () {
 
     $result = (new LaravelCloud('token'))->domains('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
 
-    Saloon::assertSent(ListDomainsRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(DomainData::class);
+    Saloon::assertSent(ListDomainsRequest::class);
 });
 
 it('retrieves a single domain by id', function () {

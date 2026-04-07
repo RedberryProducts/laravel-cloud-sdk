@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Databases\CreateDatabaseData;
 use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Redberry\LaravelCloudSdk\LaravelCloud;
@@ -17,9 +17,9 @@ it('lists databases for a cluster', function () {
 
     $result = (new LaravelCloud('token'))->databases('red-paper-65989343');
 
-    Saloon::assertSent(ListDatabasesRequest::class);
-    expect($result)->toBeInstanceOf(Collection::class);
+    expect($result)->toBeInstanceOf(LazyCollection::class);
     expect($result->first())->toBeInstanceOf(DatabaseData::class);
+    Saloon::assertSent(ListDatabasesRequest::class);
 });
 
 it('retrieves a single database by id', function () {
