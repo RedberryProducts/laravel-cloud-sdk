@@ -6,6 +6,7 @@ use Redberry\LaravelCloudSdk\Data\WebsocketApplications\UpdateWebsocketApplicati
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\CreateWebsocketApplicationRequest;
+use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\DeleteWebsocketApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\GetWebsocketApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\ListWebsocketApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\UpdateWebsocketApplicationRequest;
@@ -108,3 +109,13 @@ it('updates a websocket application via updateWebsocketApplicationWith()', funct
     Saloon::assertSent(UpdateWebsocketApplicationRequest::class);
     expect($result)->toBeInstanceOf(WebsocketApplicationData::class);
 });
+
+it('deletes a websocket application', function () {
+    Saloon::fake([
+        DeleteWebsocketApplicationRequest::class => new LaravelCloudFixture('websocket-applications/delete'),
+    ]);
+
+    (new LaravelCloud('token'))->deleteWebsocketApplication('wsa-a14fcb1a-1f09-4091-85b8-3eb74c8ce500');
+
+    Saloon::assertSent(DeleteWebsocketApplicationRequest::class);
+})->skip('Fixture pending: record in Phase 10.');

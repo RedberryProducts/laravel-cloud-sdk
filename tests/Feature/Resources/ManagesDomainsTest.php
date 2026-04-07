@@ -8,6 +8,8 @@ use Redberry\LaravelCloudSdk\Enums\DomainRedirect;
 use Redberry\LaravelCloudSdk\Enums\DomainVerificationMethod;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Domains\CreateDomainRequest;
+use Redberry\LaravelCloudSdk\Requests\Domains\DeleteDomainRequest;
+use Redberry\LaravelCloudSdk\Requests\Domains\GetDomainRequest;
 use Redberry\LaravelCloudSdk\Requests\Domains\ListDomainsRequest;
 use Redberry\LaravelCloudSdk\Requests\Domains\UpdateDomainRequest;
 use Redberry\LaravelCloudSdk\Requests\Domains\VerifyDomainRequest;
@@ -24,6 +26,18 @@ it('lists domains for an environment', function () {
     Saloon::assertSent(ListDomainsRequest::class);
     expect($result)->toBeInstanceOf(Collection::class);
     expect($result->first())->toBeInstanceOf(DomainData::class);
+});
+
+it('retrieves a single domain by id', function () {
+    Saloon::fake([
+        GetDomainRequest::class => new LaravelCloudFixture('domains/get'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->domain('domain-a15ddd8e-3829-4493-8229-2c2aae2872d4');
+
+    Saloon::assertSent(GetDomainRequest::class);
+    expect($result)->toBeInstanceOf(DomainData::class);
+    expect($result->id)->toBe('domain-a15ddd8e-3829-4493-8229-2c2aae2872d4');
 });
 
 it('creates a domain with named params', function () {
@@ -114,3 +128,13 @@ it('verifies a domain', function () {
     Saloon::assertSent(VerifyDomainRequest::class);
     expect($result)->toBeInstanceOf(DomainData::class);
 });
+
+it('deletes a domain', function () {
+    Saloon::fake([
+        DeleteDomainRequest::class => new LaravelCloudFixture('domains/delete'),
+    ]);
+
+    (new LaravelCloud('token'))->deleteDomain('domain-a15ddd8e-3829-4493-8229-2c2aae2872d4');
+
+    Saloon::assertSent(DeleteDomainRequest::class);
+})->skip('Fixture pending: record in Phase 10.');

@@ -2,13 +2,20 @@
 
 use Illuminate\Support\Collection;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentVariableData;
+use Redberry\LaravelCloudSdk\Data\Environments\SetEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\UpdateEnvironmentData;
+use Redberry\LaravelCloudSdk\Enums\EnvironmentVariableMethod;
 use Redberry\LaravelCloudSdk\Enums\PhpVersion;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Environments\CreateEnvironmentRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentVariablesRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\SetEnvironmentVariablesRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\UpdateEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Laravel\Facades\Saloon;
@@ -108,5 +115,75 @@ it('updates an environment via updateEnvironmentWith()', function () {
     );
 
     Saloon::assertSent(UpdateEnvironmentRequest::class);
+    expect($result)->toBeInstanceOf(EnvironmentData::class);
+});
+
+it('deletes an environment', function () {
+    Saloon::fake([
+        DeleteEnvironmentRequest::class => new LaravelCloudFixture('environments/delete'),
+    ]);
+
+    (new LaravelCloud('token'))->deleteEnvironment('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
+
+    Saloon::assertSent(DeleteEnvironmentRequest::class);
+})->skip('Fixture pending: record in Phase 10.');
+
+it('sets environment variables with named params', function () {
+    Saloon::fake([
+        SetEnvironmentVariablesRequest::class => new LaravelCloudFixture('environments/set-variables'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->setEnvironmentVariables(
+        'env-a14fe550-4e39-4ff2-8016-a20e4d32a996',
+        method: EnvironmentVariableMethod::Append,
+        variables: [new EnvironmentVariableData(key: 'SDK_TEST_VAR', value: 'sdk-test-value')],
+    );
+
+    Saloon::assertSent(SetEnvironmentVariablesRequest::class);
+    expect($result)->toBeInstanceOf(EnvironmentData::class);
+});
+
+it('sets environment variables via setEnvironmentVariablesWith()', function () {
+    Saloon::fake([
+        SetEnvironmentVariablesRequest::class => new LaravelCloudFixture('environments/set-variables'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->setEnvironmentVariablesWith(
+        'env-a14fe550-4e39-4ff2-8016-a20e4d32a996',
+        new SetEnvironmentVariablesData(
+            method: EnvironmentVariableMethod::Append,
+            variables: [new EnvironmentVariableData(key: 'SDK_TEST_VAR', value: 'sdk-test-value')],
+        ),
+    );
+
+    Saloon::assertSent(SetEnvironmentVariablesRequest::class);
+    expect($result)->toBeInstanceOf(EnvironmentData::class);
+});
+
+it('deletes environment variables with named params', function () {
+    Saloon::fake([
+        DeleteEnvironmentVariablesRequest::class => new LaravelCloudFixture('environments/delete-variables'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->deleteEnvironmentVariables(
+        'env-a14fe550-4e39-4ff2-8016-a20e4d32a996',
+        keys: ['SDK_TEST_VAR'],
+    );
+
+    Saloon::assertSent(DeleteEnvironmentVariablesRequest::class);
+    expect($result)->toBeInstanceOf(EnvironmentData::class);
+});
+
+it('deletes environment variables via deleteEnvironmentVariablesWith()', function () {
+    Saloon::fake([
+        DeleteEnvironmentVariablesRequest::class => new LaravelCloudFixture('environments/delete-variables'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->deleteEnvironmentVariablesWith(
+        'env-a14fe550-4e39-4ff2-8016-a20e4d32a996',
+        new DeleteEnvironmentVariablesData(keys: ['SDK_TEST_VAR']),
+    );
+
+    Saloon::assertSent(DeleteEnvironmentVariablesRequest::class);
     expect($result)->toBeInstanceOf(EnvironmentData::class);
 });

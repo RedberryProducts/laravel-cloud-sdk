@@ -19,6 +19,7 @@ it('lists commands for an environment', function () {
 
     Saloon::assertSent(ListCommandsRequest::class);
     expect($result)->toBeInstanceOf(Collection::class);
+    expect($result->first())->toBeInstanceOf(CommandData::class);
 });
 
 it('retrieves a single command by id', function () {

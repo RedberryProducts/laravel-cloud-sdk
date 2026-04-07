@@ -10,6 +10,7 @@ use Redberry\LaravelCloudSdk\Enums\InstanceSize;
 use Redberry\LaravelCloudSdk\Enums\InstanceType;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Instances\CreateInstanceRequest;
+use Redberry\LaravelCloudSdk\Requests\Instances\DeleteInstanceRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\GetInstanceRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\ListInstanceSizesRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\ListInstancesRequest;
@@ -140,3 +141,13 @@ it('lists available instance sizes', function () {
     expect($result)->toBeInstanceOf(Collection::class);
     expect($result->first())->toBeInstanceOf(InstanceSizeData::class);
 });
+
+it('deletes an instance', function () {
+    Saloon::fake([
+        DeleteInstanceRequest::class => new LaravelCloudFixture('instances/delete'),
+    ]);
+
+    (new LaravelCloud('token'))->deleteInstance('inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba');
+
+    Saloon::assertSent(DeleteInstanceRequest::class);
+})->skip('Fixture pending: record in Phase 10.');

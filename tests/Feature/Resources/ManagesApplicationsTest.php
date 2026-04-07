@@ -8,6 +8,7 @@ use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\SourceControlProvider;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Applications\CreateApplicationRequest;
+use Redberry\LaravelCloudSdk\Requests\Applications\DeleteApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\GetApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\UpdateApplicationRequest;
@@ -118,3 +119,13 @@ it('updates an application via updateApplicationWith()', function () {
     Saloon::assertSent(UpdateApplicationRequest::class);
     expect($result)->toBeInstanceOf(ApplicationData::class);
 });
+
+it('deletes an application', function () {
+    Saloon::fake([
+        DeleteApplicationRequest::class => new LaravelCloudFixture('applications/delete'),
+    ]);
+
+    (new LaravelCloud('token'))->deleteApplication('app-a14fe54f-42b2-431c-9b3a-876900975139');
+
+    Saloon::assertSent(DeleteApplicationRequest::class);
+})->skip('Fixture pending: record in Phase 10.');

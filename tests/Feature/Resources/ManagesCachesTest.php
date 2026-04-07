@@ -10,6 +10,7 @@ use Redberry\LaravelCloudSdk\Enums\CacheType;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Caches\CreateCacheRequest;
+use Redberry\LaravelCloudSdk\Requests\Caches\DeleteCacheRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\GetCacheRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\ListCachesRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\ListCacheTypesRequest;
@@ -138,3 +139,13 @@ it('lists available cache types', function () {
     expect($result)->toBeInstanceOf(Collection::class);
     expect($result->first())->toBeInstanceOf(CacheTypeData::class);
 });
+
+it('deletes a cache', function () {
+    Saloon::fake([
+        DeleteCacheRequest::class => new LaravelCloudFixture('caches/delete'),
+    ]);
+
+    (new LaravelCloud('token'))->deleteCache('cache-a14df861-12f8-413c-93b2-3c2b92e590c3');
+
+    Saloon::assertSent(DeleteCacheRequest::class);
+})->skip('Fixture pending: record in Phase 10.');
