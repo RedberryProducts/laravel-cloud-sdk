@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Tue, 07 Apr 2026 17:54:29 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "567",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Tue, 07 Apr 2026 17:54:29 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "28",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "30",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 5d773c3173491a5eb2d84f980c958f36.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "IST50-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"db-a17d0c27-95ca-4558-a830-307b5f5aae35\",\"type\":\"databases\",\"attributes\":{\"name\":\"restored-cluster\",\"type\":\"laravel_mysql_84\",\"status\":\"restoring\",\"region\":\"us-east-1\",\"created_at\":\"2026-04-07T17:54:29.000000Z\",\"config\":{\"size\":\"db-flex.m-1vcpu-512mb\",\"storage\":10,\"is_public\":false,\"uses_scheduled_snapshots\":false,\"retention_days\":7},\"connection\":{\"hostname\":\"REDACTED\",\"port\":3306,\"protocol\":\"mysql\",\"driver\":\"mysql\",\"username\":\"REDACTED\",\"password\":\"REDACTED\"}}}}",
+    "context": []
+}

@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Tue, 07 Apr 2026 17:53:45 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "441",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Tue, 07 Apr 2026 17:53:45 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "29",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "30",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 5d773c3173491a5eb2d84f980c958f36.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "IST50-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"db-snapshot-a17d0be4-f7f4-4dea-aca5-55d0d54369ef\",\"type\":\"database_snapshots\",\"attributes\":{\"name\":\"test-snapshot\",\"description\":null,\"type\":\"manual\",\"status\":\"pending\",\"storage_bytes\":null,\"pitr_enabled\":null,\"pitr_ends_at\":null,\"completed_at\":null,\"created_at\":\"2026-04-07T17:53:45.000000Z\"},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/database-snapshots\\\/db-snapshot-a17d0be4-f7f4-4dea-aca5-55d0d54369ef\"}}}}",
+    "context": []
+}

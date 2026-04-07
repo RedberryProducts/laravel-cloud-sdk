@@ -22,9 +22,12 @@ use Redberry\LaravelCloudSdk\Data\Commands\CommandData;
 use Redberry\LaravelCloudSdk\Data\Commands\RunCommandData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\AwsRdsConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseSnapshotData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseSnapshotData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\LaravelMysqlConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonServerlessPostgresConfigData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\RestoreDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\Databases\CreateDatabaseData;
 use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
@@ -140,6 +143,13 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static DatabaseClusterData updateDatabaseClusterWith(string $id, UpdateDatabaseClusterData $data)
  * @method static Collection databaseTypes()
  * @method static void deleteDatabaseCluster(string $id)
+ * @method static DatabaseSnapshotData createDatabaseSnapshot(string $databaseClusterId, string $name, string|null $description = null)
+ * @method static DatabaseSnapshotData createDatabaseSnapshotWith(string $databaseClusterId, CreateDatabaseSnapshotData $data)
+ * @method static Collection databaseSnapshots(string $databaseClusterId)
+ * @method static DatabaseSnapshotData databaseSnapshot(string $snapshotId)
+ * @method static DatabaseClusterData restoreDatabaseCluster(string $databaseClusterId, string $name, string|null $restoreTime = null, string|null $databaseSnapshotId = null)
+ * @method static DatabaseClusterData restoreDatabaseClusterWith(string $databaseClusterId, RestoreDatabaseClusterData $data)
+ * @method static void deleteDatabaseSnapshot(string $snapshotId)
  *
  * Databases
  * @method static Collection databases(string $clusterId)
