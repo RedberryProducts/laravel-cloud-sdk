@@ -1,13 +1,13 @@
 <?php
 
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
-use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonServerlessPostgresConfigData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
 use Spatie\LaravelData\Optional;
 
 it('can be constructed with all parameters', function () {
-    $config = new NeonConfigData(
+    $config = new NeonServerlessPostgresConfigData(
         cuMin: 0.25,
         cuMax: 2.0,
         suspendSeconds: 300,
@@ -25,12 +25,12 @@ it('can be constructed with all parameters', function () {
     expect($data->name)->toBe('test-cluster');
     expect($data->type)->toBe(DatabaseType::NEON_SERVERLESS_POSTGRES_17);
     expect($data->region)->toBe(CloudRegion::US_EAST_1);
-    expect($data->config)->toBeInstanceOf(NeonConfigData::class);
+    expect($data->config)->toBeInstanceOf(NeonServerlessPostgresConfigData::class);
     expect($data->clusterId)->toBe(42);
 });
 
 it('defaults clusterId to Optional', function () {
-    $config = new NeonConfigData(
+    $config = new NeonServerlessPostgresConfigData(
         cuMin: 0.25,
         cuMax: 0.25,
         suspendSeconds: 300,

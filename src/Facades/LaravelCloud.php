@@ -24,7 +24,7 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\AwsRdsConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\LaravelMysqlConfigData;
-use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonServerlessPostgresConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\Databases\CreateDatabaseData;
 use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
@@ -134,9 +134,9 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * Database Clusters
  * @method static Collection databaseClusters()
  * @method static DatabaseClusterData databaseCluster(string $id)
- * @method static DatabaseClusterData createDatabaseCluster(string $name, string|DatabaseType $type, string|CloudRegion $region, NeonConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config, int $clusterId = null)
+ * @method static DatabaseClusterData createDatabaseCluster(string $name, string|DatabaseType $type, string|CloudRegion $region, NeonServerlessPostgresConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config, int $clusterId = null)
  * @method static DatabaseClusterData createDatabaseClusterWith(CreateDatabaseClusterData $data)
- * @method static DatabaseClusterData updateDatabaseCluster(string $id, NeonConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config)
+ * @method static DatabaseClusterData updateDatabaseCluster(string $id, NeonServerlessPostgresConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config)
  * @method static DatabaseClusterData updateDatabaseClusterWith(string $id, UpdateDatabaseClusterData $data)
  * @method static Collection databaseTypes()
  * @method static void deleteDatabaseCluster(string $id)

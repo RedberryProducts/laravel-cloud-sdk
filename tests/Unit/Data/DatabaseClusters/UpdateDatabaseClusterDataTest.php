@@ -1,10 +1,10 @@
 <?php
 
-use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonServerlessPostgresConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 
 it('can be constructed with config', function () {
-    $config = new NeonConfigData(
+    $config = new NeonServerlessPostgresConfigData(
         cuMin: 0.5,
         cuMax: 4.0,
         suspendSeconds: 600,
@@ -15,7 +15,7 @@ it('can be constructed with config', function () {
         config: $config,
     );
 
-    expect($data->config)->toBeInstanceOf(NeonConfigData::class);
+    expect($data->config)->toBeInstanceOf(NeonServerlessPostgresConfigData::class);
     expect($data->config->cuMin)->toBe(0.5);
     expect($data->config->cuMax)->toBe(4.0);
 });

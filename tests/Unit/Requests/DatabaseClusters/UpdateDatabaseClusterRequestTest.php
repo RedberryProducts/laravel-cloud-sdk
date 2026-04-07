@@ -3,13 +3,14 @@
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseConnectionData;
-use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonServerlessPostgresConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\DatabaseDriver;
 use Redberry\LaravelCloudSdk\Enums\DatabaseProtocol;
 use Redberry\LaravelCloudSdk\Enums\DatabaseStatus;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
+use Redberry\LaravelCloudSdk\Enums\NeonServerlessPostgresComputeUnit;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\ListDatabaseClustersRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\UpdateDatabaseClusterRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
@@ -18,7 +19,7 @@ use Saloon\Laravel\Facades\Saloon;
 
 it('resolves the endpoint correctly', function () {
     $data = new UpdateDatabaseClusterData(
-        config: new NeonConfigData(cuMin: 1, cuMax: 1, suspendSeconds: 300, retentionDays: 7),
+        config: new NeonServerlessPostgresConfigData(cuMin: 1, cuMax: 1, suspendSeconds: 300, retentionDays: 7),
     );
     $request = new UpdateDatabaseClusterRequest('cluster-123', $data);
 
@@ -27,7 +28,7 @@ it('resolves the endpoint correctly', function () {
 
 it('has the correct HTTP method', function () {
     $data = new UpdateDatabaseClusterData(
-        config: new NeonConfigData(cuMin: 1, cuMax: 1, suspendSeconds: 300, retentionDays: 7),
+        config: new NeonServerlessPostgresConfigData(cuMin: 1, cuMax: 1, suspendSeconds: 300, retentionDays: 7),
     );
     $request = new UpdateDatabaseClusterRequest('cluster-123', $data);
 
@@ -36,7 +37,7 @@ it('has the correct HTTP method', function () {
 
 it('sends correct body', function () {
     $data = new UpdateDatabaseClusterData(
-        config: new NeonConfigData(cuMin: 0.25, cuMax: 4, suspendSeconds: 300, retentionDays: 7),
+        config: new NeonServerlessPostgresConfigData(cuMin: 0.25, cuMax: 4, suspendSeconds: 300, retentionDays: 7),
     );
     $request = new UpdateDatabaseClusterRequest('cluster-123', $data);
     $body = $request->body()->all();
@@ -63,7 +64,7 @@ it('updates a database cluster and returns DatabaseClusterData with all fields',
     ]);
 
     $data = new UpdateDatabaseClusterData(
-        config: new NeonConfigData(cuMin: 0.25, cuMax: 0.25, suspendSeconds: 300, retentionDays: 7),
+        config: new NeonServerlessPostgresConfigData(cuMin: 0.25, cuMax: 0.25, suspendSeconds: 300, retentionDays: 7),
     );
     $response = $connector->send(new UpdateDatabaseClusterRequest($firstCluster->id, $data));
 
@@ -76,9 +77,9 @@ it('updates a database cluster and returns DatabaseClusterData with all fields',
     expect($dto->type)->toBe(DatabaseType::NEON_SERVERLESS_POSTGRES_17);
     expect($dto->status)->toBe(DatabaseStatus::UPDATING);
     expect($dto->region)->toBe(CloudRegion::US_EAST_1);
-    expect($dto->config)->toBeInstanceOf(NeonConfigData::class);
-    expect($dto->config->cuMin)->toBe(0.25);
-    expect($dto->config->cuMax)->toBe(0.25);
+    expect($dto->config)->toBeInstanceOf(NeonServerlessPostgresConfigData::class);
+    expect($dto->config->cuMin)->toBe(NeonServerlessPostgresComputeUnit::CU_0_25);
+    expect($dto->config->cuMax)->toBe(NeonServerlessPostgresComputeUnit::CU_0_25);
     expect($dto->config->suspendSeconds)->toBe(300);
     expect($dto->config->retentionDays)->toBe(7);
     expect($dto->connection)->toBeInstanceOf(DatabaseConnectionData::class);

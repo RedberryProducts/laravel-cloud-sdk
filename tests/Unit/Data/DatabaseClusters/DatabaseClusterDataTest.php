@@ -5,10 +5,11 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\AwsRdsConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseConnectionData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\LaravelMysqlConfigData;
-use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonServerlessPostgresConfigData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\DatabaseStatus;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
+use Redberry\LaravelCloudSdk\Enums\NeonServerlessPostgresComputeUnit;
 
 it('can be created from neon response data', function () {
     $responseData = [
@@ -41,9 +42,9 @@ it('can be created from neon response data', function () {
     expect($data->type)->toBe(DatabaseType::NEON_SERVERLESS_POSTGRES_17);
     expect($data->status)->toBe(DatabaseStatus::AVAILABLE);
     expect($data->region)->toBe(CloudRegion::US_EAST_1);
-    expect($data->config)->toBeInstanceOf(NeonConfigData::class);
-    expect($data->config->cuMin)->toBe(0.25);
-    expect($data->config->cuMax)->toBe(2.0);
+    expect($data->config)->toBeInstanceOf(NeonServerlessPostgresConfigData::class);
+    expect($data->config->cuMin)->toBe(NeonServerlessPostgresComputeUnit::CU_0_25);
+    expect($data->config->cuMax)->toBe(NeonServerlessPostgresComputeUnit::CU_2);
     expect($data->connection)->toBeInstanceOf(DatabaseConnectionData::class);
     expect($data->connection->hostname)->toBe('neon-db.example.com');
     expect($data->createdAt)->toBeInstanceOf(CarbonImmutable::class);

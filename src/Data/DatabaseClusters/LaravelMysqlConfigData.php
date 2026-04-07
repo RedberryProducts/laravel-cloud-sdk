@@ -2,6 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Data\DatabaseClusters;
 
+use Redberry\LaravelCloudSdk\Enums\DatabaseClusterSize;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
@@ -10,7 +11,7 @@ use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 class LaravelMysqlConfigData extends Data
 {
     public function __construct(
-        public string $size,
+        public string|DatabaseClusterSize $size,
         public int $storage,
         public bool $isPublic,
         public bool $usesScheduledSnapshots,
@@ -21,7 +22,7 @@ class LaravelMysqlConfigData extends Data
     public static function fromResponse(array $attributes): self
     {
         return new self(
-            size: $attributes['size'],
+            size: DatabaseClusterSize::tryFrom($attributes['size']) ?? $attributes['size'],
             storage: $attributes['storage'],
             isPublic: $attributes['is_public'],
             usesScheduledSnapshots: $attributes['uses_scheduled_snapshots'],

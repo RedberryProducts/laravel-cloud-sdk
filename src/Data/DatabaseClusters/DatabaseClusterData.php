@@ -16,7 +16,7 @@ class DatabaseClusterData extends Data
         public string|DatabaseType $type,
         public string|DatabaseStatus $status,
         public string|CloudRegion $region,
-        public NeonConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config,
+        public NeonServerlessPostgresConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config,
         public DatabaseConnectionData $connection,
         public ?CarbonImmutable $createdAt,
     ) {}
@@ -37,10 +37,10 @@ class DatabaseClusterData extends Data
         );
     }
 
-    private static function resolveConfig(string $type, array $config): NeonConfigData|LaravelMysqlConfigData|AwsRdsConfigData
+    private static function resolveConfig(string $type, array $config): NeonServerlessPostgresConfigData|LaravelMysqlConfigData|AwsRdsConfigData
     {
         return match ($type) {
-            'neon_serverless_postgres_18', 'neon_serverless_postgres_17', 'neon_serverless_postgres_16' => NeonConfigData::fromResponse($config),
+            'neon_serverless_postgres_18', 'neon_serverless_postgres_17', 'neon_serverless_postgres_16' => NeonServerlessPostgresConfigData::fromResponse($config),
             'laravel_mysql_84', 'laravel_mysql_8' => LaravelMysqlConfigData::fromResponse($config),
             'aws_rds_mysql_8', 'aws_rds_postgres_18' => AwsRdsConfigData::fromResponse($config),
             default => throw new \InvalidArgumentException("Unknown database cluster type: {$type}"),

@@ -1,11 +1,12 @@
 <?php
 
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\AwsRdsConfigData;
+use Redberry\LaravelCloudSdk\Enums\DatabaseClusterSize;
 use Redberry\LaravelCloudSdk\Enums\DeploymentOption;
 
 it('can be constructed with all parameters', function () {
     $data = new AwsRdsConfigData(
-        size: 'db.t3.micro',
+        size: DatabaseClusterSize::T4G_MICRO,
         storage: 20,
         isPublic: false,
         usesPitr: true,
@@ -15,7 +16,7 @@ it('can be constructed with all parameters', function () {
         readReplicas: 2,
     );
 
-    expect($data->size)->toBe('db.t3.micro');
+    expect($data->size)->toBe(DatabaseClusterSize::T4G_MICRO);
     expect($data->storage)->toBe(20);
     expect($data->isPublic)->toBeFalse();
     expect($data->usesPitr)->toBeTrue();
@@ -27,7 +28,7 @@ it('can be constructed with all parameters', function () {
 
 it('can be created from API response data', function () {
     $responseData = [
-        'size' => 'db.t3.medium',
+        'size' => 'db.t4g.medium',
         'storage' => 100,
         'is_public' => true,
         'uses_pitr' => false,
@@ -40,7 +41,7 @@ it('can be created from API response data', function () {
     $data = AwsRdsConfigData::fromResponse($responseData);
 
     expect($data)->toBeInstanceOf(AwsRdsConfigData::class);
-    expect($data->size)->toBe('db.t3.medium');
+    expect($data->size)->toBe(DatabaseClusterSize::T4G_MEDIUM);
     expect($data->storage)->toBe(100);
     expect($data->isPublic)->toBeTrue();
     expect($data->usesPitr)->toBeFalse();
@@ -50,9 +51,24 @@ it('can be created from API response data', function () {
     expect($data->readReplicas)->toBe(3);
 });
 
-it('handles null maintenance window and read replicas', function () {
+it('falls back to string for unknown size values', function () {
     $responseData = [
         'size' => 'db.t3.micro',
+        'storage' => 20,
+        'is_public' => false,
+        'uses_pitr' => true,
+        'retention_days' => 7,
+        'deployment_option' => 'single-az',
+    ];
+
+    $data = AwsRdsConfigData::fromResponse($responseData);
+
+    expect($data->size)->toBe('db.t3.micro');
+});
+
+it('handles null maintenance window and read replicas', function () {
+    $responseData = [
+        'size' => 'db.t4g.micro',
         'storage' => 20,
         'is_public' => false,
         'uses_pitr' => true,
@@ -68,7 +84,7 @@ it('handles null maintenance window and read replicas', function () {
 
 it('serializes to snake_case array', function () {
     $data = new AwsRdsConfigData(
-        size: 'db.t3.micro',
+        size: DatabaseClusterSize::T4G_MICRO,
         storage: 20,
         isPublic: false,
         usesPitr: true,
@@ -81,5 +97,6 @@ it('serializes to snake_case array', function () {
     $array = $data->toArray();
 
     expect($array)->toHaveKeys(['size', 'storage', 'is_public', 'uses_pitr', 'retention_days', 'deployment_option', 'maintenance_window', 'read_replicas']);
+    expect($array['size'])->toBe('db.t4g.micro');
     expect($array['deployment_option'])->toBe('single-az');
 });

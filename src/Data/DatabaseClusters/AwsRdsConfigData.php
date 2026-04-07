@@ -2,6 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Data\DatabaseClusters;
 
+use Redberry\LaravelCloudSdk\Enums\DatabaseClusterSize;
 use Redberry\LaravelCloudSdk\Enums\DeploymentOption;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;
@@ -11,7 +12,7 @@ use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 class AwsRdsConfigData extends Data
 {
     public function __construct(
-        public string $size,
+        public string|DatabaseClusterSize $size,
         public int $storage,
         public bool $isPublic,
         public bool $usesPitr,
@@ -24,7 +25,7 @@ class AwsRdsConfigData extends Data
     public static function fromResponse(array $attributes): self
     {
         return new self(
-            size: $attributes['size'],
+            size: DatabaseClusterSize::tryFrom($attributes['size']) ?? $attributes['size'],
             storage: $attributes['storage'],
             isPublic: $attributes['is_public'],
             usesPitr: $attributes['uses_pitr'],

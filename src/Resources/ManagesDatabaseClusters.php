@@ -7,7 +7,7 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\AwsRdsConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\LaravelMysqlConfigData;
-use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonConfigData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonServerlessPostgresConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
@@ -38,7 +38,7 @@ trait ManagesDatabaseClusters
         string $name,
         string|DatabaseType $type,
         string|CloudRegion $region,
-        NeonConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config,
+        NeonServerlessPostgresConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config,
         int|Optional $clusterId = new Optional,
     ): DatabaseClusterData {
         return $this->createDatabaseClusterWith(new CreateDatabaseClusterData(
@@ -57,7 +57,7 @@ trait ManagesDatabaseClusters
 
     public function updateDatabaseCluster(
         string $id,
-        NeonConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config,
+        NeonServerlessPostgresConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config,
     ): DatabaseClusterData {
         return $this->updateDatabaseClusterWith($id, new UpdateDatabaseClusterData(
             config: $config,

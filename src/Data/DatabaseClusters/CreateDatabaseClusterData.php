@@ -16,7 +16,7 @@ class CreateDatabaseClusterData extends Data
         public string $name,
         public string|DatabaseType $type,
         public string|CloudRegion $region,
-        public NeonConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config,
+        public NeonServerlessPostgresConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config,
         public int|Optional $clusterId = new Optional,
     ) {}
 }
