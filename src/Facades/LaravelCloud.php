@@ -177,6 +177,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static BucketData createBucketWith(CreateBucketData $data)
  * @method static BucketData updateBucket(string $id, string $name = null, string|BucketVisibility $visibility = null, array|null $allowedOrigins = null)
  * @method static BucketData updateBucketWith(string $id, UpdateBucketData $data)
+ * @method static void deleteBucket(string $id)
  *
  * Bucket Keys
  * @method static LazyCollection<int, BucketKeyData> bucketKeys(string $bucketId)
@@ -185,6 +186,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static BucketKeyData createBucketKeyWith(string $bucketId, CreateBucketKeyData $data)
  * @method static BucketKeyData updateBucketKey(string $keyId, string $name)
  * @method static BucketKeyData updateBucketKeyWith(string $keyId, UpdateBucketKeyData $data)
+ * @method static void deleteBucketKey(string $id)
  *
  * Websocket Clusters
  * @method static LazyCollection<int, WebsocketClusterData> websocketClusters()

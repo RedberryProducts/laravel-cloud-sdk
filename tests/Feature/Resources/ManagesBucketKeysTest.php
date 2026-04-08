@@ -7,6 +7,7 @@ use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketKeyData;
 use Redberry\LaravelCloudSdk\Enums\KeyPermission;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Buckets\CreateBucketKeyRequest;
+use Redberry\LaravelCloudSdk\Requests\Buckets\DeleteBucketKeyRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\GetBucketKeyRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\ListBucketKeysRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\UpdateBucketKeyRequest;
@@ -109,4 +110,14 @@ it('updates a bucket key via updateBucketKeyWith()', function () {
 
     Saloon::assertSent(UpdateBucketKeyRequest::class);
     expect($result)->toBeInstanceOf(BucketKeyData::class);
+});
+
+it('deletes a bucket key', function () {
+    Saloon::fake([
+        DeleteBucketKeyRequest::class => new LaravelCloudFixture('buckets/delete-key'),
+    ]);
+
+    (new LaravelCloud('token'))->deleteBucketKey('flsk-a14e1a83-a4d4-49a4-bdd9-93ae07a6a9cd');
+
+    Saloon::assertSent(DeleteBucketKeyRequest::class);
 });
