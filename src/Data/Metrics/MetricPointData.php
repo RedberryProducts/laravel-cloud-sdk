@@ -4,11 +4,12 @@ namespace Redberry\LaravelCloudSdk\Data\Metrics;
 
 use Spatie\LaravelData\Data;
 
-class TotalMetricPointData extends Data
+class MetricPointData extends Data
 {
     public function __construct(
         public string $x,
-        public float $y,
+        /** @var float[]|float|int */
+        public array|float|int $y,
     ) {}
 
     public static function fromResponse(array $attributes): self
