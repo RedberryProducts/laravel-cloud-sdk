@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Resources;
 
 use Illuminate\Support\LazyCollection;
+use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
@@ -27,6 +28,8 @@ use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\SetEnvironmentVariablesRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\StartEnvironmentRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\StopEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\UpdateEnvironmentRequest;
 use Spatie\LaravelData\Optional;
 
@@ -134,6 +137,16 @@ trait ManagesEnvironments
     public function environmentMetrics(string $id, string|MetricPeriod|null $period = null): EnvironmentMetricsData
     {
         return $this->connector->send(new GetEnvironmentMetricsRequest($id, $period))->dtoOrFail();
+    }
+
+    public function startEnvironment(string $id, ?bool $redeploy = null): DeploymentData
+    {
+        return $this->connector->send(new StartEnvironmentRequest($id, $redeploy))->dtoOrFail();
+    }
+
+    public function stopEnvironment(string $id): EnvironmentData
+    {
+        return $this->connector->send(new StopEnvironmentRequest($id))->dtoOrFail();
     }
 
     public function deleteEnvironment(string $id): void

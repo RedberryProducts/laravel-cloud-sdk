@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\LazyCollection;
+use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
@@ -18,6 +19,8 @@ use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\SetEnvironmentVariablesRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\StartEnvironmentRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\StopEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\UpdateEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Laravel\Facades\Saloon;
@@ -129,6 +132,28 @@ it('gets environment metrics', function () {
 
     Saloon::assertSent(GetEnvironmentMetricsRequest::class);
     expect($result)->toBeInstanceOf(EnvironmentMetricsData::class);
+});
+
+it('starts an environment', function () {
+    Saloon::fake([
+        StartEnvironmentRequest::class => new LaravelCloudFixture('environments/start'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->startEnvironment('env-a15fd671-0b6a-401a-84bf-14105ce69023');
+
+    Saloon::assertSent(StartEnvironmentRequest::class);
+    expect($result)->toBeInstanceOf(DeploymentData::class);
+});
+
+it('stops an environment', function () {
+    Saloon::fake([
+        StopEnvironmentRequest::class => new LaravelCloudFixture('environments/stop'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->stopEnvironment('env-a15fd671-0b6a-401a-84bf-14105ce69023');
+
+    Saloon::assertSent(StopEnvironmentRequest::class);
+    expect($result)->toBeInstanceOf(EnvironmentData::class);
 });
 
 it('deletes an environment', function () {
