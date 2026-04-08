@@ -37,20 +37,13 @@ it('omits period from query when null', function () {
 it('gets websocket application metrics and returns WebsocketApplicationMetricsData', function () {
     Saloon::fake([
         ListWebsocketClustersRequest::class => new LaravelCloudFixture('websocket-clusters/metrics-list'),
+        ListWebsocketApplicationsRequest::class => new LaravelCloudFixture('websocket-applications/metrics-list'),
+        GetWebsocketApplicationMetricsRequest::class => new LaravelCloudFixture('websocket-applications/metrics'),
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()[0];
-
-    Saloon::fake([
-        ListWebsocketApplicationsRequest::class => new LaravelCloudFixture('websocket-applications/metrics-list'),
-    ]);
-
     $firstApp = $connector->send(new ListWebsocketApplicationsRequest($firstCluster->id))->dtoOrFail()[0];
-
-    Saloon::fake([
-        GetWebsocketApplicationMetricsRequest::class => new LaravelCloudFixture('websocket-applications/metrics'),
-    ]);
 
     $response = $connector->send(new GetWebsocketApplicationMetricsRequest($firstApp->id));
 

@@ -36,14 +36,11 @@ it('omits period from query when null', function () {
 it('gets cache metrics and returns CacheMetricsData', function () {
     Saloon::fake([
         ListCachesRequest::class => new LaravelCloudFixture('caches/metrics-list'),
+        GetCacheMetricsRequest::class => new LaravelCloudFixture('caches/metrics'),
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $firstCache = $connector->send(new ListCachesRequest)->dtoOrFail()[0];
-
-    Saloon::fake([
-        GetCacheMetricsRequest::class => new LaravelCloudFixture('caches/metrics'),
-    ]);
 
     $response = $connector->send(new GetCacheMetricsRequest($firstCache->id));
 

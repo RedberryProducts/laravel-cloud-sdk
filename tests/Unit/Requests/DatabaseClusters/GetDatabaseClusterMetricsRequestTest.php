@@ -36,14 +36,11 @@ it('omits period from query when null', function () {
 it('gets database cluster metrics and returns DatabaseClusterMetricsData', function () {
     Saloon::fake([
         ListDatabaseClustersRequest::class => new LaravelCloudFixture('database-clusters/metrics-list'),
+        GetDatabaseClusterMetricsRequest::class => new LaravelCloudFixture('database-clusters/metrics'),
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $firstCluster = $connector->send(new ListDatabaseClustersRequest)->dtoOrFail()[0];
-
-    Saloon::fake([
-        GetDatabaseClusterMetricsRequest::class => new LaravelCloudFixture('database-clusters/metrics'),
-    ]);
 
     $response = $connector->send(new GetDatabaseClusterMetricsRequest($firstCluster->id));
 

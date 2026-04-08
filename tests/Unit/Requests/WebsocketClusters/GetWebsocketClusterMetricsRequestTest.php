@@ -36,14 +36,11 @@ it('omits period from query when null', function () {
 it('gets websocket cluster metrics and returns WebsocketClusterMetricsData', function () {
     Saloon::fake([
         ListWebsocketClustersRequest::class => new LaravelCloudFixture('websocket-clusters/metrics-list'),
+        GetWebsocketClusterMetricsRequest::class => new LaravelCloudFixture('websocket-clusters/metrics'),
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()[0];
-
-    Saloon::fake([
-        GetWebsocketClusterMetricsRequest::class => new LaravelCloudFixture('websocket-clusters/metrics'),
-    ]);
 
     $response = $connector->send(new GetWebsocketClusterMetricsRequest($firstCluster->id));
 

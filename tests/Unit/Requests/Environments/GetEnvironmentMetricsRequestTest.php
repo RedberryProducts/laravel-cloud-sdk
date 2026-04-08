@@ -37,20 +37,13 @@ it('omits period from query when null', function () {
 it('gets environment metrics and returns EnvironmentMetricsData', function () {
     Saloon::fake([
         ListApplicationsRequest::class => new LaravelCloudFixture('applications/metrics-list'),
+        ListEnvironmentsRequest::class => new LaravelCloudFixture('environments/metrics-list'),
+        GetEnvironmentMetricsRequest::class => new LaravelCloudFixture('environments/metrics'),
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $firstApp = $connector->send(new ListApplicationsRequest)->dtoOrFail()[0];
-
-    Saloon::fake([
-        ListEnvironmentsRequest::class => new LaravelCloudFixture('environments/metrics-list'),
-    ]);
-
     $firstEnv = $connector->send(new ListEnvironmentsRequest($firstApp->id))->dtoOrFail()[0];
-
-    Saloon::fake([
-        GetEnvironmentMetricsRequest::class => new LaravelCloudFixture('environments/metrics'),
-    ]);
 
     $response = $connector->send(new GetEnvironmentMetricsRequest($firstEnv->id));
 
