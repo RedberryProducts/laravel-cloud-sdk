@@ -126,7 +126,7 @@ it('deletes an environment', function () {
     (new LaravelCloud('token'))->deleteEnvironment('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
 
     Saloon::assertSent(DeleteEnvironmentRequest::class);
-})->skip('Fixture pending: record in Phase 10.');
+});
 
 it('sets environment variables with named params', function () {
     Saloon::fake([
