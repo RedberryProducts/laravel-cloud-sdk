@@ -8,6 +8,7 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\AwsRdsConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseSnapshotData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterMetricsData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseSnapshotData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\LaravelMysqlConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonServerlessPostgresConfigData;
@@ -15,10 +16,12 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\RestoreDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
+use Redberry\LaravelCloudSdk\Enums\MetricPeriod;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\CreateDatabaseClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\CreateDatabaseSnapshotRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\DeleteDatabaseClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\DeleteDatabaseSnapshotRequest;
+use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\GetDatabaseClusterMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\GetDatabaseClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\GetDatabaseSnapshotRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\ListDatabaseClustersRequest;
@@ -81,6 +84,11 @@ trait ManagesDatabaseClusters
     public function databaseTypes(): Collection
     {
         return $this->connector->send(new ListDatabaseTypesRequest)->dtoOrFail();
+    }
+
+    public function databaseClusterMetrics(string $id, string|MetricPeriod|null $period = null): DatabaseClusterMetricsData
+    {
+        return $this->connector->send(new GetDatabaseClusterMetricsRequest($id, $period))->dtoOrFail();
     }
 
     public function deleteDatabaseCluster(string $id): void

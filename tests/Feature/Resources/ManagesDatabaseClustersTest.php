@@ -5,6 +5,7 @@ use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseSnapshotData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterMetricsData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseSnapshotData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseTypeData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonServerlessPostgresConfigData;
@@ -17,6 +18,7 @@ use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\CreateDatabaseClusterRequ
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\CreateDatabaseSnapshotRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\DeleteDatabaseClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\DeleteDatabaseSnapshotRequest;
+use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\GetDatabaseClusterMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\GetDatabaseClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\GetDatabaseSnapshotRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\ListDatabaseClustersRequest;
@@ -244,6 +246,17 @@ it('restores a database cluster via restoreDatabaseClusterWith()', function () {
 
     Saloon::assertSent(RestoreDatabaseClusterRequest::class);
     expect($result)->toBeInstanceOf(DatabaseClusterData::class);
+});
+
+it('gets database cluster metrics', function () {
+    Saloon::fake([
+        GetDatabaseClusterMetricsRequest::class => new LaravelCloudFixture('database-clusters/metrics'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->databaseClusterMetrics('red-paper-65989343');
+
+    Saloon::assertSent(GetDatabaseClusterMetricsRequest::class);
+    expect($result)->toBeInstanceOf(DatabaseClusterMetricsData::class);
 });
 
 it('deletes a database snapshot', function () {
