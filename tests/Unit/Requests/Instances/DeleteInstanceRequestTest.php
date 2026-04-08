@@ -1,10 +1,19 @@
 <?php
 
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
-use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
-use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
+use Redberry\LaravelCloudSdk\Data\Applications\CreateApplicationData;
+use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Instances\CreateInstanceData;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
+use Redberry\LaravelCloudSdk\Enums\InstanceSize;
+use Redberry\LaravelCloudSdk\Enums\InstanceType;
+use Redberry\LaravelCloudSdk\Enums\SourceControlProvider;
+use Redberry\LaravelCloudSdk\Requests\Applications\CreateApplicationRequest;
+use Redberry\LaravelCloudSdk\Requests\Applications\DeleteApplicationRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\CreateEnvironmentRequest;
+use Redberry\LaravelCloudSdk\Requests\Instances\CreateInstanceRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\DeleteInstanceRequest;
-use Redberry\LaravelCloudSdk\Requests\Instances\ListInstancesRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
@@ -23,19 +32,39 @@ it('has the correct HTTP method', function () {
 
 it('sends the delete request successfully', function () {
     Saloon::fake([
-        ListApplicationsRequest::class => new LaravelCloudFixture('applications/list'),
-        ListEnvironmentsRequest::class => new LaravelCloudFixture('environments/list'),
-        ListInstancesRequest::class => new LaravelCloudFixture('instances/list'),
+        CreateApplicationRequest::class => new LaravelCloudFixture('instances/delete-create-app'),
+        CreateEnvironmentRequest::class => new LaravelCloudFixture('instances/delete-create-env'),
+        CreateInstanceRequest::class => new LaravelCloudFixture('instances/delete-create'),
         DeleteInstanceRequest::class => new LaravelCloudFixture('instances/delete'),
+        DeleteApplicationRequest::class => new LaravelCloudFixture('instances/delete-cleanup-app'),
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstApplication = $connector->send(new ListApplicationsRequest)->dtoOrFail()[0];
-    $firstEnvironment = $connector->send(new ListEnvironmentsRequest($firstApplication->id))->dtoOrFail()[0];
-    $firstInstance = $connector->send(new ListInstancesRequest($firstEnvironment->id))->dtoOrFail()[0];
+    $app = $connector->send(new CreateApplicationRequest(new CreateApplicationData(
+        repository: 'RedberryProducts/redberry-automations',
+        name: 'sdk-inst-delete-test',
+        region: CloudRegion::US_EAST_1,
+        sourceControlProviderType: SourceControlProvider::GITHUB,
+    )))->dtoOrFail();
 
-    $response = $connector->send(new DeleteInstanceRequest($firstInstance->id));
+    $env = $connector->send(new CreateEnvironmentRequest($app->id, new CreateEnvironmentData(
+        branch: 'main',
+        name: 'sdk-delete-test',
+    )))->dtoOrFail();
+
+    $instance = $connector->send(new CreateInstanceRequest($env->id, new CreateInstanceData(
+        name: 'sdk-delete-test',
+        type: InstanceType::SERVICE,
+        size: InstanceSize::FLEX_C_1VCPU_256MB,
+        scalingType: InstanceScalingType::NONE,
+        maxReplicas: 1,
+        minReplicas: 1,
+    )))->dtoOrFail();
+
+    $response = $connector->send(new DeleteInstanceRequest($instance->id));
 
     Saloon::assertSent(DeleteInstanceRequest::class);
     expect($response->successful())->toBeTrue();
-})->skip('Fixture pending: record in Phase 10.');
+
+    $connector->send(new DeleteApplicationRequest($app->id));
+});

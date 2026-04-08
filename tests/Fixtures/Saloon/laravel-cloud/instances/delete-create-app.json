@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Wed, 08 Apr 2026 06:49:24 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "350",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Wed, 08 Apr 2026 06:49:24 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "29",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "30",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 5dc2aa883046b6287c3c8663e8f70ce2.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "IST50-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"app-a17e2147-7597-4d83-bf97-e5cac3a7b3c6\",\"type\":\"applications\",\"attributes\":{\"name\":\"sdk-inst-delete-test\",\"slug\":\"sdk-inst-delete-test\",\"region\":\"us-east-1\",\"slack_channel\":null,\"avatar_url\":null,\"created_at\":\"2026-04-08T06:49:22.000000Z\",\"repository\":{\"full_name\":\"RedberryProducts\\\/redberry-automations\",\"default_branch\":\"main\"}}}}",
+    "context": []
+}

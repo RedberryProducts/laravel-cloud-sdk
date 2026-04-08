@@ -151,4 +151,4 @@ it('deletes an instance', function () {
     (new LaravelCloud('token'))->deleteInstance('inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba');
 
     Saloon::assertSent(DeleteInstanceRequest::class);
-})->skip('Fixture pending: record in Phase 10.');
+});
