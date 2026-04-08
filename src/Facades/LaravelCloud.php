@@ -17,6 +17,7 @@ use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketData;
 use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheMetricsData;
 use Redberry\LaravelCloudSdk\Data\Caches\CreateCacheData;
 use Redberry\LaravelCloudSdk\Data\Caches\UpdateCacheData;
 use Redberry\LaravelCloudSdk\Data\Commands\CommandData;
@@ -25,6 +26,7 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\AwsRdsConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseSnapshotData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterMetricsData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseSnapshotData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\LaravelMysqlConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonServerlessPostgresConfigData;
@@ -39,6 +41,7 @@ use Redberry\LaravelCloudSdk\Data\Domains\UpdateDomainData;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentMetricsData;
 use Redberry\LaravelCloudSdk\Data\Environments\HstsData;
 use Redberry\LaravelCloudSdk\Data\Environments\SetEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\UpdateEnvironmentData;
@@ -51,9 +54,11 @@ use Redberry\LaravelCloudSdk\Data\Meta\IpAddressData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\CreateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\UpdateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationMetricsData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\CreateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\UpdateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
+use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterMetricsData;
 use Redberry\LaravelCloudSdk\Enums\BucketJurisdiction;
 use Redberry\LaravelCloudSdk\Enums\BucketVisibility;
 use Redberry\LaravelCloudSdk\Enums\CacheSize;
@@ -73,6 +78,7 @@ use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
 use Redberry\LaravelCloudSdk\Enums\InstanceSize;
 use Redberry\LaravelCloudSdk\Enums\InstanceType;
 use Redberry\LaravelCloudSdk\Enums\KeyPermission;
+use Redberry\LaravelCloudSdk\Enums\MetricPeriod;
 use Redberry\LaravelCloudSdk\Enums\NodeVersion;
 use Redberry\LaravelCloudSdk\Enums\PhpVersion;
 use Redberry\LaravelCloudSdk\Enums\ResponseHeadersContentType;
@@ -101,6 +107,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static EnvironmentData createEnvironmentWith(string $applicationId, CreateEnvironmentData $data)
  * @method static EnvironmentData updateEnvironment(string $id, string $name = null, string $slug = null, string|EnvironmentColor $color = null, string $branch = null, string|PhpVersion $phpVersion = null, string|NodeVersion $nodeVersion = null, string|null $buildCommand = null, string|null $deployCommand = null, bool $usesPushToDeploy = null, bool $usesDeployHook = null, bool $usesOctane = null, bool $usesVanityDomain = null, int $timeout = null, int $sleepTimeout = null, int $shutdownTimeout = null, bool $usesPurgeEdgeCacheOnDeploy = null, string|null $nightwatchToken = null, string|CacheStrategy $cacheStrategy = null, string|ResponseHeadersFrame $responseHeadersFrame = null, string|ResponseHeadersContentType $responseHeadersContentType = null, string|ResponseHeadersRobotsTag $responseHeadersRobotsTag = null, HstsData|null $responseHeadersHsts = null, array|null $filesystemKeys = null, string|FirewallRateLimitLevel|null $firewallRateLimitLevel = null, bool $firewallUnderAttackMode = null, string|null $databaseSchemaId = null, string|null $cacheId = null, string|null $websocketApplicationId = null)
  * @method static EnvironmentData updateEnvironmentWith(string $id, UpdateEnvironmentData $data)
+ * @method static EnvironmentMetricsData environmentMetrics(string $id, string|MetricPeriod|null $period = null)
  * @method static void deleteEnvironment(string $id)
  * @method static EnvironmentData setEnvironmentVariables(string $environmentId, string|EnvironmentVariableMethod $method, array $variables)
  * @method static EnvironmentData setEnvironmentVariablesWith(string $environmentId, SetEnvironmentVariablesData $data)
@@ -144,6 +151,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static DatabaseClusterData updateDatabaseCluster(string $id, NeonServerlessPostgresConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config)
  * @method static DatabaseClusterData updateDatabaseClusterWith(string $id, UpdateDatabaseClusterData $data)
  * @method static Collection databaseTypes()
+ * @method static DatabaseClusterMetricsData databaseClusterMetrics(string $id, string|MetricPeriod|null $period = null)
  * @method static void deleteDatabaseCluster(string $id)
  * @method static DatabaseSnapshotData createDatabaseSnapshot(string $databaseClusterId, string $name, string|null $description = null)
  * @method static DatabaseSnapshotData createDatabaseSnapshotWith(string $databaseClusterId, CreateDatabaseSnapshotData $data)
@@ -168,6 +176,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static CacheData updateCache(string $id, string $name = null, string|CacheSize $size = null, bool $autoUpgradeEnabled = null, bool $isPublic = null, string|EvictionPolicy|null $evictionPolicy = null)
  * @method static CacheData updateCacheWith(string $id, UpdateCacheData $data)
  * @method static Collection cacheTypes()
+ * @method static CacheMetricsData cacheMetrics(string $id, string|MetricPeriod|null $period = null)
  * @method static void deleteCache(string $id)
  *
  * Object Storage Buckets
@@ -195,6 +204,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static WebsocketClusterData createWebsocketClusterWith(CreateWebsocketClusterData $data)
  * @method static WebsocketClusterData updateWebsocketCluster(string $id, string $name = null, string|WebsocketMaxConnections $maxConnections = null)
  * @method static WebsocketClusterData updateWebsocketClusterWith(string $id, UpdateWebsocketClusterData $data)
+ * @method static WebsocketClusterMetricsData websocketClusterMetrics(string $id, string|MetricPeriod|null $period = null)
  * @method static void deleteWebsocketCluster(string $id)
  *
  * Websocket Applications
@@ -204,6 +214,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static WebsocketApplicationData createWebsocketApplicationWith(string $clusterId, CreateWebsocketApplicationData $data)
  * @method static WebsocketApplicationData updateWebsocketApplication(string $id, string $name = null, int $pingInterval = null, int $activityTimeout = null, array|null $allowedOrigins = null)
  * @method static WebsocketApplicationData updateWebsocketApplicationWith(string $id, UpdateWebsocketApplicationData $data)
+ * @method static WebsocketApplicationMetricsData websocketApplicationMetrics(string $id, string|MetricPeriod|null $period = null)
  * @method static void deleteWebsocketApplication(string $id)
  *
  * Commands
