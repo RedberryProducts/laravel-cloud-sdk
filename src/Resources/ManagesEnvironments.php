@@ -6,6 +6,7 @@ use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentMetricsData;
 use Redberry\LaravelCloudSdk\Data\Environments\HstsData;
 use Redberry\LaravelCloudSdk\Data\Environments\SetEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\UpdateEnvironmentData;
@@ -13,6 +14,7 @@ use Redberry\LaravelCloudSdk\Enums\CacheStrategy;
 use Redberry\LaravelCloudSdk\Enums\EnvironmentColor;
 use Redberry\LaravelCloudSdk\Enums\EnvironmentVariableMethod;
 use Redberry\LaravelCloudSdk\Enums\FirewallRateLimitLevel;
+use Redberry\LaravelCloudSdk\Enums\MetricPeriod;
 use Redberry\LaravelCloudSdk\Enums\NodeVersion;
 use Redberry\LaravelCloudSdk\Enums\PhpVersion;
 use Redberry\LaravelCloudSdk\Enums\ResponseHeadersContentType;
@@ -21,6 +23,7 @@ use Redberry\LaravelCloudSdk\Enums\ResponseHeadersRobotsTag;
 use Redberry\LaravelCloudSdk\Requests\Environments\CreateEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentVariablesRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\SetEnvironmentVariablesRequest;
@@ -126,6 +129,11 @@ trait ManagesEnvironments
     public function updateEnvironmentWith(string $id, UpdateEnvironmentData $data): EnvironmentData
     {
         return $this->connector->send(new UpdateEnvironmentRequest($id, $data))->dtoOrFail();
+    }
+
+    public function environmentMetrics(string $id, string|MetricPeriod|null $period = null): EnvironmentMetricsData
+    {
+        return $this->connector->send(new GetEnvironmentMetricsRequest($id, $period))->dtoOrFail();
     }
 
     public function deleteEnvironment(string $id): void

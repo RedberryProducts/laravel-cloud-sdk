@@ -4,6 +4,7 @@ use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentMetricsData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentVariableData;
 use Redberry\LaravelCloudSdk\Data\Environments\SetEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\UpdateEnvironmentData;
@@ -13,6 +14,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Environments\CreateEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentVariablesRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\SetEnvironmentVariablesRequest;
@@ -116,6 +118,17 @@ it('updates an environment via updateEnvironmentWith()', function () {
 
     Saloon::assertSent(UpdateEnvironmentRequest::class);
     expect($result)->toBeInstanceOf(EnvironmentData::class);
+});
+
+it('gets environment metrics', function () {
+    Saloon::fake([
+        GetEnvironmentMetricsRequest::class => new LaravelCloudFixture('environments/metrics'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->environmentMetrics('env-a15fd671-0b6a-401a-84bf-14105ce69023');
+
+    Saloon::assertSent(GetEnvironmentMetricsRequest::class);
+    expect($result)->toBeInstanceOf(EnvironmentMetricsData::class);
 });
 
 it('deletes an environment', function () {
