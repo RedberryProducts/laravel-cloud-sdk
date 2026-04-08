@@ -4,9 +4,11 @@ use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\CreateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\UpdateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationMetricsData;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\CreateWebsocketApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\DeleteWebsocketApplicationRequest;
+use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\GetWebsocketApplicationMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\GetWebsocketApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\ListWebsocketApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\UpdateWebsocketApplicationRequest;
@@ -108,6 +110,17 @@ it('updates a websocket application via updateWebsocketApplicationWith()', funct
 
     Saloon::assertSent(UpdateWebsocketApplicationRequest::class);
     expect($result)->toBeInstanceOf(WebsocketApplicationData::class);
+});
+
+it('gets websocket application metrics', function () {
+    Saloon::fake([
+        GetWebsocketApplicationMetricsRequest::class => new LaravelCloudFixture('websocket-applications/metrics'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->websocketApplicationMetrics('wsa-a17ede9f-eaa2-48aa-abc3-c18545415d86');
+
+    Saloon::assertSent(GetWebsocketApplicationMetricsRequest::class);
+    expect($result)->toBeInstanceOf(WebsocketApplicationMetricsData::class);
 });
 
 it('deletes a websocket application', function () {

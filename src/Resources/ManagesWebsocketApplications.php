@@ -6,8 +6,11 @@ use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\CreateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\UpdateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationMetricsData;
+use Redberry\LaravelCloudSdk\Enums\MetricPeriod;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\CreateWebsocketApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\DeleteWebsocketApplicationRequest;
+use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\GetWebsocketApplicationMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\GetWebsocketApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\ListWebsocketApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\UpdateWebsocketApplicationRequest;
@@ -66,6 +69,11 @@ trait ManagesWebsocketApplications
     public function updateWebsocketApplicationWith(string $id, UpdateWebsocketApplicationData $data): WebsocketApplicationData
     {
         return $this->connector->send(new UpdateWebsocketApplicationRequest($id, $data))->dtoOrFail();
+    }
+
+    public function websocketApplicationMetrics(string $id, string|MetricPeriod|null $period = null): WebsocketApplicationMetricsData
+    {
+        return $this->connector->send(new GetWebsocketApplicationMetricsRequest($id, $period))->dtoOrFail();
     }
 
     public function deleteWebsocketApplication(string $id): void

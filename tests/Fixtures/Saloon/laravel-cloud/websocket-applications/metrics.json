@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Wed, 08 Apr 2026 15:48:59 GMT",
+        "Content-Type": "application\/json",
+        "Content-Length": "485",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Wed, 08 Apr 2026 15:48:59 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "113",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 224d328f3432d1379ba84fd8c579a2b4.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "IST50-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"connection_count\":{\"data\":[{\"x\":\"2026-04-08T15:40:00.000000Z\",\"y\":0},{\"x\":\"2026-04-08T15:42:00.000000Z\",\"y\":0},{\"x\":\"2026-04-08T15:44:00.000000Z\",\"y\":0},{\"x\":\"2026-04-08T15:46:00.000000Z\",\"y\":0}],\"current\":0,\"max\":0,\"average\":0},\"message_rate\":{\"data\":[{\"x\":\"2026-04-08T15:42:00.000000Z\",\"y\":0},{\"x\":\"2026-04-08T15:44:00.000000Z\",\"y\":0},{\"x\":\"2026-04-08T15:46:00.000000Z\",\"y\":0}],\"average\":0,\"max\":0}},\"meta\":{\"period\":\"24h\",\"available_periods\":[\"6h\",\"24h\",\"3d\",\"7d\",\"30d\"]}}",
+    "context": []
+}
