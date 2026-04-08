@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Wed, 08 Apr 2026 10:38:46 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "358",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Wed, 08 Apr 2026 10:38:46 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "119",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 8125f3278f119d79dff685f04463a968.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "BUD50-P1",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"wsa-a17e7351-8b38-4f35-bee0-b29a6dffd042\",\"type\":\"websocketApplications\",\"attributes\":{\"name\":\"sdk-delete-test\",\"app_id\":\"10002\",\"allowed_origins\":[],\"ping_interval\":60,\"activity_timeout\":30,\"max_message_size\":10000,\"max_connections\":50,\"key\":\"REDACTED\",\"secret\":\"REDACTED\",\"created_at\":\"2026-04-08T10:38:46.000000Z\"}}}",
+    "context": []
+}

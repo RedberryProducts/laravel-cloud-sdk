@@ -118,4 +118,4 @@ it('deletes a websocket application', function () {
     (new LaravelCloud('token'))->deleteWebsocketApplication('wsa-a14fcb1a-1f09-4091-85b8-3eb74c8ce500');
 
     Saloon::assertSent(DeleteWebsocketApplicationRequest::class);
-})->skip('Fixture pending: record in Phase 10.');
+});

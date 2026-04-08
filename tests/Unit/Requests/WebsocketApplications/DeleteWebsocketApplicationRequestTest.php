@@ -1,9 +1,15 @@
 <?php
 
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\CreateWebsocketApplicationData;
+use Redberry\LaravelCloudSdk\Data\WebsocketClusters\CreateWebsocketClusterData;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\WebsocketMaxConnections;
+use Redberry\LaravelCloudSdk\Enums\WebsocketServerType;
+use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\CreateWebsocketApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\DeleteWebsocketApplicationRequest;
-use Redberry\LaravelCloudSdk\Requests\WebsocketApplications\ListWebsocketApplicationsRequest;
-use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\ListWebsocketClustersRequest;
+use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\CreateWebsocketClusterRequest;
+use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\DeleteWebsocketClusterRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
@@ -22,17 +28,28 @@ it('has the correct HTTP method', function () {
 
 it('sends the delete request successfully', function () {
     Saloon::fake([
-        ListWebsocketClustersRequest::class => new LaravelCloudFixture('websocket-clusters/list'),
-        ListWebsocketApplicationsRequest::class => new LaravelCloudFixture('websocket-applications/list'),
+        CreateWebsocketClusterRequest::class => new LaravelCloudFixture('websocket-applications/delete-create-cluster'),
+        CreateWebsocketApplicationRequest::class => new LaravelCloudFixture('websocket-applications/delete-create'),
         DeleteWebsocketApplicationRequest::class => new LaravelCloudFixture('websocket-applications/delete'),
+        DeleteWebsocketClusterRequest::class => new LaravelCloudFixture('websocket-applications/delete-cleanup-cluster'),
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstCluster = $connector->send(new ListWebsocketClustersRequest)->dtoOrFail()[0];
-    $firstApp = $connector->send(new ListWebsocketApplicationsRequest($firstCluster->id))->dtoOrFail()[0];
+    $cluster = $connector->send(new CreateWebsocketClusterRequest(new CreateWebsocketClusterData(
+        name: 'sdk-ws-delete-test',
+        type: WebsocketServerType::REVERB,
+        region: CloudRegion::US_EAST_1,
+        maxConnections: WebsocketMaxConnections::CONNECTIONS_100,
+    )))->dtoOrFail();
 
-    $response = $connector->send(new DeleteWebsocketApplicationRequest($firstApp->id));
+    $wsApp = $connector->send(new CreateWebsocketApplicationRequest($cluster->id, new CreateWebsocketApplicationData(
+        name: 'sdk-delete-test',
+    )))->dtoOrFail();
+
+    $response = $connector->send(new DeleteWebsocketApplicationRequest($wsApp->id));
 
     Saloon::assertSent(DeleteWebsocketApplicationRequest::class);
     expect($response->successful())->toBeTrue();
-})->skip('Fixture pending: record in Phase 10.');
+
+    $connector->send(new DeleteWebsocketClusterRequest($cluster->id));
+});
