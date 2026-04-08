@@ -128,4 +128,4 @@ it('deletes an application', function () {
     (new LaravelCloud('token'))->deleteApplication('app-a14fe54f-42b2-431c-9b3a-876900975139');
 
     Saloon::assertSent(DeleteApplicationRequest::class);
-})->skip('Fixture pending: record in Phase 10.');
+});

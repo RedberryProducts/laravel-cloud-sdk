@@ -158,6 +158,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static DatabaseData database(string $clusterId, string $databaseId)
  * @method static DatabaseData createDatabase(string $clusterId, string $name)
  * @method static DatabaseData createDatabaseWith(string $clusterId, CreateDatabaseData $data)
+ * @method static void deleteDatabase(string $clusterId, string $databaseId)
  *
  * Caches
  * @method static LazyCollection<int, CacheData> caches()

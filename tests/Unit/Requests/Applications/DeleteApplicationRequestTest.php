@@ -32,4 +32,4 @@ it('sends the delete request successfully', function () {
 
     Saloon::assertSent(DeleteApplicationRequest::class);
     expect($response->successful())->toBeTrue();
-})->skip('Fixture pending: record in Phase 10.');
+});
