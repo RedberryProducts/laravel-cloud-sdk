@@ -137,4 +137,4 @@ it('deletes a domain', function () {
     (new LaravelCloud('token'))->deleteDomain('domain-a15ddd8e-3829-4493-8229-2c2aae2872d4');
 
     Saloon::assertSent(DeleteDomainRequest::class);
-})->skip('Fixture pending: record in Phase 10.');
+});
