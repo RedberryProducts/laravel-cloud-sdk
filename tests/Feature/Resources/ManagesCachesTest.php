@@ -3,6 +3,7 @@
 use Illuminate\Support\Collection;
 use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheMetricsData;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheTypeData;
 use Redberry\LaravelCloudSdk\Data\Caches\CreateCacheData;
 use Redberry\LaravelCloudSdk\Data\Caches\UpdateCacheData;
@@ -12,6 +13,7 @@ use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Caches\CreateCacheRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\DeleteCacheRequest;
+use Redberry\LaravelCloudSdk\Requests\Caches\GetCacheMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\GetCacheRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\ListCachesRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\ListCacheTypesRequest;
@@ -139,6 +141,17 @@ it('lists available cache types', function () {
     Saloon::assertSent(ListCacheTypesRequest::class);
     expect($result)->toBeInstanceOf(Collection::class);
     expect($result->first())->toBeInstanceOf(CacheTypeData::class);
+});
+
+it('gets cache metrics', function () {
+    Saloon::fake([
+        GetCacheMetricsRequest::class => new LaravelCloudFixture('caches/metrics'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->cacheMetrics('cache-a14df9ab-a7a4-4ae1-8e86-c1d29574740d');
+
+    Saloon::assertSent(GetCacheMetricsRequest::class);
+    expect($result)->toBeInstanceOf(CacheMetricsData::class);
 });
 
 it('deletes a cache', function () {

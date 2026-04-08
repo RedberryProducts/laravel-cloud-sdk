@@ -5,14 +5,17 @@ namespace Redberry\LaravelCloudSdk\Resources;
 use Illuminate\Support\Collection;
 use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheMetricsData;
 use Redberry\LaravelCloudSdk\Data\Caches\CreateCacheData;
 use Redberry\LaravelCloudSdk\Data\Caches\UpdateCacheData;
 use Redberry\LaravelCloudSdk\Enums\CacheSize;
 use Redberry\LaravelCloudSdk\Enums\CacheType;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\EvictionPolicy;
+use Redberry\LaravelCloudSdk\Enums\MetricPeriod;
 use Redberry\LaravelCloudSdk\Requests\Caches\CreateCacheRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\DeleteCacheRequest;
+use Redberry\LaravelCloudSdk\Requests\Caches\GetCacheMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\GetCacheRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\ListCachesRequest;
 use Redberry\LaravelCloudSdk\Requests\Caches\ListCacheTypesRequest;
@@ -84,6 +87,11 @@ trait ManagesCaches
     public function cacheTypes(): Collection
     {
         return $this->connector->send(new ListCacheTypesRequest)->dtoOrFail();
+    }
+
+    public function cacheMetrics(string $id, string|MetricPeriod|null $period = null): CacheMetricsData
+    {
+        return $this->connector->send(new GetCacheMetricsRequest($id, $period))->dtoOrFail();
     }
 
     public function deleteCache(string $id): void
