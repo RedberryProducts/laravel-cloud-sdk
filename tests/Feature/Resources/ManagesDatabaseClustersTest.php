@@ -161,10 +161,10 @@ it('deletes a database cluster', function () {
         DeleteDatabaseClusterRequest::class => new LaravelCloudFixture('database-clusters/delete'),
     ]);
 
-    (new LaravelCloud('token'))->deleteDatabaseCluster('db-a14fe54f-42b2-431c-9b3a-876900975139');
+    (new LaravelCloud('token'))->deleteDatabaseCluster('red-paper-65989343');
 
     Saloon::assertSent(DeleteDatabaseClusterRequest::class);
-})->skip('Fixture pending: Laravel Cloud auto-attaches a schema to every new MySQL cluster, preventing deletion. Record fixture in Phase 10.');
+});
 
 it('creates a database snapshot with named params', function () {
     Saloon::fake([

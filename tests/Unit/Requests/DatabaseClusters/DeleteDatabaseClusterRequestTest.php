@@ -1,8 +1,15 @@
 <?php
 
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\CreateDatabaseClusterData;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonServerlessPostgresConfigData;
+use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
+use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\DatabaseType;
+use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\CreateDatabaseClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\DeleteDatabaseClusterRequest;
-use Redberry\LaravelCloudSdk\Requests\DatabaseClusters\ListDatabaseClustersRequest;
+use Redberry\LaravelCloudSdk\Requests\Databases\DeleteDatabaseRequest;
+use Redberry\LaravelCloudSdk\Requests\Databases\ListDatabasesRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
@@ -21,15 +28,33 @@ it('has the correct HTTP method', function () {
 
 it('sends the delete request successfully', function () {
     Saloon::fake([
-        ListDatabaseClustersRequest::class => new LaravelCloudFixture('database-clusters/list'),
+        CreateDatabaseClusterRequest::class => new LaravelCloudFixture('database-clusters/delete-create'),
+        ListDatabasesRequest::class => new LaravelCloudFixture('database-clusters/delete-list-databases'),
+        DeleteDatabaseRequest::class => new LaravelCloudFixture('database-clusters/delete-database'),
         DeleteDatabaseClusterRequest::class => new LaravelCloudFixture('database-clusters/delete'),
     ]);
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
-    $firstCluster = $connector->send(new ListDatabaseClustersRequest)->dtoOrFail()[0];
+    $cluster = $connector->send(new CreateDatabaseClusterRequest(new CreateDatabaseClusterData(
+        name: 'sdk-delete-test',
+        type: DatabaseType::NEON_SERVERLESS_POSTGRES_17,
+        region: CloudRegion::US_EAST_1,
+        config: new NeonServerlessPostgresConfigData(
+            cuMin: 0.25,
+            cuMax: 0.25,
+            suspendSeconds: 300,
+            retentionDays: 1,
+        ),
+    )))->dtoOrFail();
 
-    $response = $connector->send(new DeleteDatabaseClusterRequest($firstCluster->id));
+    $databases = $connector->paginate(new ListDatabasesRequest($cluster->id))->collect();
+
+    $databases->each(function (DatabaseData $database) use ($connector, $cluster) {
+        $connector->send(new DeleteDatabaseRequest($cluster->id, $database->id));
+    });
+
+    $response = $connector->send(new DeleteDatabaseClusterRequest($cluster->id));
 
     Saloon::assertSent(DeleteDatabaseClusterRequest::class);
     expect($response->successful())->toBeTrue();
-})->skip('Fixture pending: Laravel Cloud auto-attaches a schema to every new MySQL cluster, preventing deletion. Record fixture in Phase 10.');
+});

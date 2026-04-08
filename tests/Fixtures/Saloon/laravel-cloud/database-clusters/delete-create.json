@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Wed, 08 Apr 2026 06:03:26 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "755",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Wed, 08 Apr 2026 06:03:26 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "29",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "30",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 b093bbe9e11537fd2eb2786c35b51cd2.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "BUD50-P1",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"silent-art-32355880\",\"type\":\"databases\",\"attributes\":{\"name\":\"sdk-delete-test\",\"type\":\"neon_serverless_postgres_17\",\"status\":\"creating\",\"region\":\"us-east-1\",\"created_at\":\"2026-04-08T06:03:26.000000Z\",\"config\":{\"cu_min\":0.25,\"cu_max\":0.25,\"suspend_seconds\":300,\"retention_days\":1},\"connection\":{\"hostname\":\"REDACTED\",\"port\":5432,\"protocol\":\"postgres\",\"driver\":\"pgsql\",\"username\":\"REDACTED\",\"password\":\"REDACTED\"}},\"relationships\":{\"schemas\":{\"data\":[{\"type\":\"databaseSchemas\",\"id\":\"47536735\"}]},\"databases\":{\"data\":[{\"type\":\"databaseSchemas\",\"id\":\"47536735\"}]}}},\"included\":[{\"id\":\"47536735\",\"type\":\"databaseSchemas\",\"attributes\":{\"name\":\"main\",\"created_at\":\"2026-04-08T06:03:26.000000Z\"}}]}",
+    "context": []
+}
