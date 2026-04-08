@@ -2,8 +2,10 @@
 
 use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
+use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentLogsData;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Deployments\CreateDeploymentRequest;
+use Redberry\LaravelCloudSdk\Requests\Deployments\GetDeploymentLogsRequest;
 use Redberry\LaravelCloudSdk\Requests\Deployments\GetDeploymentRequest;
 use Redberry\LaravelCloudSdk\Requests\Deployments\ListDeploymentsRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
@@ -41,4 +43,15 @@ it('creates a deployment', function () {
 
     Saloon::assertSent(CreateDeploymentRequest::class);
     expect($result)->toBeInstanceOf(DeploymentData::class);
+});
+
+it('gets deployment logs', function () {
+    Saloon::fake([
+        GetDeploymentLogsRequest::class => new LaravelCloudFixture('deployments/logs'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->deploymentLogs('depl-a17efa8f-bc0b-4ac2-8971-a787b7a802ea');
+
+    Saloon::assertSent(GetDeploymentLogsRequest::class);
+    expect($result)->toBeInstanceOf(DeploymentLogsData::class);
 });

@@ -35,6 +35,7 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\Databases\CreateDatabaseData;
 use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
+use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentLogsData;
 use Redberry\LaravelCloudSdk\Data\Domains\CreateDomainData;
 use Redberry\LaravelCloudSdk\Data\Domains\DomainData;
 use Redberry\LaravelCloudSdk\Data\Domains\UpdateDomainData;
@@ -229,6 +230,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static LazyCollection<int, DeploymentData> deployments(string $environmentId)
  * @method static DeploymentData deployment(string $id)
  * @method static DeploymentData deploy(string $environmentId)
+ * @method static DeploymentLogsData deploymentLogs(string $id)
  *
  * Regions
  * @method static Collection regions()
