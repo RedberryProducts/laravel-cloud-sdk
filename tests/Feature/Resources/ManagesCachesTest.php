@@ -149,4 +149,4 @@ it('deletes a cache', function () {
     (new LaravelCloud('token'))->deleteCache('cache-a14df861-12f8-413c-93b2-3c2b92e590c3');
 
     Saloon::assertSent(DeleteCacheRequest::class);
-})->skip('Fixture pending: record in Phase 10.');
+});

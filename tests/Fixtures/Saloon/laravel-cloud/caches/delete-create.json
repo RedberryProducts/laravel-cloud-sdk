@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Wed, 08 Apr 2026 05:58:50 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "478",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Wed, 08 Apr 2026 05:58:50 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "29",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "30",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 1a797792054108f2f0433ac5f6a838ac.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "IST50-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"cache-a17e0f33-c6b0-4a83-aba6-59eb98bb4a9f\",\"type\":\"caches\",\"attributes\":{\"name\":\"sdk-delete-test\",\"type\":\"laravel_valkey\",\"status\":\"creating\",\"region\":\"us-east-1\",\"size\":\"valkey-pro.250mb\",\"auto_upgrade_enabled\":false,\"is_public\":false,\"created_at\":\"2026-04-08T05:58:50.000000Z\",\"connection\":{\"hostname\":\"REDACTED\",\"port\":null,\"protocol\":\"redis\",\"username\":\"REDACTED\",\"password\":\"REDACTED\"}}}}",
+    "context": []
+}
