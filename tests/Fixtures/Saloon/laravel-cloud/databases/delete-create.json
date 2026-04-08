@@ -1,0 +1,28 @@
+{
+    "statusCode": 201,
+    "headers": {
+        "Date": "Wed, 08 Apr 2026 06:34:23 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "134",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Wed, 08 Apr 2026 06:34:23 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "119",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 522dccc795b2ad22c43c28acc134505e.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "IST50-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"47536839\",\"type\":\"databaseSchemas\",\"attributes\":{\"name\":\"sdk-delete-test\",\"created_at\":\"2026-04-08T06:34:23.000000Z\"}}}",
+    "context": []
+}

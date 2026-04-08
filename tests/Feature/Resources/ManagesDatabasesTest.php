@@ -5,6 +5,7 @@ use Redberry\LaravelCloudSdk\Data\Databases\CreateDatabaseData;
 use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Databases\CreateDatabaseRequest;
+use Redberry\LaravelCloudSdk\Requests\Databases\DeleteDatabaseRequest;
 use Redberry\LaravelCloudSdk\Requests\Databases\GetDatabaseRequest;
 use Redberry\LaravelCloudSdk\Requests\Databases\ListDatabasesRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
@@ -58,4 +59,14 @@ it('creates a database via createDatabaseWith()', function () {
 
     Saloon::assertSent(CreateDatabaseRequest::class);
     expect($result)->toBeInstanceOf(DatabaseData::class);
+});
+
+it('deletes a database', function () {
+    Saloon::fake([
+        DeleteDatabaseRequest::class => new LaravelCloudFixture('databases/delete'),
+    ]);
+
+    (new LaravelCloud('token'))->deleteDatabase('red-paper-65989343', '47343217');
+
+    Saloon::assertSent(DeleteDatabaseRequest::class);
 });
