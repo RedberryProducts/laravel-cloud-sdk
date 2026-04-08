@@ -4,12 +4,14 @@ use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\CreateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\UpdateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
+use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterMetricsData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\WebsocketMaxConnections;
 use Redberry\LaravelCloudSdk\Enums\WebsocketServerType;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\CreateWebsocketClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\DeleteWebsocketClusterRequest;
+use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\GetWebsocketClusterMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\GetWebsocketClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\ListWebsocketClustersRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\UpdateWebsocketClusterRequest;
@@ -117,6 +119,17 @@ it('updates a websocket cluster via updateWebsocketClusterWith()', function () {
 
     Saloon::assertSent(UpdateWebsocketClusterRequest::class);
     expect($result)->toBeInstanceOf(WebsocketClusterData::class);
+});
+
+it('gets websocket cluster metrics', function () {
+    Saloon::fake([
+        GetWebsocketClusterMetricsRequest::class => new LaravelCloudFixture('websocket-clusters/metrics'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->websocketClusterMetrics('ws-a17ede9f-e861-47e3-ae13-000ceb6f467e');
+
+    Saloon::assertSent(GetWebsocketClusterMetricsRequest::class);
+    expect($result)->toBeInstanceOf(WebsocketClusterMetricsData::class);
 });
 
 it('deletes a websocket cluster', function () {

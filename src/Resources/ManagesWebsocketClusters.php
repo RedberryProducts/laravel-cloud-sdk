@@ -6,11 +6,14 @@ use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\CreateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\UpdateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
+use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterMetricsData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\MetricPeriod;
 use Redberry\LaravelCloudSdk\Enums\WebsocketMaxConnections;
 use Redberry\LaravelCloudSdk\Enums\WebsocketServerType;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\CreateWebsocketClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\DeleteWebsocketClusterRequest;
+use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\GetWebsocketClusterMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\GetWebsocketClusterRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\ListWebsocketClustersRequest;
 use Redberry\LaravelCloudSdk\Requests\WebsocketClusters\UpdateWebsocketClusterRequest;
@@ -64,6 +67,11 @@ trait ManagesWebsocketClusters
     public function updateWebsocketClusterWith(string $id, UpdateWebsocketClusterData $data): WebsocketClusterData
     {
         return $this->connector->send(new UpdateWebsocketClusterRequest($id, $data))->dtoOrFail();
+    }
+
+    public function websocketClusterMetrics(string $id, string|MetricPeriod|null $period = null): WebsocketClusterMetricsData
+    {
+        return $this->connector->send(new GetWebsocketClusterMetricsRequest($id, $period))->dtoOrFail();
     }
 
     public function deleteWebsocketCluster(string $id): void
