@@ -22,8 +22,8 @@ it('can be created from API response data', function () {
     expect($data->type)->toBe('laravel_valkey');
     expect($data->label)->toBe('Laravel Valkey');
     expect($data->regions)->toHaveCount(2);
-    expect($data->regions[0])->toBe(CloudRegion::US_EAST_1);
-    expect($data->regions[1])->toBe(CloudRegion::EU_CENTRAL_1);
+    expect($data->regions[0])->toBe(CloudRegion::UsEast1);
+    expect($data->regions[1])->toBe(CloudRegion::EuCentral1);
     expect($data->sizes)->toHaveCount(2);
     expect($data->sizes[0])->toBeInstanceOf(CacheSizeOptionData::class);
     expect($data->sizes[0]->value)->toBe('250mb');

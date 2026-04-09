@@ -48,10 +48,10 @@ it('creates a bucket with named params', function () {
 
     $result = (new LaravelCloud('token'))->createBucket(
         name: 'media-storage',
-        visibility: BucketVisibility::PRIVATE,
-        jurisdiction: BucketJurisdiction::DEFAULT,
+        visibility: BucketVisibility::Private,
+        jurisdiction: BucketJurisdiction::Default,
         keyName: 'default-key',
-        keyPermission: KeyPermission::READ_WRITE,
+        keyPermission: KeyPermission::ReadWrite,
     );
 
     Saloon::assertSent(CreateBucketRequest::class);
@@ -83,10 +83,10 @@ it('creates a bucket via createBucketWith()', function () {
     $result = (new LaravelCloud('token'))->createBucketWith(
         new CreateBucketData(
             name: 'media-storage',
-            visibility: BucketVisibility::PRIVATE,
-            jurisdiction: BucketJurisdiction::DEFAULT,
+            visibility: BucketVisibility::Private,
+            jurisdiction: BucketJurisdiction::Default,
             keyName: 'default-key',
-            keyPermission: KeyPermission::READ_WRITE,
+            keyPermission: KeyPermission::ReadWrite,
         )
     );
 

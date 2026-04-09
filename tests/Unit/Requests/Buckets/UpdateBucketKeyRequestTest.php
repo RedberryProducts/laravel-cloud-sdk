@@ -60,7 +60,7 @@ it('updates a bucket key and returns BucketKeyData with all fields', function ()
     expect($dto)->toBeInstanceOf(BucketKeyData::class);
     expect($dto->id)->toBe('flsk-a14e19d9-bfec-488e-8ee5-79b029e9d974');
     expect($dto->name)->toBe('updated-key');
-    expect($dto->permission)->toBe(KeyPermission::READ_WRITE);
+    expect($dto->permission)->toBe(KeyPermission::ReadWrite);
     expect($dto->accessKeyId)->toBeString();
     expect($dto->accessKeySecret)->toBeString();
     expect($dto->createdAt)->not->toBeNull();

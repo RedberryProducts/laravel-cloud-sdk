@@ -34,8 +34,8 @@ it('can be created from API response data', function () {
     expect($data->type)->toBe('neon_serverless_postgres_17');
     expect($data->label)->toBe('Laravel Serverless Postgres 17');
     expect($data->regions)->toHaveCount(2);
-    expect($data->regions[0])->toBe(CloudRegion::US_EAST_1);
-    expect($data->regions[1])->toBe(CloudRegion::EU_CENTRAL_1);
+    expect($data->regions[0])->toBe(CloudRegion::UsEast1);
+    expect($data->regions[1])->toBe(CloudRegion::EuCentral1);
     expect($data->configSchema)->toHaveCount(2);
     expect($data->configSchema[0])->toBeInstanceOf(DatabaseTypeConfigSchemaData::class);
     expect($data->configSchema[0]->name)->toBe('cu_min');

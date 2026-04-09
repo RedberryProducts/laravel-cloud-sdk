@@ -5,14 +5,14 @@ use Redberry\LaravelCloudSdk\Enums\NeonServerlessPostgresComputeUnit;
 
 it('can be constructed with all parameters', function () {
     $data = new NeonServerlessPostgresConfigData(
-        cuMin: NeonServerlessPostgresComputeUnit::CU_0_25,
-        cuMax: NeonServerlessPostgresComputeUnit::CU_2,
+        cuMin: NeonServerlessPostgresComputeUnit::Cu0_25,
+        cuMax: NeonServerlessPostgresComputeUnit::Cu2,
         suspendSeconds: 300,
         retentionDays: 7,
     );
 
-    expect($data->cuMin)->toBe(NeonServerlessPostgresComputeUnit::CU_0_25);
-    expect($data->cuMax)->toBe(NeonServerlessPostgresComputeUnit::CU_2);
+    expect($data->cuMin)->toBe(NeonServerlessPostgresComputeUnit::Cu0_25);
+    expect($data->cuMax)->toBe(NeonServerlessPostgresComputeUnit::Cu2);
     expect($data->suspendSeconds)->toBe(300);
     expect($data->retentionDays)->toBe(7);
 });
@@ -28,8 +28,8 @@ it('can be created from API response data', function () {
     $data = NeonServerlessPostgresConfigData::fromResponse($responseData);
 
     expect($data)->toBeInstanceOf(NeonServerlessPostgresConfigData::class);
-    expect($data->cuMin)->toBe(NeonServerlessPostgresComputeUnit::CU_0_5);
-    expect($data->cuMax)->toBe(NeonServerlessPostgresComputeUnit::CU_4);
+    expect($data->cuMin)->toBe(NeonServerlessPostgresComputeUnit::Cu0_5);
+    expect($data->cuMax)->toBe(NeonServerlessPostgresComputeUnit::Cu4);
     expect($data->suspendSeconds)->toBe(600);
     expect($data->retentionDays)->toBe(14);
 });
@@ -50,8 +50,8 @@ it('falls back to float for unknown compute unit values', function () {
 
 it('serializes to snake_case array with float values', function () {
     $data = new NeonServerlessPostgresConfigData(
-        cuMin: NeonServerlessPostgresComputeUnit::CU_0_25,
-        cuMax: NeonServerlessPostgresComputeUnit::CU_1,
+        cuMin: NeonServerlessPostgresComputeUnit::Cu0_25,
+        cuMax: NeonServerlessPostgresComputeUnit::Cu1,
         suspendSeconds: 300,
         retentionDays: 7,
     );

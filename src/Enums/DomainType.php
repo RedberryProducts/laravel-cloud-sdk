@@ -4,7 +4,7 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum DomainType: string
 {
-    case ROOT = 'root';
-    case WWW = 'www';
-    case WILDCARD = 'wildcard';
+    case Root = 'root';
+    case Www = 'www';
+    case Wildcard = 'wildcard';
 }

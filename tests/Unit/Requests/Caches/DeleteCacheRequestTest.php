@@ -31,10 +31,10 @@ it('sends the delete request successfully', function () {
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $cache = $connector->send(new CreateCacheRequest(new CreateCacheData(
-        type: CacheType::LARAVEL_VALKEY,
+        type: CacheType::LaravelValkey,
         name: 'sdk-delete-test',
-        region: CloudRegion::US_EAST_1,
-        size: CacheSize::VALKEY_PRO_250MB,
+        region: CloudRegion::UsEast1,
+        size: CacheSize::ValkeyPro250Mb,
         autoUpgradeEnabled: false,
         isPublic: false,
     )))->dtoOrFail();

@@ -17,12 +17,12 @@ it('can be constructed with partial parameters', function () {
 it('can be constructed with all parameters', function () {
     $data = new UpdateBucketData(
         name: 'updated-bucket',
-        visibility: BucketVisibility::PUBLIC,
+        visibility: BucketVisibility::Public,
         allowedOrigins: ['https://example.com'],
     );
 
     expect($data->name)->toBe('updated-bucket');
-    expect($data->visibility)->toBe(BucketVisibility::PUBLIC);
+    expect($data->visibility)->toBe(BucketVisibility::Public);
     expect($data->allowedOrigins)->toBe(['https://example.com']);
 });
 

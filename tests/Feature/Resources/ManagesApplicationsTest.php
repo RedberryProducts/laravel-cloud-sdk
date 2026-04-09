@@ -38,7 +38,7 @@ it('retrieves a single application by id', function () {
     expect($result)->toBeInstanceOf(ApplicationData::class);
     expect($result->id)->toBe('app-a14fe54f-42b2-431c-9b3a-876900975139');
     expect($result->name)->toBe('updated-app');
-    expect($result->region)->toBe(CloudRegion::US_EAST_1);
+    expect($result->region)->toBe(CloudRegion::UsEast1);
 });
 
 it('creates an application with named params', function () {
@@ -49,8 +49,8 @@ it('creates an application with named params', function () {
     $result = (new LaravelCloud('token'))->createApplication(
         repository: 'RedberryProducts/redberry-automations',
         name: 'test-app',
-        region: CloudRegion::US_EAST_1,
-        sourceControlProviderType: SourceControlProvider::GITHUB,
+        region: CloudRegion::UsEast1,
+        sourceControlProviderType: SourceControlProvider::Github,
     );
 
     Saloon::assertSent(CreateApplicationRequest::class);
@@ -82,8 +82,8 @@ it('creates an application via createApplicationWith()', function () {
         new CreateApplicationData(
             repository: 'RedberryProducts/redberry-automations',
             name: 'test-app',
-            region: CloudRegion::US_EAST_1,
-            sourceControlProviderType: SourceControlProvider::GITHUB,
+            region: CloudRegion::UsEast1,
+            sourceControlProviderType: SourceControlProvider::Github,
         )
     );
 

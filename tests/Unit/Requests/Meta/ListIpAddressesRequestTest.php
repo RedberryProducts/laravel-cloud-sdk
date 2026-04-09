@@ -28,7 +28,7 @@ it('sends no query params when no region is specified', function () {
 });
 
 it('sends the region query param when a CloudRegion enum is given', function () {
-    $request = new ListIpAddressesRequest(CloudRegion::US_EAST_1);
+    $request = new ListIpAddressesRequest(CloudRegion::UsEast1);
 
     expect($request->defaultQuery())->toBe(['region' => 'us-east-1']);
 });

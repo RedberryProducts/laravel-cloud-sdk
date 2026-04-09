@@ -4,12 +4,12 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum EvictionPolicy: string
 {
-    case ALLKEYS_LRU = 'allkeys-lru';
-    case NOEVICTION = 'noeviction';
-    case VOLATILE_LRU = 'volatile-lru';
-    case ALLKEYS_RANDOM = 'allkeys-random';
-    case VOLATILE_RANDOM = 'volatile-random';
-    case VOLATILE_TTL = 'volatile-ttl';
-    case ALLKEYS_LFU = 'allkeys-lfu';
-    case VOLATILE_LFU = 'volatile-lfu';
+    case AllKeysLru = 'allkeys-lru';
+    case NoEviction = 'noeviction';
+    case VolatileLru = 'volatile-lru';
+    case AllKeysRandom = 'allkeys-random';
+    case VolatileRandom = 'volatile-random';
+    case VolatileTtl = 'volatile-ttl';
+    case AllKeysLfu = 'allkeys-lfu';
+    case VolatileLfu = 'volatile-lfu';
 }

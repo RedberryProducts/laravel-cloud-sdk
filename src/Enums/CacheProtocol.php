@@ -4,6 +4,6 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum CacheProtocol: string
 {
-    case REDIS = 'redis';
-    case FAKE = 'fake';
+    case Redis = 'redis';
+    case Fake = 'fake';
 }

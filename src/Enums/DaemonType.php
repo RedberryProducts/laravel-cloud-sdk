@@ -4,6 +4,6 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum DaemonType: string
 {
-    case WORKER = 'worker';
-    case CUSTOM = 'custom';
+    case Worker = 'worker';
+    case Custom = 'custom';
 }

@@ -4,7 +4,7 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum InstanceScalingType: string
 {
-    case NONE = 'none';
-    case CUSTOM = 'custom';
-    case AUTO = 'auto';
+    case None = 'none';
+    case Custom = 'custom';
+    case Auto = 'auto';
 }

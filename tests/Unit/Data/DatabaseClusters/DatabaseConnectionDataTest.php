@@ -8,16 +8,16 @@ it('can be constructed with all parameters', function () {
     $data = new DatabaseConnectionData(
         hostname: 'db.example.com',
         port: 5432,
-        protocol: DatabaseProtocol::POSTGRES,
-        driver: DatabaseDriver::PGSQL,
+        protocol: DatabaseProtocol::Postgres,
+        driver: DatabaseDriver::Pgsql,
         username: 'admin',
         password: 'secret',
     );
 
     expect($data->hostname)->toBe('db.example.com');
     expect($data->port)->toBe(5432);
-    expect($data->protocol)->toBe(DatabaseProtocol::POSTGRES);
-    expect($data->driver)->toBe(DatabaseDriver::PGSQL);
+    expect($data->protocol)->toBe(DatabaseProtocol::Postgres);
+    expect($data->driver)->toBe(DatabaseDriver::Pgsql);
     expect($data->username)->toBe('admin');
     expect($data->password)->toBe('secret');
 });
@@ -37,8 +37,8 @@ it('can be created from API response data', function () {
     expect($data)->toBeInstanceOf(DatabaseConnectionData::class);
     expect($data->hostname)->toBe('db.example.com');
     expect($data->port)->toBe(3306);
-    expect($data->protocol)->toBe(DatabaseProtocol::MYSQL);
-    expect($data->driver)->toBe(DatabaseDriver::MYSQL);
+    expect($data->protocol)->toBe(DatabaseProtocol::Mysql);
+    expect($data->driver)->toBe(DatabaseDriver::Mysql);
     expect($data->username)->toBe('root');
     expect($data->password)->toBe('password123');
 });

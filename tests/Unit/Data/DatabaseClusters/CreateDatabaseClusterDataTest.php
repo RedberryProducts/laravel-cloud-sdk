@@ -16,15 +16,15 @@ it('can be constructed with all parameters', function () {
 
     $data = new CreateDatabaseClusterData(
         name: 'test-cluster',
-        type: DatabaseType::NEON_SERVERLESS_POSTGRES_17,
-        region: CloudRegion::US_EAST_1,
+        type: DatabaseType::NeonServerlessPostgres17,
+        region: CloudRegion::UsEast1,
         config: $config,
         clusterId: 42,
     );
 
     expect($data->name)->toBe('test-cluster');
-    expect($data->type)->toBe(DatabaseType::NEON_SERVERLESS_POSTGRES_17);
-    expect($data->region)->toBe(CloudRegion::US_EAST_1);
+    expect($data->type)->toBe(DatabaseType::NeonServerlessPostgres17);
+    expect($data->region)->toBe(CloudRegion::UsEast1);
     expect($data->config)->toBeInstanceOf(NeonServerlessPostgresConfigData::class);
     expect($data->clusterId)->toBe(42);
 });
@@ -39,8 +39,8 @@ it('defaults clusterId to Optional', function () {
 
     $data = new CreateDatabaseClusterData(
         name: 'test-cluster',
-        type: DatabaseType::NEON_SERVERLESS_POSTGRES_17,
-        region: CloudRegion::US_EAST_1,
+        type: DatabaseType::NeonServerlessPostgres17,
+        region: CloudRegion::UsEast1,
         config: $config,
     );
 

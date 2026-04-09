@@ -34,7 +34,7 @@ it('sends the delete request successfully', function () {
 
     $key = $connector->send(new CreateBucketKeyRequest($firstBucket->id, new CreateBucketKeyData(
         name: 'sdk-delete-test',
-        permission: KeyPermission::READ_WRITE,
+        permission: KeyPermission::ReadWrite,
     )))->dtoOrFail();
 
     $response = $connector->send(new DeleteBucketKeyRequest($key->id));

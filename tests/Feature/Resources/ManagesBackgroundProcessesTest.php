@@ -44,7 +44,7 @@ it('creates a background process with named params', function () {
 
     $result = (new LaravelCloud('token'))->createBackgroundProcess(
         'inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba',
-        type: DaemonType::CUSTOM,
+        type: DaemonType::Custom,
         processes: 1,
         command: 'php artisan my:command',
     );
@@ -61,7 +61,7 @@ it('creates a background process via createBackgroundProcessWith()', function ()
     $result = (new LaravelCloud('token'))->createBackgroundProcessWith(
         'inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba',
         new CreateBackgroundProcessData(
-            type: DaemonType::WORKER,
+            type: DaemonType::Worker,
             processes: 1,
             command: 'php artisan queue:work',
         ),

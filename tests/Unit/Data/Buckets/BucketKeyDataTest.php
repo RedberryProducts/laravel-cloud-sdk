@@ -18,7 +18,7 @@ it('can be created from API response data', function () {
     expect($data)->toBeInstanceOf(BucketKeyData::class);
     expect($data->id)->toBe('key-123');
     expect($data->name)->toBe('my-key');
-    expect($data->permission)->toBe(KeyPermission::READ_WRITE);
+    expect($data->permission)->toBe(KeyPermission::ReadWrite);
     expect($data->accessKeyId)->toBe('AKIAIOSFODNN7EXAMPLE');
     expect($data->accessKeySecret)->toBe('wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY');
     expect($data->createdAt)->toBeInstanceOf(CarbonImmutable::class);
@@ -34,7 +34,7 @@ it('handles null optional fields', function () {
 
     $data = BucketKeyData::fromResponse($responseData, 'key-456');
 
-    expect($data->permission)->toBe(KeyPermission::READ_ONLY);
+    expect($data->permission)->toBe(KeyPermission::ReadOnly);
     expect($data->accessKeyId)->toBeNull();
     expect($data->accessKeySecret)->toBeNull();
     expect($data->createdAt)->toBeNull();

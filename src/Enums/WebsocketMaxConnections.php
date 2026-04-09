@@ -4,10 +4,10 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum WebsocketMaxConnections: int
 {
-    case CONNECTIONS_100 = 100;
-    case CONNECTIONS_200 = 200;
-    case CONNECTIONS_500 = 500;
-    case CONNECTIONS_2000 = 2000;
-    case CONNECTIONS_5000 = 5000;
-    case CONNECTIONS_10000 = 10000;
+    case Connections100 = 100;
+    case Connections200 = 200;
+    case Connections500 = 500;
+    case Connections2000 = 2000;
+    case Connections5000 = 5000;
+    case Connections10000 = 10000;
 }

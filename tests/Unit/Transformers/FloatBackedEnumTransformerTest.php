@@ -10,7 +10,7 @@ it('converts a string-backed enum to a float', function () {
 
     $result = $transformer->transform(
         Mockery::mock(DataProperty::class),
-        NeonServerlessPostgresComputeUnit::CU_0_25,
+        NeonServerlessPostgresComputeUnit::Cu0_25,
         Mockery::mock(TransformationContext::class),
     );
 
@@ -25,13 +25,13 @@ it('converts all known compute unit enum values to their float equivalents', fun
 
     expect($transformer->transform($mock, $unit, $ctx))->toBe($expected);
 })->with([
-    [NeonServerlessPostgresComputeUnit::CU_0_25, 0.25],
-    [NeonServerlessPostgresComputeUnit::CU_0_5, 0.5],
-    [NeonServerlessPostgresComputeUnit::CU_1, 1.0],
-    [NeonServerlessPostgresComputeUnit::CU_2, 2.0],
-    [NeonServerlessPostgresComputeUnit::CU_4, 4.0],
-    [NeonServerlessPostgresComputeUnit::CU_8, 8.0],
-    [NeonServerlessPostgresComputeUnit::CU_10, 10.0],
+    [NeonServerlessPostgresComputeUnit::Cu0_25, 0.25],
+    [NeonServerlessPostgresComputeUnit::Cu0_5, 0.5],
+    [NeonServerlessPostgresComputeUnit::Cu1, 1.0],
+    [NeonServerlessPostgresComputeUnit::Cu2, 2.0],
+    [NeonServerlessPostgresComputeUnit::Cu4, 4.0],
+    [NeonServerlessPostgresComputeUnit::Cu8, 8.0],
+    [NeonServerlessPostgresComputeUnit::Cu10, 10.0],
 ]);
 
 it('passes through non-enum float values unchanged', function () {

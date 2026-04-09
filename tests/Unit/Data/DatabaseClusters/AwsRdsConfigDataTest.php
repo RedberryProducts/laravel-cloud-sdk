@@ -6,22 +6,22 @@ use Redberry\LaravelCloudSdk\Enums\DeploymentOption;
 
 it('can be constructed with all parameters', function () {
     $data = new AwsRdsConfigData(
-        size: DatabaseClusterSize::T4G_MICRO,
+        size: DatabaseClusterSize::T4gMicro,
         storage: 20,
         isPublic: false,
         usesPitr: true,
         retentionDays: 7,
-        deploymentOption: DeploymentOption::SINGLE_AZ,
+        deploymentOption: DeploymentOption::SingleAz,
         maintenanceWindow: 'sun:03:00-sun:04:00',
         readReplicas: 2,
     );
 
-    expect($data->size)->toBe(DatabaseClusterSize::T4G_MICRO);
+    expect($data->size)->toBe(DatabaseClusterSize::T4gMicro);
     expect($data->storage)->toBe(20);
     expect($data->isPublic)->toBeFalse();
     expect($data->usesPitr)->toBeTrue();
     expect($data->retentionDays)->toBe(7);
-    expect($data->deploymentOption)->toBe(DeploymentOption::SINGLE_AZ);
+    expect($data->deploymentOption)->toBe(DeploymentOption::SingleAz);
     expect($data->maintenanceWindow)->toBe('sun:03:00-sun:04:00');
     expect($data->readReplicas)->toBe(2);
 });
@@ -41,12 +41,12 @@ it('can be created from API response data', function () {
     $data = AwsRdsConfigData::fromResponse($responseData);
 
     expect($data)->toBeInstanceOf(AwsRdsConfigData::class);
-    expect($data->size)->toBe(DatabaseClusterSize::T4G_MEDIUM);
+    expect($data->size)->toBe(DatabaseClusterSize::T4gMedium);
     expect($data->storage)->toBe(100);
     expect($data->isPublic)->toBeTrue();
     expect($data->usesPitr)->toBeFalse();
     expect($data->retentionDays)->toBe(30);
-    expect($data->deploymentOption)->toBe(DeploymentOption::MULTI_AZ);
+    expect($data->deploymentOption)->toBe(DeploymentOption::MultiAz);
     expect($data->maintenanceWindow)->toBe('mon:02:00-mon:03:00');
     expect($data->readReplicas)->toBe(3);
 });
@@ -84,12 +84,12 @@ it('handles null maintenance window and read replicas', function () {
 
 it('serializes to snake_case array', function () {
     $data = new AwsRdsConfigData(
-        size: DatabaseClusterSize::T4G_MICRO,
+        size: DatabaseClusterSize::T4gMicro,
         storage: 20,
         isPublic: false,
         usesPitr: true,
         retentionDays: 7,
-        deploymentOption: DeploymentOption::SINGLE_AZ,
+        deploymentOption: DeploymentOption::SingleAz,
         maintenanceWindow: null,
         readReplicas: null,
     );

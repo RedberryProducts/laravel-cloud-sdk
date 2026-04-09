@@ -4,8 +4,8 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum InstanceType: string
 {
-    case APP = 'app';
-    case SERVICE = 'service';
-    case QUEUE = 'queue';
-    case SERVERLESS_QUEUE = 'serverless_queue';
+    case App = 'app';
+    case Service = 'service';
+    case Queue = 'queue';
+    case ServerlessQueue = 'serverless_queue';
 }

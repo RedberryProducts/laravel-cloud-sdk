@@ -52,10 +52,10 @@ it('creates a cache with named params', function () {
     ]);
 
     $result = (new LaravelCloud('token'))->createCache(
-        type: CacheType::LARAVEL_VALKEY,
+        type: CacheType::LaravelValkey,
         name: 'production-cache',
-        region: CloudRegion::US_EAST_1,
-        size: CacheSize::VALKEY_PRO_250MB,
+        region: CloudRegion::UsEast1,
+        size: CacheSize::ValkeyPro250Mb,
         autoUpgradeEnabled: true,
         isPublic: false,
     );
@@ -89,10 +89,10 @@ it('creates a cache via createCacheWith()', function () {
 
     $result = (new LaravelCloud('token'))->createCacheWith(
         new CreateCacheData(
-            type: CacheType::LARAVEL_VALKEY,
+            type: CacheType::LaravelValkey,
             name: 'production-cache',
-            region: CloudRegion::US_EAST_1,
-            size: CacheSize::VALKEY_PRO_250MB,
+            region: CloudRegion::UsEast1,
+            size: CacheSize::ValkeyPro250Mb,
             autoUpgradeEnabled: true,
             isPublic: false,
         )

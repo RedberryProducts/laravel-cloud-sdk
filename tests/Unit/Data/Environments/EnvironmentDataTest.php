@@ -50,7 +50,7 @@ it('can be created from API response data', function () use ($baseAttributes) {
     expect($data->id)->toBe('env-123');
     expect($data->name)->toBe('production');
     expect($data->slug)->toBe('production');
-    expect($data->status)->toBe(EnvironmentStatus::RUNNING);
+    expect($data->status)->toBe(EnvironmentStatus::Running);
     expect($data->phpMajorVersion)->toBe(PhpVersion::V8_4);
     expect($data->nodeVersion)->toBe(NodeVersion::V22);
     expect($data->vanityDomain)->toBe('production.laravel.cloud');

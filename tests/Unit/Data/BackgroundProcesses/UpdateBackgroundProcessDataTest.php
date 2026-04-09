@@ -16,25 +16,25 @@ it('defaults all parameters to Optional', function () {
 
 it('serializes set fields and excludes unset optionals', function () {
     $data = new UpdateBackgroundProcessData(
-        type: DaemonType::CUSTOM,
+        type: DaemonType::Custom,
         processes: 3,
         command: 'php artisan my:command',
     );
 
     $array = $data->toArray();
 
-    expect($array['type'])->toBe(DaemonType::CUSTOM->value);
+    expect($array['type'])->toBe(DaemonType::Custom->value);
     expect($array['processes'])->toBe(3);
     expect($array['command'])->toBe('php artisan my:command');
     expect($array)->not->toHaveKey('config');
 });
 
 it('serializes type as enum value', function () {
-    $data = new UpdateBackgroundProcessData(type: DaemonType::WORKER);
+    $data = new UpdateBackgroundProcessData(type: DaemonType::Worker);
 
     $array = $data->toArray();
 
-    expect($array['type'])->toBe(DaemonType::WORKER->value);
+    expect($array['type'])->toBe(DaemonType::Worker->value);
 });
 
 it('excludes unset optional fields', function () {

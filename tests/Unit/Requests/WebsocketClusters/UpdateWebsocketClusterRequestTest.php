@@ -31,7 +31,7 @@ it('has the correct HTTP method', function () {
 it('sends correct body with all optional fields', function () {
     $data = new UpdateWebsocketClusterData(
         name: 'updated-cluster',
-        maxConnections: WebsocketMaxConnections::CONNECTIONS_200,
+        maxConnections: WebsocketMaxConnections::Connections200,
     );
     $request = new UpdateWebsocketClusterRequest('ws-123', $data);
     $body = $request->body()->all();
@@ -70,11 +70,11 @@ it('updates a websocket cluster and returns WebsocketClusterData with all fields
     expect($dto)->toBeInstanceOf(WebsocketClusterData::class);
     expect($dto->id)->toBe('ws-a14fcb1a-18a7-411d-9d82-456d3aa2c273');
     expect($dto->name)->toBe('updated-cluster');
-    expect($dto->type)->toBe(WebsocketServerType::REVERB);
-    expect($dto->region)->toBe(CloudRegion::US_EAST_1);
-    expect($dto->status)->toBe(WebsocketStatus::UPDATING);
-    expect($dto->maxConnections)->toBe(WebsocketMaxConnections::CONNECTIONS_100);
-    expect($dto->connectionDistributionStrategy)->toBe(WebsocketConnectionDistributionStrategy::EVENLY);
+    expect($dto->type)->toBe(WebsocketServerType::Reverb);
+    expect($dto->region)->toBe(CloudRegion::UsEast1);
+    expect($dto->status)->toBe(WebsocketStatus::Updating);
+    expect($dto->maxConnections)->toBe(WebsocketMaxConnections::Connections100);
+    expect($dto->connectionDistributionStrategy)->toBe(WebsocketConnectionDistributionStrategy::Evenly);
     expect($dto->hostname)->toBeString();
     expect($dto->createdAt)->not->toBeNull();
 });

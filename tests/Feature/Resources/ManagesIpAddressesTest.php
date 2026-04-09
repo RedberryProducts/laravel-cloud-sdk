@@ -25,7 +25,7 @@ it('lists ip addresses filtered by region enum', function () {
         ListIpAddressesRequest::class => new LaravelCloudFixture('meta/ip-addresses'),
     ]);
 
-    $result = (new LaravelCloud('token'))->ipAddresses(CloudRegion::US_EAST_1);
+    $result = (new LaravelCloud('token'))->ipAddresses(CloudRegion::UsEast1);
 
     Saloon::assertSent(ListIpAddressesRequest::class);
     expect($result)->toBeInstanceOf(Collection::class);

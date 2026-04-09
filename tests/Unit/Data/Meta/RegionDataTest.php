@@ -5,12 +5,12 @@ use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 
 it('can be constructed with all parameters', function () {
     $data = new RegionData(
-        region: CloudRegion::US_EAST_1,
+        region: CloudRegion::UsEast1,
         label: 'N. Virginia',
         flag: 'us',
     );
 
-    expect($data->region)->toBe(CloudRegion::US_EAST_1);
+    expect($data->region)->toBe(CloudRegion::UsEast1);
     expect($data->label)->toBe('N. Virginia');
     expect($data->flag)->toBe('us');
 });
@@ -25,7 +25,7 @@ it('can be created from API response data', function () {
     $data = RegionData::fromResponse($responseData);
 
     expect($data)->toBeInstanceOf(RegionData::class);
-    expect($data->region)->toBe(CloudRegion::US_EAST_1);
+    expect($data->region)->toBe(CloudRegion::UsEast1);
     expect($data->label)->toBe('N. Virginia');
     expect($data->flag)->toBe('us');
 });
@@ -38,5 +38,5 @@ it('casts region string to CloudRegion enum', function () {
     ]);
 
     expect($data->region)->toBeInstanceOf(CloudRegion::class);
-    expect($data->region)->toBe(CloudRegion::EU_CENTRAL_1);
+    expect($data->region)->toBe(CloudRegion::EuCentral1);
 });

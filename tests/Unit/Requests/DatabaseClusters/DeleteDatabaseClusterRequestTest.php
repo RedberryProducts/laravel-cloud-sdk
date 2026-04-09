@@ -37,8 +37,8 @@ it('sends the delete request successfully', function () {
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $cluster = $connector->send(new CreateDatabaseClusterRequest(new CreateDatabaseClusterData(
         name: 'sdk-delete-test',
-        type: DatabaseType::NEON_SERVERLESS_POSTGRES_17,
-        region: CloudRegion::US_EAST_1,
+        type: DatabaseType::NeonServerlessPostgres17,
+        region: CloudRegion::UsEast1,
         config: new NeonServerlessPostgresConfigData(
             cuMin: 0.25,
             cuMax: 0.25,

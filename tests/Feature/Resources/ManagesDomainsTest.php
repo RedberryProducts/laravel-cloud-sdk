@@ -48,8 +48,8 @@ it('creates a domain with named params', function () {
     $result = (new LaravelCloud('token'))->createDomain(
         environmentId: 'env-a14fe550-4e39-4ff2-8016-a20e4d32a996',
         name: 'example.com',
-        wwwRedirect: DomainRedirect::ROOT_TO_WWW,
-        verificationMethod: DomainVerificationMethod::REAL_TIME,
+        wwwRedirect: DomainRedirect::RootToWww,
+        verificationMethod: DomainVerificationMethod::RealTime,
     );
 
     Saloon::assertSent(CreateDomainRequest::class);
@@ -81,8 +81,8 @@ it('creates a domain via createDomainWith()', function () {
         'env-a14fe550-4e39-4ff2-8016-a20e4d32a996',
         new CreateDomainData(
             name: 'example.com',
-            wwwRedirect: DomainRedirect::ROOT_TO_WWW,
-            verificationMethod: DomainVerificationMethod::REAL_TIME,
+            wwwRedirect: DomainRedirect::RootToWww,
+            verificationMethod: DomainVerificationMethod::RealTime,
         ),
     );
 
@@ -97,7 +97,7 @@ it('updates a domain with named params', function () {
 
     $result = (new LaravelCloud('token'))->updateDomain(
         'domain-a15ddd8e-3829-4493-8229-2c2aae2872d4',
-        verificationMethod: DomainVerificationMethod::PRE_VERIFICATION,
+        verificationMethod: DomainVerificationMethod::PreVerification,
     );
 
     Saloon::assertSent(UpdateDomainRequest::class);
@@ -111,7 +111,7 @@ it('updates a domain via updateDomainWith()', function () {
 
     $result = (new LaravelCloud('token'))->updateDomainWith(
         'domain-a15ddd8e-3829-4493-8229-2c2aae2872d4',
-        new UpdateDomainData(verificationMethod: DomainVerificationMethod::PRE_VERIFICATION),
+        new UpdateDomainData(verificationMethod: DomainVerificationMethod::PreVerification),
     );
 
     Saloon::assertSent(UpdateDomainRequest::class);

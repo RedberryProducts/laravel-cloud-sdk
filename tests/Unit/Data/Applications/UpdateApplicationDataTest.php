@@ -28,7 +28,7 @@ it('defaults all parameters to Optional', function () {
 
 it('serializes fields as snake_case', function () {
     $data = new UpdateApplicationData(
-        sourceControlProviderType: SourceControlProvider::GITHUB,
+        sourceControlProviderType: SourceControlProvider::Github,
         defaultEnvironmentId: 'env-123',
         slackChannel: '#deploys',
     );

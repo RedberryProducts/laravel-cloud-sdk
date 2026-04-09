@@ -24,9 +24,9 @@ it('builds from response attributes', function () {
 
     expect($data->id)->toBe('instance-abc');
     expect($data->name)->toBe('my-service');
-    expect($data->type)->toBe(InstanceType::SERVICE);
-    expect($data->size)->toBe(InstanceSize::FLEX_M_1VCPU_1GB);
-    expect($data->scalingType)->toBe(InstanceScalingType::NONE);
+    expect($data->type)->toBe(InstanceType::Service);
+    expect($data->size)->toBe(InstanceSize::FlexM1vcpu1gb);
+    expect($data->scalingType)->toBe(InstanceScalingType::None);
     expect($data->minReplicas)->toBe(1);
     expect($data->maxReplicas)->toBe(1);
     expect($data->usesScheduler)->toBeFalse();
@@ -50,7 +50,7 @@ it('builds with scaling thresholds', function () {
         'scaling_memory_threshold_percentage' => 80,
     ], 'instance-xyz');
 
-    expect($data->scalingType)->toBe(InstanceScalingType::CUSTOM);
+    expect($data->scalingType)->toBe(InstanceScalingType::Custom);
     expect($data->scalingCpuThresholdPercentage)->toBe(75);
     expect($data->scalingMemoryThresholdPercentage)->toBe(80);
     expect($data->usesScheduler)->toBeTrue();
@@ -75,5 +75,5 @@ it('accepts background processes', function () {
 
     expect($data->backgroundProcesses)->toHaveCount(1);
     expect($data->backgroundProcesses[0])->toBeInstanceOf(BackgroundProcessData::class);
-    expect($data->backgroundProcesses[0]->type)->toBe(DaemonType::WORKER);
+    expect($data->backgroundProcesses[0]->type)->toBe(DaemonType::Worker);
 });

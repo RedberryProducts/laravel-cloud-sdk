@@ -19,9 +19,9 @@ use Saloon\Laravel\Facades\Saloon;
 it('resolves the endpoint correctly', function () {
     $data = new CreateInstanceData(
         name: 'test-worker',
-        type: InstanceType::SERVICE,
-        size: InstanceSize::FLEX_M_1VCPU_1GB,
-        scalingType: InstanceScalingType::NONE,
+        type: InstanceType::Service,
+        size: InstanceSize::FlexM1vcpu1gb,
+        scalingType: InstanceScalingType::None,
         maxReplicas: 1,
         minReplicas: 1,
     );
@@ -33,9 +33,9 @@ it('resolves the endpoint correctly', function () {
 it('has the correct HTTP method', function () {
     $data = new CreateInstanceData(
         name: 'test-worker',
-        type: InstanceType::SERVICE,
-        size: InstanceSize::FLEX_M_1VCPU_1GB,
-        scalingType: InstanceScalingType::NONE,
+        type: InstanceType::Service,
+        size: InstanceSize::FlexM1vcpu1gb,
+        scalingType: InstanceScalingType::None,
         maxReplicas: 1,
         minReplicas: 1,
     );
@@ -47,9 +47,9 @@ it('has the correct HTTP method', function () {
 it('implements HasBody', function () {
     $data = new CreateInstanceData(
         name: 'test-worker',
-        type: InstanceType::SERVICE,
-        size: InstanceSize::FLEX_M_1VCPU_1GB,
-        scalingType: InstanceScalingType::NONE,
+        type: InstanceType::Service,
+        size: InstanceSize::FlexM1vcpu1gb,
+        scalingType: InstanceScalingType::None,
         maxReplicas: 1,
         minReplicas: 1,
     );
@@ -61,9 +61,9 @@ it('implements HasBody', function () {
 it('sends correct body with all optional fields', function () {
     $data = new CreateInstanceData(
         name: 'test-worker',
-        type: InstanceType::SERVICE,
-        size: InstanceSize::FLEX_M_1VCPU_1GB,
-        scalingType: InstanceScalingType::CUSTOM,
+        type: InstanceType::Service,
+        size: InstanceSize::FlexM1vcpu1gb,
+        scalingType: InstanceScalingType::Custom,
         maxReplicas: 5,
         minReplicas: 1,
         usesScheduler: true,
@@ -87,9 +87,9 @@ it('sends correct body with all optional fields', function () {
 it('excludes unset optional fields from body', function () {
     $data = new CreateInstanceData(
         name: 'test-worker',
-        type: InstanceType::SERVICE,
-        size: InstanceSize::FLEX_M_1VCPU_1GB,
-        scalingType: InstanceScalingType::NONE,
+        type: InstanceType::Service,
+        size: InstanceSize::FlexM1vcpu1gb,
+        scalingType: InstanceScalingType::None,
         maxReplicas: 1,
         minReplicas: 1,
     );
@@ -122,15 +122,15 @@ it('creates an instance and returns InstanceData', function () {
 
     $data = new CreateInstanceData(
         name: 'test-worker',
-        type: InstanceType::SERVICE,
-        size: InstanceSize::FLEX_M_1VCPU_1GB,
-        scalingType: InstanceScalingType::CUSTOM,
+        type: InstanceType::Service,
+        size: InstanceSize::FlexM1vcpu1gb,
+        scalingType: InstanceScalingType::Custom,
         maxReplicas: 5,
         minReplicas: 1,
         usesScheduler: true,
         backgroundProcesses: [
             new BackgroundProcessData(
-                type: DaemonType::CUSTOM,
+                type: DaemonType::Custom,
                 processes: 1,
                 command: 'php artisan queue:work',
             ),

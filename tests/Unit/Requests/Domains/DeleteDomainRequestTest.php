@@ -42,8 +42,8 @@ it('sends the delete request successfully', function () {
     $app = $connector->send(new CreateApplicationRequest(new CreateApplicationData(
         repository: 'RedberryProducts/redberry-automations',
         name: 'sdk-domain-delete-test',
-        region: CloudRegion::US_EAST_1,
-        sourceControlProviderType: SourceControlProvider::GITHUB,
+        region: CloudRegion::UsEast1,
+        sourceControlProviderType: SourceControlProvider::Github,
     )))->dtoOrFail();
 
     $env = $connector->send(new CreateEnvironmentRequest($app->id, new CreateEnvironmentData(
@@ -53,8 +53,8 @@ it('sends the delete request successfully', function () {
 
     $domain = $connector->send(new CreateDomainRequest($env->id, new CreateDomainData(
         name: 'sdk-delete-test.redberry.ge',
-        wwwRedirect: DomainRedirect::WWW_TO_ROOT,
-        verificationMethod: DomainVerificationMethod::REAL_TIME,
+        wwwRedirect: DomainRedirect::WwwToRoot,
+        verificationMethod: DomainVerificationMethod::RealTime,
     )))->dtoOrFail();
 
     $response = $connector->send(new DeleteDomainRequest($domain->id));

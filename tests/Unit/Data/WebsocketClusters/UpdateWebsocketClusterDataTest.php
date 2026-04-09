@@ -14,11 +14,11 @@ it('can be constructed with partial parameters', function () {
 it('can be constructed with all parameters', function () {
     $data = new UpdateWebsocketClusterData(
         name: 'updated-cluster',
-        maxConnections: WebsocketMaxConnections::CONNECTIONS_200,
+        maxConnections: WebsocketMaxConnections::Connections200,
     );
 
     expect($data->name)->toBe('updated-cluster');
-    expect($data->maxConnections)->toBe(WebsocketMaxConnections::CONNECTIONS_200);
+    expect($data->maxConnections)->toBe(WebsocketMaxConnections::Connections200);
 });
 
 it('defaults all parameters to Optional', function () {
@@ -30,7 +30,7 @@ it('defaults all parameters to Optional', function () {
 
 it('serializes max_connections as snake_case', function () {
     $data = new UpdateWebsocketClusterData(
-        maxConnections: WebsocketMaxConnections::CONNECTIONS_2000,
+        maxConnections: WebsocketMaxConnections::Connections2000,
     );
 
     $array = $data->toArray();

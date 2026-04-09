@@ -5,5 +5,5 @@ namespace Redberry\LaravelCloudSdk\Enums;
 enum ResponseHeadersRobotsTag: string
 {
     case IndexFollow = 'index, follow';
-    case NoindexNofollow = 'noindex, nofollow';
+    case NoIndexNoFollow = 'noindex, nofollow';
 }

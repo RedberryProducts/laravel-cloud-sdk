@@ -25,10 +25,10 @@ it('can be created from API response data', function () {
     expect($data)->toBeInstanceOf(BucketData::class);
     expect($data->id)->toBe('bucket-123');
     expect($data->name)->toBe('my-bucket');
-    expect($data->type)->toBe(BucketType::CLOUDFLARE_R2);
-    expect($data->status)->toBe(BucketStatus::AVAILABLE);
-    expect($data->visibility)->toBe(BucketVisibility::PRIVATE);
-    expect($data->jurisdiction)->toBe(BucketJurisdiction::DEFAULT);
+    expect($data->type)->toBe(BucketType::CloudflareR2);
+    expect($data->status)->toBe(BucketStatus::Available);
+    expect($data->visibility)->toBe(BucketVisibility::Private);
+    expect($data->jurisdiction)->toBe(BucketJurisdiction::Default);
     expect($data->endpoint)->toBe('https://bucket.example.com');
     expect($data->url)->toBe('https://bucket.example.com/my-bucket');
     expect($data->allowedOrigins)->toBe(['https://example.com', 'https://app.example.com']);
@@ -53,6 +53,6 @@ it('handles null optional fields', function () {
     expect($data->url)->toBeNull();
     expect($data->allowedOrigins)->toBeNull();
     expect($data->createdAt)->toBeNull();
-    expect($data->visibility)->toBe(BucketVisibility::PUBLIC);
-    expect($data->jurisdiction)->toBe(BucketJurisdiction::EU);
+    expect($data->visibility)->toBe(BucketVisibility::Public);
+    expect($data->jurisdiction)->toBe(BucketJurisdiction::Eu);
 });

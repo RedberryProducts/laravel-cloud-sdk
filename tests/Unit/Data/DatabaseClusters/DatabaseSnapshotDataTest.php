@@ -21,8 +21,8 @@ it('can be created from response attributes', function () {
     expect($data->id)->toBe('snap-123');
     expect($data->name)->toBe('my-snapshot');
     expect($data->description)->toBe('Weekly backup');
-    expect($data->type)->toBe(DatabaseSnapshotType::SCHEDULED);
-    expect($data->status)->toBe(DatabaseSnapshotStatus::AVAILABLE);
+    expect($data->type)->toBe(DatabaseSnapshotType::Scheduled);
+    expect($data->status)->toBe(DatabaseSnapshotStatus::Available);
     expect($data->storageBytes)->toBe(1048576);
     expect($data->pitrEnabled)->toBeTrue();
     expect($data->pitrEndsAt)->toBeInstanceOf(CarbonImmutable::class);
@@ -55,8 +55,8 @@ it('casts type and status to enums', function () {
         'pitr_enabled' => false,
     ], 'snap-789');
 
-    expect($data->type)->toBe(DatabaseSnapshotType::MANUAL);
-    expect($data->status)->toBe(DatabaseSnapshotStatus::PENDING);
+    expect($data->type)->toBe(DatabaseSnapshotType::Manual);
+    expect($data->status)->toBe(DatabaseSnapshotStatus::Pending);
 });
 
 it('falls back to raw string for unknown enum values', function () {

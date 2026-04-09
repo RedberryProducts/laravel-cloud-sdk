@@ -32,10 +32,10 @@ it('can be created from API response data', function () {
     expect($data)->toBeInstanceOf(CacheData::class);
     expect($data->id)->toBe('cache-123');
     expect($data->name)->toBe('my-cache');
-    expect($data->type)->toBe(CacheType::LARAVEL_VALKEY);
-    expect($data->status)->toBe(CacheStatus::AVAILABLE);
-    expect($data->region)->toBe(CloudRegion::US_EAST_1);
-    expect($data->size)->toBe(CacheSize::UPSTASH_250MB);
+    expect($data->type)->toBe(CacheType::LaravelValkey);
+    expect($data->status)->toBe(CacheStatus::Available);
+    expect($data->region)->toBe(CloudRegion::UsEast1);
+    expect($data->size)->toBe(CacheSize::Upstash250Mb);
     expect($data->autoUpgradeEnabled)->toBeTrue();
     expect($data->isPublic)->toBeFalse();
     expect($data->connection)->toBeInstanceOf(CacheConnectionData::class);
@@ -64,6 +64,6 @@ it('handles null created_at', function () {
     $data = CacheData::fromResponse($responseData, 'cache-456');
 
     expect($data->createdAt)->toBeNull();
-    expect($data->type)->toBe(CacheType::UPSTASH_REDIS);
-    expect($data->status)->toBe(CacheStatus::CREATING);
+    expect($data->type)->toBe(CacheType::UpstashRedis);
+    expect($data->status)->toBe(CacheStatus::Creating);
 });

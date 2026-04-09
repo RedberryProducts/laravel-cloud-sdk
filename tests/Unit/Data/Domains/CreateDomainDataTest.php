@@ -9,8 +9,8 @@ use Spatie\LaravelData\Optional;
 it('requires name, wwwRedirect, and verificationMethod', function () {
     $data = new CreateDomainData(
         name: 'example.com',
-        wwwRedirect: DomainRedirect::ROOT_TO_WWW,
-        verificationMethod: DomainVerificationMethod::PRE_VERIFICATION,
+        wwwRedirect: DomainRedirect::RootToWww,
+        verificationMethod: DomainVerificationMethod::PreVerification,
     );
 
     $array = $data->toArray();
@@ -23,8 +23,8 @@ it('requires name, wwwRedirect, and verificationMethod', function () {
 it('defaults optional fields to Optional', function () {
     $data = new CreateDomainData(
         name: 'example.com',
-        wwwRedirect: DomainRedirect::ROOT_TO_WWW,
-        verificationMethod: DomainVerificationMethod::PRE_VERIFICATION,
+        wwwRedirect: DomainRedirect::RootToWww,
+        verificationMethod: DomainVerificationMethod::PreVerification,
     );
 
     expect($data->cloudflareStrategy)->toBeInstanceOf(Optional::class);
@@ -35,9 +35,9 @@ it('defaults optional fields to Optional', function () {
 it('serializes all optional fields when provided', function () {
     $data = new CreateDomainData(
         name: 'example.com',
-        wwwRedirect: DomainRedirect::WWW_TO_ROOT,
-        verificationMethod: DomainVerificationMethod::REAL_TIME,
-        cloudflareStrategy: DomainCloudflareStrategy::DNS_PROXY,
+        wwwRedirect: DomainRedirect::WwwToRoot,
+        verificationMethod: DomainVerificationMethod::RealTime,
+        cloudflareStrategy: DomainCloudflareStrategy::DnsProxy,
         wildcardEnabled: true,
         allowDowntime: false,
     );
@@ -55,8 +55,8 @@ it('serializes all optional fields when provided', function () {
 it('excludes unset optional fields', function () {
     $data = new CreateDomainData(
         name: 'example.com',
-        wwwRedirect: DomainRedirect::ROOT_TO_WWW,
-        verificationMethod: DomainVerificationMethod::PRE_VERIFICATION,
+        wwwRedirect: DomainRedirect::RootToWww,
+        verificationMethod: DomainVerificationMethod::PreVerification,
     );
 
     $array = $data->toArray();

@@ -55,7 +55,7 @@ it('serializes set fields as snake_case and excludes unset optionals', function 
         usesPushToDeploy: true,
         cacheStrategy: CacheStrategy::Bypass,
         responseHeadersFrame: ResponseHeadersFrame::Deny,
-        responseHeadersContentType: ResponseHeadersContentType::Nosniff,
+        responseHeadersContentType: ResponseHeadersContentType::NoSniff,
         responseHeadersRobotsTag: ResponseHeadersRobotsTag::IndexFollow,
         firewallRateLimitLevel: FirewallRateLimitLevel::Throttle,
         firewallUnderAttackMode: false,

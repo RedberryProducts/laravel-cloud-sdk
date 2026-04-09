@@ -58,7 +58,7 @@ it('sends correct body with all optional fields', function () {
         nightwatchToken: null,
         cacheStrategy: CacheStrategy::Bypass,
         responseHeadersFrame: ResponseHeadersFrame::Deny,
-        responseHeadersContentType: ResponseHeadersContentType::Nosniff,
+        responseHeadersContentType: ResponseHeadersContentType::NoSniff,
         responseHeadersRobotsTag: ResponseHeadersRobotsTag::IndexFollow,
         responseHeadersHsts: new HstsData(maxAge: 31536000, includeSubdomains: true, preload: false),
         filesystemKeys: [new FilesystemKeyData(id: 'key-123', disk: 'media', isDefaultDisk: true)],
@@ -155,7 +155,7 @@ it('updates an environment and returns EnvironmentData with all fields', functio
     expect($dto->id)->toBe('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
     expect($dto->name)->toBe('updated-env');
     expect($dto->slug)->toBe('main');
-    expect($dto->status)->toBe(EnvironmentStatus::RUNNING);
+    expect($dto->status)->toBe(EnvironmentStatus::Running);
     expect($dto->phpMajorVersion)->toBe(PhpVersion::V8_4);
     expect($dto->nodeVersion)->toBe(NodeVersion::V24);
     expect($dto->vanityDomain)->toBe('updated-app-updated-env-mtkrkd.laravel.cloud');

@@ -52,9 +52,9 @@ it('creates an instance with named params', function () {
     $result = (new LaravelCloud('token'))->createInstance(
         environmentId: 'env-a14fe550-4e39-4ff2-8016-a20e4d32a996',
         name: 'App',
-        type: InstanceType::APP,
-        size: InstanceSize::FLEX_G_1VCPU_512MB,
-        scalingType: InstanceScalingType::NONE,
+        type: InstanceType::App,
+        size: InstanceSize::FlexG1vcpu512mb,
+        scalingType: InstanceScalingType::None,
         maxReplicas: 1,
         minReplicas: 1,
     );
@@ -91,9 +91,9 @@ it('creates an instance via createInstanceWith()', function () {
         'env-a14fe550-4e39-4ff2-8016-a20e4d32a996',
         new CreateInstanceData(
             name: 'App',
-            type: InstanceType::APP,
-            size: InstanceSize::FLEX_G_1VCPU_512MB,
-            scalingType: InstanceScalingType::NONE,
+            type: InstanceType::App,
+            size: InstanceSize::FlexG1vcpu512mb,
+            scalingType: InstanceScalingType::None,
             maxReplicas: 1,
             minReplicas: 1,
         ),
@@ -110,7 +110,7 @@ it('updates an instance with named params', function () {
 
     $result = (new LaravelCloud('token'))->updateInstance(
         'inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba',
-        size: InstanceSize::FLEX_G_1VCPU_512MB,
+        size: InstanceSize::FlexG1vcpu512mb,
     );
 
     Saloon::assertSent(UpdateInstanceRequest::class);
@@ -124,7 +124,7 @@ it('updates an instance via updateInstanceWith()', function () {
 
     $result = (new LaravelCloud('token'))->updateInstanceWith(
         'inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba',
-        new UpdateInstanceData(size: InstanceSize::FLEX_G_1VCPU_512MB),
+        new UpdateInstanceData(size: InstanceSize::FlexG1vcpu512mb),
     );
 
     Saloon::assertSent(UpdateInstanceRequest::class);

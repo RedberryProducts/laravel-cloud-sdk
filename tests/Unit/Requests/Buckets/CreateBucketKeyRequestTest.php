@@ -13,7 +13,7 @@ use Saloon\Laravel\Facades\Saloon;
 it('resolves the endpoint correctly', function () {
     $data = new CreateBucketKeyData(
         name: 'new-key',
-        permission: KeyPermission::READ_WRITE,
+        permission: KeyPermission::ReadWrite,
     );
     $request = new CreateBucketKeyRequest('bucket-123', $data);
 
@@ -23,7 +23,7 @@ it('resolves the endpoint correctly', function () {
 it('has the correct HTTP method', function () {
     $data = new CreateBucketKeyData(
         name: 'new-key',
-        permission: KeyPermission::READ_WRITE,
+        permission: KeyPermission::ReadWrite,
     );
     $request = new CreateBucketKeyRequest('bucket-123', $data);
 
@@ -33,7 +33,7 @@ it('has the correct HTTP method', function () {
 it('sends correct body', function () {
     $data = new CreateBucketKeyData(
         name: 'new-key',
-        permission: KeyPermission::READ_WRITE,
+        permission: KeyPermission::ReadWrite,
     );
     $request = new CreateBucketKeyRequest('bucket-123', $data);
     $body = $request->body()->all();
@@ -57,7 +57,7 @@ it('creates a bucket key and returns BucketKeyData with all fields', function ()
 
     $data = new CreateBucketKeyData(
         name: 'new-key',
-        permission: KeyPermission::READ_WRITE,
+        permission: KeyPermission::ReadWrite,
     );
     $response = $connector->send(new CreateBucketKeyRequest($firstBucket->id, $data));
 
@@ -67,7 +67,7 @@ it('creates a bucket key and returns BucketKeyData with all fields', function ()
     expect($dto)->toBeInstanceOf(BucketKeyData::class);
     expect($dto->id)->toBe('flsk-a14e1a83-a4d4-49a4-bdd9-93ae07a6a9cd');
     expect($dto->name)->toBe('new-key');
-    expect($dto->permission)->toBe(KeyPermission::READ_WRITE);
+    expect($dto->permission)->toBe(KeyPermission::ReadWrite);
     expect($dto->accessKeyId)->toBeString();
     expect($dto->accessKeySecret)->toBeString();
     expect($dto->createdAt)->not->toBeNull();

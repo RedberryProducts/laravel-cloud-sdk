@@ -28,7 +28,7 @@ it('has the correct HTTP method', function () {
 
 it('sends correct body with all optional fields', function () {
     $data = new UpdateApplicationData(
-        sourceControlProviderType: SourceControlProvider::GITHUB,
+        sourceControlProviderType: SourceControlProvider::Github,
         name: 'updated-app',
         slug: 'updated-app-slug',
         defaultEnvironmentId: 'env-123',
@@ -81,7 +81,7 @@ it('updates an application and returns ApplicationData with all fields', functio
     expect($dto->id)->toBeString();
     expect($dto->name)->toBe('updated-app');
     expect($dto->slug)->toBeString();
-    expect($dto->region)->toBe(CloudRegion::US_EAST_1);
+    expect($dto->region)->toBe(CloudRegion::UsEast1);
     expect($dto->slackChannel)->toBeNull();
     expect($dto->avatarUrl)->toBeNull();
     expect($dto->repository)->toBeInstanceOf(ApplicationRepositoryData::class);

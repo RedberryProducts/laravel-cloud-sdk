@@ -30,8 +30,8 @@ it('has the correct HTTP method', function () {
 it('sends correct body with all optional fields', function () {
     $data = new UpdateInstanceData(
         name: 'updated-worker',
-        size: InstanceSize::FLEX_M_2VCPU_2GB,
-        scalingType: InstanceScalingType::CUSTOM,
+        size: InstanceSize::FlexM2vcpu2gb,
+        scalingType: InstanceScalingType::Custom,
         maxReplicas: 10,
         minReplicas: 2,
         usesSleepMode: false,
@@ -98,8 +98,8 @@ it('updates an instance and returns InstanceData', function () {
 
     $data = new UpdateInstanceData(
         name: 'updated-worker',
-        size: InstanceSize::FLEX_M_2VCPU_2GB,
-        scalingType: InstanceScalingType::CUSTOM,
+        size: InstanceSize::FlexM2vcpu2gb,
+        scalingType: InstanceScalingType::Custom,
         maxReplicas: 5,
         minReplicas: 1,
         usesSleepMode: false,

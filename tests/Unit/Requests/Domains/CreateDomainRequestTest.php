@@ -17,8 +17,8 @@ use Saloon\Laravel\Facades\Saloon;
 it('resolves the endpoint correctly', function () {
     $data = new CreateDomainData(
         name: 'example.com',
-        wwwRedirect: DomainRedirect::ROOT_TO_WWW,
-        verificationMethod: DomainVerificationMethod::PRE_VERIFICATION,
+        wwwRedirect: DomainRedirect::RootToWww,
+        verificationMethod: DomainVerificationMethod::PreVerification,
     );
     $request = new CreateDomainRequest('env-123', $data);
 
@@ -28,8 +28,8 @@ it('resolves the endpoint correctly', function () {
 it('has the correct HTTP method', function () {
     $data = new CreateDomainData(
         name: 'example.com',
-        wwwRedirect: DomainRedirect::ROOT_TO_WWW,
-        verificationMethod: DomainVerificationMethod::PRE_VERIFICATION,
+        wwwRedirect: DomainRedirect::RootToWww,
+        verificationMethod: DomainVerificationMethod::PreVerification,
     );
     $request = new CreateDomainRequest('env-123', $data);
 
@@ -39,8 +39,8 @@ it('has the correct HTTP method', function () {
 it('implements HasBody', function () {
     $data = new CreateDomainData(
         name: 'example.com',
-        wwwRedirect: DomainRedirect::ROOT_TO_WWW,
-        verificationMethod: DomainVerificationMethod::PRE_VERIFICATION,
+        wwwRedirect: DomainRedirect::RootToWww,
+        verificationMethod: DomainVerificationMethod::PreVerification,
     );
     $request = new CreateDomainRequest('env-123', $data);
 
@@ -50,9 +50,9 @@ it('implements HasBody', function () {
 it('sends correct body with all optional fields', function () {
     $data = new CreateDomainData(
         name: 'example.com',
-        wwwRedirect: DomainRedirect::ROOT_TO_WWW,
-        verificationMethod: DomainVerificationMethod::PRE_VERIFICATION,
-        cloudflareStrategy: DomainCloudflareStrategy::NONE,
+        wwwRedirect: DomainRedirect::RootToWww,
+        verificationMethod: DomainVerificationMethod::PreVerification,
+        cloudflareStrategy: DomainCloudflareStrategy::None,
         wildcardEnabled: false,
         allowDowntime: false,
     );
@@ -70,8 +70,8 @@ it('sends correct body with all optional fields', function () {
 it('excludes unset optional fields from body', function () {
     $data = new CreateDomainData(
         name: 'example.com',
-        wwwRedirect: DomainRedirect::ROOT_TO_WWW,
-        verificationMethod: DomainVerificationMethod::PRE_VERIFICATION,
+        wwwRedirect: DomainRedirect::RootToWww,
+        verificationMethod: DomainVerificationMethod::PreVerification,
     );
     $request = new CreateDomainRequest('env-123', $data);
     $body = $request->body()->all();
@@ -102,9 +102,9 @@ it('creates a domain and returns DomainData', function () {
 
     $data = new CreateDomainData(
         name: 'laravel-cloud-sdk.redberry.ge',
-        wwwRedirect: DomainRedirect::ROOT_TO_WWW,
-        verificationMethod: DomainVerificationMethod::PRE_VERIFICATION,
-        cloudflareStrategy: DomainCloudflareStrategy::NONE,
+        wwwRedirect: DomainRedirect::RootToWww,
+        verificationMethod: DomainVerificationMethod::PreVerification,
+        cloudflareStrategy: DomainCloudflareStrategy::None,
         wildcardEnabled: false,
         allowDowntime: false,
     );

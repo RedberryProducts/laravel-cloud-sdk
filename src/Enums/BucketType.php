@@ -4,5 +4,5 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum BucketType: string
 {
-    case CLOUDFLARE_R2 = 'cloudflare_r2';
+    case CloudflareR2 = 'cloudflare_r2';
 }

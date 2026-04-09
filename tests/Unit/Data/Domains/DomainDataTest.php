@@ -21,10 +21,10 @@ it('builds from response attributes', function () {
 
     expect($data->id)->toBe('domain-abc');
     expect($data->name)->toBe('example.com');
-    expect($data->type)->toBe(DomainType::ROOT);
-    expect($data->hostnameStatus)->toBe(DomainStatus::VERIFIED);
-    expect($data->sslStatus)->toBe(DomainStatus::PENDING);
-    expect($data->originStatus)->toBe(DomainStatus::DISABLED);
+    expect($data->type)->toBe(DomainType::Root);
+    expect($data->hostnameStatus)->toBe(DomainStatus::Verified);
+    expect($data->sslStatus)->toBe(DomainStatus::Pending);
+    expect($data->originStatus)->toBe(DomainStatus::Disabled);
     expect($data->wildcardEnabled)->toBeFalse();
     expect($data->redirect)->toBeNull();
     expect($data->cloudflareStrategy)->toBeNull();
@@ -52,8 +52,8 @@ it('builds with optional fields set', function () {
         'created_at' => '2024-01-01T00:00:00Z',
     ], 'domain-xyz');
 
-    expect($data->redirect)->toBe(DomainRedirect::WWW_TO_ROOT);
-    expect($data->cloudflareStrategy)->toBe(DomainCloudflareStrategy::DNS_PROXY);
+    expect($data->redirect)->toBe(DomainRedirect::WwwToRoot);
+    expect($data->cloudflareStrategy)->toBe(DomainCloudflareStrategy::DnsProxy);
     expect($data->downtime)->toBeFalse();
     expect($data->wildcardEnabled)->toBeTrue();
     expect($data->actionRequired)->toBe('verify_dns');

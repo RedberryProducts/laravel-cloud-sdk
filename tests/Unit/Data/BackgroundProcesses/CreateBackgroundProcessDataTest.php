@@ -7,17 +7,17 @@ use Spatie\LaravelData\Optional;
 
 it('can be constructed with required parameters', function () {
     $data = new CreateBackgroundProcessData(
-        type: DaemonType::WORKER,
+        type: DaemonType::Worker,
         processes: 2,
     );
 
-    expect($data->type)->toBe(DaemonType::WORKER);
+    expect($data->type)->toBe(DaemonType::Worker);
     expect($data->processes)->toBe(2);
 });
 
 it('defaults optional fields to Optional', function () {
     $data = new CreateBackgroundProcessData(
-        type: DaemonType::WORKER,
+        type: DaemonType::Worker,
         processes: 1,
     );
 
@@ -27,21 +27,21 @@ it('defaults optional fields to Optional', function () {
 
 it('serializes to array correctly for custom type', function () {
     $data = new CreateBackgroundProcessData(
-        type: DaemonType::CUSTOM,
+        type: DaemonType::Custom,
         processes: 1,
         command: 'php artisan my:command',
     );
 
     $array = $data->toArray();
 
-    expect($array['type'])->toBe(DaemonType::CUSTOM->value);
+    expect($array['type'])->toBe(DaemonType::Custom->value);
     expect($array['processes'])->toBe(1);
     expect($array['command'])->toBe('php artisan my:command');
 });
 
 it('excludes optional fields when not set', function () {
     $data = new CreateBackgroundProcessData(
-        type: DaemonType::CUSTOM,
+        type: DaemonType::Custom,
         processes: 1,
     );
 
@@ -61,7 +61,7 @@ it('serializes nested config when set', function () {
     );
 
     $data = new CreateBackgroundProcessData(
-        type: DaemonType::WORKER,
+        type: DaemonType::Worker,
         processes: 2,
         config: $config,
     );

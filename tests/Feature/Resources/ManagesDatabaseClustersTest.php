@@ -61,8 +61,8 @@ it('creates a database cluster with named params', function () {
 
     $result = (new LaravelCloud('token'))->createDatabaseCluster(
         name: 'test-cluster',
-        type: DatabaseType::NEON_SERVERLESS_POSTGRES_17,
-        region: CloudRegion::US_EAST_1,
+        type: DatabaseType::NeonServerlessPostgres17,
+        region: CloudRegion::UsEast1,
         config: new NeonServerlessPostgresConfigData(
             cuMin: 0.25,
             cuMax: 0.25,
@@ -106,8 +106,8 @@ it('creates a database cluster via createDatabaseClusterWith()', function () {
     $result = (new LaravelCloud('token'))->createDatabaseClusterWith(
         new CreateDatabaseClusterData(
             name: 'test-cluster',
-            type: DatabaseType::NEON_SERVERLESS_POSTGRES_17,
-            region: CloudRegion::US_EAST_1,
+            type: DatabaseType::NeonServerlessPostgres17,
+            region: CloudRegion::UsEast1,
             config: $config,
         )
     );

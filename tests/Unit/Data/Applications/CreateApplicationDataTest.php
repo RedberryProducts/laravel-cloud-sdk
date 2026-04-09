@@ -9,14 +9,14 @@ it('can be constructed with required parameters', function () {
     $data = new CreateApplicationData(
         repository: 'acme/my-app',
         name: 'my-app',
-        region: CloudRegion::US_EAST_1,
-        sourceControlProviderType: SourceControlProvider::GITHUB,
+        region: CloudRegion::UsEast1,
+        sourceControlProviderType: SourceControlProvider::Github,
     );
 
     expect($data->repository)->toBe('acme/my-app');
     expect($data->name)->toBe('my-app');
-    expect($data->region)->toBe(CloudRegion::US_EAST_1);
-    expect($data->sourceControlProviderType)->toBe(SourceControlProvider::GITHUB);
+    expect($data->region)->toBe(CloudRegion::UsEast1);
+    expect($data->sourceControlProviderType)->toBe(SourceControlProvider::Github);
     expect($data->clusterId)->toBeInstanceOf(Optional::class);
 });
 
@@ -24,8 +24,8 @@ it('serializes fields as snake_case', function () {
     $data = new CreateApplicationData(
         repository: 'acme/my-app',
         name: 'my-app',
-        region: CloudRegion::EU_CENTRAL_1,
-        sourceControlProviderType: SourceControlProvider::GITLAB,
+        region: CloudRegion::EuCentral1,
+        sourceControlProviderType: SourceControlProvider::Gitlab,
     );
 
     $array = $data->toArray();

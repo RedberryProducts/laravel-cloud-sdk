@@ -33,10 +33,10 @@ it('has the correct HTTP method', function () {
 it('sends correct body with all optional fields', function () {
     $data = new UpdateCacheData(
         name: 'updated-cache',
-        size: CacheSize::VALKEY_PRO_250MB,
+        size: CacheSize::ValkeyPro250Mb,
         autoUpgradeEnabled: true,
         isPublic: false,
-        evictionPolicy: EvictionPolicy::ALLKEYS_LRU,
+        evictionPolicy: EvictionPolicy::AllKeysLru,
     );
     $request = new UpdateCacheRequest('cache-123', $data);
     $body = $request->body()->all();
@@ -82,16 +82,16 @@ it('updates a cache and returns CacheData with all fields', function () {
     expect($dto)->toBeInstanceOf(CacheData::class);
     expect($dto->id)->toBe('cache-a14df861-12f8-413c-93b2-3c2b92e590c3');
     expect($dto->name)->toBe('updated-cache');
-    expect($dto->type)->toBe(CacheType::LARAVEL_VALKEY);
-    expect($dto->status)->toBe(CacheStatus::UPDATING);
-    expect($dto->region)->toBe(CloudRegion::US_EAST_1);
-    expect($dto->size)->toBe(CacheSize::VALKEY_PRO_250MB);
+    expect($dto->type)->toBe(CacheType::LaravelValkey);
+    expect($dto->status)->toBe(CacheStatus::Updating);
+    expect($dto->region)->toBe(CloudRegion::UsEast1);
+    expect($dto->size)->toBe(CacheSize::ValkeyPro250Mb);
     expect($dto->autoUpgradeEnabled)->toBeTrue();
     expect($dto->isPublic)->toBeFalse();
     expect($dto->connection)->toBeInstanceOf(CacheConnectionData::class);
     expect($dto->connection->hostname)->toBeString();
     expect($dto->connection->port)->toBe(6379);
-    expect($dto->connection->protocol)->toBe(CacheProtocol::REDIS);
+    expect($dto->connection->protocol)->toBe(CacheProtocol::Redis);
     expect($dto->connection->username)->toBeString();
     expect($dto->connection->password)->toBeString();
     expect($dto->createdAt)->not->toBeNull();

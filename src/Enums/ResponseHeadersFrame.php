@@ -5,6 +5,6 @@ namespace Redberry\LaravelCloudSdk\Enums;
 enum ResponseHeadersFrame: string
 {
     case Deny = 'deny';
-    case Sameorigin = 'sameorigin';
+    case SameOrigin = 'sameorigin';
     case All = 'all';
 }

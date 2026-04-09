@@ -25,11 +25,11 @@ it('can be created from API response data', function () {
     expect($data)->toBeInstanceOf(WebsocketClusterData::class);
     expect($data->id)->toBe('ws-123');
     expect($data->name)->toBe('my-cluster');
-    expect($data->type)->toBe(WebsocketServerType::REVERB);
-    expect($data->region)->toBe(CloudRegion::US_EAST_1);
-    expect($data->status)->toBe(WebsocketStatus::AVAILABLE);
-    expect($data->maxConnections)->toBe(WebsocketMaxConnections::CONNECTIONS_100);
-    expect($data->connectionDistributionStrategy)->toBe(WebsocketConnectionDistributionStrategy::EVENLY);
+    expect($data->type)->toBe(WebsocketServerType::Reverb);
+    expect($data->region)->toBe(CloudRegion::UsEast1);
+    expect($data->status)->toBe(WebsocketStatus::Available);
+    expect($data->maxConnections)->toBe(WebsocketMaxConnections::Connections100);
+    expect($data->connectionDistributionStrategy)->toBe(WebsocketConnectionDistributionStrategy::Evenly);
     expect($data->hostname)->toBe('ws.example.com');
     expect($data->createdAt)->toBeInstanceOf(CarbonImmutable::class);
 });
@@ -49,7 +49,7 @@ it('handles null created_at', function () {
     $data = WebsocketClusterData::fromResponse($responseData, 'ws-456');
 
     expect($data->createdAt)->toBeNull();
-    expect($data->status)->toBe(WebsocketStatus::CREATING);
-    expect($data->maxConnections)->toBe(WebsocketMaxConnections::CONNECTIONS_500);
-    expect($data->connectionDistributionStrategy)->toBe(WebsocketConnectionDistributionStrategy::CUSTOM);
+    expect($data->status)->toBe(WebsocketStatus::Creating);
+    expect($data->maxConnections)->toBe(WebsocketMaxConnections::Connections500);
+    expect($data->connectionDistributionStrategy)->toBe(WebsocketConnectionDistributionStrategy::Custom);
 });

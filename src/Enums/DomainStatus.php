@@ -4,8 +4,8 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum DomainStatus: string
 {
-    case PENDING = 'pending';
-    case VERIFIED = 'verified';
-    case FAILED = 'failed';
-    case DISABLED = 'disabled';
+    case Pending = 'pending';
+    case Verified = 'verified';
+    case Failed = 'failed';
+    case Disabled = 'disabled';
 }

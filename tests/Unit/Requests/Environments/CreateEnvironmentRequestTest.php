@@ -77,7 +77,7 @@ it('creates an environment and returns EnvironmentData with all fields', functio
     expect($dto->id)->toBe('env-a158d785-0e99-4337-ab52-5e2153848d63');
     expect($dto->name)->toBe('staging');
     expect($dto->slug)->toBe('staging-4');
-    expect($dto->status)->toBe(EnvironmentStatus::RUNNING);
+    expect($dto->status)->toBe(EnvironmentStatus::Running);
     expect($dto->phpMajorVersion)->toBe(PhpVersion::V8_4);
     expect($dto->nodeVersion)->toBe(NodeVersion::V24);
     expect($dto->vanityDomain)->toBe('updated-app-staging-hgo3vh.laravel.cloud');

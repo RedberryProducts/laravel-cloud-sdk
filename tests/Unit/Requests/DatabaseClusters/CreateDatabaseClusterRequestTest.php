@@ -19,8 +19,8 @@ use Saloon\Laravel\Facades\Saloon;
 it('resolves the endpoint correctly', function () {
     $data = new CreateDatabaseClusterData(
         name: 'test-cluster',
-        type: DatabaseType::NEON_SERVERLESS_POSTGRES_17,
-        region: CloudRegion::US_EAST_1,
+        type: DatabaseType::NeonServerlessPostgres17,
+        region: CloudRegion::UsEast1,
         config: new NeonServerlessPostgresConfigData(
             cuMin: 0.25,
             cuMax: 0.25,
@@ -36,8 +36,8 @@ it('resolves the endpoint correctly', function () {
 it('has the correct HTTP method', function () {
     $data = new CreateDatabaseClusterData(
         name: 'test-cluster',
-        type: DatabaseType::NEON_SERVERLESS_POSTGRES_17,
-        region: CloudRegion::US_EAST_1,
+        type: DatabaseType::NeonServerlessPostgres17,
+        region: CloudRegion::UsEast1,
         config: new NeonServerlessPostgresConfigData(
             cuMin: 0.25,
             cuMax: 0.25,
@@ -53,8 +53,8 @@ it('has the correct HTTP method', function () {
 it('sends correct body', function () {
     $data = new CreateDatabaseClusterData(
         name: 'test-cluster',
-        type: DatabaseType::NEON_SERVERLESS_POSTGRES_17,
-        region: CloudRegion::US_EAST_1,
+        type: DatabaseType::NeonServerlessPostgres17,
+        region: CloudRegion::UsEast1,
         config: new NeonServerlessPostgresConfigData(
             cuMin: 0.25,
             cuMax: 0.25,
@@ -82,8 +82,8 @@ it('creates a database cluster and returns DatabaseClusterData with all fields',
 
     $data = new CreateDatabaseClusterData(
         name: 'test-cluster',
-        type: DatabaseType::NEON_SERVERLESS_POSTGRES_17,
-        region: CloudRegion::US_EAST_1,
+        type: DatabaseType::NeonServerlessPostgres17,
+        region: CloudRegion::UsEast1,
         config: new NeonServerlessPostgresConfigData(
             cuMin: 0.25,
             cuMax: 0.25,
@@ -101,19 +101,19 @@ it('creates a database cluster and returns DatabaseClusterData with all fields',
     expect($dto)->toBeInstanceOf(DatabaseClusterData::class);
     expect($dto->id)->toBe('red-paper-65989343');
     expect($dto->name)->toBe('test-cluster');
-    expect($dto->type)->toBe(DatabaseType::NEON_SERVERLESS_POSTGRES_17);
-    expect($dto->status)->toBe(DatabaseStatus::CREATING);
-    expect($dto->region)->toBe(CloudRegion::US_EAST_1);
+    expect($dto->type)->toBe(DatabaseType::NeonServerlessPostgres17);
+    expect($dto->status)->toBe(DatabaseStatus::Creating);
+    expect($dto->region)->toBe(CloudRegion::UsEast1);
     expect($dto->config)->toBeInstanceOf(NeonServerlessPostgresConfigData::class);
-    expect($dto->config->cuMin)->toBe(NeonServerlessPostgresComputeUnit::CU_0_25);
-    expect($dto->config->cuMax)->toBe(NeonServerlessPostgresComputeUnit::CU_0_25);
+    expect($dto->config->cuMin)->toBe(NeonServerlessPostgresComputeUnit::Cu0_25);
+    expect($dto->config->cuMax)->toBe(NeonServerlessPostgresComputeUnit::Cu0_25);
     expect($dto->config->suspendSeconds)->toBe(300);
     expect($dto->config->retentionDays)->toBe(7);
     expect($dto->connection)->toBeInstanceOf(DatabaseConnectionData::class);
     expect($dto->connection->hostname)->toBeString();
     expect($dto->connection->port)->toBe(5432);
-    expect($dto->connection->protocol)->toBe(DatabaseProtocol::POSTGRES);
-    expect($dto->connection->driver)->toBe(DatabaseDriver::PGSQL);
+    expect($dto->connection->protocol)->toBe(DatabaseProtocol::Postgres);
+    expect($dto->connection->driver)->toBe(DatabaseDriver::Pgsql);
     expect($dto->connection->username)->toBeString();
     expect($dto->connection->password)->toBeString();
     expect($dto->createdAt)->not->toBeNull();

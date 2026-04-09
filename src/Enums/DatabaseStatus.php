@@ -4,18 +4,18 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum DatabaseStatus: string
 {
-    case CREATING = 'creating';
-    case UPDATING = 'updating';
-    case RESTARTING = 'restarting';
-    case UPGRADING = 'upgrading';
-    case AVAILABLE = 'available';
-    case RESTORING = 'restoring';
-    case RESTORE_FAILED = 'restore_failed';
-    case DISABLED = 'disabled';
-    case SNAPSHOTTING_BEFORE_ARCHIVING = 'snapshotting_before_archiving';
-    case ARCHIVING = 'archiving';
-    case ARCHIVED = 'archived';
-    case DELETING = 'deleting';
-    case DELETED = 'deleted';
-    case UNKNOWN = 'unknown';
+    case Creating = 'creating';
+    case Updating = 'updating';
+    case Restarting = 'restarting';
+    case Upgrading = 'upgrading';
+    case Available = 'available';
+    case Restoring = 'restoring';
+    case RestoreFailed = 'restore_failed';
+    case Disabled = 'disabled';
+    case SnapshottingBeforeArchiving = 'snapshotting_before_archiving';
+    case Archiving = 'archiving';
+    case Archived = 'archived';
+    case Deleting = 'deleting';
+    case Deleted = 'deleted';
+    case Unknown = 'unknown';
 }

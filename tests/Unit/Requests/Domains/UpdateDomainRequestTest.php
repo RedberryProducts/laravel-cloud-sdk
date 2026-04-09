@@ -13,21 +13,21 @@ use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
 
 it('resolves the endpoint correctly', function () {
-    $data = new UpdateDomainData(verificationMethod: DomainVerificationMethod::REAL_TIME);
+    $data = new UpdateDomainData(verificationMethod: DomainVerificationMethod::RealTime);
     $request = new UpdateDomainRequest('domain-123', $data);
 
     expect($request->resolveEndpoint())->toBe('/domains/domain-123');
 });
 
 it('has the correct HTTP method', function () {
-    $data = new UpdateDomainData(verificationMethod: DomainVerificationMethod::REAL_TIME);
+    $data = new UpdateDomainData(verificationMethod: DomainVerificationMethod::RealTime);
     $request = new UpdateDomainRequest('domain-123', $data);
 
     expect($request->getMethod())->toBe(Method::PATCH);
 });
 
 it('sends correct body', function () {
-    $data = new UpdateDomainData(verificationMethod: DomainVerificationMethod::REAL_TIME);
+    $data = new UpdateDomainData(verificationMethod: DomainVerificationMethod::RealTime);
     $request = new UpdateDomainRequest('domain-123', $data);
     $body = $request->body()->all();
 
@@ -58,7 +58,7 @@ it('updates a domain and returns DomainData', function () {
         UpdateDomainRequest::class => new LaravelCloudFixture('domains/update'),
     ]);
 
-    $data = new UpdateDomainData(verificationMethod: DomainVerificationMethod::REAL_TIME);
+    $data = new UpdateDomainData(verificationMethod: DomainVerificationMethod::RealTime);
     $response = $connector->send(new UpdateDomainRequest($firstDomain->id, $data));
 
     Saloon::assertSent(UpdateDomainRequest::class);

@@ -16,9 +16,9 @@ use Saloon\Laravel\Facades\Saloon;
 it('resolves the endpoint correctly', function () {
     $data = new CreateWebsocketClusterData(
         name: 'test-ws-cluster',
-        type: WebsocketServerType::REVERB,
-        region: CloudRegion::US_EAST_1,
-        maxConnections: WebsocketMaxConnections::CONNECTIONS_100,
+        type: WebsocketServerType::Reverb,
+        region: CloudRegion::UsEast1,
+        maxConnections: WebsocketMaxConnections::Connections100,
     );
     $request = new CreateWebsocketClusterRequest($data);
 
@@ -28,9 +28,9 @@ it('resolves the endpoint correctly', function () {
 it('has the correct HTTP method', function () {
     $data = new CreateWebsocketClusterData(
         name: 'test-ws-cluster',
-        type: WebsocketServerType::REVERB,
-        region: CloudRegion::US_EAST_1,
-        maxConnections: WebsocketMaxConnections::CONNECTIONS_100,
+        type: WebsocketServerType::Reverb,
+        region: CloudRegion::UsEast1,
+        maxConnections: WebsocketMaxConnections::Connections100,
     );
     $request = new CreateWebsocketClusterRequest($data);
 
@@ -40,9 +40,9 @@ it('has the correct HTTP method', function () {
 it('sends correct body', function () {
     $data = new CreateWebsocketClusterData(
         name: 'test-ws-cluster',
-        type: WebsocketServerType::REVERB,
-        region: CloudRegion::US_EAST_1,
-        maxConnections: WebsocketMaxConnections::CONNECTIONS_100,
+        type: WebsocketServerType::Reverb,
+        region: CloudRegion::UsEast1,
+        maxConnections: WebsocketMaxConnections::Connections100,
     );
     $request = new CreateWebsocketClusterRequest($data);
     $body = $request->body()->all();
@@ -60,9 +60,9 @@ it('creates a websocket cluster and returns WebsocketClusterData with all fields
 
     $data = new CreateWebsocketClusterData(
         name: 'test-ws-cluster',
-        type: WebsocketServerType::REVERB,
-        region: CloudRegion::US_EAST_1,
-        maxConnections: WebsocketMaxConnections::CONNECTIONS_100,
+        type: WebsocketServerType::Reverb,
+        region: CloudRegion::UsEast1,
+        maxConnections: WebsocketMaxConnections::Connections100,
     );
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
@@ -74,11 +74,11 @@ it('creates a websocket cluster and returns WebsocketClusterData with all fields
     expect($dto)->toBeInstanceOf(WebsocketClusterData::class);
     expect($dto->id)->toBe('ws-a14fcb1a-18a7-411d-9d82-456d3aa2c273');
     expect($dto->name)->toBe('test-ws-cluster');
-    expect($dto->type)->toBe(WebsocketServerType::REVERB);
-    expect($dto->region)->toBe(CloudRegion::US_EAST_1);
-    expect($dto->status)->toBe(WebsocketStatus::CREATING);
-    expect($dto->maxConnections)->toBe(WebsocketMaxConnections::CONNECTIONS_100);
-    expect($dto->connectionDistributionStrategy)->toBe(WebsocketConnectionDistributionStrategy::EVENLY);
+    expect($dto->type)->toBe(WebsocketServerType::Reverb);
+    expect($dto->region)->toBe(CloudRegion::UsEast1);
+    expect($dto->status)->toBe(WebsocketStatus::Creating);
+    expect($dto->maxConnections)->toBe(WebsocketMaxConnections::Connections100);
+    expect($dto->connectionDistributionStrategy)->toBe(WebsocketConnectionDistributionStrategy::Evenly);
     expect($dto->hostname)->toBeString();
     expect($dto->createdAt)->not->toBeNull();
 });

@@ -15,8 +15,8 @@ it('resolves the endpoint correctly', function () {
     $data = new CreateApplicationData(
         repository: 'RedberryProducts/redberry-automations',
         name: 'test-app',
-        region: CloudRegion::US_EAST_1,
-        sourceControlProviderType: SourceControlProvider::GITHUB,
+        region: CloudRegion::UsEast1,
+        sourceControlProviderType: SourceControlProvider::Github,
     );
     $request = new CreateApplicationRequest($data);
 
@@ -27,8 +27,8 @@ it('has the correct HTTP method', function () {
     $data = new CreateApplicationData(
         repository: 'RedberryProducts/redberry-automations',
         name: 'test-app',
-        region: CloudRegion::US_EAST_1,
-        sourceControlProviderType: SourceControlProvider::GITHUB,
+        region: CloudRegion::UsEast1,
+        sourceControlProviderType: SourceControlProvider::Github,
     );
     $request = new CreateApplicationRequest($data);
 
@@ -39,8 +39,8 @@ it('sends correct body', function () {
     $data = new CreateApplicationData(
         repository: 'RedberryProducts/redberry-automations',
         name: 'test-app',
-        region: CloudRegion::US_EAST_1,
-        sourceControlProviderType: SourceControlProvider::GITHUB,
+        region: CloudRegion::UsEast1,
+        sourceControlProviderType: SourceControlProvider::Github,
     );
     $request = new CreateApplicationRequest($data);
     $body = $request->body()->all();
@@ -59,8 +59,8 @@ it('creates an application and returns ApplicationData with all fields', functio
     $data = new CreateApplicationData(
         repository: 'RedberryProducts/redberry-automations',
         name: 'test-app',
-        region: CloudRegion::US_EAST_1,
-        sourceControlProviderType: SourceControlProvider::GITHUB,
+        region: CloudRegion::UsEast1,
+        sourceControlProviderType: SourceControlProvider::Github,
     );
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
@@ -73,7 +73,7 @@ it('creates an application and returns ApplicationData with all fields', functio
     expect($dto->id)->toBeString();
     expect($dto->name)->toBe('test-app');
     expect($dto->slug)->toBeString();
-    expect($dto->region)->toBe(CloudRegion::US_EAST_1);
+    expect($dto->region)->toBe(CloudRegion::UsEast1);
     expect($dto->slackChannel)->toBeNull();
     expect($dto->avatarUrl)->toBeNull();
     expect($dto->repository)->toBeInstanceOf(ApplicationRepositoryData::class);

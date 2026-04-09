@@ -16,10 +16,10 @@ use Saloon\Laravel\Facades\Saloon;
 
 it('resolves the endpoint correctly', function () {
     $data = new CreateCacheData(
-        type: CacheType::LARAVEL_VALKEY,
+        type: CacheType::LaravelValkey,
         name: 'test-cache-two',
-        region: CloudRegion::US_EAST_1,
-        size: CacheSize::VALKEY_PRO_250MB,
+        region: CloudRegion::UsEast1,
+        size: CacheSize::ValkeyPro250Mb,
         autoUpgradeEnabled: true,
         isPublic: false,
     );
@@ -30,10 +30,10 @@ it('resolves the endpoint correctly', function () {
 
 it('has the correct HTTP method', function () {
     $data = new CreateCacheData(
-        type: CacheType::LARAVEL_VALKEY,
+        type: CacheType::LaravelValkey,
         name: 'test-cache-two',
-        region: CloudRegion::US_EAST_1,
-        size: CacheSize::VALKEY_PRO_250MB,
+        region: CloudRegion::UsEast1,
+        size: CacheSize::ValkeyPro250Mb,
         autoUpgradeEnabled: true,
         isPublic: false,
     );
@@ -44,10 +44,10 @@ it('has the correct HTTP method', function () {
 
 it('sends correct body', function () {
     $data = new CreateCacheData(
-        type: CacheType::LARAVEL_VALKEY,
+        type: CacheType::LaravelValkey,
         name: 'test-cache-two',
-        region: CloudRegion::US_EAST_1,
-        size: CacheSize::VALKEY_PRO_250MB,
+        region: CloudRegion::UsEast1,
+        size: CacheSize::ValkeyPro250Mb,
         autoUpgradeEnabled: true,
         isPublic: false,
     );
@@ -68,10 +68,10 @@ it('creates a cache and returns CacheData with all fields', function () {
     ]);
 
     $data = new CreateCacheData(
-        type: CacheType::LARAVEL_VALKEY,
+        type: CacheType::LaravelValkey,
         name: 'test-cache-two',
-        region: CloudRegion::US_EAST_1,
-        size: CacheSize::VALKEY_PRO_250MB,
+        region: CloudRegion::UsEast1,
+        size: CacheSize::ValkeyPro250Mb,
         autoUpgradeEnabled: true,
         isPublic: false,
     );
@@ -85,16 +85,16 @@ it('creates a cache and returns CacheData with all fields', function () {
     expect($dto)->toBeInstanceOf(CacheData::class);
     expect($dto->id)->toBe('cache-a14df9ab-a7a4-4ae1-8e86-c1d29574740d');
     expect($dto->name)->toBe('test-cache-two');
-    expect($dto->type)->toBe(CacheType::LARAVEL_VALKEY);
-    expect($dto->status)->toBe(CacheStatus::CREATING);
-    expect($dto->region)->toBe(CloudRegion::US_EAST_1);
-    expect($dto->size)->toBe(CacheSize::VALKEY_PRO_250MB);
+    expect($dto->type)->toBe(CacheType::LaravelValkey);
+    expect($dto->status)->toBe(CacheStatus::Creating);
+    expect($dto->region)->toBe(CloudRegion::UsEast1);
+    expect($dto->size)->toBe(CacheSize::ValkeyPro250Mb);
     expect($dto->autoUpgradeEnabled)->toBeTrue();
     expect($dto->isPublic)->toBeFalse();
     expect($dto->connection)->toBeInstanceOf(CacheConnectionData::class);
     expect($dto->connection->hostname)->toBeString();
     expect($dto->connection->port)->toBeNull();
-    expect($dto->connection->protocol)->toBe(CacheProtocol::REDIS);
+    expect($dto->connection->protocol)->toBe(CacheProtocol::Redis);
     expect($dto->connection->username)->toBeString();
     expect($dto->connection->password)->toBeString();
     expect($dto->createdAt)->not->toBeNull();

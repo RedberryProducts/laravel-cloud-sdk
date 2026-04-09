@@ -23,7 +23,7 @@ it('can be created from API response data', function () {
     expect($data->id)->toBe('app-123');
     expect($data->name)->toBe('my-app');
     expect($data->slug)->toBe('my-app');
-    expect($data->region)->toBe(CloudRegion::US_EAST_1);
+    expect($data->region)->toBe(CloudRegion::UsEast1);
     expect($data->slackChannel)->toBe('#deployments');
     expect($data->avatarUrl)->toBe('https://example.com/avatar.png');
     expect($data->repository)->toBeInstanceOf(ApplicationRepositoryData::class);

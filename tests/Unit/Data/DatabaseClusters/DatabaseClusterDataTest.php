@@ -39,12 +39,12 @@ it('can be created from neon response data', function () {
     expect($data)->toBeInstanceOf(DatabaseClusterData::class);
     expect($data->id)->toBe('cluster-123');
     expect($data->name)->toBe('my-neon-db');
-    expect($data->type)->toBe(DatabaseType::NEON_SERVERLESS_POSTGRES_17);
-    expect($data->status)->toBe(DatabaseStatus::AVAILABLE);
-    expect($data->region)->toBe(CloudRegion::US_EAST_1);
+    expect($data->type)->toBe(DatabaseType::NeonServerlessPostgres17);
+    expect($data->status)->toBe(DatabaseStatus::Available);
+    expect($data->region)->toBe(CloudRegion::UsEast1);
     expect($data->config)->toBeInstanceOf(NeonServerlessPostgresConfigData::class);
-    expect($data->config->cuMin)->toBe(NeonServerlessPostgresComputeUnit::CU_0_25);
-    expect($data->config->cuMax)->toBe(NeonServerlessPostgresComputeUnit::CU_2);
+    expect($data->config->cuMin)->toBe(NeonServerlessPostgresComputeUnit::Cu0_25);
+    expect($data->config->cuMax)->toBe(NeonServerlessPostgresComputeUnit::Cu2);
     expect($data->connection)->toBeInstanceOf(DatabaseConnectionData::class);
     expect($data->connection->hostname)->toBe('neon-db.example.com');
     expect($data->createdAt)->toBeInstanceOf(CarbonImmutable::class);

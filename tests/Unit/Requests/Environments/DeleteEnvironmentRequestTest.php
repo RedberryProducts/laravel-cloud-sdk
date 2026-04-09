@@ -37,8 +37,8 @@ it('sends the delete request successfully', function () {
     $app = $connector->send(new CreateApplicationRequest(new CreateApplicationData(
         repository: 'RedberryProducts/redberry-automations',
         name: 'sdk-env-delete-test',
-        region: CloudRegion::US_EAST_1,
-        sourceControlProviderType: SourceControlProvider::GITHUB,
+        region: CloudRegion::UsEast1,
+        sourceControlProviderType: SourceControlProvider::Github,
     )))->dtoOrFail();
 
     $env = $connector->send(new CreateEnvironmentRequest($app->id, new CreateEnvironmentData(

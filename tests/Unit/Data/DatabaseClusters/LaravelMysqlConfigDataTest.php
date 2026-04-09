@@ -5,7 +5,7 @@ use Redberry\LaravelCloudSdk\Enums\DatabaseClusterSize;
 
 it('can be constructed with all parameters', function () {
     $data = new LaravelMysqlConfigData(
-        size: DatabaseClusterSize::FLEX_1VCPU_512MB,
+        size: DatabaseClusterSize::Flex1vcpu512mb,
         storage: 10,
         isPublic: false,
         usesScheduledSnapshots: true,
@@ -13,7 +13,7 @@ it('can be constructed with all parameters', function () {
         maintenanceWindow: 'sun:03:00-sun:04:00',
     );
 
-    expect($data->size)->toBe(DatabaseClusterSize::FLEX_1VCPU_512MB);
+    expect($data->size)->toBe(DatabaseClusterSize::Flex1vcpu512mb);
     expect($data->storage)->toBe(10);
     expect($data->isPublic)->toBeFalse();
     expect($data->usesScheduledSnapshots)->toBeTrue();
@@ -34,7 +34,7 @@ it('can be created from API response data', function () {
     $data = LaravelMysqlConfigData::fromResponse($responseData);
 
     expect($data)->toBeInstanceOf(LaravelMysqlConfigData::class);
-    expect($data->size)->toBe(DatabaseClusterSize::FLEX_1VCPU_1GB);
+    expect($data->size)->toBe(DatabaseClusterSize::Flex1vcpu1gb);
     expect($data->storage)->toBe(50);
     expect($data->isPublic)->toBeTrue();
     expect($data->usesScheduledSnapshots)->toBeFalse();
@@ -72,7 +72,7 @@ it('handles null maintenance window', function () {
 
 it('serializes to snake_case array', function () {
     $data = new LaravelMysqlConfigData(
-        size: DatabaseClusterSize::FLEX_1VCPU_512MB,
+        size: DatabaseClusterSize::Flex1vcpu512mb,
         storage: 10,
         isPublic: false,
         usesScheduledSnapshots: true,

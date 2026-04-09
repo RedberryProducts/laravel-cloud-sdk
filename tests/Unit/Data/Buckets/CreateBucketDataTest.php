@@ -8,30 +8,30 @@ use Redberry\LaravelCloudSdk\Enums\KeyPermission;
 it('can be constructed with required parameters', function () {
     $data = new CreateBucketData(
         name: 'my-bucket',
-        visibility: BucketVisibility::PRIVATE,
-        jurisdiction: BucketJurisdiction::DEFAULT,
+        visibility: BucketVisibility::Private,
+        jurisdiction: BucketJurisdiction::Default,
         keyName: 'default-key',
-        keyPermission: KeyPermission::READ_WRITE,
+        keyPermission: KeyPermission::ReadWrite,
     );
 
     expect($data->name)->toBe('my-bucket');
-    expect($data->visibility)->toBe(BucketVisibility::PRIVATE);
-    expect($data->jurisdiction)->toBe(BucketJurisdiction::DEFAULT);
+    expect($data->visibility)->toBe(BucketVisibility::Private);
+    expect($data->jurisdiction)->toBe(BucketJurisdiction::Default);
     expect($data->keyName)->toBe('default-key');
-    expect($data->keyPermission)->toBe(KeyPermission::READ_WRITE);
+    expect($data->keyPermission)->toBe(KeyPermission::ReadWrite);
     expect($data->allowedOrigins)->toBeNull();
 });
 
 it('can be constructed with optional allowed origins', function () {
     $data = new CreateBucketData(
         name: 'public-bucket',
-        visibility: BucketVisibility::PUBLIC,
-        jurisdiction: BucketJurisdiction::EU,
+        visibility: BucketVisibility::Public,
+        jurisdiction: BucketJurisdiction::Eu,
         keyName: 'eu-key',
-        keyPermission: KeyPermission::READ_ONLY,
+        keyPermission: KeyPermission::ReadOnly,
         allowedOrigins: ['https://example.com', 'https://app.example.com'],
     );
 
     expect($data->allowedOrigins)->toBe(['https://example.com', 'https://app.example.com']);
-    expect($data->jurisdiction)->toBe(BucketJurisdiction::EU);
+    expect($data->jurisdiction)->toBe(BucketJurisdiction::Eu);
 });

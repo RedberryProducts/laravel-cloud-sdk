@@ -30,7 +30,7 @@ it('has the correct HTTP method', function () {
 it('sends correct body with all optional fields', function () {
     $data = new UpdateBucketData(
         name: 'updated-bucket',
-        visibility: BucketVisibility::PUBLIC,
+        visibility: BucketVisibility::Public,
         allowedOrigins: ['https://example.com'],
     );
     $request = new UpdateBucketRequest('bucket-123', $data);
@@ -73,10 +73,10 @@ it('updates a bucket and returns BucketData with all fields', function () {
     expect($dto)->toBeInstanceOf(BucketData::class);
     expect($dto->id)->toBe('fls-a14e19d6-8db3-47fe-96fb-343e55774021');
     expect($dto->name)->toBe('updated-bucket');
-    expect($dto->type)->toBe(BucketType::CLOUDFLARE_R2);
-    expect($dto->status)->toBe(BucketStatus::AVAILABLE);
-    expect($dto->visibility)->toBe(BucketVisibility::PRIVATE);
-    expect($dto->jurisdiction)->toBe(BucketJurisdiction::DEFAULT);
+    expect($dto->type)->toBe(BucketType::CloudflareR2);
+    expect($dto->status)->toBe(BucketStatus::Available);
+    expect($dto->visibility)->toBe(BucketVisibility::Private);
+    expect($dto->jurisdiction)->toBe(BucketJurisdiction::Default);
     expect($dto->endpoint)->toBeString();
     expect($dto->url)->toBeNull();
     expect($dto->allowedOrigins)->toBeNull();

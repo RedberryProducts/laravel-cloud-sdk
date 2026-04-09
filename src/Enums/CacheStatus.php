@@ -4,10 +4,10 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum CacheStatus: string
 {
-    case CREATING = 'creating';
-    case UPDATING = 'updating';
-    case AVAILABLE = 'available';
-    case DELETING = 'deleting';
-    case DELETED = 'deleted';
-    case UNKNOWN = 'unknown';
+    case Creating = 'creating';
+    case Updating = 'updating';
+    case Available = 'available';
+    case Deleting = 'deleting';
+    case Deleted = 'deleted';
+    case Unknown = 'unknown';
 }

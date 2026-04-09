@@ -37,7 +37,7 @@ it('retrieves a single bucket key by id', function () {
     expect($result)->toBeInstanceOf(BucketKeyData::class);
     expect($result->id)->toBe('flsk-a14e19d9-bfec-488e-8ee5-79b029e9d974');
     expect($result->name)->toBe('default-key');
-    expect($result->permission)->toBe(KeyPermission::READ_WRITE);
+    expect($result->permission)->toBe(KeyPermission::ReadWrite);
 });
 
 it('creates a bucket key with named params', function () {
@@ -48,7 +48,7 @@ it('creates a bucket key with named params', function () {
     $result = (new LaravelCloud('token'))->createBucketKey(
         bucketId: 'fls-a14e19d6-8db3-47fe-96fb-343e55774021',
         name: 'upload-key',
-        permission: KeyPermission::READ_WRITE,
+        permission: KeyPermission::ReadWrite,
     );
 
     Saloon::assertSent(CreateBucketKeyRequest::class);
@@ -77,7 +77,7 @@ it('creates a bucket key via createBucketKeyWith()', function () {
 
     $result = (new LaravelCloud('token'))->createBucketKeyWith(
         'fls-a14e19d6-8db3-47fe-96fb-343e55774021',
-        new CreateBucketKeyData(name: 'upload-key', permission: KeyPermission::READ_WRITE),
+        new CreateBucketKeyData(name: 'upload-key', permission: KeyPermission::ReadWrite),
     );
 
     Saloon::assertSent(CreateBucketKeyRequest::class);

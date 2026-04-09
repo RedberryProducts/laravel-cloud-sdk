@@ -43,10 +43,10 @@ it('creates a database snapshot and returns DatabaseSnapshotData', function () {
 
     $mysqlCluster = $connector->send(new CreateDatabaseClusterRequest(new CreateDatabaseClusterData(
         name: 'test-mysql-snapshot-cluster',
-        type: DatabaseType::LARAVEL_MYSQL_84,
-        region: CloudRegion::US_EAST_1,
+        type: DatabaseType::LaravelMysql84,
+        region: CloudRegion::UsEast1,
         config: new LaravelMysqlConfigData(
-            size: DatabaseClusterSize::FLEX_1VCPU_512MB,
+            size: DatabaseClusterSize::Flex1vcpu512mb,
             storage: 10,
             isPublic: false,
             usesScheduledSnapshots: false,

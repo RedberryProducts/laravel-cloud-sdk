@@ -11,9 +11,9 @@ use Spatie\LaravelData\Optional;
 it('requires name, type, size, scalingType, maxReplicas, minReplicas', function () {
     $data = new CreateInstanceData(
         name: 'test-worker',
-        type: InstanceType::SERVICE,
-        size: InstanceSize::FLEX_M_1VCPU_1GB,
-        scalingType: InstanceScalingType::NONE,
+        type: InstanceType::Service,
+        size: InstanceSize::FlexM1vcpu1gb,
+        scalingType: InstanceScalingType::None,
         maxReplicas: 1,
         minReplicas: 1,
     );
@@ -31,9 +31,9 @@ it('requires name, type, size, scalingType, maxReplicas, minReplicas', function 
 it('defaults optional fields to Optional', function () {
     $data = new CreateInstanceData(
         name: 'test-worker',
-        type: InstanceType::SERVICE,
-        size: InstanceSize::FLEX_M_1VCPU_1GB,
-        scalingType: InstanceScalingType::NONE,
+        type: InstanceType::Service,
+        size: InstanceSize::FlexM1vcpu1gb,
+        scalingType: InstanceScalingType::None,
         maxReplicas: 1,
         minReplicas: 1,
     );
@@ -47,9 +47,9 @@ it('defaults optional fields to Optional', function () {
 it('serializes optional fields when set and excludes unset ones', function () {
     $data = new CreateInstanceData(
         name: 'test-worker',
-        type: InstanceType::SERVICE,
-        size: InstanceSize::FLEX_M_1VCPU_1GB,
-        scalingType: InstanceScalingType::CUSTOM,
+        type: InstanceType::Service,
+        size: InstanceSize::FlexM1vcpu1gb,
+        scalingType: InstanceScalingType::Custom,
         maxReplicas: 5,
         minReplicas: 1,
         usesScheduler: true,
@@ -67,14 +67,14 @@ it('serializes optional fields when set and excludes unset ones', function () {
 it('serializes background_processes when set', function () {
     $data = new CreateInstanceData(
         name: 'test-worker',
-        type: InstanceType::SERVICE,
-        size: InstanceSize::FLEX_M_1VCPU_1GB,
-        scalingType: InstanceScalingType::NONE,
+        type: InstanceType::Service,
+        size: InstanceSize::FlexM1vcpu1gb,
+        scalingType: InstanceScalingType::None,
         maxReplicas: 1,
         minReplicas: 1,
         backgroundProcesses: [
             new BackgroundProcessData(
-                type: DaemonType::CUSTOM,
+                type: DaemonType::Custom,
                 processes: 1,
                 command: 'php artisan queue:work',
             ),

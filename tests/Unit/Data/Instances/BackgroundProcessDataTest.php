@@ -14,7 +14,7 @@ it('builds from response attributes without config', function () {
     ], 'bp-123');
 
     expect($data->id)->toBe('bp-123');
-    expect($data->type)->toBe(DaemonType::WORKER);
+    expect($data->type)->toBe(DaemonType::Worker);
     expect($data->processes)->toBe(2);
     expect($data->command)->toBeNull();
     expect($data->config)->toBeNull();
@@ -27,7 +27,7 @@ it('builds from response attributes with command', function () {
         'command' => 'php artisan horizon',
     ], 'bp-456');
 
-    expect($data->type)->toBe(DaemonType::CUSTOM);
+    expect($data->type)->toBe(DaemonType::Custom);
     expect($data->command)->toBe('php artisan horizon');
 });
 
@@ -50,7 +50,7 @@ it('builds from response attributes with config', function () {
 
 it('serializes type and processes for a request without id', function () {
     $data = new BackgroundProcessData(
-        type: DaemonType::CUSTOM,
+        type: DaemonType::Custom,
         processes: 1,
         command: 'php artisan queue:work',
     );
@@ -76,7 +76,7 @@ it('includes id when set from response', function () {
 
 it('excludes unset optional fields', function () {
     $data = new BackgroundProcessData(
-        type: DaemonType::CUSTOM,
+        type: DaemonType::Custom,
         processes: 1,
     );
 
@@ -96,7 +96,7 @@ it('builds strategy_type and created_at from response', function () {
         'created_at' => '2026-04-04T11:24:42.000000Z',
     ], 'bp-999');
 
-    expect($data->strategyType)->toBe(DaemonStrategyType::QUEUE_SIZE);
+    expect($data->strategyType)->toBe(DaemonStrategyType::QueueSize);
     expect($data->strategyThreshold)->toBe(10);
     expect($data->createdAt)->toBeInstanceOf(CarbonImmutable::class);
 });

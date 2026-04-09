@@ -16,10 +16,10 @@ use Saloon\Laravel\Facades\Saloon;
 it('resolves the endpoint correctly', function () {
     $data = new CreateBucketData(
         name: 'test-bucket',
-        visibility: BucketVisibility::PRIVATE,
-        jurisdiction: BucketJurisdiction::DEFAULT,
+        visibility: BucketVisibility::Private,
+        jurisdiction: BucketJurisdiction::Default,
         keyName: 'default-key',
-        keyPermission: KeyPermission::READ_WRITE,
+        keyPermission: KeyPermission::ReadWrite,
     );
     $request = new CreateBucketRequest($data);
 
@@ -29,10 +29,10 @@ it('resolves the endpoint correctly', function () {
 it('has the correct HTTP method', function () {
     $data = new CreateBucketData(
         name: 'test-bucket',
-        visibility: BucketVisibility::PRIVATE,
-        jurisdiction: BucketJurisdiction::DEFAULT,
+        visibility: BucketVisibility::Private,
+        jurisdiction: BucketJurisdiction::Default,
         keyName: 'default-key',
-        keyPermission: KeyPermission::READ_WRITE,
+        keyPermission: KeyPermission::ReadWrite,
     );
     $request = new CreateBucketRequest($data);
 
@@ -42,10 +42,10 @@ it('has the correct HTTP method', function () {
 it('sends correct body', function () {
     $data = new CreateBucketData(
         name: 'test-bucket',
-        visibility: BucketVisibility::PRIVATE,
-        jurisdiction: BucketJurisdiction::DEFAULT,
+        visibility: BucketVisibility::Private,
+        jurisdiction: BucketJurisdiction::Default,
         keyName: 'default-key',
-        keyPermission: KeyPermission::READ_WRITE,
+        keyPermission: KeyPermission::ReadWrite,
     );
     $request = new CreateBucketRequest($data);
     $body = $request->body()->all();
@@ -64,10 +64,10 @@ it('creates a bucket and returns BucketData with all fields', function () {
 
     $data = new CreateBucketData(
         name: 'test-bucket',
-        visibility: BucketVisibility::PRIVATE,
-        jurisdiction: BucketJurisdiction::DEFAULT,
+        visibility: BucketVisibility::Private,
+        jurisdiction: BucketJurisdiction::Default,
         keyName: 'default-key',
-        keyPermission: KeyPermission::READ_WRITE,
+        keyPermission: KeyPermission::ReadWrite,
     );
 
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
@@ -79,10 +79,10 @@ it('creates a bucket and returns BucketData with all fields', function () {
     expect($dto)->toBeInstanceOf(BucketData::class);
     expect($dto->id)->toBe('fls-a14e19d6-8db3-47fe-96fb-343e55774021');
     expect($dto->name)->toBe('test-bucket');
-    expect($dto->type)->toBe(BucketType::CLOUDFLARE_R2);
-    expect($dto->status)->toBe(BucketStatus::AVAILABLE);
-    expect($dto->visibility)->toBe(BucketVisibility::PRIVATE);
-    expect($dto->jurisdiction)->toBe(BucketJurisdiction::DEFAULT);
+    expect($dto->type)->toBe(BucketType::CloudflareR2);
+    expect($dto->status)->toBe(BucketStatus::Available);
+    expect($dto->visibility)->toBe(BucketVisibility::Private);
+    expect($dto->jurisdiction)->toBe(BucketJurisdiction::Default);
     expect($dto->endpoint)->toBeString();
     expect($dto->url)->toBeNull();
     expect($dto->allowedOrigins)->toBeNull();

@@ -4,7 +4,7 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum SourceControlProvider: string
 {
-    case GITHUB = 'github';
-    case GITLAB = 'gitlab';
-    case BITBUCKET = 'bitbucket';
+    case Github = 'github';
+    case Gitlab = 'gitlab';
+    case Bitbucket = 'bitbucket';
 }

@@ -37,9 +37,9 @@ it('sends the delete request successfully', function () {
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $cluster = $connector->send(new CreateWebsocketClusterRequest(new CreateWebsocketClusterData(
         name: 'sdk-ws-delete-test',
-        type: WebsocketServerType::REVERB,
-        region: CloudRegion::US_EAST_1,
-        maxConnections: WebsocketMaxConnections::CONNECTIONS_100,
+        type: WebsocketServerType::Reverb,
+        region: CloudRegion::UsEast1,
+        maxConnections: WebsocketMaxConnections::Connections100,
     )))->dtoOrFail();
 
     $wsApp = $connector->send(new CreateWebsocketApplicationRequest($cluster->id, new CreateWebsocketApplicationData(

@@ -4,6 +4,6 @@ namespace Redberry\LaravelCloudSdk\Enums;
 
 enum WebsocketConnectionDistributionStrategy: string
 {
-    case EVENLY = 'evenly';
-    case CUSTOM = 'custom';
+    case Evenly = 'evenly';
+    case Custom = 'custom';
 }

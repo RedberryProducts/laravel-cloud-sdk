@@ -37,10 +37,10 @@ it('sends the delete request successfully', function () {
     $connector = new LaravelCloudConnector(config('laravel-cloud-sdk.token'));
     $bucket = $connector->send(new CreateBucketRequest(new CreateBucketData(
         name: 'sdk-delete-test',
-        visibility: BucketVisibility::PRIVATE,
-        jurisdiction: BucketJurisdiction::DEFAULT,
+        visibility: BucketVisibility::Private,
+        jurisdiction: BucketJurisdiction::Default,
         keyName: 'sdk-delete-key',
-        keyPermission: KeyPermission::READ_WRITE,
+        keyPermission: KeyPermission::ReadWrite,
     )))->dtoOrFail();
 
     $keys = $connector->paginate(new ListBucketKeysRequest($bucket->id))->collect();

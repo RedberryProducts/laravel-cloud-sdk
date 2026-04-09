@@ -50,9 +50,9 @@ it('creates a websocket cluster with named params', function () {
 
     $result = (new LaravelCloud('token'))->createWebsocketCluster(
         name: 'production-ws',
-        type: WebsocketServerType::REVERB,
-        region: CloudRegion::US_EAST_1,
-        maxConnections: WebsocketMaxConnections::CONNECTIONS_100,
+        type: WebsocketServerType::Reverb,
+        region: CloudRegion::UsEast1,
+        maxConnections: WebsocketMaxConnections::Connections100,
     );
 
     Saloon::assertSent(CreateWebsocketClusterRequest::class);
@@ -68,7 +68,7 @@ it('creates a websocket cluster with string enums', function () {
         name: 'production-ws',
         type: 'reverb',
         region: 'us-east-1',
-        maxConnections: WebsocketMaxConnections::CONNECTIONS_100,
+        maxConnections: WebsocketMaxConnections::Connections100,
     );
 
     Saloon::assertSent(CreateWebsocketClusterRequest::class);
@@ -83,9 +83,9 @@ it('creates a websocket cluster via createWebsocketClusterWith()', function () {
     $result = (new LaravelCloud('token'))->createWebsocketClusterWith(
         new CreateWebsocketClusterData(
             name: 'production-ws',
-            type: WebsocketServerType::REVERB,
-            region: CloudRegion::US_EAST_1,
-            maxConnections: WebsocketMaxConnections::CONNECTIONS_100,
+            type: WebsocketServerType::Reverb,
+            region: CloudRegion::UsEast1,
+            maxConnections: WebsocketMaxConnections::Connections100,
         )
     );
 

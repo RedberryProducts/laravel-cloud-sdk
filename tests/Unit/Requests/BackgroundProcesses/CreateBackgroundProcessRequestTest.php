@@ -14,21 +14,21 @@ use Saloon\Enums\Method;
 use Saloon\Laravel\Facades\Saloon;
 
 it('resolves the endpoint correctly', function () {
-    $data = new CreateBackgroundProcessData(type: DaemonType::WORKER, processes: 1);
+    $data = new CreateBackgroundProcessData(type: DaemonType::Worker, processes: 1);
     $request = new CreateBackgroundProcessRequest('inst-123', $data);
 
     expect($request->resolveEndpoint())->toBe('/instances/inst-123/background-processes');
 });
 
 it('has the correct HTTP method', function () {
-    $data = new CreateBackgroundProcessData(type: DaemonType::WORKER, processes: 1);
+    $data = new CreateBackgroundProcessData(type: DaemonType::Worker, processes: 1);
     $request = new CreateBackgroundProcessRequest('inst-123', $data);
 
     expect($request->getMethod())->toBe(Method::POST);
 });
 
 it('implements HasBody', function () {
-    $data = new CreateBackgroundProcessData(type: DaemonType::WORKER, processes: 1);
+    $data = new CreateBackgroundProcessData(type: DaemonType::Worker, processes: 1);
     $request = new CreateBackgroundProcessRequest('inst-123', $data);
 
     expect($request)->toBeInstanceOf(HasBody::class);
@@ -36,7 +36,7 @@ it('implements HasBody', function () {
 
 it('sends correct body for custom type', function () {
     $data = new CreateBackgroundProcessData(
-        type: DaemonType::CUSTOM,
+        type: DaemonType::Custom,
         processes: 2,
         command: 'php artisan my:command',
     );
@@ -61,7 +61,7 @@ it('creates a custom background process and returns BackgroundProcessData', func
     $firstEnvironment = $connector->send(new ListEnvironmentsRequest($firstApplication->id))->dtoOrFail()[0];
     $firstInstance = $connector->send(new ListInstancesRequest($firstEnvironment->id))->dtoOrFail()[0];
 
-    $data = new CreateBackgroundProcessData(type: DaemonType::CUSTOM, processes: 1, command: 'php artisan my:command');
+    $data = new CreateBackgroundProcessData(type: DaemonType::Custom, processes: 1, command: 'php artisan my:command');
     $response = $connector->send(new CreateBackgroundProcessRequest($firstInstance->id, $data));
 
     Saloon::assertSent(CreateBackgroundProcessRequest::class);
