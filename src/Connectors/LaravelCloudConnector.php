@@ -32,9 +32,7 @@ class LaravelCloudConnector extends Connector implements HasPagination
 
     protected function defaultHeaders(): array
     {
-        return [
-            'Content-Type' => 'application/json',
-        ];
+        return [];
     }
 
     protected function defaultConfig(): array

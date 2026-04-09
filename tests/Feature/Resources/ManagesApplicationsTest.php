@@ -8,10 +8,12 @@ use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\SourceControlProvider;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Applications\CreateApplicationRequest;
+use Redberry\LaravelCloudSdk\Requests\Applications\DeleteApplicationAvatarRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\DeleteApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\GetApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\UpdateApplicationRequest;
+use Redberry\LaravelCloudSdk\Requests\Applications\UploadApplicationAvatarRequest;
 use Redberry\LaravelCloudSdk\Tests\Fixtures\LaravelCloudFixture;
 use Saloon\Laravel\Facades\Saloon;
 
@@ -128,4 +130,36 @@ it('deletes an application', function () {
     (new LaravelCloud('token'))->deleteApplication('app-a14fe54f-42b2-431c-9b3a-876900975139');
 
     Saloon::assertSent(DeleteApplicationRequest::class);
+});
+
+it('uploads an application avatar', function () {
+    Saloon::fake([
+        UploadApplicationAvatarRequest::class => new LaravelCloudFixture('applications/upload-avatar'),
+    ]);
+
+    $avatarPath = tempnam(sys_get_temp_dir(), 'avatar').'.png';
+    $img = imagecreatetruecolor(100, 100);
+    imagefill($img, 0, 0, imagecolorallocate($img, 66, 135, 245));
+    imagepng($img, $avatarPath);
+    imagedestroy($img);
+
+    $result = (new LaravelCloud('token'))->uploadApplicationAvatar(
+        'app-a14fe54f-42b2-431c-9b3a-876900975139',
+        $avatarPath,
+    );
+
+    Saloon::assertSent(UploadApplicationAvatarRequest::class);
+    expect($result)->toBeInstanceOf(ApplicationData::class);
+
+    unlink($avatarPath);
+});
+
+it('deletes an application avatar', function () {
+    Saloon::fake([
+        DeleteApplicationAvatarRequest::class => new LaravelCloudFixture('applications/delete-avatar'),
+    ]);
+
+    (new LaravelCloud('token'))->deleteApplicationAvatar('app-a14fe54f-42b2-431c-9b3a-876900975139');
+
+    Saloon::assertSent(DeleteApplicationAvatarRequest::class);
 });

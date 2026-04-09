@@ -9,10 +9,12 @@ use Redberry\LaravelCloudSdk\Data\Applications\UpdateApplicationData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\SourceControlProvider;
 use Redberry\LaravelCloudSdk\Requests\Applications\CreateApplicationRequest;
+use Redberry\LaravelCloudSdk\Requests\Applications\DeleteApplicationAvatarRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\DeleteApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\GetApplicationRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\Applications\UpdateApplicationRequest;
+use Redberry\LaravelCloudSdk\Requests\Applications\UploadApplicationAvatarRequest;
 use Spatie\LaravelData\Optional;
 
 trait ManagesApplications
@@ -78,5 +80,15 @@ trait ManagesApplications
     public function deleteApplication(string $id): void
     {
         $this->connector->send(new DeleteApplicationRequest($id))->throw();
+    }
+
+    public function uploadApplicationAvatar(string $id, string $avatarPath): ApplicationData
+    {
+        return $this->connector->send(new UploadApplicationAvatarRequest($id, $avatarPath))->dtoOrFail();
+    }
+
+    public function deleteApplicationAvatar(string $id): void
+    {
+        $this->connector->send(new DeleteApplicationAvatarRequest($id))->throw();
     }
 }

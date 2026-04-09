@@ -52,15 +52,3 @@ it('sends accept json header', function () {
     $headers = $response->getPendingRequest()->headers()->all();
     expect($headers['Accept'])->toBe('application/json');
 });
-
-it('sends content-type json header', function () {
-    Saloon::fake([
-        ListRegionsRequest::class => MockResponse::make([], 200),
-    ]);
-
-    $connector = new LaravelCloudConnector('test-token');
-    $response = $connector->send(new ListRegionsRequest);
-
-    $headers = $response->getPendingRequest()->headers()->all();
-    expect($headers['Content-Type'])->toBe('application/json');
-});

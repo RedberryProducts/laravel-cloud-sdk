@@ -102,6 +102,8 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static ApplicationData updateApplication(string $id, string|SourceControlProvider $sourceControlProviderType = null, string $name = null, string $slug = null, string $defaultEnvironmentId = null, string $repository = null, string|null $slackChannel = null)
  * @method static ApplicationData updateApplicationWith(string $id, UpdateApplicationData $data)
  * @method static void deleteApplication(string $id)
+ * @method static ApplicationData uploadApplicationAvatar(string $id, string $avatarPath)
+ * @method static void deleteApplicationAvatar(string $id)
  *
  * Environments
  * @method static LazyCollection<int, EnvironmentData> environments(string $applicationId)
