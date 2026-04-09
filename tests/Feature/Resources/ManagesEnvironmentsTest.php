@@ -5,6 +5,7 @@ use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentLogEntryData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentMetricsData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentVariableData;
 use Redberry\LaravelCloudSdk\Data\Environments\SetEnvironmentVariablesData;
@@ -15,6 +16,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Environments\CreateEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentVariablesRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentLogsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
@@ -224,4 +226,20 @@ it('deletes environment variables via deleteEnvironmentVariablesWith()', functio
 
     Saloon::assertSent(DeleteEnvironmentVariablesRequest::class);
     expect($result)->toBeInstanceOf(EnvironmentData::class);
+});
+
+it('gets environment logs', function () {
+    Saloon::fake([
+        GetEnvironmentLogsRequest::class => new LaravelCloudFixture('environments/logs-paginated'),
+    ]);
+
+    $result = (new LaravelCloud('token'))->environmentLogs(
+        'env-a15fd671-0b6a-401a-84bf-14105ce69023',
+        '2026-04-08T14:02:51Z',
+        '2026-04-09T14:02:51Z',
+    );
+
+    expect($result)->toBeInstanceOf(LazyCollection::class);
+    expect($result->first())->toBeInstanceOf(EnvironmentLogEntryData::class);
+    Saloon::assertSent(GetEnvironmentLogsRequest::class);
 });

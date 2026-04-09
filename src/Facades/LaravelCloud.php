@@ -42,6 +42,7 @@ use Redberry\LaravelCloudSdk\Data\Domains\UpdateDomainData;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentLogEntryData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentMetricsData;
 use Redberry\LaravelCloudSdk\Data\Environments\HstsData;
 use Redberry\LaravelCloudSdk\Data\Environments\SetEnvironmentVariablesData;
@@ -79,6 +80,7 @@ use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
 use Redberry\LaravelCloudSdk\Enums\InstanceSize;
 use Redberry\LaravelCloudSdk\Enums\InstanceType;
 use Redberry\LaravelCloudSdk\Enums\KeyPermission;
+use Redberry\LaravelCloudSdk\Enums\LogFilterType;
 use Redberry\LaravelCloudSdk\Enums\MetricPeriod;
 use Redberry\LaravelCloudSdk\Enums\NodeVersion;
 use Redberry\LaravelCloudSdk\Enums\PhpVersion;
@@ -109,6 +111,7 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static EnvironmentData updateEnvironment(string $id, string $name = null, string $slug = null, string|EnvironmentColor $color = null, string $branch = null, string|PhpVersion $phpVersion = null, string|NodeVersion $nodeVersion = null, string|null $buildCommand = null, string|null $deployCommand = null, bool $usesPushToDeploy = null, bool $usesDeployHook = null, bool $usesOctane = null, bool $usesVanityDomain = null, int $timeout = null, int $sleepTimeout = null, int $shutdownTimeout = null, bool $usesPurgeEdgeCacheOnDeploy = null, string|null $nightwatchToken = null, string|CacheStrategy $cacheStrategy = null, string|ResponseHeadersFrame $responseHeadersFrame = null, string|ResponseHeadersContentType $responseHeadersContentType = null, string|ResponseHeadersRobotsTag $responseHeadersRobotsTag = null, HstsData|null $responseHeadersHsts = null, array|null $filesystemKeys = null, string|FirewallRateLimitLevel|null $firewallRateLimitLevel = null, bool $firewallUnderAttackMode = null, string|null $databaseSchemaId = null, string|null $cacheId = null, string|null $websocketApplicationId = null)
  * @method static EnvironmentData updateEnvironmentWith(string $id, UpdateEnvironmentData $data)
  * @method static EnvironmentMetricsData environmentMetrics(string $id, string|MetricPeriod|null $period = null)
+ * @method static LazyCollection<int, EnvironmentLogEntryData> environmentLogs(string $environmentId, string $from, string $to, ?string $searchQuery = null, string|LogFilterType|null $type = null)
  * @method static DeploymentData startEnvironment(string $id, ?bool $redeploy = null)
  * @method static EnvironmentData stopEnvironment(string $id)
  * @method static void deleteEnvironment(string $id)

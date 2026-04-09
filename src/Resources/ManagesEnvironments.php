@@ -7,6 +7,7 @@ use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentLogEntryData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentMetricsData;
 use Redberry\LaravelCloudSdk\Data\Environments\HstsData;
 use Redberry\LaravelCloudSdk\Data\Environments\SetEnvironmentVariablesData;
@@ -15,6 +16,7 @@ use Redberry\LaravelCloudSdk\Enums\CacheStrategy;
 use Redberry\LaravelCloudSdk\Enums\EnvironmentColor;
 use Redberry\LaravelCloudSdk\Enums\EnvironmentVariableMethod;
 use Redberry\LaravelCloudSdk\Enums\FirewallRateLimitLevel;
+use Redberry\LaravelCloudSdk\Enums\LogFilterType;
 use Redberry\LaravelCloudSdk\Enums\MetricPeriod;
 use Redberry\LaravelCloudSdk\Enums\NodeVersion;
 use Redberry\LaravelCloudSdk\Enums\PhpVersion;
@@ -24,6 +26,7 @@ use Redberry\LaravelCloudSdk\Enums\ResponseHeadersRobotsTag;
 use Redberry\LaravelCloudSdk\Requests\Environments\CreateEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\DeleteEnvironmentVariablesRequest;
+use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentLogsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentMetricsRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\GetEnvironmentRequest;
 use Redberry\LaravelCloudSdk\Requests\Environments\ListEnvironmentsRequest;
@@ -142,6 +145,21 @@ trait ManagesEnvironments
     public function startEnvironment(string $id, ?bool $redeploy = null): DeploymentData
     {
         return $this->connector->send(new StartEnvironmentRequest($id, $redeploy))->dtoOrFail();
+    }
+
+    /**
+     * @return LazyCollection<int, EnvironmentLogEntryData>
+     */
+    public function environmentLogs(
+        string $environmentId,
+        string $from,
+        string $to,
+        ?string $searchQuery = null,
+        string|LogFilterType|null $type = null,
+    ): LazyCollection {
+        $request = new GetEnvironmentLogsRequest($environmentId, $from, $to, $searchQuery, $type);
+
+        return $request->paginate($this->connector)->collect();
     }
 
     public function stopEnvironment(string $id): EnvironmentData
