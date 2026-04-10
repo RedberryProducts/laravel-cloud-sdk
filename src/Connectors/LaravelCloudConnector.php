@@ -12,7 +12,6 @@ use Saloon\Contracts\Authenticator;
 use Saloon\Http\Connector;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use Saloon\Http\Senders\GuzzleSender;
 use Saloon\PaginationPlugin\Contracts\HasPagination;
 use Saloon\Traits\Plugins\AcceptsJson;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
@@ -21,23 +20,11 @@ class LaravelCloudConnector extends Connector implements HasPagination
 {
     use AcceptsJson, AlwaysThrowOnErrors, DetectsHtmlResponses;
 
-    protected string $defaultSender = GuzzleSender::class;
-
     public function __construct(private string $token) {}
 
     public function resolveBaseUrl(): string
     {
         return 'https://cloud.laravel.com/api';
-    }
-
-    protected function defaultHeaders(): array
-    {
-        return [];
-    }
-
-    protected function defaultConfig(): array
-    {
-        return [];
     }
 
     protected function defaultAuth(): Authenticator

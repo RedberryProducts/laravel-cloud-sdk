@@ -10,7 +10,6 @@ use Redberry\LaravelCloudSdk\Enums\BucketJurisdiction;
 use Redberry\LaravelCloudSdk\Enums\BucketVisibility;
 use Redberry\LaravelCloudSdk\Enums\KeyPermission;
 use Redberry\LaravelCloudSdk\Requests\Buckets\CreateBucketRequest;
-use Redberry\LaravelCloudSdk\Requests\Buckets\DeleteBucketKeyRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\DeleteBucketRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\GetBucketRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\ListBucketsRequest;
@@ -76,10 +75,5 @@ trait ManagesBuckets
     public function deleteBucket(string $id): void
     {
         $this->connector->send(new DeleteBucketRequest($id))->throw();
-    }
-
-    public function deleteBucketKey(string $id): void
-    {
-        $this->connector->send(new DeleteBucketKeyRequest($id))->throw();
     }
 }

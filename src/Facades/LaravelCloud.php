@@ -34,6 +34,7 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\RestoreDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\Databases\CreateDatabaseData;
 use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
+use Redberry\LaravelCloudSdk\Data\DedicatedClusters\DedicatedClusterData;
 use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
 use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentLogsData;
 use Redberry\LaravelCloudSdk\Data\Domains\CreateDomainData;
@@ -53,6 +54,7 @@ use Redberry\LaravelCloudSdk\Data\Instances\CreateInstanceData;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
 use Redberry\LaravelCloudSdk\Data\Instances\UpdateInstanceData;
 use Redberry\LaravelCloudSdk\Data\Meta\IpAddressData;
+use Redberry\LaravelCloudSdk\Data\Meta\OrganizationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\CreateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\UpdateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
@@ -67,6 +69,8 @@ use Redberry\LaravelCloudSdk\Enums\CacheSize;
 use Redberry\LaravelCloudSdk\Enums\CacheStrategy;
 use Redberry\LaravelCloudSdk\Enums\CacheType;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
+use Redberry\LaravelCloudSdk\Enums\ClusterStatus;
+use Redberry\LaravelCloudSdk\Enums\ClusterType;
 use Redberry\LaravelCloudSdk\Enums\DaemonType;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
 use Redberry\LaravelCloudSdk\Enums\DomainCloudflareStrategy;
@@ -244,10 +248,11 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * @method static Collection<string, IpAddressData> ipAddresses(string|CloudRegion|null $region = null)
  *
  * Dedicated Clusters
- * @method static LazyCollection<int, \Redberry\LaravelCloudSdk\Data\DedicatedClusters\DedicatedClusterData> dedicatedClusters(string|CloudRegion|null $region = null, string|\Redberry\LaravelCloudSdk\Enums\ClusterType|null $type = null, string|\Redberry\LaravelCloudSdk\Enums\ClusterStatus|null $status = null)
+ * @method static LazyCollection<int, DedicatedClusterData> dedicatedClusters(string|CloudRegion|null $region = null, string|ClusterType|null $type = null, string|ClusterStatus|null $status = null)
  *
  * Organization
- * @method static \Redberry\LaravelCloudSdk\Data\Meta\OrganizationData organization()
+ * @method static OrganizationData organization()
+ * @method static LaravelCloudClient forToken(string $token)
  *
  * @see LaravelCloudClient
  */

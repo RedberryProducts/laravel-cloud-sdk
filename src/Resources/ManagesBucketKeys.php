@@ -8,6 +8,7 @@ use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketKeyData;
 use Redberry\LaravelCloudSdk\Enums\KeyPermission;
 use Redberry\LaravelCloudSdk\Requests\Buckets\CreateBucketKeyRequest;
+use Redberry\LaravelCloudSdk\Requests\Buckets\DeleteBucketKeyRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\GetBucketKeyRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\ListBucketKeysRequest;
 use Redberry\LaravelCloudSdk\Requests\Buckets\UpdateBucketKeyRequest;
@@ -51,5 +52,10 @@ trait ManagesBucketKeys
     public function updateBucketKeyWith(string $keyId, UpdateBucketKeyData $data): BucketKeyData
     {
         return $this->connector->send(new UpdateBucketKeyRequest($keyId, $data))->dtoOrFail();
+    }
+
+    public function deleteBucketKey(string $id): void
+    {
+        $this->connector->send(new DeleteBucketKeyRequest($id))->throw();
     }
 }
