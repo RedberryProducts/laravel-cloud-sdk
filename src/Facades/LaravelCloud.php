@@ -243,6 +243,9 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * IP Addresses
  * @method static Collection<string, IpAddressData> ipAddresses(string|CloudRegion|null $region = null)
  *
+ * Dedicated Clusters
+ * @method static LazyCollection<int, \Redberry\LaravelCloudSdk\Data\DedicatedClusters\DedicatedClusterData> dedicatedClusters(string|CloudRegion|null $region = null, string|\Redberry\LaravelCloudSdk\Enums\ClusterType|null $type = null, string|\Redberry\LaravelCloudSdk\Enums\ClusterStatus|null $status = null)
+ *
  * @see LaravelCloudClient
  */
 class LaravelCloud extends Facade
