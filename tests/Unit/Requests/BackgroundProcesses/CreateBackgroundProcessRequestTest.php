@@ -1,8 +1,8 @@
 <?php
 
 use Redberry\LaravelCloudSdk\Connectors\LaravelCloudConnector;
+use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\CreateBackgroundProcessData;
-use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Enums\DaemonType;
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
 use Redberry\LaravelCloudSdk\Requests\BackgroundProcesses\CreateBackgroundProcessRequest;

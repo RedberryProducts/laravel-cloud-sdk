@@ -1,6 +1,6 @@
 <?php
 
-namespace Redberry\LaravelCloudSdk\Data\Instances;
+namespace Redberry\LaravelCloudSdk\Data\BackgroundProcesses;
 
 use Carbon\CarbonImmutable;
 use Redberry\LaravelCloudSdk\Enums\DaemonStrategyType;

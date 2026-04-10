@@ -1,6 +1,6 @@
 <?php
 
-namespace Redberry\LaravelCloudSdk\Data\Instances;
+namespace Redberry\LaravelCloudSdk\Data\BackgroundProcesses;
 
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;

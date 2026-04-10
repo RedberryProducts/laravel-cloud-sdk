@@ -2,8 +2,8 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\BackgroundProcesses;
 
+use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\UpdateBackgroundProcessData;
-use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\LazyCollection;
+use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\CreateBackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\UpdateBackgroundProcessData;
-use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Enums\DaemonType;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\BackgroundProcesses\CreateBackgroundProcessRequest;

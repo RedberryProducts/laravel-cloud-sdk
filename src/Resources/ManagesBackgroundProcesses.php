@@ -3,10 +3,10 @@
 namespace Redberry\LaravelCloudSdk\Resources;
 
 use Illuminate\Support\LazyCollection;
+use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessConfigData;
+use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\CreateBackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\UpdateBackgroundProcessData;
-use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessConfigData;
-use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Enums\DaemonType;
 use Redberry\LaravelCloudSdk\Requests\BackgroundProcesses\CreateBackgroundProcessRequest;
 use Redberry\LaravelCloudSdk\Requests\BackgroundProcesses\DeleteBackgroundProcessRequest;

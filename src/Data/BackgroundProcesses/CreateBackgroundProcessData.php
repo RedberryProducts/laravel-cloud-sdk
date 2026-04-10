@@ -2,7 +2,6 @@
 
 namespace Redberry\LaravelCloudSdk\Data\BackgroundProcesses;
 
-use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessConfigData;
 use Redberry\LaravelCloudSdk\Enums\DaemonType;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Data;

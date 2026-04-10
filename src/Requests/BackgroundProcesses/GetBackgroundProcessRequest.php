@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelCloudSdk\Requests\BackgroundProcesses;
 
-use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
+use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessData;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;

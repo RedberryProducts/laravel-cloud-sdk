@@ -1,7 +1,7 @@
 <?php
 
 use Carbon\CarbonImmutable;
-use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessData;
+use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
 use Redberry\LaravelCloudSdk\Enums\DaemonType;
 use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;

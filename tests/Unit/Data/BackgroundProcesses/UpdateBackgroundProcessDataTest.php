@@ -1,7 +1,7 @@
 <?php
 
+use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessConfigData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\UpdateBackgroundProcessData;
-use Redberry\LaravelCloudSdk\Data\Instances\BackgroundProcessConfigData;
 use Redberry\LaravelCloudSdk\Enums\DaemonType;
 use Spatie\LaravelData\Optional;
 

@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Data\Instances;
 
 use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
 use Redberry\LaravelCloudSdk\Enums\InstanceSize;
 use Redberry\LaravelCloudSdk\Enums\InstanceType;
