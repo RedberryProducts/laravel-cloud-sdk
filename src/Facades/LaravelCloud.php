@@ -246,6 +246,9 @@ use Redberry\LaravelCloudSdk\LaravelCloud as LaravelCloudClient;
  * Dedicated Clusters
  * @method static LazyCollection<int, \Redberry\LaravelCloudSdk\Data\DedicatedClusters\DedicatedClusterData> dedicatedClusters(string|CloudRegion|null $region = null, string|\Redberry\LaravelCloudSdk\Enums\ClusterType|null $type = null, string|\Redberry\LaravelCloudSdk\Enums\ClusterStatus|null $status = null)
  *
+ * Organization
+ * @method static \Redberry\LaravelCloudSdk\Data\Meta\OrganizationData organization()
+ *
  * @see LaravelCloudClient
  */
 class LaravelCloud extends Facade

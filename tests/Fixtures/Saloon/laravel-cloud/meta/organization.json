@@ -1,0 +1,28 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Fri, 10 Apr 2026 07:36:45 GMT",
+        "Content-Type": "application\/vnd.api+json",
+        "Content-Length": "166",
+        "Connection": "keep-alive",
+        "x-amzn-remapped-date": "Fri, 10 Apr 2026 07:36:44 GMT",
+        "x-amzn-requestid": "REDACTED",
+        "access-control-allow-origin": "*",
+        "strict-transport-security": "max-age=31536000",
+        "x-ratelimit-remaining": "119",
+        "x-amz-apigw-id": "REDACTED",
+        "Cache-Control": "no-cache, private",
+        "x-ratelimit-limit": "120",
+        "x-amzn-trace-id": "REDACTED",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 f6571004a8143ff13f7c4a03b13b7544.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "IST50-P4",
+        "x-amz-cf-id": "REDACTED",
+        "cf-cache-status": "DYNAMIC",
+        "set-cookie": "REDACTED",
+        "Server": "cloudflare",
+        "CF-RAY": "REDACTED"
+    },
+    "data": "{\"data\":{\"id\":\"org-a14cf4f5-62db-4b1b-84fd-7c93acb8e90b\",\"type\":\"organizations\",\"attributes\":{\"name\":\"Redberry Automations Test\",\"slug\":\"redberry-automations-test\"}}}",
+    "context": []
+}
