@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Data\Domains;
 
 use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
 use Redberry\LaravelCloudSdk\Enums\DomainCloudflareStrategy;
 use Redberry\LaravelCloudSdk\Enums\DomainRedirect;
 use Redberry\LaravelCloudSdk\Enums\DomainStatus;
@@ -29,6 +30,7 @@ class DomainData extends Data
         public array $dnsRecords,
         public ?CarbonImmutable $lastVerifiedAt,
         public ?CarbonImmutable $createdAt,
+        public ?EnvironmentData $environment = null,
     ) {}
 
     public static function fromResponse(array $attributes, string $id): self

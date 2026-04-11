@@ -15,6 +15,7 @@ class BucketKeyData extends Data
         public ?string $accessKeyId,
         public ?string $accessKeySecret,
         public ?CarbonImmutable $createdAt,
+        public ?BucketData $bucket = null,
     ) {}
 
     public static function fromResponse(array $attributes, string $id): self

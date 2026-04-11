@@ -25,6 +25,8 @@ class BucketData extends Data
         public ?string $url,
         public ?array $allowedOrigins,
         public ?CarbonImmutable $createdAt,
+        /** @var BucketKeyData[] */
+        public array $keys = [],
     ) {}
 
     public static function fromResponse(array $attributes, string $id): self

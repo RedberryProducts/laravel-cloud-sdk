@@ -20,6 +20,7 @@ class DatabaseSnapshotData extends Data
         public ?CarbonImmutable $pitrEndsAt,
         public ?CarbonImmutable $completedAt,
         public ?CarbonImmutable $createdAt,
+        public ?DatabaseClusterData $databaseCluster = null,
     ) {}
 
     public static function fromResponse(array $attributes, string $id): self

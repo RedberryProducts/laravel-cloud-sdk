@@ -3,6 +3,15 @@
 namespace Redberry\LaravelCloudSdk\Data\Environments;
 
 use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
+use Redberry\LaravelCloudSdk\Data\Branches\BranchData;
+use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
+use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
+use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
+use Redberry\LaravelCloudSdk\Data\Domains\DomainData;
+use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Enums\EnvironmentStatus;
 use Redberry\LaravelCloudSdk\Enums\NodeVersion;
 use Redberry\LaravelCloudSdk\Enums\PhpVersion;
@@ -29,6 +38,19 @@ class EnvironmentData extends Data
         public array $environmentVariables,
         public NetworkSettingsData $networkSettings,
         public ?CarbonImmutable $createdAt,
+        public ?ApplicationData $application = null,
+        public ?BranchData $branch = null,
+        /** @var DeploymentData[] */
+        public array $deployments = [],
+        public ?DeploymentData $currentDeployment = null,
+        public ?DomainData $primaryDomain = null,
+        /** @var InstanceData[] */
+        public array $instances = [],
+        public ?DatabaseData $database = null,
+        public ?CacheData $cache = null,
+        /** @var BucketData[] */
+        public array $buckets = [],
+        public ?WebsocketApplicationData $websocketApplication = null,
     ) {}
 
     public static function fromResponse(array $attributes, string $id): self

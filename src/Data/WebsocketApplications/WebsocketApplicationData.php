@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Data\WebsocketApplications;
 
 use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
 use Spatie\LaravelData\Data;
 
 class WebsocketApplicationData extends Data
@@ -19,6 +20,7 @@ class WebsocketApplicationData extends Data
         public string $key,
         public string $secret,
         public ?CarbonImmutable $createdAt,
+        public ?WebsocketClusterData $websocketCluster = null,
     ) {}
 
     public static function fromResponse(array $attributes, string $id): self

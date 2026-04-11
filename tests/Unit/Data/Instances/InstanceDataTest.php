@@ -71,7 +71,9 @@ it('accepts background processes', function () {
         'min_replicas' => 1,
         'max_replicas' => 1,
         'uses_scheduler' => false,
-    ], 'instance-bg', [$bgProcess]);
+    ], 'instance-bg');
+
+    $data->backgroundProcesses = [$bgProcess];
 
     expect($data->backgroundProcesses)->toHaveCount(1);
     expect($data->backgroundProcesses[0])->toBeInstanceOf(BackgroundProcessData::class);

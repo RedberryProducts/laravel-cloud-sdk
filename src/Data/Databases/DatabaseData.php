@@ -3,6 +3,8 @@
 namespace Redberry\LaravelCloudSdk\Data\Databases;
 
 use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
 use Spatie\LaravelData\Data;
 
 class DatabaseData extends Data
@@ -11,6 +13,9 @@ class DatabaseData extends Data
         public string $id,
         public string $name,
         public ?CarbonImmutable $createdAt,
+        public ?DatabaseClusterData $databaseCluster = null,
+        /** @var EnvironmentData[] */
+        public array $environments = [],
     ) {}
 
     public static function fromResponse(array $attributes, string $id): self

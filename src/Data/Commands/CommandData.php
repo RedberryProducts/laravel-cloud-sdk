@@ -3,6 +3,9 @@
 namespace Redberry\LaravelCloudSdk\Data\Commands;
 
 use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Users\UserData;
 use Redberry\LaravelCloudSdk\Enums\CommandStatus;
 use Spatie\LaravelData\Data;
 
@@ -18,6 +21,9 @@ class CommandData extends Data
         public ?CarbonImmutable $startedAt,
         public ?CarbonImmutable $finishedAt,
         public ?CarbonImmutable $createdAt,
+        public ?EnvironmentData $environment = null,
+        public ?DeploymentData $deployment = null,
+        public ?UserData $initiator = null,
     ) {}
 
     public static function fromResponse(array $attributes, string $id): self

@@ -3,6 +3,8 @@
 namespace Redberry\LaravelCloudSdk\Data\Applications;
 
 use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Meta\OrganizationData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Spatie\LaravelData\Data;
 
@@ -17,6 +19,10 @@ class ApplicationData extends Data
         public ?string $avatarUrl,
         public ?ApplicationRepositoryData $repository,
         public ?CarbonImmutable $createdAt,
+        public ?OrganizationData $organization = null,
+        /** @var EnvironmentData[] */
+        public array $environments = [],
+        public ?EnvironmentData $defaultEnvironment = null,
     ) {}
 
     public static function fromResponse(array $attributes, string $id): self

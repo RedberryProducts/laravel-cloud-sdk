@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Data\DatabaseClusters;
 
 use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\DatabaseStatus;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
@@ -19,6 +20,8 @@ class DatabaseClusterData extends Data
         public NeonServerlessPostgresConfigData|LaravelMysqlConfigData|AwsRdsConfigData $config,
         public DatabaseConnectionData $connection,
         public ?CarbonImmutable $createdAt,
+        /** @var DatabaseData[] */
+        public array $databases = [],
     ) {}
 
     public static function fromResponse(array $attributes, string $id): self

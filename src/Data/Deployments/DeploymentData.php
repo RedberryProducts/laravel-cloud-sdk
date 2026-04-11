@@ -3,6 +3,8 @@
 namespace Redberry\LaravelCloudSdk\Data\Deployments;
 
 use Carbon\CarbonImmutable;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Users\UserData;
 use Redberry\LaravelCloudSdk\Enums\DeploymentStatus;
 use Redberry\LaravelCloudSdk\Enums\NodeVersion;
 use Redberry\LaravelCloudSdk\Enums\PhpVersion;
@@ -26,6 +28,8 @@ class DeploymentData extends Data
         public ?CarbonImmutable $startedAt,
         public ?CarbonImmutable $finishedAt,
         public ?CarbonImmutable $createdAt,
+        public ?EnvironmentData $environment = null,
+        public ?UserData $initiator = null,
     ) {}
 
     public static function fromResponse(array $attributes, string $id): self
