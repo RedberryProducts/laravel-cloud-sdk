@@ -4,6 +4,7 @@ namespace Redberry\LaravelCloudSdk\Support;
 
 use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessData;
+use Redberry\LaravelCloudSdk\Data\Branches\BranchData;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
@@ -16,6 +17,7 @@ use Redberry\LaravelCloudSdk\Data\Domains\DomainData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
 use Redberry\LaravelCloudSdk\Data\Meta\OrganizationData;
+use Redberry\LaravelCloudSdk\Data\Users\UserData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
 
@@ -26,11 +28,13 @@ class JsonApiTypeRegistry
         'applications' => ApplicationData::class,
         'organizations' => OrganizationData::class,
         'environments' => EnvironmentData::class,
+        'branches' => BranchData::class,
         'instances' => InstanceData::class,
         'background_processes' => BackgroundProcessData::class,
         'deployments' => DeploymentData::class,
         'commands' => CommandData::class,
         'domains' => DomainData::class,
+        'users' => UserData::class,
         'databases' => DatabaseClusterData::class,
         'databaseSchemas' => DatabaseData::class,
         'database_snapshots' => DatabaseSnapshotData::class,
