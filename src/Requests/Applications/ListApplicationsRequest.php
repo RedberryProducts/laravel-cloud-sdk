@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\Applications;
 
 use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -17,14 +18,20 @@ class ListApplicationsRequest extends Request implements Paginatable
         return '/applications';
     }
 
+    protected function defaultQuery(): array
+    {
+        return ['include' => 'organization,environments,defaultEnvironment'];
+    }
+
     /**
      * @return ApplicationData[]
      */
     public function createDtoFromResponse(Response $response): array
     {
-        return array_map(
-            fn (array $item) => ApplicationData::fromResponse($item['attributes'], $item['id']),
-            $response->json('data')
+        return JsonApiHydrator::hydrateMany(
+            ApplicationData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
         );
     }
 }

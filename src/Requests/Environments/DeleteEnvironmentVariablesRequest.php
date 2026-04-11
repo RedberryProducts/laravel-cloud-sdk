@@ -4,6 +4,7 @@ namespace Redberry\LaravelCloudSdk\Requests\Environments;
 
 use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -33,8 +34,10 @@ class DeleteEnvironmentVariablesRequest extends Request implements HasBody
 
     public function createDtoFromResponse(Response $response): EnvironmentData
     {
-        $data = $response->json('data');
-
-        return EnvironmentData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            EnvironmentData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\Environments;
 
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -22,8 +23,10 @@ class StopEnvironmentRequest extends Request
 
     public function createDtoFromResponse(Response $response): EnvironmentData
     {
-        $data = $response->json('data');
-
-        return EnvironmentData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            EnvironmentData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

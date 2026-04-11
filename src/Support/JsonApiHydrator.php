@@ -6,13 +6,22 @@ use Spatie\LaravelData\Data;
 
 class JsonApiHydrator
 {
+    /**
+     * @template T of Data
+     *
+     * @param  class-string<T>  $dtoClass
+     * @return T
+     */
     public static function hydrateOne(string $dtoClass, array $data, array $included = []): Data
     {
         return self::hydrate($dtoClass, $data, self::buildIncludedMap($included));
     }
 
     /**
-     * @return Data[]
+     * @template T of Data
+     *
+     * @param  class-string<T>  $dtoClass
+     * @return T[]
      */
     public static function hydrateMany(string $dtoClass, array $items, array $included = []): array
     {

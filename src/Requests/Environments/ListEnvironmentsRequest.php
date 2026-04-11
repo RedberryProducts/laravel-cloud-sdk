@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\Environments;
 
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -19,14 +20,20 @@ class ListEnvironmentsRequest extends Request implements Paginatable
         return "/applications/{$this->applicationId}/environments";
     }
 
+    protected function defaultQuery(): array
+    {
+        return ['include' => 'application,branch,deployments,currentDeployment,primaryDomain,instances,database,cache,buckets,websocketApplication'];
+    }
+
     /**
      * @return EnvironmentData[]
      */
     public function createDtoFromResponse(Response $response): array
     {
-        return array_map(
-            fn (array $item) => EnvironmentData::fromResponse($item['attributes'], $item['id']),
-            $response->json('data')
+        return JsonApiHydrator::hydrateMany(
+            EnvironmentData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
         );
     }
 }

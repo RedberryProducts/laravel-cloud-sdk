@@ -4,6 +4,7 @@ namespace Redberry\LaravelCloudSdk\Requests\Applications;
 
 use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
 use Redberry\LaravelCloudSdk\Data\Applications\CreateApplicationData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -30,8 +31,10 @@ class CreateApplicationRequest extends Request implements HasBody
 
     public function createDtoFromResponse(Response $response): ApplicationData
     {
-        $data = $response->json('data');
-
-        return ApplicationData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            ApplicationData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }
