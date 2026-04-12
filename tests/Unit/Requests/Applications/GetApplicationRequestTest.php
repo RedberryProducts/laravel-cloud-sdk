@@ -20,6 +20,14 @@ it('has the correct HTTP method', function () {
     expect($request->getMethod())->toBe(Method::GET);
 });
 
+it('includes relationships in default query', function () {
+    $request = new GetApplicationRequest('app-123');
+
+    expect($request->query()->all())->toBe([
+        'include' => 'organization,environments,defaultEnvironment',
+    ]);
+});
+
 it('gets an application and returns ApplicationData', function () {
     Saloon::fake([
         ListApplicationsRequest::class => new LaravelCloudFixture('applications/list'),

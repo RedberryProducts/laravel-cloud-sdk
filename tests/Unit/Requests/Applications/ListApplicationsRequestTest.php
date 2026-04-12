@@ -26,6 +26,14 @@ it('implements Paginatable', function () {
     expect($request)->toBeInstanceOf(Paginatable::class);
 });
 
+it('includes relationships in default query', function () {
+    $request = new ListApplicationsRequest;
+
+    expect($request->query()->all())->toBe([
+        'include' => 'organization,environments,defaultEnvironment',
+    ]);
+});
+
 it('lists applications and returns ApplicationData collection', function () {
     Saloon::fake([
         ListApplicationsRequest::class => new LaravelCloudFixture('applications/list'),
