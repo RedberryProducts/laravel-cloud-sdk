@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\Deployments;
 
 use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -19,14 +20,20 @@ class ListDeploymentsRequest extends Request implements Paginatable
         return "/environments/{$this->environmentId}/deployments";
     }
 
+    protected function defaultQuery(): array
+    {
+        return ['include' => 'environment,initiator'];
+    }
+
     /**
      * @return DeploymentData[]
      */
     public function createDtoFromResponse(Response $response): array
     {
-        return array_map(
-            fn (array $item) => DeploymentData::fromResponse($item['attributes'], $item['id']),
-            $response->json('data')
+        return JsonApiHydrator::hydrateMany(
+            DeploymentData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
         );
     }
 }

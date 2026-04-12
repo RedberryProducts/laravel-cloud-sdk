@@ -29,6 +29,14 @@ it('implements Paginatable', function () {
     expect($request)->toBeInstanceOf(Paginatable::class);
 });
 
+it('includes relationships in default query', function () {
+    $request = new ListBackgroundProcessesRequest('inst-123');
+
+    expect($request->query()->all())->toBe([
+        'include' => 'instance',
+    ]);
+});
+
 it('lists background processes and returns a collection', function () {
     Saloon::fake([
         ListApplicationsRequest::class => new LaravelCloudFixture('applications/list'),

@@ -4,6 +4,7 @@ use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\CreateBackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\UpdateBackgroundProcessData;
+use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
 use Redberry\LaravelCloudSdk\Enums\DaemonType;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\BackgroundProcesses\CreateBackgroundProcessRequest;
@@ -19,10 +20,14 @@ it('lists background processes for an instance', function () {
         ListBackgroundProcessesRequest::class => new LaravelCloudFixture('background-processes/list'),
     ]);
 
-    $result = (new LaravelCloud('token'))->backgroundProcesses('inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba');
+    $result = (new LaravelCloud('token'))->backgroundProcesses('inst-a15fd671-14f8-489f-b552-886c7ffa09dd');
 
     expect($result)->toBeInstanceOf(LazyCollection::class);
-    expect($result->first())->toBeInstanceOf(BackgroundProcessData::class);
+
+    $first = $result->first();
+    expect($first)->toBeInstanceOf(BackgroundProcessData::class);
+    expect($first->instance)->toBeInstanceOf(InstanceData::class);
+
     Saloon::assertSent(ListBackgroundProcessesRequest::class);
 });
 
@@ -31,10 +36,11 @@ it('retrieves a single background process by id', function () {
         GetBackgroundProcessRequest::class => new LaravelCloudFixture('background-processes/get'),
     ]);
 
-    $result = (new LaravelCloud('token'))->backgroundProcess('bp-abc123');
+    $result = (new LaravelCloud('token'))->backgroundProcess('process-a1868099-d4a8-4ea3-9076-4a5732ba4d50');
 
     Saloon::assertSent(GetBackgroundProcessRequest::class);
     expect($result)->toBeInstanceOf(BackgroundProcessData::class);
+    expect($result->instance)->toBeInstanceOf(InstanceData::class);
 });
 
 it('creates a background process with named params', function () {

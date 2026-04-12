@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\BackgroundProcesses;
 
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -18,10 +19,17 @@ class GetBackgroundProcessRequest extends Request
         return "/background-processes/{$this->backgroundProcessId}";
     }
 
+    protected function defaultQuery(): array
+    {
+        return ['include' => 'instance'];
+    }
+
     public function createDtoFromResponse(Response $response): BackgroundProcessData
     {
-        $data = $response->json('data');
-
-        return BackgroundProcessData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            BackgroundProcessData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

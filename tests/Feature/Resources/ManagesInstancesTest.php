@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\LazyCollection;
+use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Instances\CreateInstanceData;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceSizeData;
@@ -24,10 +26,16 @@ it('lists instances for an environment', function () {
         ListInstancesRequest::class => new LaravelCloudFixture('instances/list'),
     ]);
 
-    $result = (new LaravelCloud('token'))->instances('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
+    $result = (new LaravelCloud('token'))->instances('env-a15fd671-0b6a-401a-84bf-14105ce69023');
 
     expect($result)->toBeInstanceOf(LazyCollection::class);
-    expect($result->first())->toBeInstanceOf(InstanceData::class);
+
+    $first = $result->first();
+    expect($first)->toBeInstanceOf(InstanceData::class);
+    expect($first->environment)->toBeInstanceOf(EnvironmentData::class);
+    expect($first->backgroundProcesses)->toBeArray();
+    expect($first->backgroundProcesses)->each->toBeInstanceOf(BackgroundProcessData::class);
+
     Saloon::assertSent(ListInstancesRequest::class);
 });
 
@@ -36,12 +44,15 @@ it('retrieves a single instance by id', function () {
         GetInstanceRequest::class => new LaravelCloudFixture('instances/get'),
     ]);
 
-    $result = (new LaravelCloud('token'))->instance('inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba');
+    $result = (new LaravelCloud('token'))->instance('inst-a15fd671-14f8-489f-b552-886c7ffa09dd');
 
     Saloon::assertSent(GetInstanceRequest::class);
     expect($result)->toBeInstanceOf(InstanceData::class);
-    expect($result->id)->toBe('inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba');
+    expect($result->id)->toBe('inst-a15fd671-14f8-489f-b552-886c7ffa09dd');
     expect($result->name)->toBe('App');
+    expect($result->environment)->toBeInstanceOf(EnvironmentData::class);
+    expect($result->backgroundProcesses)->toHaveCount(2);
+    expect($result->backgroundProcesses)->each->toBeInstanceOf(BackgroundProcessData::class);
 });
 
 it('creates an instance with named params', function () {

@@ -4,6 +4,7 @@ namespace Redberry\LaravelCloudSdk\Requests\Commands;
 
 use Redberry\LaravelCloudSdk\Data\Commands\CommandData;
 use Redberry\LaravelCloudSdk\Data\Commands\RunCommandData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -33,8 +34,10 @@ class RunCommandRequest extends Request implements HasBody
 
     public function createDtoFromResponse(Response $response): CommandData
     {
-        $data = $response->json('data');
-
-        return CommandData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            CommandData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

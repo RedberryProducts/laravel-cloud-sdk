@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\Commands;
 
 use Redberry\LaravelCloudSdk\Data\Commands\CommandData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -18,10 +19,17 @@ class GetCommandRequest extends Request
         return "/commands/{$this->commandId}";
     }
 
+    protected function defaultQuery(): array
+    {
+        return ['include' => 'environment,deployment,initiator'];
+    }
+
     public function createDtoFromResponse(Response $response): CommandData
     {
-        $data = $response->json('data');
-
-        return CommandData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            CommandData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

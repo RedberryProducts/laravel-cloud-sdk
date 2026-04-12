@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\Commands;
 
 use Redberry\LaravelCloudSdk\Data\Commands\CommandData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -19,14 +20,20 @@ class ListCommandsRequest extends Request implements Paginatable
         return "/environments/{$this->environmentId}/commands";
     }
 
+    protected function defaultQuery(): array
+    {
+        return ['include' => 'environment,deployment,initiator'];
+    }
+
     /**
      * @return CommandData[]
      */
     public function createDtoFromResponse(Response $response): array
     {
-        return array_map(
-            fn (array $item) => CommandData::fromResponse($item['attributes'], $item['id']),
-            $response->json('data')
+        return JsonApiHydrator::hydrateMany(
+            CommandData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
         );
     }
 }

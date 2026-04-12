@@ -3,6 +3,9 @@
 use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Commands\CommandData;
 use Redberry\LaravelCloudSdk\Data\Commands\RunCommandData;
+use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Users\UserData;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Commands\GetCommandRequest;
 use Redberry\LaravelCloudSdk\Requests\Commands\ListCommandsRequest;
@@ -15,10 +18,16 @@ it('lists commands for an environment', function () {
         ListCommandsRequest::class => new LaravelCloudFixture('commands/list'),
     ]);
 
-    $result = (new LaravelCloud('token'))->commands('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
+    $result = (new LaravelCloud('token'))->commands('env-a15fd671-0b6a-401a-84bf-14105ce69023');
 
     expect($result)->toBeInstanceOf(LazyCollection::class);
-    expect($result->first())->toBeInstanceOf(CommandData::class);
+
+    $first = $result->first();
+    expect($first)->toBeInstanceOf(CommandData::class);
+    expect($first->environment)->toBeInstanceOf(EnvironmentData::class);
+    expect($first->deployment)->toBeInstanceOf(DeploymentData::class);
+    expect($first->initiator)->toBeInstanceOf(UserData::class);
+
     Saloon::assertSent(ListCommandsRequest::class);
 });
 
@@ -27,10 +36,13 @@ it('retrieves a single command by id', function () {
         GetCommandRequest::class => new LaravelCloudFixture('commands/get'),
     ]);
 
-    $result = (new LaravelCloud('token'))->command('cmd-abc123');
+    $result = (new LaravelCloud('token'))->command('comm-a186814b-3d65-4f30-9b54-6e860a3b29de');
 
     Saloon::assertSent(GetCommandRequest::class);
     expect($result)->toBeInstanceOf(CommandData::class);
+    expect($result->environment)->toBeInstanceOf(EnvironmentData::class);
+    expect($result->deployment)->toBeInstanceOf(DeploymentData::class);
+    expect($result->initiator)->toBeInstanceOf(UserData::class);
 });
 
 it('runs a command with named params', function () {

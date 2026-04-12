@@ -23,6 +23,14 @@ it('has the correct HTTP method', function () {
     expect($request->getMethod())->toBe(Method::GET);
 });
 
+it('includes relationships in default query', function () {
+    $request = new GetBackgroundProcessRequest('bp-123');
+
+    expect($request->query()->all())->toBe([
+        'include' => 'instance',
+    ]);
+});
+
 it('retrieves a background process and returns BackgroundProcessData', function () {
     Saloon::fake([
         ListApplicationsRequest::class => new LaravelCloudFixture('applications/list'),

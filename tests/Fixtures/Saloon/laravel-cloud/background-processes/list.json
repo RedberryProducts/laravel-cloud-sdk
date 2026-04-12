@@ -1,11 +1,11 @@
 {
     "statusCode": 200,
     "headers": {
-        "Date": "Sat, 04 Apr 2026 11:25:43 GMT",
+        "Date": "Sun, 12 Apr 2026 10:43:04 GMT",
         "Content-Type": "application\/vnd.api+json",
-        "Content-Length": "1039",
+        "Content-Length": "2087",
         "Connection": "keep-alive",
-        "x-amzn-remapped-date": "Sat, 04 Apr 2026 11:25:43 GMT",
+        "x-amzn-remapped-date": "Sun, 12 Apr 2026 10:43:04 GMT",
         "x-amzn-requestid": "REDACTED",
         "access-control-allow-origin": "*",
         "strict-transport-security": "max-age=31536000",
@@ -15,14 +15,14 @@
         "x-ratelimit-limit": "120",
         "x-amzn-trace-id": "REDACTED",
         "x-cache": "Miss from cloudfront",
-        "via": "1.1 4c2cbbae62547201778450cb9267d858.cloudfront.net (CloudFront)",
-        "x-amz-cf-pop": "IST50-P4",
+        "via": "1.1 da78abc509aafffb42eec33ca2dc60d4.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "FRA60-P4",
         "x-amz-cf-id": "REDACTED",
         "cf-cache-status": "DYNAMIC",
         "set-cookie": "REDACTED",
         "Server": "cloudflare",
         "CF-RAY": "REDACTED"
     },
-    "data": "{\"data\":[{\"id\":\"process-a17677cf-3020-4197-aae6-d14099336ed7\",\"type\":\"background_processes\",\"attributes\":{\"type\":\"custom\",\"processes\":1,\"command\":\"php artisan my:command\",\"config\":[],\"strategy_type\":\"none\",\"strategy_threshold\":null,\"created_at\":\"2026-04-04T11:24:42.000000Z\"}}],\"links\":{\"first\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/instances\\\/inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba\\\/background-processes?page=1\",\"last\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/instances\\\/inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba\\\/background-processes?page=1\"},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"page\":null,\"active\":false},{\"url\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/instances\\\/inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba\\\/background-processes?page=1\",\"label\":\"1\",\"page\":1,\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"page\":null,\"active\":false}],\"path\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/instances\\\/inst-a14fe550-5c7b-4986-9a0d-d0ab1dcda9ba\\\/background-processes\",\"per_page\":100,\"to\":1,\"total\":1}}",
+    "data": "{\"data\":[{\"id\":\"process-a1868099-d4a8-4ea3-9076-4a5732ba4d50\",\"type\":\"background_processes\",\"attributes\":{\"type\":\"worker\",\"processes\":1,\"command\":\"php artisan queue:work database --sleep=10 --quiet\",\"config\":{\"connection\":\"database\",\"queue\":null,\"name\":null,\"tries\":null,\"backoff\":null,\"max-jobs\":null,\"max-time\":null,\"sleep\":10,\"rest\":null,\"timeout\":null,\"force\":null,\"stop-when-empty\":null},\"strategy_type\":\"none\",\"strategy_threshold\":null,\"created_at\":\"2026-04-12T10:42:32.000000Z\"},\"relationships\":{\"instance\":{\"data\":{\"type\":\"instances\",\"id\":\"inst-a15fd671-14f8-489f-b552-886c7ffa09dd\"}}}},{\"id\":\"process-a1868099-d5eb-4c79-bc59-ada05af16b07\",\"type\":\"background_processes\",\"attributes\":{\"type\":\"custom\",\"processes\":1,\"command\":\"php artisan horizon\",\"config\":[],\"strategy_type\":\"none\",\"strategy_threshold\":null,\"created_at\":\"2026-04-12T10:42:32.000000Z\"},\"relationships\":{\"instance\":{\"data\":{\"type\":\"instances\",\"id\":\"inst-a15fd671-14f8-489f-b552-886c7ffa09dd\"}}}}],\"links\":{\"first\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/instances\\\/inst-a15fd671-14f8-489f-b552-886c7ffa09dd\\\/background-processes?page=1\",\"last\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/instances\\\/inst-a15fd671-14f8-489f-b552-886c7ffa09dd\\\/background-processes?page=1\"},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"page\":null,\"active\":false},{\"url\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/instances\\\/inst-a15fd671-14f8-489f-b552-886c7ffa09dd\\\/background-processes?page=1\",\"label\":\"1\",\"page\":1,\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"page\":null,\"active\":false}],\"path\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/instances\\\/inst-a15fd671-14f8-489f-b552-886c7ffa09dd\\\/background-processes\",\"per_page\":100,\"to\":2,\"total\":2},\"included\":[{\"id\":\"inst-a15fd671-14f8-489f-b552-886c7ffa09dd\",\"type\":\"instances\",\"attributes\":{\"name\":\"App\",\"type\":\"app\",\"size\":\"flex.g-1vcpu-512mb\",\"scaling_type\":\"none\",\"min_replicas\":1,\"max_replicas\":1,\"uses_scheduler\":false,\"scaling_cpu_threshold_percentage\":null,\"scaling_memory_threshold_percentage\":null,\"created_at\":\"2026-03-24T05:25:17.000000Z\"}}]}",
     "context": []
 }

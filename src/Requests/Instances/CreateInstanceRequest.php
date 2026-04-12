@@ -4,6 +4,7 @@ namespace Redberry\LaravelCloudSdk\Requests\Instances;
 
 use Redberry\LaravelCloudSdk\Data\Instances\CreateInstanceData;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -33,8 +34,10 @@ class CreateInstanceRequest extends Request implements HasBody
 
     public function createDtoFromResponse(Response $response): InstanceData
     {
-        $data = $response->json('data');
-
-        return InstanceData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            InstanceData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

@@ -22,6 +22,14 @@ it('has the correct HTTP method', function () {
     expect($request->getMethod())->toBe(Method::GET);
 });
 
+it('includes relationships in default query', function () {
+    $request = new GetDeploymentRequest('deploy-123');
+
+    expect($request->query()->all())->toBe([
+        'include' => 'environment,initiator',
+    ]);
+});
+
 it('gets a deployment and returns DeploymentData', function () {
     Saloon::fake([
         ListApplicationsRequest::class => new LaravelCloudFixture('applications/list'),

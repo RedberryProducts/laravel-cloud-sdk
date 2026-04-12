@@ -4,6 +4,7 @@ namespace Redberry\LaravelCloudSdk\Requests\BackgroundProcesses;
 
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\BackgroundProcessData;
 use Redberry\LaravelCloudSdk\Data\BackgroundProcesses\CreateBackgroundProcessData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -33,8 +34,10 @@ class CreateBackgroundProcessRequest extends Request implements HasBody
 
     public function createDtoFromResponse(Response $response): BackgroundProcessData
     {
-        $data = $response->json('data');
-
-        return BackgroundProcessData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            BackgroundProcessData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }
