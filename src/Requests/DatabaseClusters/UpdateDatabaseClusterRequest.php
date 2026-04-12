@@ -4,6 +4,7 @@ namespace Redberry\LaravelCloudSdk\Requests\DatabaseClusters;
 
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -33,8 +34,10 @@ class UpdateDatabaseClusterRequest extends Request implements HasBody
 
     public function createDtoFromResponse(Response $response): DatabaseClusterData
     {
-        $data = $response->json('data');
-
-        return DatabaseClusterData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            DatabaseClusterData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

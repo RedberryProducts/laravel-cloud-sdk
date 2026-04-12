@@ -20,6 +20,14 @@ it('has the correct HTTP method', function () {
     expect($request->getMethod())->toBe(Method::GET);
 });
 
+it('includes relationships in default query', function () {
+    $request = new GetDatabaseClusterRequest('cluster-123');
+
+    expect($request->query()->all())->toBe([
+        'include' => 'databases',
+    ]);
+});
+
 it('gets a database cluster and returns DatabaseClusterData', function () {
     Saloon::fake([
         ListDatabaseClustersRequest::class => new LaravelCloudFixture('database-clusters/list'),

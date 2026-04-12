@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\Domains;
 
 use Redberry\LaravelCloudSdk\Data\Domains\DomainData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -19,14 +20,20 @@ class ListDomainsRequest extends Request implements Paginatable
         return "/environments/{$this->environmentId}/domains";
     }
 
+    protected function defaultQuery(): array
+    {
+        return ['include' => 'environment'];
+    }
+
     /**
      * @return DomainData[]
      */
     public function createDtoFromResponse(Response $response): array
     {
-        return array_map(
-            fn (array $item) => DomainData::fromResponse($item['attributes'], $item['id']),
-            $response->json('data')
+        return JsonApiHydrator::hydrateMany(
+            DomainData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
         );
     }
 }

@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\DatabaseClusters;
 
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -17,14 +18,20 @@ class ListDatabaseClustersRequest extends Request implements Paginatable
         return '/databases/clusters';
     }
 
+    protected function defaultQuery(): array
+    {
+        return ['include' => 'databases'];
+    }
+
     /**
      * @return DatabaseClusterData[]
      */
     public function createDtoFromResponse(Response $response): array
     {
-        return array_map(
-            fn (array $item) => DatabaseClusterData::fromResponse($item['attributes'], $item['id']),
-            $response->json('data')
+        return JsonApiHydrator::hydrateMany(
+            DatabaseClusterData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
         );
     }
 }

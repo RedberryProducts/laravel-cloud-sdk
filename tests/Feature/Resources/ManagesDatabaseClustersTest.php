@@ -11,6 +11,7 @@ use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseTypeData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\NeonServerlessPostgresConfigData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\RestoreDatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\UpdateDatabaseClusterData;
+use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
 use Redberry\LaravelCloudSdk\LaravelCloud;
@@ -37,7 +38,12 @@ it('lists database clusters', function () {
     $result = (new LaravelCloud('token'))->databaseClusters();
 
     expect($result)->toBeInstanceOf(LazyCollection::class);
-    expect($result->first())->toBeInstanceOf(DatabaseClusterData::class);
+
+    $first = $result->first();
+    expect($first)->toBeInstanceOf(DatabaseClusterData::class);
+    expect($first->databases)->toBeArray();
+    expect($first->databases)->each->toBeInstanceOf(DatabaseData::class);
+
     Saloon::assertSent(ListDatabaseClustersRequest::class);
 });
 
@@ -52,6 +58,8 @@ it('retrieves a single database cluster by id', function () {
     expect($result)->toBeInstanceOf(DatabaseClusterData::class);
     expect($result->id)->toBe('red-paper-65989343');
     expect($result->name)->toBe('test-cluster');
+    expect($result->databases)->toHaveCount(3);
+    expect($result->databases)->each->toBeInstanceOf(DatabaseData::class);
 });
 
 it('creates a database cluster with named params', function () {
@@ -201,7 +209,11 @@ it('lists database snapshots for a cluster', function () {
     $result = (new LaravelCloud('token'))->databaseSnapshots('db-cluster-123');
 
     expect($result)->toBeInstanceOf(LazyCollection::class);
-    expect($result->first())->toBeInstanceOf(DatabaseSnapshotData::class);
+
+    $first = $result->first();
+    expect($first)->toBeInstanceOf(DatabaseSnapshotData::class);
+    expect($first->databaseCluster)->toBeInstanceOf(DatabaseClusterData::class);
+
     Saloon::assertSent(ListDatabaseSnapshotsRequest::class);
 });
 
@@ -210,10 +222,11 @@ it('retrieves a single database snapshot by id', function () {
         GetDatabaseSnapshotRequest::class => new LaravelCloudFixture('database-clusters/snapshot-get'),
     ]);
 
-    $result = (new LaravelCloud('token'))->databaseSnapshot('snap-123');
+    $result = (new LaravelCloud('token'))->databaseSnapshot('db-snapshot-a186907b-27f9-4aa0-9c60-6b700afbb58e');
 
     Saloon::assertSent(GetDatabaseSnapshotRequest::class);
     expect($result)->toBeInstanceOf(DatabaseSnapshotData::class);
+    expect($result->databaseCluster)->toBeInstanceOf(DatabaseClusterData::class);
 });
 
 it('restores a database cluster with named params', function () {

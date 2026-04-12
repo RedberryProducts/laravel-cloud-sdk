@@ -32,6 +32,14 @@ it('implements Paginatable', function () {
     expect($request)->toBeInstanceOf(Paginatable::class);
 });
 
+it('includes relationships in default query', function () {
+    $request = new ListDatabaseSnapshotsRequest('db-cluster-123');
+
+    expect($request->query()->all())->toBe([
+        'include' => 'database',
+    ]);
+});
+
 it('lists database snapshots and returns a collection', function () {
     Saloon::fake([
         CreateDatabaseClusterRequest::class => new LaravelCloudFixture('database-clusters/create-mysql'),

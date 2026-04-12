@@ -4,6 +4,7 @@ namespace Redberry\LaravelCloudSdk\Requests\Domains;
 
 use Redberry\LaravelCloudSdk\Data\Domains\DomainData;
 use Redberry\LaravelCloudSdk\Data\Domains\UpdateDomainData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -33,8 +34,10 @@ class UpdateDomainRequest extends Request implements HasBody
 
     public function createDtoFromResponse(Response $response): DomainData
     {
-        $data = $response->json('data');
-
-        return DomainData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            DomainData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

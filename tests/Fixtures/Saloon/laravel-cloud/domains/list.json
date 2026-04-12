@@ -1,21 +1,21 @@
 {
     "statusCode": 200,
     "headers": {
-        "Date": "Tue, 24 Mar 2026 05:30:55 GMT",
+        "Date": "Sun, 12 Apr 2026 11:24:59 GMT",
         "Content-Type": "application\/vnd.api+json",
-        "Content-Length": "2048",
+        "Content-Length": "2528",
         "Connection": "keep-alive",
-        "x-amzn-remapped-date": "Tue, 24 Mar 2026 05:30:55 GMT",
+        "x-amzn-remapped-date": "Sun, 12 Apr 2026 11:24:58 GMT",
         "x-amzn-requestid": "REDACTED",
         "access-control-allow-origin": "*",
         "strict-transport-security": "max-age=31536000",
-        "x-ratelimit-remaining": "118",
+        "x-ratelimit-remaining": "119",
         "x-amz-apigw-id": "REDACTED",
         "Cache-Control": "no-cache, private",
         "x-ratelimit-limit": "120",
         "x-amzn-trace-id": "REDACTED",
         "x-cache": "Miss from cloudfront",
-        "via": "1.1 64998cb1d4eb29c8699fb9a934fba30e.cloudfront.net (CloudFront)",
+        "via": "1.1 590a413e03cb1e0e7c82d6a579acf0a2.cloudfront.net (CloudFront)",
         "x-amz-cf-pop": "IST50-P4",
         "x-amz-cf-id": "REDACTED",
         "cf-cache-status": "DYNAMIC",
@@ -23,6 +23,6 @@
         "Server": "cloudflare",
         "CF-RAY": "REDACTED"
     },
-    "data": "{\"data\":[{\"id\":\"domain-a15ddd8e-3829-4493-8229-2c2aae2872d4\",\"type\":\"domains\",\"attributes\":{\"name\":\"REDACTED\",\"type\":\"root\",\"hostname_status\":\"failed\",\"ssl_status\":\"failed\",\"origin_status\":\"failed\",\"redirect\":\"root_to_www\",\"last_verified_at\":\"2026-03-23T17:33:17.000000Z\",\"created_at\":\"2026-03-23T05:53:31.000000Z\"},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/domains\\\/domain-a15ddd8e-3829-4493-8229-2c2aae2872d4\"}}},{\"id\":\"domain-a15dddc1-b356-49eb-b6b2-da935f99ef2c\",\"type\":\"domains\",\"attributes\":{\"name\":\"REDACTED\",\"type\":\"root\",\"hostname_status\":\"failed\",\"ssl_status\":\"failed\",\"origin_status\":\"failed\",\"redirect\":\"root_to_www\",\"last_verified_at\":\"2026-03-23T17:33:55.000000Z\",\"created_at\":\"2026-03-23T05:54:04.000000Z\"},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/domains\\\/domain-a15dddc1-b356-49eb-b6b2-da935f99ef2c\"}}},{\"id\":\"domain-a15fd862-048a-4f66-aed4-545eec5707e5\",\"type\":\"domains\",\"attributes\":{\"name\":\"REDACTED\",\"type\":\"root\",\"hostname_status\":\"pending\",\"ssl_status\":\"pending\",\"origin_status\":\"pending\",\"redirect\":\"root_to_www\",\"last_verified_at\":\"2026-03-24T05:30:54.000000Z\",\"created_at\":\"2026-03-24T05:30:42.000000Z\"},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/domains\\\/domain-a15fd862-048a-4f66-aed4-545eec5707e5\"}}}],\"links\":{\"first\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/environments\\\/env-a14fe550-4e39-4ff2-8016-a20e4d32a996\\\/domains?page=1\",\"last\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/environments\\\/env-a14fe550-4e39-4ff2-8016-a20e4d32a996\\\/domains?page=1\"},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"page\":null,\"active\":false},{\"url\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/environments\\\/env-a14fe550-4e39-4ff2-8016-a20e4d32a996\\\/domains?page=1\",\"label\":\"1\",\"page\":1,\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"page\":null,\"active\":false}],\"path\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/environments\\\/env-a14fe550-4e39-4ff2-8016-a20e4d32a996\\\/domains\",\"per_page\":100,\"to\":3,\"total\":3}}",
+    "data": "{\"data\":[{\"id\":\"domain-a1868fb9-e52a-432a-9cd8-2108a2ff10ae\",\"type\":\"domains\",\"attributes\":{\"name\":\"REDACTED\",\"type\":\"root\",\"hostname_status\":\"pending\",\"ssl_status\":\"pending\",\"origin_status\":\"pending\",\"redirect\":null,\"last_verified_at\":\"2026-04-12T11:24:55.000000Z\",\"created_at\":\"2026-04-12T11:24:50.000000Z\"},\"relationships\":{\"environment\":{\"data\":{\"type\":\"environments\",\"id\":\"env-a15fd671-0b6a-401a-84bf-14105ce69023\"}}},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/domains\\\/domain-a1868fb9-e52a-432a-9cd8-2108a2ff10ae\"}}}],\"links\":{\"first\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/environments\\\/env-a15fd671-0b6a-401a-84bf-14105ce69023\\\/domains?page=1\",\"last\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/environments\\\/env-a15fd671-0b6a-401a-84bf-14105ce69023\\\/domains?page=1\"},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"page\":null,\"active\":false},{\"url\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/environments\\\/env-a15fd671-0b6a-401a-84bf-14105ce69023\\\/domains?page=1\",\"label\":\"1\",\"page\":1,\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"page\":null,\"active\":false}],\"path\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/environments\\\/env-a15fd671-0b6a-401a-84bf-14105ce69023\\\/domains\",\"per_page\":100,\"to\":1,\"total\":1},\"included\":[{\"id\":\"env-a15fd671-0b6a-401a-84bf-14105ce69023\",\"type\":\"environments\",\"attributes\":{\"name\":\"main\",\"slug\":\"main\",\"status\":\"running\",\"created_from_automation\":false,\"vanity_domain\":\"test-app-main-xxm3bn.laravel.cloud\",\"php_major_version\":\"8.4\",\"build_command\":\"composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader\\n\\nnpm ci --audit false\\nnpm run build\",\"node_version\":\"24\",\"deploy_command\":\"php artisan migrate --force\",\"uses_octane\":false,\"uses_hibernation\":false,\"hibernation_wake_up_interval\":null,\"uses_push_to_deploy\":true,\"uses_deploy_hook\":false,\"environment_variables\":[{\"key\":\"APP_KEY\",\"value\":\"REDACTED\"}],\"network_settings\":{\"cache\":{\"strategy\":\"default\"},\"response_headers\":{\"frame\":\"deny\",\"content_type\":\"nosniff\",\"robots_tag\":\"index, follow\",\"hsts\":{\"max_age\":null,\"include_subdomains\":false,\"preload\":false}},\"firewall\":{\"bot_categories\":[],\"rate_limit\":{\"level\":null,\"per_minute\":null,\"4xx\":false,\"429\":false},\"under_attack_mode_started_at\":null,\"block_path\":true},\"content_converter\":false},\"created_at\":\"2026-03-24T05:25:16.000000Z\"},\"links\":{\"self\":{\"href\":\"https:\\\/\\\/cloud.laravel.com\\\/api\\\/environments\\\/env-a15fd671-0b6a-401a-84bf-14105ce69023\"}}}]}",
     "context": []
 }

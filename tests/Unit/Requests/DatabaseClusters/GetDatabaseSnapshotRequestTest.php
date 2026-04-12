@@ -26,6 +26,14 @@ it('has the correct HTTP method', function () {
     expect($request->getMethod())->toBe(Method::GET);
 });
 
+it('includes relationships in default query', function () {
+    $request = new GetDatabaseSnapshotRequest('snap-123');
+
+    expect($request->query()->all())->toBe([
+        'include' => 'database',
+    ]);
+});
+
 it('retrieves a database snapshot and returns DatabaseSnapshotData', function () {
     Saloon::fake([
         CreateDatabaseClusterRequest::class => new LaravelCloudFixture('database-clusters/create-mysql'),

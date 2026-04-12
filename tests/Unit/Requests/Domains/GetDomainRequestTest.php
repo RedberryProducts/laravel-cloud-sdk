@@ -22,6 +22,14 @@ it('has the correct HTTP method', function () {
     expect($request->getMethod())->toBe(Method::GET);
 });
 
+it('includes relationships in default query', function () {
+    $request = new GetDomainRequest('domain-123');
+
+    expect($request->query()->all())->toBe([
+        'include' => 'environment',
+    ]);
+});
+
 it('gets a domain and returns DomainData', function () {
     Saloon::fake([
         ListApplicationsRequest::class => new LaravelCloudFixture('applications/list'),

@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\LazyCollection;
+use Redberry\LaravelCloudSdk\Data\DatabaseClusters\DatabaseClusterData;
 use Redberry\LaravelCloudSdk\Data\Databases\CreateDatabaseData;
 use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
 use Redberry\LaravelCloudSdk\LaravelCloud;
 use Redberry\LaravelCloudSdk\Requests\Databases\CreateDatabaseRequest;
 use Redberry\LaravelCloudSdk\Requests\Databases\DeleteDatabaseRequest;
@@ -19,7 +21,13 @@ it('lists databases for a cluster', function () {
     $result = (new LaravelCloud('token'))->databases('red-paper-65989343');
 
     expect($result)->toBeInstanceOf(LazyCollection::class);
-    expect($result->first())->toBeInstanceOf(DatabaseData::class);
+
+    $first = $result->first();
+    expect($first)->toBeInstanceOf(DatabaseData::class);
+    expect($first->databaseCluster)->toBeInstanceOf(DatabaseClusterData::class);
+    expect($first->environments)->toBeArray();
+    expect($first->environments)->each->toBeInstanceOf(EnvironmentData::class);
+
     Saloon::assertSent(ListDatabasesRequest::class);
 });
 
@@ -34,6 +42,7 @@ it('retrieves a single database by id', function () {
     expect($result)->toBeInstanceOf(DatabaseData::class);
     expect($result->id)->toBe('47336204');
     expect($result->name)->toBe('main');
+    expect($result->databaseCluster)->toBeInstanceOf(DatabaseClusterData::class);
 });
 
 it('creates a database with a name', function () {
