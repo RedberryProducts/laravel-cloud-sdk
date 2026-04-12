@@ -7,6 +7,11 @@
 
 A fluent, expressive PHP SDK for the [Laravel Cloud](https://cloud.laravel.com) API. Manage your applications, environments, databases, caches, object storage, and more - directly from your Laravel application.
 
+## Requirements
+
+- PHP 8.2+
+- Laravel 11+
+
 ## Installation
 
 You may install the Laravel Cloud SDK via Composer:
@@ -31,7 +36,7 @@ This will create a `config/laravel-cloud.php` configuration file. You should add
 LARAVEL_CLOUD_TOKEN=your-api-token
 ```
 
-You may generate an API token from your [Laravel Cloud account settings](https://cloud.laravel.com).
+You may generate an API token from your Laravel Cloud account settings.
 
 ## Usage
 
@@ -139,6 +144,37 @@ $environments->each(function (EnvironmentData $environment) {
 
 Each resource section below includes a **Response** toggle documenting all available data object properties.
 
+### Relationships
+
+When you retrieve resources - whether a single resource or a list - the SDK automatically loads their related resources. Related data is available as typed properties directly on the response object, with no extra API calls needed:
+
+```php
+$environment = LaravelCloud::environment($environmentId);
+
+$environment->application;          // ApplicationData
+$environment->instances;            // InstanceData[]
+$environment->currentDeployment;    // ?DeploymentData
+$environment->database;             // ?DatabaseData
+$environment->cache;                // ?CacheData
+
+// Relationships are also loaded on list results
+$environments = LaravelCloud::environments($applicationId);
+
+$environments->each(function (EnvironmentData $env) {
+    echo $env->application->name;           // loaded automatically
+    echo count($env->instances) . ' instances';
+});
+
+$application = LaravelCloud::application($applicationId);
+
+$application->organization;         // ?OrganizationData
+$application->environments;         // EnvironmentData[]
+```
+
+Singular relationships return the related data object or `null` if not set. Array relationships return an array of data objects (empty array if none exist).
+
+Each resource section below documents available relationship properties in its **Response** toggle.
+
 ### Using Data Objects
 
 Every create and update method has a corresponding `*With` variant that accepts a data object directly. This is useful when you want to build the payload programmatically or reuse it across calls:
@@ -155,6 +191,34 @@ $application = LaravelCloud::createApplicationWith(
     )
 );
 ```
+
+## About Redberry
+
+This package is built and maintained by [Redberry](https://redberry.international), one of the few Official Premier Laravel Partner agencies worldwide. With 250+ Laravel projects shipped across 20+ countries, a 200-person team, and over a decade in the Laravel ecosystem, Redberry has helped startups, SMEs, and publicly traded enterprises in regulated industries build SaaS platforms, custom web applications, APIs, and more. [Learn about our Laravel development services](https://redberry.international/laravel-development/).
+
+## Table of Contents
+
+- [Applications](#applications)
+- [Environments](#environments)
+- [Deployments](#deployments)
+- [Instances](#instances)
+- [Background Processes](#background-processes)
+- [Commands](#commands)
+- [Domains](#domains)
+- [Database Clusters](#database-clusters)
+- [Database Snapshots](#database-snapshots)
+- [Databases](#databases)
+- [Caches](#caches)
+- [Object Storage Buckets](#object-storage-buckets)
+- [Bucket Keys](#bucket-keys)
+- [Websocket Clusters](#websocket-clusters)
+- [Websocket Applications](#websocket-applications)
+- [Dedicated Clusters](#dedicated-clusters)
+- [Organization](#organization)
+- [Regions](#regions)
+- [IP Addresses](#ip-addresses)
+- [Error Handling](#error-handling)
+- [Testing](#testing)
 
 ## Applications
 
@@ -250,6 +314,9 @@ LaravelCloud::deleteApplicationAvatar($applicationId);
 | `avatarUrl` | `?string` | URL of the application avatar. |
 | `repository` | `?ApplicationRepositoryData` | Repository info: `fullName` (string), `defaultBranch` (string). |
 | `createdAt` | `?CarbonImmutable` | When the application was created. |
+| `organization` | `?OrganizationData` | The parent organization. |
+| `environments` | `EnvironmentData[]` | All environments belonging to this application. |
+| `defaultEnvironment` | `?EnvironmentData` | The default environment. |
 
 </details>
 
@@ -317,7 +384,7 @@ LaravelCloud::deleteEnvironment($environmentId);
 
 ### Environment Variables
 
-You may set environment variables using the `Append` method (add or update specific keys) or the `Set` method (replace all variables entirely). Each variable is an array with `key` and `value` entries:
+You may set environment variables using the `EnvironmentVariableMethod::Append` strategy (add or update specific keys) or the `EnvironmentVariableMethod::Set` strategy (replace all variables entirely). Each variable is an array with `key` and `value` entries:
 
 ```php
 use Redberry\LaravelCloudSdk\Enums\EnvironmentVariableMethod;
@@ -443,6 +510,16 @@ Log results are automatically paginated using cursor-based pagination and return
 | `environmentVariables` | `EnvironmentVariableData[]` | Array of environment variables. Each has `key` (string) and `value` (string). |
 | `networkSettings` | `NetworkSettingsData` | Network configuration: `cacheStrategy` (string), `responseHeadersFrame` (string), `responseHeadersContentType` (string), `responseHeadersRobotsTag` (string), `responseHeadersHsts` (HstsData), `firewallRateLimitLevel` (?string), `firewallUnderAttackMode` (bool). |
 | `createdAt` | `?CarbonImmutable` | When the environment was created. |
+| `application` | `?ApplicationData` | The parent application. |
+| `branch` | `?BranchData` | The Git branch. Has `id` and `name` properties. |
+| `deployments` | `DeploymentData[]` | All deployments for this environment. |
+| `currentDeployment` | `?DeploymentData` | The currently active deployment. |
+| `primaryDomain` | `?DomainData` | The primary domain. |
+| `instances` | `InstanceData[]` | All compute instances. |
+| `database` | `?DatabaseData` | The attached database. |
+| `cache` | `?CacheData` | The attached cache. |
+| `buckets` | `BucketData[]` | Attached object storage buckets. |
+| `websocketApplication` | `?WebsocketApplicationData` | The attached websocket application. |
 
 </details>
 
@@ -507,6 +584,8 @@ foreach ($logs->deploy->steps as $step) {
 | `startedAt` | `?CarbonImmutable` | When the deployment started. |
 | `finishedAt` | `?CarbonImmutable` | When the deployment finished. |
 | `createdAt` | `?CarbonImmutable` | When the deployment was created. |
+| `environment` | `?EnvironmentData` | The parent environment. |
+| `initiator` | `?UserData` | The user who initiated the deployment. Has `id` and `name` properties. |
 
 </details>
 
@@ -618,8 +697,9 @@ $sizes = LaravelCloud::instanceSizes();
 | `usesScheduler` | `bool` | Whether the task scheduler runs on this instance. |
 | `scalingCpuThresholdPercentage` | `?int` | CPU threshold for scaling. |
 | `scalingMemoryThresholdPercentage` | `?int` | Memory threshold for scaling. |
-| `backgroundProcesses` | `array` | Background processes attached to this instance. |
+| `backgroundProcesses` | `BackgroundProcessData[]` | Background processes attached to this instance. |
 | `createdAt` | `?CarbonImmutable` | When the instance was created. |
+| `environment` | `?EnvironmentData` | The parent environment. |
 
 </details>
 
@@ -732,6 +812,7 @@ LaravelCloud::deleteBackgroundProcess($processId);
 | `strategyType` | `string\|DaemonStrategyType` | Scaling strategy: `none`, `growth_rate`, or `queue_size`. |
 | `strategyThreshold` | `?int` | The threshold for the scaling strategy. |
 | `createdAt` | `?CarbonImmutable` | When the process was created. |
+| `instance` | `?InstanceData` | The parent instance. |
 
 </details>
 
@@ -771,6 +852,9 @@ $command = LaravelCloud::runCommand($environmentId, command: 'php artisan migrat
 | `startedAt` | `?CarbonImmutable` | When the command started executing. |
 | `finishedAt` | `?CarbonImmutable` | When the command finished. |
 | `createdAt` | `?CarbonImmutable` | When the command was created. |
+| `environment` | `?EnvironmentData` | The parent environment. |
+| `deployment` | `?DeploymentData` | The associated deployment. |
+| `initiator` | `?UserData` | The user who ran the command. Has `id` and `name` properties. |
 
 </details>
 
@@ -867,6 +951,7 @@ LaravelCloud::deleteDomain($domainId);
 | `dnsRecords` | `array` | DNS records that need to be configured. |
 | `lastVerifiedAt` | `?CarbonImmutable` | When the domain was last verified. |
 | `createdAt` | `?CarbonImmutable` | When the domain was created. |
+| `environment` | `?EnvironmentData` | The parent environment. |
 
 </details>
 
@@ -959,11 +1044,11 @@ $types = LaravelCloud::databaseTypes();
 | `config` | `NeonServerlessPostgresConfigData\|LaravelMysqlConfigData\|AwsRdsConfigData` | Yes | Engine-specific configuration object. Must match the selected `type`. See below. |
 | `clusterId` | `?int` | No | Optional cluster placement hint. |
 
-**`LaravelMysqlConfigData`** — `size` (string\|DatabaseClusterSize, required), `storage` (int, required), `isPublic` (bool, required), `usesScheduledSnapshots` (bool, required), `retentionDays` (int, required), `maintenanceWindow` (?string).
+**`LaravelMysqlConfigData`** - `size` (string\|DatabaseClusterSize, required), `storage` (int, required), `isPublic` (bool, required), `usesScheduledSnapshots` (bool, required), `retentionDays` (int, required), `maintenanceWindow` (?string).
 
-**`NeonServerlessPostgresConfigData`** — `cuMin` (float\|NeonServerlessPostgresComputeUnit, required), `cuMax` (float\|NeonServerlessPostgresComputeUnit, required), `suspendSeconds` (int, required), `retentionDays` (int, required).
+**`NeonServerlessPostgresConfigData`** - `cuMin` (float\|NeonServerlessPostgresComputeUnit, required), `cuMax` (float\|NeonServerlessPostgresComputeUnit, required), `suspendSeconds` (int, required), `retentionDays` (int, required).
 
-**`AwsRdsConfigData`** — `size` (string\|DatabaseClusterSize, required), `storage` (int, required), `isPublic` (bool, required), `usesPitr` (bool, required), `retentionDays` (int, required), `deploymentOption` (string\|DeploymentOption, required), `maintenanceWindow` (?string), `readReplicas` (?int).
+**`AwsRdsConfigData`** - `size` (string\|DatabaseClusterSize, required), `storage` (int, required), `isPublic` (bool, required), `usesPitr` (bool, required), `retentionDays` (int, required), `deploymentOption` (string\|DeploymentOption, required), `maintenanceWindow` (?string), `readReplicas` (?int).
 
 </details>
 
@@ -989,6 +1074,7 @@ $types = LaravelCloud::databaseTypes();
 | `config` | `NeonServerlessPostgresConfigData\|LaravelMysqlConfigData\|AwsRdsConfigData` | Engine-specific configuration. See [createDatabaseCluster](#creating-a-database-cluster) for field details. |
 | `connection` | `DatabaseConnectionData` | Connection details: `hostname` (string), `port` (int), `protocol` (string\|DatabaseProtocol: `mysql` or `postgres`), `driver` (string\|DatabaseDriver: `mysql` or `pgsql`), `username` (string), `password` (string). |
 | `createdAt` | `?CarbonImmutable` | When the cluster was created. |
+| `databases` | `DatabaseData[]` | All databases within this cluster. |
 
 </details>
 
@@ -1077,6 +1163,7 @@ LaravelCloud::deleteDatabaseSnapshot($snapshotId);
 | `pitrEndsAt` | `?CarbonImmutable` | When the PITR window expires. |
 | `completedAt` | `?CarbonImmutable` | When the snapshot completed. |
 | `createdAt` | `?CarbonImmutable` | When the snapshot was created. |
+| `databaseCluster` | `?DatabaseClusterData` | The parent database cluster. |
 
 </details>
 
@@ -1118,6 +1205,8 @@ LaravelCloud::deleteDatabase($clusterId, $databaseId);
 | `id` | `string` | The database ID. |
 | `name` | `string` | The database name. |
 | `createdAt` | `?CarbonImmutable` | When the database was created. |
+| `databaseCluster` | `?DatabaseClusterData` | The parent database cluster. |
+| `environments` | `EnvironmentData[]` | Environments attached to this database. |
 
 </details>
 
@@ -1320,6 +1409,7 @@ LaravelCloud::deleteBucket($bucketId);
 | `url` | `?string` | The public URL for public buckets. |
 | `allowedOrigins` | `?array` | CORS allowed origins. |
 | `createdAt` | `?CarbonImmutable` | When the bucket was created. |
+| `keys` | `BucketKeyData[]` | All access keys for this bucket. |
 
 </details>
 
@@ -1371,6 +1461,7 @@ LaravelCloud::deleteBucketKey($keyId);
 | `accessKeyId` | `?string` | The S3-compatible access key ID. Only returned on creation. |
 | `accessKeySecret` | `?string` | The S3-compatible secret key. Only returned on creation. |
 | `createdAt` | `?CarbonImmutable` | When the key was created. |
+| `bucket` | `?BucketData` | The parent bucket. |
 
 </details>
 
@@ -1463,6 +1554,7 @@ $metrics = LaravelCloud::websocketClusterMetrics($clusterId, period: MetricPerio
 | `connectionDistributionStrategy` | `string\|WebsocketConnectionDistributionStrategy` | How connections are distributed: `evenly` or `custom`. |
 | `hostname` | `string` | The WebSocket server hostname for client connections. |
 | `createdAt` | `?CarbonImmutable` | When the cluster was created. |
+| `applications` | `WebsocketApplicationData[]` | All applications within this cluster. |
 
 </details>
 
@@ -1553,6 +1645,7 @@ $metrics = LaravelCloud::websocketApplicationMetrics($applicationId, period: Met
 | `key` | `string` | The Reverb app key for client-side configuration. |
 | `secret` | `string` | The Reverb app secret for server-side verification. |
 | `createdAt` | `?CarbonImmutable` | When the application was created. |
+| `websocketCluster` | `?WebsocketClusterData` | The parent websocket cluster. |
 
 </details>
 
@@ -1697,7 +1790,9 @@ The SDK is built on [Saloon](https://docs.saloon.dev), which provides a built-in
 
 ### Faking Responses
 
-Use Saloon's `fake` method to intercept requests and return predefined responses:
+The Laravel Cloud API follows the [JSON:API](https://jsonapi.org) specification. Each resource is returned with an `id`, `type`, and `attributes` object inside `data`. Related resources are sideloaded in a top-level `included` array and linked via the `relationships` object.
+
+The SDK handles all of this automatically - you just need to structure your mock responses to match. Here's a basic example without relationships:
 
 ```php
 use Redberry\LaravelCloudSdk\Requests\Applications\ListApplicationsRequest;
@@ -1721,6 +1816,7 @@ Saloon::fake([
                 ],
             ],
         ],
+        'included' => [],
     ], 200),
 ]);
 
@@ -1728,8 +1824,74 @@ $applications = LaravelCloud::applications();
 
 expect($applications)->toHaveCount(1);
 expect($applications->first()->name)->toBe('my-app');
+expect($applications->first()->organization)->toBeNull(); // no included data
 
 Saloon::assertSent(ListApplicationsRequest::class);
+```
+
+### Faking Responses with Relationships
+
+To test relationship hydration, add a `relationships` object to each resource in `data` and provide the related resources in the `included` array. The SDK will automatically match them by `type` and `id`:
+
+```php
+use Redberry\LaravelCloudSdk\Requests\Applications\GetApplicationRequest;
+use Saloon\Laravel\Facades\Saloon;
+use Saloon\Http\Faking\MockResponse;
+
+Saloon::fake([
+    GetApplicationRequest::class => MockResponse::make([
+        'data' => [
+            'id' => 'app-123',
+            'type' => 'applications',
+            'attributes' => [
+                'name' => 'my-app',
+                'slug' => 'my-app',
+                'region' => 'us-east-1',
+                'slack_channel' => null,
+                'avatar_url' => null,
+                'repository' => null,
+                'created_at' => '2025-01-01T00:00:00Z',
+            ],
+            'relationships' => [
+                'organization' => [
+                    'data' => ['type' => 'organizations', 'id' => 'org-456'],
+                ],
+                'environments' => [
+                    'data' => [
+                        ['type' => 'environments', 'id' => 'env-789'],
+                    ],
+                ],
+            ],
+        ],
+        'included' => [
+            [
+                'id' => 'org-456',
+                'type' => 'organizations',
+                'attributes' => [
+                    'name' => 'My Team',
+                    'slug' => 'my-team',
+                ],
+            ],
+            [
+                'id' => 'env-789',
+                'type' => 'environments',
+                'attributes' => [
+                    'name' => 'production',
+                    'slug' => 'production',
+                    'status' => 'running',
+                    // ... other attributes
+                ],
+            ],
+        ],
+    ], 200),
+]);
+
+$app = LaravelCloud::application('app-123');
+
+expect($app->name)->toBe('my-app');
+expect($app->organization->name)->toBe('My Team');
+expect($app->environments)->toHaveCount(1);
+expect($app->environments[0]->name)->toBe('production');
 ```
 
 ### Preventing Stray Requests
@@ -1737,7 +1899,7 @@ Saloon::assertSent(ListApplicationsRequest::class);
 To ensure no real API calls leak through during your test suite, you may call `preventStrayRequests`. Any unfaked request will throw an exception:
 
 ```php
-// In your Pest.php or TestCase setUp
+// In your Pest.php
 Saloon::preventStrayRequests();
 ```
 
@@ -1755,10 +1917,6 @@ LaravelCloud::application('app-nonexistent'); // throws RequestException
 ```
 
 For more details on request faking, assertions, and recording, refer to the [Saloon testing documentation](https://docs.saloon.dev).
-
-## About Redberry
-
-This package is built and maintained by [Redberry](https://redberry.international/laravel-development/), one of the few Official Premier Laravel Partner agencies worldwide. With 250+ Laravel projects shipped across 20+ countries, a 200-person team, and over a decade in the Laravel ecosystem, Redberry delivers everything from SaaS platforms and custom web applications to APIs, admin panels, and mobile backends.
 
 ## Changelog
 
