@@ -4,6 +4,8 @@ use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
 use Redberry\LaravelCloudSdk\Data\Applications\CreateApplicationData;
 use Redberry\LaravelCloudSdk\Data\Applications\UpdateApplicationData;
+use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Meta\OrganizationData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\SourceControlProvider;
 use Redberry\LaravelCloudSdk\LaravelCloud;
@@ -25,7 +27,12 @@ it('lists applications', function () {
     $result = (new LaravelCloud('token'))->applications();
 
     expect($result)->toBeInstanceOf(LazyCollection::class);
-    expect($result->first())->toBeInstanceOf(ApplicationData::class);
+    $first = $result->first();
+    expect($first)->toBeInstanceOf(ApplicationData::class);
+    expect($first->organization)->toBeInstanceOf(OrganizationData::class);
+    expect($first->environments)->toHaveCount(2);
+    expect($first->environments[0])->toBeInstanceOf(EnvironmentData::class);
+    expect($first->defaultEnvironment)->toBeInstanceOf(EnvironmentData::class);
     Saloon::assertSent(ListApplicationsRequest::class);
 });
 
@@ -34,13 +41,17 @@ it('retrieves a single application by id', function () {
         GetApplicationRequest::class => new LaravelCloudFixture('applications/get'),
     ]);
 
-    $result = (new LaravelCloud('token'))->application('app-a14fe54f-42b2-431c-9b3a-876900975139');
+    $result = (new LaravelCloud('token'))->application('app-a15fd66f-e5b4-4f7c-ab47-e49a303d9bea');
 
     Saloon::assertSent(GetApplicationRequest::class);
     expect($result)->toBeInstanceOf(ApplicationData::class);
-    expect($result->id)->toBe('app-a14fe54f-42b2-431c-9b3a-876900975139');
-    expect($result->name)->toBe('updated-app');
+    expect($result->id)->toBe('app-a15fd66f-e5b4-4f7c-ab47-e49a303d9bea');
+    expect($result->name)->toBe('test-app');
     expect($result->region)->toBe(CloudRegion::UsEast1);
+    expect($result->organization)->toBeInstanceOf(OrganizationData::class);
+    expect($result->environments)->toHaveCount(2);
+    expect($result->environments[0])->toBeInstanceOf(EnvironmentData::class);
+    expect($result->defaultEnvironment)->toBeInstanceOf(EnvironmentData::class);
 });
 
 it('creates an application with named params', function () {

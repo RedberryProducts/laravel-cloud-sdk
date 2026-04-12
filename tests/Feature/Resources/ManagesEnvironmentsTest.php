@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\LazyCollection;
+use Redberry\LaravelCloudSdk\Data\Applications\ApplicationData;
+use Redberry\LaravelCloudSdk\Data\Branches\BranchData;
+use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
+use Redberry\LaravelCloudSdk\Data\Caches\CacheData;
+use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Redberry\LaravelCloudSdk\Data\Deployments\DeploymentData;
 use Redberry\LaravelCloudSdk\Data\Environments\CreateEnvironmentData;
 use Redberry\LaravelCloudSdk\Data\Environments\DeleteEnvironmentVariablesData;
@@ -10,6 +15,8 @@ use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentMetricsData;
 use Redberry\LaravelCloudSdk\Data\Environments\EnvironmentVariableData;
 use Redberry\LaravelCloudSdk\Data\Environments\SetEnvironmentVariablesData;
 use Redberry\LaravelCloudSdk\Data\Environments\UpdateEnvironmentData;
+use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Enums\EnvironmentVariableMethod;
 use Redberry\LaravelCloudSdk\Enums\PhpVersion;
 use Redberry\LaravelCloudSdk\LaravelCloud;
@@ -32,10 +39,19 @@ it('lists environments for an application', function () {
         ListEnvironmentsRequest::class => new LaravelCloudFixture('environments/list'),
     ]);
 
-    $result = (new LaravelCloud('token'))->environments('app-a14fe54f-42b2-431c-9b3a-876900975139');
+    $result = (new LaravelCloud('token'))->environments('app-a15fd66f-e5b4-4f7c-ab47-e49a303d9bea');
 
     expect($result)->toBeInstanceOf(LazyCollection::class);
-    expect($result->first())->toBeInstanceOf(EnvironmentData::class);
+    $first = $result->first();
+    expect($first)->toBeInstanceOf(EnvironmentData::class);
+    expect($first->application)->toBeInstanceOf(ApplicationData::class);
+    expect($first->branch)->toBeInstanceOf(BranchData::class);
+    expect($first->deployments)->toHaveCount(5);
+    expect($first->instances)->toHaveCount(2);
+    expect($first->database)->toBeInstanceOf(DatabaseData::class);
+    expect($first->cache)->toBeInstanceOf(CacheData::class);
+    expect($first->buckets)->toHaveCount(1);
+    expect($first->websocketApplication)->toBeInstanceOf(WebsocketApplicationData::class);
     Saloon::assertSent(ListEnvironmentsRequest::class);
 });
 
@@ -44,12 +60,25 @@ it('retrieves a single environment by id', function () {
         GetEnvironmentRequest::class => new LaravelCloudFixture('environments/get'),
     ]);
 
-    $result = (new LaravelCloud('token'))->environment('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
+    $result = (new LaravelCloud('token'))->environment('env-a15fd671-0b6a-401a-84bf-14105ce69023');
 
     Saloon::assertSent(GetEnvironmentRequest::class);
     expect($result)->toBeInstanceOf(EnvironmentData::class);
-    expect($result->id)->toBe('env-a14fe550-4e39-4ff2-8016-a20e4d32a996');
-    expect($result->name)->toBe('updated-env');
+    expect($result->id)->toBe('env-a15fd671-0b6a-401a-84bf-14105ce69023');
+    expect($result->name)->toBe('main');
+    expect($result->application)->toBeInstanceOf(ApplicationData::class);
+    expect($result->branch)->toBeInstanceOf(BranchData::class);
+    expect($result->deployments)->toHaveCount(5);
+    expect($result->deployments[0])->toBeInstanceOf(DeploymentData::class);
+    expect($result->currentDeployment)->toBeInstanceOf(DeploymentData::class);
+    expect($result->primaryDomain)->toBeNull();
+    expect($result->instances)->toHaveCount(2);
+    expect($result->instances[0])->toBeInstanceOf(InstanceData::class);
+    expect($result->database)->toBeInstanceOf(DatabaseData::class);
+    expect($result->cache)->toBeInstanceOf(CacheData::class);
+    expect($result->buckets)->toHaveCount(1);
+    expect($result->buckets[0])->toBeInstanceOf(BucketData::class);
+    expect($result->websocketApplication)->toBeInstanceOf(WebsocketApplicationData::class);
 });
 
 it('creates an environment with named params', function () {
