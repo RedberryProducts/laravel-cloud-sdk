@@ -26,6 +26,14 @@ it('implements Paginatable', function () {
     expect($request)->toBeInstanceOf(Paginatable::class);
 });
 
+it('includes relationships in default query', function () {
+    $request = new ListBucketsRequest;
+
+    expect($request->query()->all())->toBe([
+        'include' => 'keys',
+    ]);
+});
+
 it('lists buckets and returns BucketData collection', function () {
     Saloon::fake([
         ListBucketsRequest::class => new LaravelCloudFixture('buckets/list'),

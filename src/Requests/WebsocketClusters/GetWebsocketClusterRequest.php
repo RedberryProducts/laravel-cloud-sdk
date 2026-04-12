@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\WebsocketClusters;
 
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -18,10 +19,17 @@ class GetWebsocketClusterRequest extends Request
         return "/websocket-servers/{$this->clusterId}";
     }
 
+    protected function defaultQuery(): array
+    {
+        return ['include' => 'applications'];
+    }
+
     public function createDtoFromResponse(Response $response): WebsocketClusterData
     {
-        $data = $response->json('data');
-
-        return WebsocketClusterData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            WebsocketClusterData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

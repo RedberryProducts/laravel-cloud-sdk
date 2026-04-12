@@ -4,6 +4,7 @@ namespace Redberry\LaravelCloudSdk\Requests\Buckets;
 
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketKeyData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -33,8 +34,10 @@ class CreateBucketKeyRequest extends Request implements HasBody
 
     public function createDtoFromResponse(Response $response): BucketKeyData
     {
-        $data = $response->json('data');
-
-        return BucketKeyData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            BucketKeyData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

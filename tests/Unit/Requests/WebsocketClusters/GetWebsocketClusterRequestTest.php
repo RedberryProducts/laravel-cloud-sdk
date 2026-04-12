@@ -20,6 +20,14 @@ it('has the correct HTTP method', function () {
     expect($request->getMethod())->toBe(Method::GET);
 });
 
+it('includes relationships in default query', function () {
+    $request = new GetWebsocketClusterRequest('ws-123');
+
+    expect($request->query()->all())->toBe([
+        'include' => 'applications',
+    ]);
+});
+
 it('gets a websocket cluster and returns WebsocketClusterData', function () {
     Saloon::fake([
         ListWebsocketClustersRequest::class => new LaravelCloudFixture('websocket-clusters/list'),

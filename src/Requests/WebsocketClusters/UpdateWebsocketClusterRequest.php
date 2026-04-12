@@ -4,6 +4,7 @@ namespace Redberry\LaravelCloudSdk\Requests\WebsocketClusters;
 
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\UpdateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -33,8 +34,10 @@ class UpdateWebsocketClusterRequest extends Request implements HasBody
 
     public function createDtoFromResponse(Response $response): WebsocketClusterData
     {
-        $data = $response->json('data');
-
-        return WebsocketClusterData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            WebsocketClusterData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

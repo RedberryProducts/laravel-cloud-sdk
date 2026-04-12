@@ -2,6 +2,7 @@
 
 use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketData;
+use Redberry\LaravelCloudSdk\Data\Buckets\BucketKeyData;
 use Redberry\LaravelCloudSdk\Data\Buckets\CreateBucketData;
 use Redberry\LaravelCloudSdk\Data\Buckets\UpdateBucketData;
 use Redberry\LaravelCloudSdk\Enums\BucketJurisdiction;
@@ -24,7 +25,11 @@ it('lists buckets', function () {
     $result = (new LaravelCloud('token'))->buckets();
 
     expect($result)->toBeInstanceOf(LazyCollection::class);
-    expect($result->first())->toBeInstanceOf(BucketData::class);
+
+    $first = $result->first();
+    expect($first)->toBeInstanceOf(BucketData::class);
+    expect($first->keys)->toHaveCount(2);
+    expect($first->keys)->each->toBeInstanceOf(BucketKeyData::class);
     Saloon::assertSent(ListBucketsRequest::class);
 });
 
@@ -38,7 +43,9 @@ it('retrieves a single bucket by id', function () {
     Saloon::assertSent(GetBucketRequest::class);
     expect($result)->toBeInstanceOf(BucketData::class);
     expect($result->id)->toBe('fls-a14e19d6-8db3-47fe-96fb-343e55774021');
-    expect($result->name)->toBe('test-bucket');
+    expect($result->name)->toBe('updated-bucket');
+    expect($result->keys)->toHaveCount(2);
+    expect($result->keys)->each->toBeInstanceOf(BucketKeyData::class);
 });
 
 it('creates a bucket with named params', function () {

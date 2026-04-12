@@ -20,6 +20,14 @@ it('has the correct HTTP method', function () {
     expect($request->getMethod())->toBe(Method::GET);
 });
 
+it('includes relationships in default query', function () {
+    $request = new GetBucketRequest('bucket-123');
+
+    expect($request->query()->all())->toBe([
+        'include' => 'keys',
+    ]);
+});
+
 it('gets a bucket and returns BucketData', function () {
     Saloon::fake([
         ListBucketsRequest::class => new LaravelCloudFixture('buckets/list'),

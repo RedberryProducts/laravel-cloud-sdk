@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\Buckets;
 
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketKeyData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -18,10 +19,17 @@ class GetBucketKeyRequest extends Request
         return "/bucket-keys/{$this->keyId}";
     }
 
+    protected function defaultQuery(): array
+    {
+        return ['include' => 'filesystem'];
+    }
+
     public function createDtoFromResponse(Response $response): BucketKeyData
     {
-        $data = $response->json('data');
-
-        return BucketKeyData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            BucketKeyData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

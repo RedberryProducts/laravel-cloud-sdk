@@ -27,6 +27,14 @@ it('implements Paginatable', function () {
     expect($request)->toBeInstanceOf(Paginatable::class);
 });
 
+it('includes relationships in default query', function () {
+    $request = new ListWebsocketApplicationsRequest('cluster-123');
+
+    expect($request->query()->all())->toBe([
+        'include' => 'server',
+    ]);
+});
+
 it('lists websocket applications and returns WebsocketApplicationData collection', function () {
     Saloon::fake([
         ListWebsocketClustersRequest::class => new LaravelCloudFixture('websocket-clusters/list'),

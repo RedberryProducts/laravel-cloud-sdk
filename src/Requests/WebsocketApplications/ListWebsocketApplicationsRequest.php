@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\WebsocketApplications;
 
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -19,14 +20,20 @@ class ListWebsocketApplicationsRequest extends Request implements Paginatable
         return "/websocket-servers/{$this->clusterId}/applications";
     }
 
+    protected function defaultQuery(): array
+    {
+        return ['include' => 'server'];
+    }
+
     /**
      * @return WebsocketApplicationData[]
      */
     public function createDtoFromResponse(Response $response): array
     {
-        return array_map(
-            fn (array $item) => WebsocketApplicationData::fromResponse($item['attributes'], $item['id']),
-            $response->json('data')
+        return JsonApiHydrator::hydrateMany(
+            WebsocketApplicationData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
         );
     }
 }

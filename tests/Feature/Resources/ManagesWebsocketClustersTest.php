@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\LazyCollection;
+use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\CreateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\UpdateWebsocketClusterData;
 use Redberry\LaravelCloudSdk\Data\WebsocketClusters\WebsocketClusterData;
@@ -26,7 +27,11 @@ it('lists websocket clusters', function () {
     $result = (new LaravelCloud('token'))->websocketClusters();
 
     expect($result)->toBeInstanceOf(LazyCollection::class);
-    expect($result->first())->toBeInstanceOf(WebsocketClusterData::class);
+
+    $first = $result->first();
+    expect($first)->toBeInstanceOf(WebsocketClusterData::class);
+    expect($first->applications)->toHaveCount(1);
+    expect($first->applications)->each->toBeInstanceOf(WebsocketApplicationData::class);
     Saloon::assertSent(ListWebsocketClustersRequest::class);
 });
 
@@ -35,12 +40,13 @@ it('retrieves a single websocket cluster by id', function () {
         GetWebsocketClusterRequest::class => new LaravelCloudFixture('websocket-clusters/get'),
     ]);
 
-    $result = (new LaravelCloud('token'))->websocketCluster('ws-a14fcb1a-18a7-411d-9d82-456d3aa2c273');
+    $result = (new LaravelCloud('token'))->websocketCluster('ws-a17ede9f-e861-47e3-ae13-000ceb6f467e');
 
     Saloon::assertSent(GetWebsocketClusterRequest::class);
     expect($result)->toBeInstanceOf(WebsocketClusterData::class);
-    expect($result->id)->toBe('ws-a14fcb1a-18a7-411d-9d82-456d3aa2c273');
-    expect($result->name)->toBe('test-ws-cluster');
+    expect($result->id)->toBe('ws-a17ede9f-e861-47e3-ae13-000ceb6f467e');
+    expect($result->applications)->toHaveCount(1);
+    expect($result->applications)->each->toBeInstanceOf(WebsocketApplicationData::class);
 });
 
 it('creates a websocket cluster with named params', function () {
@@ -99,7 +105,7 @@ it('updates a websocket cluster with named params', function () {
     ]);
 
     $result = (new LaravelCloud('token'))->updateWebsocketCluster(
-        'ws-a14fcb1a-18a7-411d-9d82-456d3aa2c273',
+        'ws-a17ede9f-e861-47e3-ae13-000ceb6f467e',
         name: 'test-ws-cluster',
     );
 
@@ -113,7 +119,7 @@ it('updates a websocket cluster via updateWebsocketClusterWith()', function () {
     ]);
 
     $result = (new LaravelCloud('token'))->updateWebsocketClusterWith(
-        'ws-a14fcb1a-18a7-411d-9d82-456d3aa2c273',
+        'ws-a17ede9f-e861-47e3-ae13-000ceb6f467e',
         new UpdateWebsocketClusterData(name: 'test-ws-cluster'),
     );
 
@@ -137,7 +143,7 @@ it('deletes a websocket cluster', function () {
         DeleteWebsocketClusterRequest::class => new LaravelCloudFixture('websocket-clusters/delete'),
     ]);
 
-    (new LaravelCloud('token'))->deleteWebsocketCluster('ws-a14fcb1a-18a7-411d-9d82-456d3aa2c273');
+    (new LaravelCloud('token'))->deleteWebsocketCluster('ws-a17ede9f-e861-47e3-ae13-000ceb6f467e');
 
     Saloon::assertSent(DeleteWebsocketClusterRequest::class);
 });

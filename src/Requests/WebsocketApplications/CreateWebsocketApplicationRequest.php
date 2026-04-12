@@ -4,6 +4,7 @@ namespace Redberry\LaravelCloudSdk\Requests\WebsocketApplications;
 
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\CreateWebsocketApplicationData;
 use Redberry\LaravelCloudSdk\Data\WebsocketApplications\WebsocketApplicationData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -33,8 +34,10 @@ class CreateWebsocketApplicationRequest extends Request implements HasBody
 
     public function createDtoFromResponse(Response $response): WebsocketApplicationData
     {
-        $data = $response->json('data');
-
-        return WebsocketApplicationData::fromResponse($data['attributes'], $data['id']);
+        return JsonApiHydrator::hydrateOne(
+            WebsocketApplicationData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
+        );
     }
 }

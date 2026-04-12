@@ -3,6 +3,7 @@
 namespace Redberry\LaravelCloudSdk\Requests\Buckets;
 
 use Redberry\LaravelCloudSdk\Data\Buckets\BucketKeyData;
+use Redberry\LaravelCloudSdk\Support\JsonApiHydrator;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -19,14 +20,20 @@ class ListBucketKeysRequest extends Request implements Paginatable
         return "/buckets/{$this->bucketId}/keys";
     }
 
+    protected function defaultQuery(): array
+    {
+        return ['include' => 'filesystem'];
+    }
+
     /**
      * @return BucketKeyData[]
      */
     public function createDtoFromResponse(Response $response): array
     {
-        return array_map(
-            fn (array $item) => BucketKeyData::fromResponse($item['attributes'], $item['id']),
-            $response->json('data')
+        return JsonApiHydrator::hydrateMany(
+            BucketKeyData::class,
+            $response->json('data'),
+            $response->json('included') ?? [],
         );
     }
 }
