@@ -31,10 +31,10 @@ The package will automatically register its service provider.
 Publish the configuration file:
 
 ```bash
-php artisan vendor:publish --tag=laravel-cloud-config
+php artisan vendor:publish --tag=cloud-sdk-config
 ```
 
-This will create a `config/laravel-cloud.php` configuration file. You should add your Laravel Cloud API token to your `.env` file:
+This will create a `config/laravel-cloud-sdk.php` configuration file. You should add your Laravel Cloud API token to your `.env` file:
 
 ```env
 LARAVEL_CLOUD_TOKEN=your-api-token
