@@ -2,15 +2,19 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/redberry/laravel-cloud-sdk.svg?style=flat-square)](https://packagist.org/packages/redberry/laravel-cloud-sdk)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/RedberryProducts/laravel-cloud-sdk/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/RedberryProducts/laravel-cloud-sdk/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![Code Coverage](https://img.shields.io/codecov/c/github/RedberryProducts/laravel-cloud-sdk?style=flat-square&logo=codecov)](https://codecov.io/gh/RedberryProducts/laravel-cloud-sdk)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/RedberryProducts/laravel-cloud-sdk/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/RedberryProducts/laravel-cloud-sdk/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/redberry/laravel-cloud-sdk.svg?style=flat-square)](https://packagist.org/packages/redberry/laravel-cloud-sdk)
 
 A fluent, expressive PHP SDK for the [Laravel Cloud](https://cloud.laravel.com) API. Manage your applications, environments, databases, caches, object storage, and more - directly from your Laravel application.
 
+> This is a community-maintained SDK. It is not officially affiliated with, endorsed by, or supported by Laravel. "Laravel" and "Laravel Cloud" are trademarks of their respective owners.
+
 ## Requirements
 
-- PHP 8.2+
-- Laravel 11+
+| Package version | PHP            | Laravel              |
+|-----------------|----------------|----------------------|
+| 1.x             | 8.2, 8.3, 8.4  | 11.x, 12.x, 13.x     |
 
 ## Installation
 

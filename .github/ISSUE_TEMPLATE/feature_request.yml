@@ -1,0 +1,39 @@
+name: Feature Request
+description: Suggest an enhancement or new capability for the Package
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for taking the time to suggest a feature. Please share enough context for us to understand the problem and evaluate the proposal.
+    - type: textarea
+      id: problem
+      attributes:
+          label: Problem
+          description: What problem does this feature solve? Describe the use case, not the solution.
+          placeholder: When I try to do X, I have to work around Y because the SDK does not support Z.
+      validations:
+          required: true
+    - type: textarea
+      id: proposed-solution
+      attributes:
+          label: Proposed solution
+          description: How would you like the SDK to address this problem? Sketch an API shape or usage example if possible.
+          placeholder: LaravelCloud::resource()->newMethod(...)
+      validations:
+          required: true
+    - type: textarea
+      id: alternatives
+      attributes:
+          label: Alternatives considered
+          description: What workarounds or alternative designs have you considered? Why were they insufficient?
+      validations:
+          required: false
+    - type: textarea
+      id: notes
+      attributes:
+          label: Additional context
+          description: Links to Laravel Cloud API docs, related issues, or anything else that would help.
+      validations:
+          required: false
