@@ -18,3 +18,8 @@
 /UPGRADING.md       export-ignore
 /phpstan.neon.dist  export-ignore
 /phpstan-baseline.neon  export-ignore
+/.claude            export-ignore
+/CLAUDE.md          export-ignore
+/build              export-ignore
+/.env.example       export-ignore
+/.env               export-ignore
