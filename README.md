@@ -12,9 +12,9 @@ A fluent, expressive PHP SDK for the [Laravel Cloud](https://cloud.laravel.com) 
 
 ## Requirements
 
-| Package version | PHP            | Laravel              |
-|-----------------|----------------|----------------------|
-| 1.x             | 8.2, 8.3, 8.4  | 11.x, 12.x, 13.x     |
+| Package version | PHP       | Laravel              |
+|-----------------|-----------|----------------------|
+| 1.x             | 8.3, 8.4  | 11.x, 12.x, 13.x     |
 
 ## Installation
 
