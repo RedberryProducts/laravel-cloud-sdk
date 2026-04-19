@@ -2,21 +2,31 @@
     "name": "redberry/laravel-cloud-sdk",
     "description": "A fluent PHP SDK for the Laravel Cloud API",
     "keywords": [
-        "Redberry",
         "laravel",
-        "laravel-cloud-sdk"
+        "laravel-cloud",
+        "cloud",
+        "sdk",
+        "saloon",
+        "api",
+        "api-client",
+        "php-sdk"
     ],
     "homepage": "https://github.com/RedberryProducts/laravel-cloud-sdk",
+    "support": {
+        "issues": "https://github.com/RedberryProducts/laravel-cloud-sdk/issues",
+        "source": "https://github.com/RedberryProducts/laravel-cloud-sdk",
+        "docs": "https://github.com/RedberryProducts/laravel-cloud-sdk#readme"
+    },
     "license": "MIT",
     "authors": [
         {
             "name": "Gaga Darsalia",
-            "email": "gaga@redberry.ge",
-            "role": "Developer"
+            "email": "gaga@redberry.ge"
         }
     ],
     "require": {
         "php": "^8.2",
+        "ext-json": "*",
         "guzzlehttp/promises": "^2.0.3",
         "illuminate/support": "^11.0||^12.0||^13.0",
         "saloonphp/laravel-plugin": "^4.0",
@@ -36,7 +46,7 @@
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-deprecation-rules": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
-        "spatie/laravel-ray": "^1.35"
+        "spatie/laravel-ray": "^1.42"
     },
     "autoload": {
         "psr-4": {
@@ -72,7 +82,5 @@
                 "LaravelCloud": "Redberry\\LaravelCloudSdk\\Facades\\LaravelCloud"
             }
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
