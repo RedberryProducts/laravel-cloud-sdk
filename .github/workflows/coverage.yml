@@ -3,17 +3,7 @@ name: coverage
 on:
   push:
     branches: [main]
-    paths:
-      - '**.php'
-      - '.github/workflows/coverage.yml'
-      - 'phpunit.xml.dist'
-      - 'composer.json'
-  pull_request:
-    paths:
-      - '**.php'
-      - '.github/workflows/coverage.yml'
-      - 'phpunit.xml.dist'
-      - 'composer.json'
+  pull_request: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
