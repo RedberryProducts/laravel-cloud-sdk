@@ -11,6 +11,7 @@ arch('enums are backed enums')
 
 arch('data classes extend spatie data')
     ->expect('Redberry\LaravelCloudSdk\Data')
+    ->classes()
     ->toExtend('Spatie\LaravelData\Data');
 
 arch('requests extend saloon request')
