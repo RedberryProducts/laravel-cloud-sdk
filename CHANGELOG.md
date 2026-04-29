@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-cloud-sdk` will be documented in this file.
 
+## 1.1.0 - 2026-04-29
+
+- Input-side Data classes now round-trip through `Data::from($dto->toArray())`. Replaced the per-class `MapOutputName(SnakeCaseMapper)` attribute with `MapName(SnakeCaseMapper)` so snake_case payloads (e.g. when casting an Eloquent JSON column) reconstruct the original DTO.
+- `CreateDatabaseClusterData` and `DatabaseClusterData` now resolve their `config` union from the `type` discriminator via the new `ResolvesDatabaseClusterConfig` trait. Unknown database types fall back to the raw array instead of throwing, matching the SDK's existing soft-typing pattern for `string|EnumClass` unions. The `config` property type has been widened to include `array`.
+- `CreateDatabaseClusterData` exposes a `fromArray` magical creation method so Spatie's `Data::from()` invokes the discriminator dispatch automatically.
+
 ## 1.0.0 - 2026-04-20
 
 - Initial public release.
