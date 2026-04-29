@@ -5,11 +5,11 @@ namespace Redberry\LaravelCloudSdk\Data\Buckets;
 use Redberry\LaravelCloudSdk\Enums\BucketJurisdiction;
 use Redberry\LaravelCloudSdk\Enums\BucketVisibility;
 use Redberry\LaravelCloudSdk\Enums\KeyPermission;
-use Spatie\LaravelData\Attributes\MapOutputName;
+use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 
-#[MapOutputName(SnakeCaseMapper::class)]
+#[MapName(SnakeCaseMapper::class)]
 class CreateBucketData extends Data
 {
     /**

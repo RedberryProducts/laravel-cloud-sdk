@@ -3,12 +3,12 @@
 namespace Redberry\LaravelCloudSdk\Data\BackgroundProcesses;
 
 use Redberry\LaravelCloudSdk\Enums\DaemonType;
-use Spatie\LaravelData\Attributes\MapOutputName;
+use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 use Spatie\LaravelData\Optional;
 
-#[MapOutputName(SnakeCaseMapper::class)]
+#[MapName(SnakeCaseMapper::class)]
 class UpdateBackgroundProcessData extends Data
 {
     public function __construct(

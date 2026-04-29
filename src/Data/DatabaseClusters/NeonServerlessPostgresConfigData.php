@@ -4,12 +4,12 @@ namespace Redberry\LaravelCloudSdk\Data\DatabaseClusters;
 
 use Redberry\LaravelCloudSdk\Enums\NeonServerlessPostgresComputeUnit;
 use Redberry\LaravelCloudSdk\Transformers\FloatBackedEnumTransformer;
-use Spatie\LaravelData\Attributes\MapOutputName;
+use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Attributes\WithTransformer;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 
-#[MapOutputName(SnakeCaseMapper::class)]
+#[MapName(SnakeCaseMapper::class)]
 class NeonServerlessPostgresConfigData extends Data
 {
     public function __construct(

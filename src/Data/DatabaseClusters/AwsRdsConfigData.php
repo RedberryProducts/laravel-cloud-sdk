@@ -4,11 +4,11 @@ namespace Redberry\LaravelCloudSdk\Data\DatabaseClusters;
 
 use Redberry\LaravelCloudSdk\Enums\DatabaseClusterSize;
 use Redberry\LaravelCloudSdk\Enums\DeploymentOption;
-use Spatie\LaravelData\Attributes\MapOutputName;
+use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 
-#[MapOutputName(SnakeCaseMapper::class)]
+#[MapName(SnakeCaseMapper::class)]
 class AwsRdsConfigData extends Data
 {
     public function __construct(

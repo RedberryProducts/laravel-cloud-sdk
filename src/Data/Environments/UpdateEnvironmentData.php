@@ -10,12 +10,12 @@ use Redberry\LaravelCloudSdk\Enums\PhpVersion;
 use Redberry\LaravelCloudSdk\Enums\ResponseHeadersContentType;
 use Redberry\LaravelCloudSdk\Enums\ResponseHeadersFrame;
 use Redberry\LaravelCloudSdk\Enums\ResponseHeadersRobotsTag;
-use Spatie\LaravelData\Attributes\MapOutputName;
+use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 use Spatie\LaravelData\Optional;
 
-#[MapOutputName(SnakeCaseMapper::class)]
+#[MapName(SnakeCaseMapper::class)]
 class UpdateEnvironmentData extends Data
 {
     public function __construct(
