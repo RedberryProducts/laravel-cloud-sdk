@@ -1,7 +1,7 @@
 name: Fix PHP code style issues
 
 on:
-  push:
+  pull_request:
     paths:
       - '**.php'
 
@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   php-code-styling:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 5
 

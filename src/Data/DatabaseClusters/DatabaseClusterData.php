@@ -3,8 +3,8 @@
 namespace Redberry\LaravelCloudSdk\Data\DatabaseClusters;
 
 use Carbon\CarbonImmutable;
-use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Redberry\LaravelCloudSdk\Data\DatabaseClusters\Concerns\ResolvesDatabaseClusterConfig;
+use Redberry\LaravelCloudSdk\Data\Databases\DatabaseData;
 use Redberry\LaravelCloudSdk\Enums\CloudRegion;
 use Redberry\LaravelCloudSdk\Enums\DatabaseStatus;
 use Redberry\LaravelCloudSdk\Enums\DatabaseType;
@@ -42,5 +42,4 @@ class DatabaseClusterData extends Data
                 : null,
         );
     }
-
 }
