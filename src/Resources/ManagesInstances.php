@@ -45,6 +45,10 @@ trait ManagesInstances
         int|null|Optional $scalingCpuThresholdPercentage = new Optional,
         int|null|Optional $scalingMemoryThresholdPercentage = new Optional,
         array|Optional $backgroundProcesses = new Optional,
+        int|null|Optional $visibilityTimeout = new Optional,
+        int|null|Optional $pollingInterval = new Optional,
+        int|null|Optional $shutdownTimeout = new Optional,
+        bool|null|Optional $sleepWithApp = new Optional,
     ): InstanceData {
         return $this->createInstanceWith($environmentId, new CreateInstanceData(
             name: $name,
@@ -56,6 +60,10 @@ trait ManagesInstances
             usesScheduler: $usesScheduler,
             scalingCpuThresholdPercentage: $scalingCpuThresholdPercentage,
             scalingMemoryThresholdPercentage: $scalingMemoryThresholdPercentage,
+            visibilityTimeout: $visibilityTimeout,
+            pollingInterval: $pollingInterval,
+            shutdownTimeout: $shutdownTimeout,
+            sleepWithApp: $sleepWithApp,
             backgroundProcesses: $backgroundProcesses,
         ));
     }
@@ -79,6 +87,10 @@ trait ManagesInstances
         bool|Optional $usesInertiaSsr = new Optional,
         int|null|Optional $scalingCpuThresholdPercentage = new Optional,
         int|null|Optional $scalingMemoryThresholdPercentage = new Optional,
+        int|null|Optional $visibilityTimeout = new Optional,
+        int|null|Optional $pollingInterval = new Optional,
+        int|null|Optional $shutdownTimeout = new Optional,
+        bool|null|Optional $sleepWithApp = new Optional,
     ): InstanceData {
         return $this->updateInstanceWith($id, new UpdateInstanceData(
             name: $name,
@@ -93,6 +105,10 @@ trait ManagesInstances
             usesInertiaSsr: $usesInertiaSsr,
             scalingCpuThresholdPercentage: $scalingCpuThresholdPercentage,
             scalingMemoryThresholdPercentage: $scalingMemoryThresholdPercentage,
+            visibilityTimeout: $visibilityTimeout,
+            pollingInterval: $pollingInterval,
+            shutdownTimeout: $shutdownTimeout,
+            sleepWithApp: $sleepWithApp,
         ));
     }
 
