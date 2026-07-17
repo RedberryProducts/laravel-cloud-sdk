@@ -1,0 +1,8 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Content-Type": "application/vnd.api+json"
+    },
+    "data": "{\"data\":{\"type\":\"instances\",\"id\":\"inst-9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d\",\"attributes\":{\"name\":\"orders\",\"type\":\"managed_queue\",\"size\":\"flex.m-1vcpu-1gb\",\"scaling_type\":\"custom\",\"min_replicas\":0,\"max_replicas\":5,\"uses_scheduler\":false,\"scaling_cpu_threshold_percentage\":null,\"scaling_memory_threshold_percentage\":null,\"queue_status\":\"available\",\"paused\":true,\"is_default\":false,\"visibility_timeout\":60,\"polling_interval\":20}}}",
+    "context": []
+}

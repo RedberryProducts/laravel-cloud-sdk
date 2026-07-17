@@ -15,6 +15,10 @@ use Redberry\LaravelCloudSdk\Requests\Instances\DeleteInstanceRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\GetInstanceRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\ListInstanceSizesRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\ListInstancesRequest;
+use Redberry\LaravelCloudSdk\Requests\Instances\PauseManagedQueueRequest;
+use Redberry\LaravelCloudSdk\Requests\Instances\PurgeManagedQueueRequest;
+use Redberry\LaravelCloudSdk\Requests\Instances\ResumeManagedQueueRequest;
+use Redberry\LaravelCloudSdk\Requests\Instances\SetDefaultManagedQueueRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\UpdateInstanceRequest;
 use Spatie\LaravelData\Optional;
 
@@ -120,6 +124,26 @@ trait ManagesInstances
     public function instanceSizes(): Collection
     {
         return $this->connector->send(new ListInstanceSizesRequest)->dtoOrFail();
+    }
+
+    public function pauseManagedQueue(string $id): InstanceData
+    {
+        return $this->connector->send(new PauseManagedQueueRequest($id))->dtoOrFail();
+    }
+
+    public function resumeManagedQueue(string $id): InstanceData
+    {
+        return $this->connector->send(new ResumeManagedQueueRequest($id))->dtoOrFail();
+    }
+
+    public function purgeManagedQueue(string $id): InstanceData
+    {
+        return $this->connector->send(new PurgeManagedQueueRequest($id))->dtoOrFail();
+    }
+
+    public function setDefaultManagedQueue(string $id): InstanceData
+    {
+        return $this->connector->send(new SetDefaultManagedQueueRequest($id))->dtoOrFail();
     }
 
     public function deleteInstance(string $id): void
