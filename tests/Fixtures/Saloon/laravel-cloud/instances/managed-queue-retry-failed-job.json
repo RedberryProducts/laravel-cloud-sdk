@@ -1,0 +1,8 @@
+{
+    "statusCode": 202,
+    "headers": {
+        "Content-Type": "application/vnd.api+json"
+    },
+    "data": "{\"message\":\"The job is being retried.\"}",
+    "context": []
+}

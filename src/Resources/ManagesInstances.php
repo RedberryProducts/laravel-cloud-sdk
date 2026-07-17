@@ -6,18 +6,22 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\LazyCollection;
 use Redberry\LaravelCloudSdk\Data\Instances\CreateInstanceData;
 use Redberry\LaravelCloudSdk\Data\Instances\InstanceData;
+use Redberry\LaravelCloudSdk\Data\Instances\ManagedQueueFailedJobData;
 use Redberry\LaravelCloudSdk\Data\Instances\UpdateInstanceData;
 use Redberry\LaravelCloudSdk\Enums\InstanceScalingType;
 use Redberry\LaravelCloudSdk\Enums\InstanceSize;
 use Redberry\LaravelCloudSdk\Enums\InstanceType;
 use Redberry\LaravelCloudSdk\Requests\Instances\CreateInstanceRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\DeleteInstanceRequest;
+use Redberry\LaravelCloudSdk\Requests\Instances\DeleteManagedQueueFailedJobRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\GetInstanceRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\ListInstanceSizesRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\ListInstancesRequest;
+use Redberry\LaravelCloudSdk\Requests\Instances\ListManagedQueueFailedJobsRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\PauseManagedQueueRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\PurgeManagedQueueRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\ResumeManagedQueueRequest;
+use Redberry\LaravelCloudSdk\Requests\Instances\RetryManagedQueueFailedJobRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\SetDefaultManagedQueueRequest;
 use Redberry\LaravelCloudSdk\Requests\Instances\UpdateInstanceRequest;
 use Spatie\LaravelData\Optional;
@@ -144,6 +148,24 @@ trait ManagesInstances
     public function setDefaultManagedQueue(string $id): InstanceData
     {
         return $this->connector->send(new SetDefaultManagedQueueRequest($id))->dtoOrFail();
+    }
+
+    /**
+     * @return LazyCollection<int, ManagedQueueFailedJobData>
+     */
+    public function managedQueueFailedJobs(string $id): LazyCollection
+    {
+        return $this->connector->paginate(new ListManagedQueueFailedJobsRequest($id))->collect();
+    }
+
+    public function retryManagedQueueFailedJob(string $id, string $jobId): void
+    {
+        $this->connector->send(new RetryManagedQueueFailedJobRequest($id, $jobId))->throw();
+    }
+
+    public function deleteManagedQueueFailedJob(string $id, string $jobId): void
+    {
+        $this->connector->send(new DeleteManagedQueueFailedJobRequest($id, $jobId))->throw();
     }
 
     public function deleteInstance(string $id): void

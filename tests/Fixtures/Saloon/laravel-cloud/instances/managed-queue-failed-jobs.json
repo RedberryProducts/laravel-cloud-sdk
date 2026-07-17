@@ -1,0 +1,8 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Content-Type": "application/vnd.api+json"
+    },
+    "data": "{\"data\":[{\"id\":\"failed-job-123\",\"type\":\"managed_queue_failed_jobs\",\"attributes\":{\"name\":\"App\\\\Jobs\\\\ProcessOrder\",\"queue\":\"default\",\"failed_at\":\"2026-07-16T23:01:00.000000Z\",\"started_at\":\"2026-07-16T23:00:55.000000Z\",\"attempts\":\"3\",\"exception\":\"RuntimeException: Failed\",\"retried_at\":null,\"retry_reserved_until\":null}}],\"links\":{\"first\":\"https:\/\/cloud.laravel.com\/api\/instances\/inst-123\/failed-jobs?page=1\",\"last\":\"https:\/\/cloud.laravel.com\/api\/instances\/inst-123\/failed-jobs?page=1\",\"prev\":null,\"next\":null},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"https:\/\/cloud.laravel.com\/api\/instances\/inst-123\/failed-jobs?page=1\",\"label\":\"1\",\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"active\":false}],\"path\":\"https:\/\/cloud.laravel.com\/api\/instances\/inst-123\/failed-jobs\",\"per_page\":15,\"to\":1,\"total\":1}}",
+    "context": []
+}
